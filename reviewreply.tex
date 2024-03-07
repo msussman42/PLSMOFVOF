@@ -1,0 +1,101 @@
+%% get rid of autoindent   :setl noai nocin nosi inde=
+\documentclass{letter} 
+
+\newcommand{\bmu}{\mbox{\boldmath $u$\unboldmath}}
+
+\date{\today}
+
+
+\begin{document}
+\begin{letter}{
+Communications on Applied Mathematics and Computation  \\
+Dr. Chi-Wang Shu, Editor-in-Chief\\}
+	
+\opening{Dear Dr. Chi-Wang Shu}
+Please find enclosed the revised version of our 
+manuscript (CAMC-D-22-00243):
+``An improved coupled level set and continuous 
+moment-of-fluid method for simulating multiphase flows 
+with phase change.''
+We thank the reviewer for his/her comments and thoughts 
+regarding improvement of our paper. 
+In addition to the modifications in response to the reviewers'
+suggestions, some improvements have been made to our paper.
+\begin{enumerate}
+\item The ``method overview'' (section 4.1 now) gives more details: e.g. about
+$\Delta t$ and when the level set function is ``redistanced'' (every time step
+after advection).  
+\item Algorithmic details that can be found in our previous work has been 
+  deleted (appropriate citations are kept): CISL advection, viscous solver,
+  and projection solver (on AMR hierarchical grid).  We have kept the 
+  discretization details of how the exact signed distance to the multi-material
+  CMOF reconstructed interface is found (as this is a coupling step) 
+  (section 4.3).
+\item The added mass algorithm has been improved.  Section 5.4.1, ``Added
+  Mass model for static freezing problem'' has been modified accordingly.
+  All of the effected freezing results were recomputed (the results changed
+  very little).
+\end{enumerate}	
+We believe that we have addressed all of the reviewers'
+concerns; the changes are itemized in detail below.\par 
+\par\noindent
+NOTE: all references to equations and figures below are with
+reference to the numbering scheme of the revised version of the paper,
+not the original version.  
+%%Also, we have hi-lighted the major
+%%changes to our article in 
+%%\textcolor{red}{red}.  Also, if most of a section was modified, we
+%%hi-lighted just the section heading in \textcolor{red}{red}.
+\par\noindent
+Changes made in response to comments of the Reviewer: \par 
+\begin{enumerate}
+\item 
+\begin{verbatim}
+1- The introduction goes straight to the heart of the 
+problem and therefore immediately leads the 
+reader to the "action". I have personnaly 
+enjoyed it, but I suggest that the authors provide 
+some context about free boundary problem; otherwise, 
+readers less current on the literature may be disoriented. 
+\end{verbatim}
+\par 
+\vspace{0.5cm}
+Response: \\
+We have added a new section ``Background - deforming boundary problems in fluid mechanics'' which addresses the reviewers' comments.
+\vspace{0.5cm}
+\item 
+\begin{verbatim}
+2- The mathematical description of the different domains and 
+interfaces use the level-set formalism but no introduction 
+is given on the level-set representation. I also suspect 
+that the level-set used is the signed distance function 
+(at least reinitialized every x iterations)?
+\end{verbatim}
+\par 
+\vspace{0.5cm}
+Response: \\
+We have added a new Figure to the paper (added to the new section) which
+illustrates the level set distance function property.  Also we have
+added in two different places exactly when the level set function is 
+reinitialized.
+\vspace{0.5cm}
+\item 
+\begin{verbatim}
+3- Some of the section titles are not formatted correctly.
+\end{verbatim}
+\par 
+\vspace{0.5cm}
+Response: \\
+We double checked all of the section titles and found that they were ok?
+Please advise.
+\end{enumerate}
+
+\closing{On behalf of the authors, \\ Mark Sussman}
+
+\end{letter}
+
+
+\bibliography{references}
+\bibliographystyle{plain}
+\end{document}
+

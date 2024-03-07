@@ -1,0 +1,41 @@
+%%on MAC: brew install ps2eps
+%%latex convert_pstricks_to_eps.tex
+%%dvips convert_pstricks_to_eps.dvi
+%%ps2eps -B -C < convert_pstricks_to_eps.ps > outfile.eps
+\documentclass[]{article}
+\usepackage{lineno,hyperref}
+\usepackage[fleqn]{amsmath} 
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pstricks} 
+\usepackage{pst-slpe}
+\usepackage{pst-eps}
+\usepackage{tabularx} 
+\usepackage{footnote}
+\usepackage{titlesec}
+\usepackage[percent]{overpic}
+\usepackage{subfigure}% subcaptions for subfigures
+\usepackage{subfigmat}% matrices of similar subfigures, aka small multiples
+\usepackage{array}
+\newcommand{\bmx}{\mbox{\boldmath $x$\unboldmath}}
+\newcommand{\bmn}{\mbox{\boldmath $n$\unboldmath}}
+\newcommand{\bmq}{\mbox{\boldmath $q$\unboldmath}}
+\begin{document}
+
+\begin{figure}[htbp]
+%%\centering
+%%\scalebox{0.75}
+{
+%% \input{./redistancing.tex}
+%% \input{./triple_point_drop_impact.tex}
+%% \input{./mof_reconstruction.tex}
+%% \input{./mof_tes.tex}
+%% \input{./redistancing_3D.tex}
+ \input{./redistancing_ils.tex}
+}
+\end{figure}
+\thispagestyle{empty}
+\end{document}
+
+
+

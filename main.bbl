@@ -1,0 +1,404 @@
+\begin{thebibliography}{10}
+
+\bibitem{ahn2007multi}
+{\sc Ahn, H.~T., and Shashkov, M.}
+\newblock Multi-material interface reconstruction on generalized polyhedral
+  meshes.
+\newblock {\em Journal of Computational Physics 226}, 2 (2007), 2096--2132.
+
+\bibitem{ahn2009adaptive}
+{\sc Ahn, H.~T., and Shashkov, M.}
+\newblock Adaptive moment-of-fluid method.
+\newblock {\em Journal of Computational Physics 228}, 8 (2009), 2792--2821.
+
+\bibitem{ancellin2022extension}
+{\sc Ancellin, M., Despr{\'e}s, B., and Jaouen, S.}
+\newblock Extension of generic two-component vof interface advection schemes to
+  an arbitrary number of components.
+\newblock {\em Journal of Computational Physics\/} (2022), 111721.
+
+\bibitem{arienti2014embedded}
+{\sc Arienti, M., and Sussman, M.}
+\newblock An embedded level set method for sharp-interface multiphase
+  simulations of diesel injectors.
+\newblock {\em International Journal of Multiphase Flow 59\/} (2014), 1--14.
+
+\bibitem{ASURIMUKUNDAN2022110864}
+{\sc {Asuri Mukundan}, A., Ménard, T., {Brändle de Motta}, J.~C., and
+  Berlemont, A.}
+\newblock A hybrid moment of fluid–level set framework for simulating primary
+  atomization.
+\newblock {\em Journal of Computational Physics 451\/} (2022), 110864.
+
+\bibitem{bentz1993low}
+{\sc BENTZ, M., KNOLL, R., Hasan, M., and LIN, C.}
+\newblock Low-g fluid mixing-further results from the tank pressure control
+  experiment.
+\newblock In {\em 29th Joint Propulsion Conference and Exhibit\/} (1993),
+  p.~2423.
+
+\bibitem{bentz1992jet}
+{\sc BENTZ, M., MESEROLE, J., and KNOLL, R.}
+\newblock Jet mixing in low gravity-results of the tank pressure control
+  experiment.
+\newblock In {\em 28th Joint Propulsion Conference and Exhibit\/} (1992),
+  p.~3060.
+
+\bibitem{bonhomme2012inertial}
+{\sc Bonhomme, R., Magnaudet, J., Duval, F., and Piar, B.}
+\newblock Inertial dynamics of air bubbles crossing a horizontal fluid--fluid
+  interface.
+\newblock {\em Journal of Fluid Mechanics 707\/} (2012), 405--443.
+
+\bibitem{brackbill1992continuum}
+{\sc Brackbill, J.~U., Kothe, D.~B., and Zemach, C.}
+\newblock A continuum method for modeling surface tension.
+\newblock {\em Journal of computational physics 100}, 2 (1992), 335--354.
+
+\bibitem{breiman1984classification}
+{\sc Breiman, L., Friedman, J., Olshen, R., and Stone, C.}
+\newblock Classification and regression trees. monterey, ca: wadsworth \&
+  brooks/cole advanced books \& software, 1984.
+
+\bibitem{caboussat2008numerical}
+{\sc Caboussat, A., Francois, M.~M., Glowinski, R., Kothe, D.~B., and Sicilian,
+  J.~M.}
+\newblock A numerical method for interface reconstruction of triple points
+  within a volume tracking algorithm.
+\newblock {\em Mathematical and Computer Modelling 48}, 11 (2008), 1957--1971.
+
+\bibitem{colella1984piecewise}
+{\sc Colella, P., and Woodward, P.~R.}
+\newblock The piecewise parabolic method (ppm) for gas-dynamical simulations.
+\newblock {\em Journal of computational physics 54}, 1 (1984), 174--201.
+
+\bibitem{cummins2005estimating}
+{\sc Cummins, S.~J., Francois, M.~M., and Kothe, D.~B.}
+\newblock Estimating curvature from volume fractions.
+\newblock {\em Computers \& structures 83}, 6-7 (2005), 425--434.
+
+\bibitem{de2013capillarity}
+{\sc De~Gennes, P.-G., Brochard-Wyart, F., and Qu{\'e}r{\'e}, D.}
+\newblock {\em Capillarity and wetting phenomena: drops, bubbles, pearls,
+  waves}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{dyadechko2005moment}
+{\sc Dyadechko, V., and Shashkov, M.}
+\newblock Moment-of-fluid interface reconstruction.
+\newblock {\em Los Alamos report LA-UR-05-7571\/} (2005).
+
+\bibitem{dyadechko2008reconstruction}
+{\sc Dyadechko, V., and Shashkov, M.}
+\newblock Reconstruction of multi-material interfaces from moment data.
+\newblock {\em Journal of Computational Physics 227}, 11 (2008), 5361--5384.
+
+\bibitem{enright2002hybrid}
+{\sc Enright, D., Fedkiw, R., Ferziger, J., and Mitchell, I.}
+\newblock A hybrid particle level set method for improved interface capturing.
+\newblock {\em Journal of Computational physics 183}, 1 (2002), 83--116.
+
+\bibitem{francois2006balanced}
+{\sc Francois, M.~M., Cummins, S.~J., Dendy, E.~D., Kothe, D.~B., Sicilian,
+  J.~M., and Williams, M.~W.}
+\newblock A balanced-force algorithm for continuous and sharp interfacial
+  surface tension models within a volume tracking framework.
+\newblock {\em Journal of Computational Physics 213}, 1 (2006), 141--173.
+
+\bibitem{gibou2002second}
+{\sc Gibou, F., Fedkiw, R.~P., Cheng, L.-T., and Kang, M.}
+\newblock A second-order-accurate symmetric discretization of the poisson
+  equation on irregular domains.
+\newblock {\em Journal of Computational Physics 176}, 1 (2002), 205--227.
+
+\bibitem{glimm1981front}
+{\sc Glimm, J., Isaacson, E., Marchesin, D., and McBryan, O.}
+\newblock Front tracking for hyperbolic systems.
+\newblock {\em Advances in Applied Mathematics 2}, 1 (1981), 91--119.
+
+\bibitem{godunov1954different}
+{\sc Godunov, S.}
+\newblock Ph.d. dissertation: Different methods for shock waves moscow state
+  university, 1954.
+
+\bibitem{godunov1959finite}
+{\sc Godunov, S.~K., and Bohachevsky, I.}
+\newblock Finite difference method for numerical computation of discontinuous
+  solutions of the equations of fluid dynamics.
+\newblock {\em Matemati{\v{c}}eskij sbornik 47}, 3 (1959), 271--306.
+
+\bibitem{harten1997high}
+{\sc Harten, A.}
+\newblock High resolution schemes for hyperbolic conservation laws.
+\newblock {\em Journal of computational physics 135}, 2 (1997), 260--278.
+
+\bibitem{helsby1955behaviour}
+{\sc Helsby, F., and Tuson, K.}
+\newblock Behaviour of air bubbles in aqueous solutions.
+\newblock {\em Research 8\/} (1955), 270--275.
+
+\bibitem{hirt1981volume}
+{\sc Hirt, C.~W., and Nichols, B.~D.}
+\newblock Volume of fluid (vof) method for the dynamics of free boundaries.
+\newblock {\em Journal of computational physics 39}, 1 (1981), 201--225.
+
+\bibitem{hu2010icing}
+{\sc Hu, H., and Jin, Z.}
+\newblock An icing physics study by using lifetime-based molecular tagging
+  thermometry technique.
+\newblock {\em International Journal of Multiphase Flow 36}, 8 (2010),
+  672--681.
+
+\bibitem{huang2020consistent}
+{\sc Huang, Z., Lin, G., and Ardekani, A.~M.}
+\newblock Consistent, essentially conservative and balanced-force phase-field
+  method to model incompressible two-phase flows.
+\newblock {\em Journal of Computational Physics 406\/} (2020), 109192.
+
+\bibitem{HUANG2022110795}
+{\sc Huang, Z., Lin, G., and Ardekani, A.~M.}
+\newblock A consistent and conservative phase-field model for
+  thermo-gas-liquid-solid flows including liquid-solid phase change.
+\newblock {\em Journal of Computational Physics 449\/} (2022), 110795.
+
+\bibitem{jemison2013coupled}
+{\sc Jemison, M., Loch, E., Sussman, M., Shashkov, M., Arienti, M., Ohta, M.,
+  and Wang, Y.}
+\newblock A coupled level set-moment of fluid method for incompressible
+  two-phase flows.
+\newblock {\em Journal of Scientific Computing 54}, 2-3 (2013), 454--491.
+
+\bibitem{jemison2014compressible}
+{\sc Jemison, M., Sussman, M., and Arienti, M.}
+\newblock Compressible, multiphase semi-implicit method with moment of fluid
+  interface representation.
+\newblock {\em Journal of Computational Physics 279\/} (2014), 182--217.
+
+\bibitem{kim2007phase}
+{\sc Kim, J.}
+\newblock Phase field computations for ternary fluid flows.
+\newblock {\em Computer methods in applied mechanics and engineering 196}, 45
+  (2007), 4779--4788.
+
+\bibitem{kucharik2010comparative}
+{\sc Kucharik, M., Garimella, R.~V., Schofield, S.~P., and Shashkov, M.~J.}
+\newblock A comparative study of interface reconstruction methods for
+  multi-material ale simulations.
+\newblock {\em Journal of Computational Physics 229}, 7 (2010), 2432--2452.
+
+\bibitem{li2015multiphase}
+{\sc Li, G., Lian, Y., Guo, Y., Jemison, M., Sussman, M., Helms, T., and
+  Arienti, M.}
+\newblock Incompressible multiphase flow and encapsulation simulations using
+  the moment-of-fluid method.
+\newblock {\em International Journal for Numerical Methods in Fluids 79}, 9
+  (2015), 456--490.
+
+\bibitem{liu2022novel}
+{\sc Liu, Y., Sussman, M., Lian, Y., Hussaini, M.~Y., Vahab, M., and Shoele,
+  K.}
+\newblock A novel supermesh method for computing solutions to the
+  multi-material stefan problem with complex deforming interfaces and
+  microstructure.
+\newblock {\em Journal of Scientific Computing 91}, 1 (2022), 1--40.
+
+\bibitem{lyu2021hybrid}
+{\sc Lyu, S., Wang, K., Zhang, Z., Pedrono, A., Sun, C., and Legendre, D.}
+\newblock A hybrid vof-ibm method for the simulation of freezing liquid films
+  and freezing drops.
+\newblock {\em Journal of Computational Physics 432\/} (2021), 110160.
+
+\bibitem{markstein1951interaction}
+{\sc Markstein, G.}
+\newblock Interaction of flow pulsations and flame propagation.
+\newblock {\em Journal of the Aeronautical Sciences 18}, 6 (1951), 428--429.
+
+\bibitem{MIAO2021109358}
+{\sc Miao, F., Wu, B., Sun, Z., and Peng, C.}
+\newblock Calibration method of the laser beam based on liquid lens for 3d
+  precise measurement.
+\newblock {\em Measurement 178\/} (2021), 109358.
+
+\bibitem{milcent2020moment}
+{\sc Milcent, T., and Lemoine, A.}
+\newblock Moment-of-fluid analytic reconstruction on 3d rectangular
+  hexahedrons.
+\newblock {\em Journal of Computational Physics 409\/} (2020), 109346.
+
+\bibitem{OHTA20111059}
+{\sc Ohta, M., Kikuchi, D., Yoshida, Y., and Sussman, M.}
+\newblock Robust numerical analysis of the dynamic bubble formation process in
+  a viscous liquid.
+\newblock {\em International Journal of Multiphase Flow 37}, 9 (2011),
+  1059--1071.
+
+\bibitem{olsson2005conservative}
+{\sc Olsson, E., and Kreiss, G.}
+\newblock A conservative level set method for two phase flow.
+\newblock {\em Journal of computational physics 210}, 1 (2005), 225--246.
+
+\bibitem{osher1988fronts}
+{\sc Osher, S., and Sethian, J.~A.}
+\newblock Fronts propagating with curvature-dependent speed: algorithms based
+  on hamilton-jacobi formulations.
+\newblock {\em Journal of computational physics 79}, 1 (1988), 12--49.
+
+\bibitem{pathak2016three}
+{\sc Pathak, A., and Raessi, M.}
+\newblock A three-dimensional volume-of-fluid method for reconstructing and
+  advecting three-material interfaces forming contact lines.
+\newblock {\em Journal of Computational Physics 307\/} (2016), 550--573.
+
+\bibitem{pei2019hierarchical}
+{\sc Pei, C., Vahab, M., Sussman, M., and Hussaini, M.~Y.}
+\newblock A hierarchical space-time spectral element and moment-of-fluid method
+  for improved capturing of vortical structures in incompressible
+  multi-phase/multi-material flows.
+\newblock {\em Journal of Scientific Computing 81}, 3 (2019), 1527--1566.
+
+\bibitem{QiuETALPINNPHASEFIELD2022}
+{\sc Qiu, R., Huang, R., Xiao, Y., Wang, J., Zhang, Z., Yue, J., Zeng, Z., and
+  Wang, Y.}
+\newblock {Physics-informed neural networks for phase-field method in two-phase
+  flow}.
+\newblock {\em Physics of Fluids 34}, 5 (05 2022).
+\newblock 052109.
+
+\bibitem{REMMERSWAAL2022111473}
+{\sc Remmerswaal, R.~A., and Veldman, A.~E.}
+\newblock Parabolic interface reconstruction for 2d volume of fluid methods.
+\newblock {\em Journal of Computational Physics 469\/} (2022), 111473.
+
+\bibitem{SalasShockfitting1976}
+{\sc Salas, M.~D.}
+\newblock Shock fitting method for complicated two-dimensional supersonic
+  flows.
+\newblock {\em AIAA Journal 14}, 5 (1976), 583--588.
+
+\bibitem{saurel1999multiphase}
+{\sc Saurel, R., and Abgrall, R.}
+\newblock A multiphase godunov method for compressible multifluid and
+  multiphase flows.
+\newblock {\em Journal of Computational Physics 150}, 2 (1999), 425--467.
+
+\bibitem{schofield2008material}
+{\sc Schofield, S.~P., Garimella, R.~V., Francois, M.~M., and Loub{\`e}re, R.}
+\newblock Material order-independent interface reconstruction using power
+  diagrams.
+\newblock {\em International journal for numerical methods in fluids 56}, 6
+  (2008), 643.
+
+\bibitem{schofield2009second}
+{\sc Schofield, S.~P., Garimella, R.~V., Francois, M.~M., and Loub{\`e}re, R.}
+\newblock A second-order accurate material-order-independent interface
+  reconstruction technique for multi-material flow simulations.
+\newblock {\em Journal of Computational Physics 228}, 3 (2009), 731--745.
+
+\bibitem{shetabivash2020multiple}
+{\sc Shetabivash, H., Dolatabadi, A., and Paraschivoiu, M.}
+\newblock A multiple level-set approach for modelling containerless freezing
+  process.
+\newblock {\em Journal of Computational Physics 415\/} (2020), 109527.
+
+\bibitem{shin2009hybrid}
+{\sc Shin, S., and Juric, D.}
+\newblock A hybrid interface method for three-dimensional multiphase flows
+  based on front tracking and level set techniques.
+\newblock {\em International Journal for Numerical Methods in Fluids 60}, 7
+  (2009), 753--778.
+
+\bibitem{shu1988efficient}
+{\sc Shu, C.-W., and Osher, S.}
+\newblock Efficient implementation of essentially non-oscillatory
+  shock-capturing schemes.
+\newblock {\em Journal of computational physics 77}, 2 (1988), 439--471.
+
+\bibitem{sijoy2010volume}
+{\sc Sijoy, C., and Chaturvedi, S.}
+\newblock Volume-of-fluid algorithm with different modified dynamic material
+  ordering methods and their comparisons.
+\newblock {\em Journal of Computational Physics 229}, 10 (2010), 3848--3863.
+
+\bibitem{smith2002projection}
+{\sc Smith, K.~A., Solis, F.~J., and Chopp, D.}
+\newblock A projection method for motion of triple junctions by level sets.
+\newblock {\em Interfaces and Free Boundaries 4}, 3 (2002), 263--276.
+
+\bibitem{starinshak2014new}
+{\sc Starinshak, D.~P., Karni, S., and Roe, P.~L.}
+\newblock A new level set model for multimaterial flows.
+\newblock {\em Journal of Computational Physics 262\/} (2014), 1--16.
+
+\bibitem{sussman2003second}
+{\sc Sussman, M.}
+\newblock A second order coupled level set and volume-of-fluid method for
+  computing growth and collapse of vapor bubbles.
+\newblock {\em Journal of Computational Physics 187}, 1 (2003), 110--136.
+
+\bibitem{sussman2009stable}
+{\sc Sussman, M., and Ohta, M.}
+\newblock A stable and efficient method for treating surface tension in
+  incompressible two-phase flow.
+\newblock {\em SIAM Journal on Scientific Computing 31}, 4 (2009), 2447--2471.
+
+\bibitem{sussman2000coupled}
+{\sc Sussman, M., and Puckett, E.~G.}
+\newblock A coupled level set and volume-of-fluid method for computing 3d and
+  axisymmetric incompressible two-phase flows.
+\newblock {\em Journal of Computational Physics 162}, 2 (2000), 301--337.
+
+\bibitem{sussman1994level}
+{\sc Sussman, M., Smereka, P., and Osher, S.}
+\newblock A level set approach for computing solutions to incompressible
+  two-phase flow.
+\newblock {\em Journal of Computational physics 114}, 1 (1994), 146--159.
+
+\bibitem{tatebe1993multigrid}
+{\sc Tatebe, O.}
+\newblock The multigrid preconditioned conjugate gradient method.
+\newblock In {\em NASA. Langley Research Center, The Sixth Copper Mountain
+  Conference on Multigrid Methods, Part 2\/} (1993).
+
+\bibitem{unverdi1992front}
+{\sc Unverdi, S.~O., and Tryggvason, G.}
+\newblock A front-tracking method for viscous, incompressible, multi-fluid
+  flows.
+\newblock {\em Journal of computational physics 100}, 1 (1992), 25--37.
+
+\bibitem{vahab2016adaptive}
+{\sc Vahab, M., Pei, C., Hussaini, M.~Y., Sussman, M., and Lian, Y.}
+\newblock An adaptive coupled level set and moment-of-fluid method for
+  simulating droplet impact and solidification on solid surfaces with
+  application to aircraft icing.
+\newblock In {\em 54th AIAA Aerospace Sciences Meeting\/} (2016), p.~1340.
+
+\bibitem{VAHAB2021}
+{\sc Vahab, M., Sussman, M., and Shoele, K.}
+\newblock Fluid-structure interaction of thin flexible bodies in multi-material
+  multi-phase systems.
+\newblock {\em Journal of Computational Physics 429\/} (2021), 110008.
+
+\bibitem{van1979towards}
+{\sc Van~Leer, B.}
+\newblock Towards the ultimate conservative difference scheme. v. a
+  second-order sequel to godunov's method.
+\newblock {\em Journal of computational Physics 32}, 1 (1979), 101--136.
+
+\bibitem{vu2015numerical}
+{\sc Vu, T.~V., Tryggvason, G., Homma, S., and Wells, J.~C.}
+\newblock Numerical investigations of drop solidification on a cold plate in
+  the presence of volume change.
+\newblock {\em International Journal of Multiphase Flow 76\/} (2015), 73--85.
+
+\bibitem{welch2000volume}
+{\sc Welch, S.~W., and Wilson, J.}
+\newblock A volume of fluid based method for fluid flows with phase change.
+\newblock {\em Journal of computational physics 160}, 2 (2000), 662--682.
+
+\bibitem{zalesak1979fully}
+{\sc Zalesak, S.~T.}
+\newblock Fully multidimensional flux-corrected transport algorithms for
+  fluids.
+\newblock {\em Journal of computational physics 31}, 3 (1979), 335--362.
+
+\end{thebibliography}
