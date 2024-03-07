@@ -82,8 +82,7 @@
 \bibliographystyle{acm}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-\title{An improved 
-  coupled level set and continuous moment-of-fluid method 
+\title{A coupled particle level set and Moment-of-fluid method 
   for simulating multiphase flows with phase change
   \thanks{this material is based upon work supported by National
    Aeronautics and Space Administration under grant number
@@ -98,20 +97,11 @@
 %	\texttt{first2.last2@xxxxx.com}
 %}
 \author{
-  Ye, Zhouteng \\
-  ZJUI Institute, Zhejiang University, Haining, China
-  \and
   Estebe, Cody \\
   Dept. of math, FL State Univ. 
   \and
   Liu, Yang \\
   Dept. of Mech. Engr., FL State Univ.
-  \and
-  Vahab, Mehdi \\
-  Mech. and Aero. Engr. Mathworks, Natick, MA
-  \and
-  Huang, Zeyu \\
-  School of Aerospace Engineering, Tsinghua University
   \and
   Sussman, Mark \\
   Dept. of math, FL State Univ. 
@@ -122,23 +112,29 @@
   Shoele, Kourosh  \\
   Dept. of Mech. Engr., FL State Univ.
   \and
-  Lian, Yongsheng \\
-  Dept. of Mech. Engr., U. of Louisville
-  \and
   Ohta, Mitsuhiro \\
   Dept. of Mech. Sci, Tokushima University 
-  \and
-  Hussaini, M. Yousuff \\ 
-  Dept. of math, FL State Univ. 
 }
 
 \begin{document}
 \maketitle
 
 ABSTRACT:
-An improved algorithm for computing multiphase flows is presented in which the multimaterial Moment-Of-Fluid (MOF) algorithm for multiphase flows, initially described by Li et al (2015), is enhanced addressing existing MOF difficulties in computing solutions to problems in which surface tension forces are crucial for understanding salient flow mechanisms.  The Continuous Moment of Fluid (CMOF) method is motivated in this article.  The CMOF reconstruction method inherently removes the ``checkerboard instability'' that persists when using the MOF method on surface tension driven multiphase (multimaterial) flows.  The CMOF reconstruction algorithm is accelerated by coupling the CMOF method to the level set method and coupling the CMOF method to a Decision Tree machine learning algorithm.
+An improved algorithm for computing multiphase flows is presented in 
+which the multimaterial Moment-Of-Fluid (MOF) algorithm for multiphase flows, 
+described by Li et al (2015), is enhanced with 
+meshless particles.  The new method is less ``dissipative'' than the 
+Continuous Moment of Fluid method (``CMOF,'' Ye at el (2023)) and inherently 
+removes the ``checkerboard instability'' that persists when using the 
+MOF method on surface tension driven multiphase (multimaterial) 
+flows (Li et al (2015)).
 
-Multiphase flow examples are shown in 2D, 3D axisymmetric ``RZ,'' and 3D coordinate systems.  Examples include two material and three material multiphase flows: bubble formation, the impingement of a liquid jet on a gas bubble in a cryogenic fuel tank, freezing, and liquid lens dynamics.
+Multiphase flow examples are shown in 2D, 3D axisymmetric ``RZ,'' and 
+3D coordinate systems.  Examples include two material and three 
+material multiphase flows: bubble formation, the impingement of a 
+liquid jet on a gas bubble in a cryogenic fuel tank, freezing, melting,
+evaporation, and liquid lens dynamics.
+%%compare with Vu SI.
 % Fred Stern -> reconstructed distance function coupled with VOF 
 %%cite: Mukundan
 \linenumbers
