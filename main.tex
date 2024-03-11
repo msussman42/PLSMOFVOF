@@ -139,8 +139,25 @@ evaporation, and liquid lens dynamics.
 %%cite: Mukundan
 \linenumbers
 \section{Introduction}
-We present an improved ``Continuous Moment-of-Fluid'' (CMOF) algorithm
-for computing solutions to multiphase (multimaterial) flows.  We 
+In Ye et al\cite{YeEstebe...},
+an improved ``Continuous Moment-of-Fluid'' (CMOF) algorithm
+for computing solutions to multiphase (multimaterial) flows was
+presented for overcoming the interface curvature ``checkerboard'' problem
+present in the ``Moment of Fluid'' (MOF) \cite{MOF}  method.  
+Also in Ye et al\cite{YeEstebe...}, a novel decision tree data science 
+approach was presented for accelerating the CMOF slope reconstruction 
+algorithm.   
+
+In this article, we present a ``Particle Level Set Moment-of-Fluid''
+method for overcoming the interface checkerboard prolem.  This new approach
+we claim is more accurate and faster than the CMOF approach and 
+does not require the expensive initial training step.  We also claim that
+our new approach is faster and more accurate than the CLSVOF 
+method\cite{SusPuckett} with the added capability for simulating
+general multimaterial (>2 materials) mutiphase flows.
+
+
+We 
 demonstrate the benefits of our new algorithm, beyond that of the 
 current state-of-the-art, on these benchmark multiphase flow
 problems:
