@@ -125,7 +125,7 @@ which the multimaterial Moment-Of-Fluid (MOF) algorithm for multiphase flows,
 described by Li et al (2015), is enhanced with 
 meshless particles.  The new method is less ``dissipative'' than the 
 Continuous Moment of Fluid method (``CMOF,'' Ye at el (2023)) and inherently 
-removes the ``checkerboard instability'' that persists when using the 
+removes the ``checkerboard instability'' that is present when using the 
 MOF method on surface tension driven multiphase (multimaterial) 
 flows (Li et al (2015)).
 
@@ -137,18 +137,19 @@ evaporation, and liquid lens dynamics.
 %%compare with Vu SI.
 % Fred Stern -> reconstructed distance function coupled with VOF 
 %%cite: Mukundan
+%%compare MOF to CMOF to PLSMOF for static freezing test.
 \linenumbers
 \section{Introduction}
 In Ye et al\cite{YeEstebe...},
 an improved ``Continuous Moment-of-Fluid'' (CMOF) algorithm
 for computing solutions to multiphase (multimaterial) flows was
 presented for overcoming the interface curvature ``checkerboard'' problem
-present in the ``Moment of Fluid'' (MOF) \cite{MOF}  method.  
+present in the ``Moment of Fluid'' (MOF) \cite{MOF} method.  
 Also in Ye et al\cite{YeEstebe...}, a novel decision tree data science 
 approach was presented for accelerating the CMOF slope reconstruction 
 algorithm.   
 
-In this article, we present a ``Particle Level Set Moment-of-Fluid''
+In this article, we present a ``Particle Level Set Moment-of-Fluid'' (PLSMOF)
 method for overcoming the interface checkerboard prolem.  This new approach
 we claim is more accurate and faster than the CMOF approach and 
 does not require the expensive initial training step.  We also claim that
@@ -156,9 +157,7 @@ our new approach is faster and more accurate than the CLSVOF
 method\cite{SusPuckett} with the added capability for simulating
 general multimaterial (>2 materials) mutiphase flows.
 
-
-We 
-demonstrate the benefits of our new algorithm, beyond that of the 
+We demonstrate the benefits of our new algorithm, beyond that of the 
 current state-of-the-art, on these benchmark multiphase flow
 problems:
 bubble formation\cite{helsby1955behaviour} (see Section \ref{bubform}),
@@ -299,7 +298,8 @@ flows with surface tension.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.4\textwidth]{checkerboardMOF.eps}
-\includegraphics[width=0.4\textwidth]{checkerboardCMOF.eps}
+\includegraphics[width=0.4\textwidth]{checkerboardPLSMOF.eps}
+%%\includegraphics[width=0.4\textwidth]{checkerboardCMOF.eps}
 %%REMMERSWAAL and Veldman's parabolic reconstruction WILL NOT SEE
 %%the checkerboard pattern (even though they take both F and x into
 %%account).
@@ -313,8 +313,12 @@ flows with surface tension.
  (i) reconstruction followed by (ii) the replacement of the reference
  centroid with the MOF actual centroid will not alter the initial interface
  (ignoring round-off error).  RIGHT: the gaps in the initial saw-tooth 
- interface are reduced by at least a factor of 3 after a single replacement
- of the reference centroid with the CMOF actual centroid.
+ interface are immediately removed with PLSMOF reconstruction since the
+ level set function is derived as the exact signed distance function to the
+ initial MOF reconstructed interface, and the particles are initialized from
+ the level set function.  Ensuing slopes
+ are derived from a combination of the particles and the signed
+ distance function (if particles available).
  \label{checkerboard} }
 \end{figure}
 
