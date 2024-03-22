@@ -1908,28 +1908,33 @@ with the ``added mass density.''
 	\caption{Time to freeze a water droplet with 
 	initial volume $4.95e-5\mbox{cm}^{3}$ as a 
 	function of the wall temperature (degrees Celsius)
-	and Latent heat.  Results are
+	and Latent heat.  Simulations sharply ``capture'' 
+        the triple point dynamics at the ice, water, and air 
+        interface using the hybrid PLS-MOF method.
+        Results are
 	compared with experiments from \cite{hu2010icing}.  
 	Much closer agreement is made with experiments when
 	the latent heat is prescribed as $65.0e+9$ as opposed
 	to when he latent heat is the physical value
 	$3.34e+9$.
 }
-% -6, fine, 0.579
-% -6, med, 0.590
+%MAT=2 dir= 1 GLOBAL MAX INT=
+% -6, coarse, 0.543
+% -6, fine, 0.504
+% -6, med, 0.517
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
 Wall temperature & Latent heat & time (computed) & time (exp) 
 	 \\ \hline
-$-2.0$ & $3.34e+9$ & $2.0$ & $32.5$ \\ \hline
-$-3.0$ & $3.34e+9$ & $1.2$ & $21.0$ \\ \hline
-$-4.0$ & $3.34e+9$ & $0.9$ & $16.0$ \\ \hline
-$-5.0$ & $3.34e+9$ & $0.7$ & $13.5$ \\ \hline
-$-2.0$ & $65.0e+9$ & $35.7$ & $32.5$ \\ \hline
-$-3.0$ & $65.0e+9$ & $22.6$ & $21.0$ \\ \hline
-$-4.0$ & $65.0e+9$ & $16.7$ & $16.0$ \\ \hline
-$-5.0$ & $64.0e+9$ & $13.0$ & $13.5$ \\ \hline
+$-2.0$ & $3.34e+9$ & $1.7$ & $32.5$ \\ \hline
+$-3.0$ & $3.34e+9$ & $1.1$ & $21.0$ \\ \hline
+$-4.0$ & $3.34e+9$ & $0.8$ & $16.0$ \\ \hline
+$-5.0$ & $3.34e+9$ & $0.6$ & $13.5$ \\ \hline
+$-2.0$ & $65.0e+9$ & $31.8$ & $32.5$ \\ \hline
+$-3.0$ & $65.0e+9$ & $20.3$ & $21.0$ \\ \hline
+$-4.0$ & $65.0e+9$ & $14.9$ & $16.0$ \\ \hline
+$-5.0$ & $64.0e+9$ & $11.7$ & $13.5$ \\ \hline
 \end{tabular}
 \label{freezing_time}
 \end{table}
