@@ -301,6 +301,37 @@ Moment-of-Fluid (MOF)
 %% https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics#Importing_external_graphics
 %\end{figure}
 \section{Introduction}
+
+\par\noindent
+Incompressible multiphase flow and encapsulation simulations using the moment-of-fluid method, Li, Guibo and Lian, Yongsheng and Guo, Yisen and Jemison, Matthew and Sussman, Mark and Helms, Trevor and Arienti, Marco
+\par\noindent
+An {Improved} {Coupled} {Level} {Set} and {Continuous} {Moment}-of-{Fluid} {Method} for {Simulating} {Multiphase} {Flows} with {Phase} {Change},
+Ye, Zhouteng and Estebe, Cody and Liu, Yang and Vahab, Mehdi and Huang, Zeyu and Sussman, Mark and Moradikazerouni, Alireza and Shoele, Kourosh and Lian, Yongsheng and Ohta, Mitsuhiro and Hussaini, M. Yousuff
+\par\noindent
+Fluid-structure interaction of thin flexible bodies in multi-material multi-phase systems
+Mehdi Vahab and Mark Sussman and Kourosh Shoele
+\par\noindent
+FabricMask paper
+\par\noindent
+
+A boundary condition capturing method for multiphase incompressible flow
+Kang, Myungjoo and Fedkiw, Ronald P and Liu, Xu-Dong
+\par\noindent
+MOF Reconstruction
+\par\noindent
+checkerboard instability
+\par\noindent
+CMOF Reconstruction
+\par\noindent
+Decision tree table time consuming to build, not generalizable to 
+unstructured grids.
+\par\noindent
+PLSMOF Reconstruction
+\par\noindent
+Show results and animations: liquid lens, gas lens, tank, freezing
+
+
+
 \textcolor{red}{add table: existing multiphase flow MOF methods with surface tension, report curvature algorithm}
 %does curvature discretization in conjunction with MOF exhibit checkerboard instability?
 
@@ -665,7 +696,7 @@ Outline of the operator-split staggered grid projection method:
 
 
 
-
+\newpage
 \par\noindent
 Ghost Fluid Method for surface tension \cite{kang2000boundary}:
 \begin{eqnarray*}
@@ -725,6 +756,8 @@ then we want:
 \Delta t \le \Delta x^{3/2} \sqrt{\frac{\rho_{f}}{2\sigma}}
 \end{eqnarray*}
 
+\newpage
+
 \par\noindent
 Slope reconstruction using level set function, particles, centroid and
 volume fraction:
@@ -738,7 +771,13 @@ volume fraction:
  \sum_{p}\delta(||\vec{x}_{p}-\vec{x}^{c}||)
  (\phi(\vec{x}_{p})-\phi_{p})^{2}
 \end{eqnarray*}
+Replace the least squares $b$ with that which is derived from the 
+reference volume fraction $F^{ref}$:
+\begin{eqnarray*}
+\mbox{VOLFRAC}(\vec{n},b^{ref})=\mbox{VOLFRAC}^{ref}
+\end{eqnarray*}
 
+\newpage
 	\subsection{Cell Integrated Semi-Lagrangian}\label{CISL}
 	The following Cell Integrated Semi-Lagrangian (CISL) procedures are implemented and terms discretized as in \cite{pei2019hierarchical, LiETAL2015IncompressibleMultiphase,VAHAB2021}. This method follows an operator-splitting approach. The steps listed below are solved by the conservative  Weymouth and Yue \cite{WeymouthYue2010conservative}, or alternatively, the Euler Implicit-Lagrange Explicit (EI-LE) \cite{scardovelli2003interface,aulisa2007DirSplit} directionally-split methods. 
 	

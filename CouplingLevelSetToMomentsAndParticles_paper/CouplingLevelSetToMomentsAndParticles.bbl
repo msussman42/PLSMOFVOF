@@ -47,6 +47,12 @@
   equation on irregular domains.
 \newblock {\em Journal of Computational Physics 176}, 1 (2002), 205--227.
 
+\bibitem{kang2000boundary}
+{\sc Kang, M., Fedkiw, R.~P., and Liu, X.-D.}
+\newblock A boundary condition capturing method for multiphase incompressible
+  flow.
+\newblock {\em Journal of Scientific Computing 15}, 3 (2000), 323--360.
+
 \bibitem{LiETAL2015IncompressibleMultiphase}
 {\sc Li, G., Lian, Y., Guo, Y., Jemison, M., Sussman, M., Helms, T., and
   Arienti, M.}

@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: CouplingLevelSetToMomentsAndParticles.aux
 The style file: acm.bst
 Database file #1: refs_plsmof.bib
-You've used 25 entries,
+You've used 26 entries,
             2253 wiz_defined-function locations,
-            699 strings with 9355 characters,
-and the built_in function-call counts, 9173 in all, are:
-= -- 872
-> -- 515
+            705 strings with 9509 characters,
+and the built_in function-call counts, 9530 in all, are:
+= -- 908
+> -- 532
 < -- 0
-+ -- 224
-- -- 186
-* -- 848
-:= -- 1540
-add.period$ -- 76
-call.type$ -- 25
-change.case$ -- 167
++ -- 232
+- -- 192
+* -- 881
+:= -- 1598
+add.period$ -- 79
+call.type$ -- 26
+change.case$ -- 173
 chr.to.int$ -- 0
-cite$ -- 25
-duplicate$ -- 229
-empty$ -- 661
-format.name$ -- 186
-if$ -- 1817
+cite$ -- 26
+duplicate$ -- 238
+empty$ -- 688
+format.name$ -- 192
+if$ -- 1888
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 26
-newline$ -- 129
-num.names$ -- 50
-pop$ -- 124
+int.to.str$ -- 26
+missing$ -- 27
+newline$ -- 134
+num.names$ -- 52
+pop$ -- 128
 preamble$ -- 1
-purify$ -- 143
+purify$ -- 148
 quote$ -- 0
-skip$ -- 126
+skip$ -- 131
 stack$ -- 0
-substring$ -- 664
-swap$ -- 50
+substring$ -- 695
+swap$ -- 52
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 98
+type$ -- 102
 warning$ -- 0
-while$ -- 86
-width$ -- 27
-write$ -- 253
+while$ -- 90
+width$ -- 28
+write$ -- 263

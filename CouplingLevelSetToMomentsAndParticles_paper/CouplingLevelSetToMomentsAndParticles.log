@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  18 MAY 2024 23:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  19 MAY 2024 04:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**CouplingLevelSetToMomentsAndParticles.tex
+**CouplingLevelSetToMomentsAndParticles
 (./CouplingLevelSetToMomentsAndParticles.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-03-06> (./Definitions/elsarticle.cls
@@ -405,22 +405,21 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 202
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (7.7581pt too wide) in alignment at lines 318--318
+) [1
+
+
+{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (7.7581pt too wide) in alignment at lines 349--349
 [][][][][] 
  []
 
 
-Overfull \hbox (49.96092pt too wide) in paragraph at lines 326--335
+Overfull \hbox (49.96092pt too wide) in paragraph at lines 357--366
  [][] 
  []
 
-[1
-
-
-{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 385--387
+Underfull \hbox (badness 10000) in paragraph at lines 416--418
 
  []
 
@@ -432,25 +431,25 @@ Package epstopdf Info: Source file: <./Figures/LSextend.eps>
 (epstopdf)                    size: 7674 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/LSextend-eps-con
 verted-to.pdf ./Figures/LSextend.eps>
-(epstopdf)             \includegraphics on input line 390.
+(epstopdf)             \includegraphics on input line 421.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/LSextend-eps-converted-to.pdf): PDF in
 clusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/LSextend-eps-converted-to.pdf, id=26, 635.37375pt x 528.97626pt>
+<./Figures/LSextend-eps-converted-to.pdf, id=23, 635.37375pt x 528.97626pt>
 File: ./Figures/LSextend-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/LSextend-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/LSextend-eps-converted-to.pdf  used on input
- line 390.
+ line 421.
 (pdftex.def)             Requested size: 193.50076pt x 161.09941pt.
-[3 <./Figures/LSextend-eps-converted-to.pdf>] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 513--518
+[3] [4 <./Figures/LSextend-eps-converted-to.pdf>] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 544--549
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 548--550
+
+Underfull \hbox (badness 10000) in paragraph at lines 579--581
 
  []
 
@@ -463,7 +462,7 @@ verted-to.pdf>
 (epstopdf)                    size: 15264 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/triple_point_dro
 p_impact-eps-converted-to.pdf ./Figures/triple_point_drop_impact.eps>
-(epstopdf)             \includegraphics on input line 560.
+(epstopdf)             \includegraphics on input line 591.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -476,7 +475,7 @@ File: ./Figures/triple_point_drop_impact-eps-converted-to.pdf Graphic file (typ
 e pdf)
 <use ./Figures/triple_point_drop_impact-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/triple_point_drop_impact-eps-converted-to.pd
-f  used on input line 560.
+f  used on input line 591.
 (pdftex.def)             Requested size: 365.50655pt x 177.63898pt.
 Package epstopdf Info: Source file: <./Figures/mof_reconstruction.eps>
 (epstopdf)                    date: 2024-03-07 17:30:42
@@ -487,7 +486,7 @@ Package epstopdf Info: Source file: <./Figures/mof_reconstruction.eps>
 (epstopdf)                    size: 12346 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/mof_reconstructi
 on-eps-converted-to.pdf ./Figures/mof_reconstruction.eps>
-(epstopdf)             \includegraphics on input line 568.
+(epstopdf)             \includegraphics on input line 599.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -499,8 +498,9 @@ File: ./Figures/mof_reconstruction-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/mof_reconstruction-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/mof_reconstruction-eps-converted-to.pdf  use
-d on input line 568.
+d on input line 599.
 (pdftex.def)             Requested size: 331.1054pt x 164.92433pt.
+[6]
 Package epstopdf Info: Source file: <./Figures/mof_tes.eps>
 (epstopdf)                    date: 2024-03-07 17:30:42
 (epstopdf)                    size: 116767 bytes
@@ -509,19 +509,20 @@ Package epstopdf Info: Source file: <./Figures/mof_tes.eps>
 (epstopdf)                    size: 4132 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/mof_tes-eps-conv
 erted-to.pdf ./Figures/mof_tes.eps>
-(epstopdf)             \includegraphics on input line 576.
+(epstopdf)             \includegraphics on input line 607.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/mof_tes-eps-converted-to.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/mof_tes-eps-converted-to.pdf, id=57, 315.1775pt x 58.2175pt>
+<./Figures/mof_tes-eps-converted-to.pdf, id=60, 315.1775pt x 58.2175pt>
 File: ./Figures/mof_tes-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/mof_tes-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/mof_tes-eps-converted-to.pdf  used on input 
-line 576.
+line 607.
 (pdftex.def)             Requested size: 344.005pt x 63.5464pt.
-[6 <./Figures/triple_point_drop_impact-eps-converted-to.pdf>]
+[7 <./Figures/triple_point_drop_impact-eps-converted-to.pdf> <./Figures/mof_rec
+onstruction-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/CMOFcentroid.eps>
 (epstopdf)                    date: 2024-03-07 17:30:42
 (epstopdf)                    size: 7422 bytes
@@ -531,20 +532,18 @@ f>
 (epstopdf)                    size: 6161 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/CMOFcentroid-eps
 -converted-to.pdf ./Figures/CMOFcentroid.eps>
-(epstopdf)             \includegraphics on input line 585.
+(epstopdf)             \includegraphics on input line 616.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/CMOFcentroid-eps-converted-to.pdf): PD
 F inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/CMOFcentroid-eps-converted-to.pdf, id=96, 517.935pt x 517.935pt>
+<./Figures/CMOFcentroid-eps-converted-to.pdf, id=117, 517.935pt x 517.935pt>
 File: ./Figures/CMOFcentroid-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/CMOFcentroid-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/CMOFcentroid-eps-converted-to.pdf  used on i
-nput line 585.
+nput line 616.
 (pdftex.def)             Requested size: 215.0023pt x 215.00223pt.
-[7 <./Figures/mof_reconstruction-eps-converted-to.pdf> <./Figures/mof_tes-eps-c
-onverted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/particleseeding_particles2.eps>
 (epstopdf)                    date: 2024-03-17 03:45:44
 (epstopdf)                    size: 19326 bytes
@@ -554,22 +553,23 @@ onverted-to.pdf>
 (epstopdf)                    size: 5849 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/particleseeding_
 particles2-eps-converted-to.pdf ./Figures/particleseeding_particles2.eps>
-(epstopdf)             \includegraphics on input line 605.
+(epstopdf)             \includegraphics on input line 636.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/particleseeding_particles2-eps-convert
 ed-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
-<./Figures/particleseeding_particles2-eps-converted-to.pdf, id=123, 554.07pt x 
+<./Figures/particleseeding_particles2-eps-converted-to.pdf, id=118, 554.07pt x 
 554.07pt>
 File: ./Figures/particleseeding_particles2-eps-converted-to.pdf Graphic file (t
 ype pdf)
 <use ./Figures/particleseeding_particles2-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/particleseeding_particles2-eps-converted-to.
-pdf  used on input line 605.
+pdf  used on input line 636.
 (pdftex.def)             Requested size: 279.50037pt x 279.503pt.
-[8 <./Figures/CMOFcentroid-eps-converted-to.pdf>]
+[8 <./Figures/mof_tes-eps-converted-to.pdf> <./Figures/CMOFcentroid-eps-convert
+ed-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/redistancing.eps>
 (epstopdf)                    date: 2024-03-07 17:30:42
 (epstopdf)                    size: 149109 bytes
@@ -579,7 +579,7 @@ f>
 (epstopdf)                    size: 7907 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/redistancing-eps
 -converted-to.pdf ./Figures/redistancing.eps>
-(epstopdf)             \includegraphics on input line 612.
+(epstopdf)             \includegraphics on input line 643.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -590,13 +590,13 @@ F inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 File: ./Figures/redistancing-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/redistancing-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/redistancing-eps-converted-to.pdf  used on i
-nput line 612.
+nput line 643.
 (pdftex.def)             Requested size: 408.50307pt x 142.04529pt.
 <./Figures/redistancing_3Dfixed.png, id=134, 1329.46687pt x 810.77907pt>
 File: ./Figures/redistancing_3Dfixed.png Graphic file (type png)
 <use ./Figures/redistancing_3Dfixed.png>
 Package pdftex.def Info: ./Figures/redistancing_3Dfixed.png  used on input line
- 623.
+ 654.
 (pdftex.def)             Requested size: 301.00192pt x 183.56796pt.
 [9 <./Figures/particleseeding_particles2-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/reduced_stencil.eps>
@@ -608,7 +608,7 @@ Package epstopdf Info: Source file: <./Figures/reduced_stencil.eps>
 (epstopdf)                    size: 3862 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/reduced_stencil-
 eps-converted-to.pdf ./Figures/reduced_stencil.eps>
-(epstopdf)             \includegraphics on input line 630.
+(epstopdf)             \includegraphics on input line 661.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -619,7 +619,7 @@ pdfTeX warning: pdflatex (file ./Figures/reduced_stencil-eps-converted-to.pdf):
 File: ./Figures/reduced_stencil-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/reduced_stencil-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/reduced_stencil-eps-converted-to.pdf  used o
-n input line 630.
+n input line 661.
 (pdftex.def)             Requested size: 215.0023pt x 215.00676pt.
 [10 <./Figures/redistancing-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/stencilgap.eps>
@@ -631,7 +631,7 @@ Package epstopdf Info: Source file: <./Figures/stencilgap.eps>
 (epstopdf)                    size: 2747 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/stencilgap-eps-c
 onverted-to.pdf ./Figures/stencilgap.eps>
-(epstopdf)             \includegraphics on input line 637.
+(epstopdf)             \includegraphics on input line 668.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -641,49 +641,57 @@ inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 File: ./Figures/stencilgap-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/stencilgap-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/stencilgap-eps-converted-to.pdf  used on inp
-ut line 637.
+ut line 668.
 (pdftex.def)             Requested size: 279.50037pt x 158.5828pt.
 [11 <./Figures/redistancing_3Dfixed.png>] [12 <./Figures/reduced_stencil-eps-co
 nverted-to.pdf>] [13 <./Figures/stencilgap-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 663--665
+Underfull \hbox (badness 10000) in paragraph at lines 694--696
 
  []
 
-[14]
-<./Figures/fig_3_cisl.png, id=181, 3346.25156pt x 2421.7978pt>
+[14] [15]
+Overfull \hbox (39.95996pt too wide) in alignment at lines 767--773
+ [][][] []
+ []
+
+[16] [17]
+<./Figures/fig_3_cisl.png, id=191, 3346.25156pt x 2421.7978pt>
 File: ./Figures/fig_3_cisl.png Graphic file (type png)
 <use ./Figures/fig_3_cisl.png>
-Package pdftex.def Info: ./Figures/fig_3_cisl.png  used on input line 729.
+Package pdftex.def Info: ./Figures/fig_3_cisl.png  used on input line 845.
 (pdftex.def)             Requested size: 408.50307pt x 295.62889pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15] [16 <./Figures/fig_3_cisl.png>]
-Overfull \hbox (1.29703pt too wide) in paragraph at lines 800--802
+[18] [19 <./Figures/fig_3_cisl.png>]
+Overfull \hbox (1.29703pt too wide) in paragraph at lines 916--918
 \T1/cmr/m/n/12 BiCGSTAB us-ing a Ja-cobi pre-con-di-tioner and red-black Gauss-
 Seidel smoother. 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 810--812
+Underfull \hbox (badness 10000) in paragraph at lines 926--928
 
  []
 
-[17] [18]
-<./Figures/vahab_probept.PNG, id=197, 749.80125pt x 746.03719pt>
+[20]
+<./Figures/vahab_probept.PNG, id=204, 749.80125pt x 746.03719pt>
 File: ./Figures/vahab_probept.PNG Graphic file (type png)
 <use ./Figures/vahab_probept.PNG>
-Package pdftex.def Info: ./Figures/vahab_probept.PNG  used on input line 854.
+Package pdftex.def Info: ./Figures/vahab_probept.PNG  used on input line 970.
 (pdftex.def)             Requested size: 215.0023pt x 213.92053pt.
 
-Underfull \hbox (badness 6412) in paragraph at lines 860--860
+Underfull \hbox (badness 6412) in paragraph at lines 976--976
 \OMS/cmsy/m/n/12 r\OML/cmm/m/it/12 T[] \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 T[] 
 \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 T[]\OT1/cmr/m/n/12 )[][]\OML/cmm/m/it/12 
 =h$ \T1/cmr/m/n/12 and $\OMS/cmsy/m/n/12 r\OML/cmm/m/it/12 T[] \OT1/cmr/m/n/12 
 = \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 T[] \OMS/cmsy/m/n/12 ^^
 @
  []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 Package epstopdf Info: Source file: <./Figures/freezingdrop.eps>
 (epstopdf)                    date: 2024-03-16 04:06:26
@@ -694,18 +702,18 @@ f>
 (epstopdf)                    size: 7278 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/freezingdrop-eps
 -converted-to.pdf ./Figures/freezingdrop.eps>
-(epstopdf)             \includegraphics on input line 867.
+(epstopdf)             \includegraphics on input line 983.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/freezingdrop-eps-converted-to.pdf): PD
 F inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/freezingdrop-eps-converted-to.pdf, id=198, 1016.79875pt x 566.115pt>
+<./Figures/freezingdrop-eps-converted-to.pdf, id=205, 1016.79875pt x 566.115pt>
 
 File: ./Figures/freezingdrop-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/freezingdrop-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/freezingdrop-eps-converted-to.pdf  used on i
-nput line 867.
+nput line 983.
 (pdftex.def)             Requested size: 301.00192pt x 167.58124pt.
 Package epstopdf Info: Source file: <./Figures/liquidlense.eps>
 (epstopdf)                    date: 2024-03-16 05:00:30
@@ -716,19 +724,24 @@ Package epstopdf Info: Source file: <./Figures/liquidlense.eps>
 (epstopdf)                    size: 6717 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/liquidlense-eps-
 converted-to.pdf ./Figures/liquidlense.eps>
-(epstopdf)             \includegraphics on input line 877.
+(epstopdf)             \includegraphics on input line 993.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/liquidlense-eps-converted-to.pdf): PDF
  inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/liquidlense-eps-converted-to.pdf, id=199, 706.64pt x 706.64pt>
+<./Figures/liquidlense-eps-converted-to.pdf, id=206, 706.64pt x 706.64pt>
 File: ./Figures/liquidlense-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/liquidlense-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/liquidlense-eps-converted-to.pdf  used on in
-put line 877.
+put line 993.
 (pdftex.def)             Requested size: 193.50076pt x 193.50174pt.
-[19 <./Figures/vahab_probept.PNG>]
+[21]
+Overfull \vbox (151.02518pt too high) has occurred while \output is active []
+
+
+[22 <./Figures/vahab_probept.PNG> <./Figures/freezingdrop-eps-converted-to.pdf>
+]
 Package epstopdf Info: Source file: <./Figures/cryogenictankLS.eps>
 (epstopdf)                    date: 2024-03-17 04:31:42
 (epstopdf)                    size: 69991 bytes
@@ -738,166 +751,165 @@ Package epstopdf Info: Source file: <./Figures/cryogenictankLS.eps>
 (epstopdf)                    size: 9481 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/cryogenictankLS-
 eps-converted-to.pdf ./Figures/cryogenictankLS.eps>
-(epstopdf)             \includegraphics on input line 886.
+(epstopdf)             \includegraphics on input line 1002.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/cryogenictankLS-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/cryogenictankLS-eps-converted-to.pdf, id=205, 505.89pt x 556.0775pt>
+<./Figures/cryogenictankLS-eps-converted-to.pdf, id=226, 505.89pt x 556.0775pt>
 
 File: ./Figures/cryogenictankLS-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/cryogenictankLS-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/cryogenictankLS-eps-converted-to.pdf  used o
-n input line 886.
+n input line 1002.
 (pdftex.def)             Requested size: 258.00539pt x 283.60425pt.
-[20 <./Figures/freezingdrop-eps-converted-to.pdf>] [21 <./Figures/liquidlense-e
-ps-converted-to.pdf>]
-<./Figures/mof_bubble_formation_april4.png, id=239, 1278.7775pt x 1137.24875pt>
+[23 <./Figures/liquidlense-eps-converted-to.pdf>]
+<./Figures/mof_bubble_formation_april4.png, id=245, 1278.7775pt x 1137.24875pt>
 
 File: ./Figures/mof_bubble_formation_april4.png Graphic file (type png)
 <use ./Figures/mof_bubble_formation_april4.png>
 Package pdftex.def Info: ./Figures/mof_bubble_formation_april4.png  used on inp
-ut line 904.
+ut line 1020.
 (pdftex.def)             Requested size: 387.00153pt x 344.16197pt.
-<./Figures/cmof_bubble_formation_april4.png, id=240, 1278.7775pt x 1137.24875pt
+<./Figures/cmof_bubble_formation_april4.png, id=246, 1278.7775pt x 1137.24875pt
 >
 File: ./Figures/cmof_bubble_formation_april4.png Graphic file (type png)
 <use ./Figures/cmof_bubble_formation_april4.png>
 Package pdftex.def Info: ./Figures/cmof_bubble_formation_april4.png  used on in
-put line 912.
+put line 1028.
 (pdftex.def)             Requested size: 387.00153pt x 344.16197pt.
-<./Figures/pmof_bubble_formation_april4.png, id=241, 1278.7775pt x 1137.24875pt
+<./Figures/pmof_bubble_formation_april4.png, id=247, 1278.7775pt x 1137.24875pt
 >
 File: ./Figures/pmof_bubble_formation_april4.png Graphic file (type png)
 <use ./Figures/pmof_bubble_formation_april4.png>
 Package pdftex.def Info: ./Figures/pmof_bubble_formation_april4.png  used on in
-put line 920.
+put line 1036.
 (pdftex.def)             Requested size: 387.00153pt x 344.16197pt.
-<./Figures/PMOFbubbleformation/comparison_bubble_formation_april4.png, id=242, 
+<./Figures/PMOFbubbleformation/comparison_bubble_formation_april4.png, id=248, 
 1802.735pt x 1186.4325pt>
 File: ./Figures/PMOFbubbleformation/comparison_bubble_formation_april4.png Grap
 hic file (type png)
 <use ./Figures/PMOFbubbleformation/comparison_bubble_formation_april4.png>
 Package pdftex.def Info: ./Figures/PMOFbubbleformation/comparison_bubble_format
-ion_april4.png  used on input line 929.
+ion_april4.png  used on input line 1045.
 (pdftex.def)             Requested size: 430.00462pt x 282.99358pt.
- [22 <./Figures/cryogenictankLS-eps-converted-to.pdf>]
-[23 <./Figures/mof_bubble_formation_april4.png (PNG copy)>] [24 <./Figures/cmof
-_bubble_formation_april4.png (PNG copy)>] [25 <./Figures/pmof_bubble_formation_
-april4.png (PNG copy)>]
-<./Figures/PMOFbubbleformation/PMOF_0_bubbleformation.png, id=271, 772.8875pt x
+ [24 <./Figures/cryogenictankLS-eps-converted-to.pdf>] [25 <./Figures/mof_bubbl
+e_formation_april4.png (PNG copy)>] [26 <./Figures/cmof_bubble_formation_april4
+.png (PNG copy)>] [27 <./Figures/pmof_bubble_formation_april4.png (PNG copy)>]
+<./Figures/PMOFbubbleformation/PMOF_0_bubbleformation.png, id=277, 772.8875pt x
  2091.815pt>
 File: ./Figures/PMOFbubbleformation/PMOF_0_bubbleformation.png Graphic file (ty
 pe png)
 <use ./Figures/PMOFbubbleformation/PMOF_0_bubbleformation.png>
 Package pdftex.def Info: ./Figures/PMOFbubbleformation/PMOF_0_bubbleformation.p
-ng  used on input line 943.
+ng  used on input line 1059.
 (pdftex.def)             Requested size: 137.60461pt x 372.4249pt.
-<./Figures/PMOFbubbleformation/PMOF_1_bubbleformation.png, id=272, 772.8875pt x
+<./Figures/PMOFbubbleformation/PMOF_1_bubbleformation.png, id=278, 772.8875pt x
  2091.815pt>
 File: ./Figures/PMOFbubbleformation/PMOF_1_bubbleformation.png Graphic file (ty
 pe png)
 <use ./Figures/PMOFbubbleformation/PMOF_1_bubbleformation.png>
 Package pdftex.def Info: ./Figures/PMOFbubbleformation/PMOF_1_bubbleformation.p
-ng  used on input line 947.
+ng  used on input line 1063.
 (pdftex.def)             Requested size: 137.60461pt x 372.4249pt.
-<./Figures/PMOFbubbleformation/PMOF_4_bubbleformation.png, id=273, 772.8875pt x
+<./Figures/PMOFbubbleformation/PMOF_4_bubbleformation.png, id=279, 772.8875pt x
  2091.815pt>
 File: ./Figures/PMOFbubbleformation/PMOF_4_bubbleformation.png Graphic file (ty
 pe png)
 <use ./Figures/PMOFbubbleformation/PMOF_4_bubbleformation.png>
 Package pdftex.def Info: ./Figures/PMOFbubbleformation/PMOF_4_bubbleformation.p
-ng  used on input line 951.
+ng  used on input line 1067.
 (pdftex.def)             Requested size: 137.60461pt x 372.4249pt.
- [26 <./Figures/PMOFbubbleformation/comparison_bubble_formation_april4.png>] [2
-7 <./Figures/PMOFbubbleformation/PMOF_0_bubbleformation.png> <./Figures/PMOFbub
+ [28 <./Figures/PMOFbubbleformation/comparison_bubble_formation_april4.png>] [2
+9 <./Figures/PMOFbubbleformation/PMOF_0_bubbleformation.png> <./Figures/PMOFbub
 bleformation/PMOF_1_bubbleformation.png> <./Figures/PMOFbubbleformation/PMOF_4_
-bubbleformation.png>] [28] [29]
+bubbleformation.png>] [30]
+[31]
 
-LaTeX Warning: Reference `zalesak_compare3' on page 30 undefined on input line 
-1099.
+LaTeX Warning: Reference `zalesak_compare3' on page 32 undefined on input line 
+1215.
 
 
-LaTeX Warning: Reference `zalesak_compare3' on page 30 undefined on input line 
-1099.
+LaTeX Warning: Reference `zalesak_compare3' on page 32 undefined on input line 
+1215.
 
-<./Figures/MOF_red_PMOF_green.png, id=289, 1139.25626pt x 1012.78375pt>
+<./Figures/MOF_red_PMOF_green.png, id=296, 1139.25626pt x 1012.78375pt>
 File: ./Figures/MOF_red_PMOF_green.png Graphic file (type png)
 <use ./Figures/MOF_red_PMOF_green.png>
 Package pdftex.def Info: ./Figures/MOF_red_PMOF_green.png  used on input line 1
-120.
+236.
 (pdftex.def)             Requested size: 210.70462pt x 187.30025pt.
-<./Figures/CMOF_red_PMOF_green.png, id=290, 1139.25626pt x 1012.78375pt>
+<./Figures/CMOF_red_PMOF_green.png, id=297, 1139.25626pt x 1012.78375pt>
 File: ./Figures/CMOF_red_PMOF_green.png Graphic file (type png)
 <use ./Figures/CMOF_red_PMOF_green.png>
 Package pdftex.def Info: ./Figures/CMOF_red_PMOF_green.png  used on input line 
-1126.
+1242.
 (pdftex.def)             Requested size: 210.70462pt x 187.30025pt.
-[30]
-<./Figures/zalesak/zalesak_t628_curvaturerefined.PNG, id=294, 884.55469pt x 839
+[32]
+<./Figures/zalesak/zalesak_t628_curvaturerefined.PNG, id=301, 884.55469pt x 839
 .38594pt>
 File: ./Figures/zalesak/zalesak_t628_curvaturerefined.PNG Graphic file (type pn
 g)
 <use ./Figures/zalesak/zalesak_t628_curvaturerefined.PNG>
 Package pdftex.def Info: ./Figures/zalesak/zalesak_t628_curvaturerefined.PNG  u
-sed on input line 1138.
+sed on input line 1254.
 (pdftex.def)             Requested size: 408.50307pt x 387.64636pt.
 
 
-LaTeX Warning: Reference `zalesak_appendix1' on page 31 undefined on input line
- 1142.
+LaTeX Warning: Reference `zalesak_appendix1' on page 33 undefined on input line
+ 1258.
 
 
-LaTeX Warning: Reference `zalesak_appendix1' on page 31 undefined on input line
- 1142.
+LaTeX Warning: Reference `zalesak_appendix1' on page 33 undefined on input line
+ 1258.
 
-[31 <./Figures/MOF_red_PMOF_green.png (PNG copy)> <./Figures/CMOF_red_PMOF_gree
-n.png (PNG copy)>] [32 <./Figures/zalesak/zalesak_t628_curvaturerefined.PNG>]
-<./Figures/MOF_NOTRUNCATE_LENS.png, id=303, 1278.7775pt x 1137.24875pt>
+[33 <./Figures/MOF_red_PMOF_green.png (PNG copy)> <./Figures/CMOF_red_PMOF_gree
+n.png (PNG copy)>] [34 <./Figures/zalesak/zalesak_t628_curvaturerefined.PNG>]
+<./Figures/MOF_NOTRUNCATE_LENS.png, id=309, 1278.7775pt x 1137.24875pt>
 File: ./Figures/MOF_NOTRUNCATE_LENS.png Graphic file (type png)
 <use ./Figures/MOF_NOTRUNCATE_LENS.png>
 Package pdftex.def Info: ./Figures/MOF_NOTRUNCATE_LENS.png  used on input line 
-1169.
+1285.
 (pdftex.def)             Requested size: 387.00153pt x 344.16197pt.
 
-[33]
-<./Figures/CMOF_NOTRUNCATE_LENS.png, id=307, 1278.7775pt x 1137.24875pt>
+[35]
+<./Figures/CMOF_NOTRUNCATE_LENS.png, id=313, 1278.7775pt x 1137.24875pt>
 File: ./Figures/CMOF_NOTRUNCATE_LENS.png Graphic file (type png)
 <use ./Figures/CMOF_NOTRUNCATE_LENS.png>
 Package pdftex.def Info: ./Figures/CMOF_NOTRUNCATE_LENS.png  used on input line
- 1183.
+ 1299.
 (pdftex.def)             Requested size: 387.00153pt x 344.16197pt.
- [34 <./Figures/MOF_NOTRUNCATE_LENS.png (PNG copy)>]
-<./Figures/PLS_MOF_NOTRUNCATE_LENS.png, id=311, 1278.7775pt x 1137.24875pt>
+ [36 <./Figures/MOF_NOTRUNCATE_LENS.png (PNG copy)>]
+<./Figures/PLS_MOF_NOTRUNCATE_LENS.png, id=317, 1278.7775pt x 1137.24875pt>
 File: ./Figures/PLS_MOF_NOTRUNCATE_LENS.png Graphic file (type png)
 <use ./Figures/PLS_MOF_NOTRUNCATE_LENS.png>
 Package pdftex.def Info: ./Figures/PLS_MOF_NOTRUNCATE_LENS.png  used on input l
-ine 1195.
+ine 1311.
 (pdftex.def)             Requested size: 387.00153pt x 344.16197pt.
- [35 <./Figures/CMOF_NOTRUNCATE_LENS.png (PNG copy)>]
+ [37 <./Figures/CMOF_NOTRUNCATE_LENS.png (PNG copy)>]
 File: ./Figures/MOF_NOTRUNCATE_LENS.png Graphic file (type png)
 <use ./Figures/MOF_NOTRUNCATE_LENS.png>
 Package pdftex.def Info: ./Figures/MOF_NOTRUNCATE_LENS.png  used on input line 
-1208.
+1324.
 (pdftex.def)             Requested size: 210.70462pt x 187.37766pt.
 File: ./Figures/CMOF_NOTRUNCATE_LENS.png Graphic file (type png)
 <use ./Figures/CMOF_NOTRUNCATE_LENS.png>
 Package pdftex.def Info: ./Figures/CMOF_NOTRUNCATE_LENS.png  used on input line
- 1213.
+ 1329.
 (pdftex.def)             Requested size: 210.70462pt x 187.37766pt.
 File: ./Figures/PLS_MOF_NOTRUNCATE_LENS.png Graphic file (type png)
 <use ./Figures/PLS_MOF_NOTRUNCATE_LENS.png>
 Package pdftex.def Info: ./Figures/PLS_MOF_NOTRUNCATE_LENS.png  used on input l
-ine 1215.
+ine 1331.
 (pdftex.def)             Requested size: 210.70462pt x 187.37766pt.
- [36 <./Figures/PLS_MOF_NOTRUNCATE_LENS.png (PNG copy)>]
-<./Figures/lensperimeter.png, id=318, 1204.5pt x 720.6925pt>
+ [38 <./Figures/PLS_MOF_NOTRUNCATE_LENS.png (PNG copy)>]
+<./Figures/lensperimeter.png, id=325, 1204.5pt x 720.6925pt>
 File: ./Figures/lensperimeter.png Graphic file (type png)
 <use ./Figures/lensperimeter.png>
-Package pdftex.def Info: ./Figures/lensperimeter.png  used on input line 1227.
+Package pdftex.def Info: ./Figures/lensperimeter.png  used on input line 1343.
 (pdftex.def)             Requested size: 387.00153pt x 231.56105pt.
- [37]
+ [39]
 Package epstopdf Info: Source file: <./Figures/3D_WEJ4p875_0.eps>
 (epstopdf)                    date: 2024-03-07 17:30:42
 (epstopdf)                    size: 321726 bytes
@@ -907,17 +919,17 @@ df>
 (epstopdf)                    size: 33036 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/3D_WEJ4p875_0-ep
 s-converted-to.pdf ./Figures/3D_WEJ4p875_0.eps>
-(epstopdf)             \includegraphics on input line 1245.
+(epstopdf)             \includegraphics on input line 1361.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/3D_WEJ4p875_0-eps-converted-to.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/3D_WEJ4p875_0-eps-converted-to.pdf, id=323, 566.115pt x 503.8825pt>
+<./Figures/3D_WEJ4p875_0-eps-converted-to.pdf, id=329, 566.115pt x 503.8825pt>
 File: ./Figures/3D_WEJ4p875_0-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/3D_WEJ4p875_0-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/3D_WEJ4p875_0-eps-converted-to.pdf  used on 
-input line 1245.
+input line 1361.
 (pdftex.def)             Requested size: 129.00269pt x 114.82181pt.
 Package epstopdf Info: Source file: <./Figures/3D_WEJ4p875_400.eps>
 (epstopdf)                    date: 2024-03-07 17:30:42
@@ -928,18 +940,18 @@ Package epstopdf Info: Source file: <./Figures/3D_WEJ4p875_400.eps>
 (epstopdf)                    size: 33513 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/3D_WEJ4p875_400-
 eps-converted-to.pdf ./Figures/3D_WEJ4p875_400.eps>
-(epstopdf)             \includegraphics on input line 1246.
+(epstopdf)             \includegraphics on input line 1362.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/3D_WEJ4p875_400-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/3D_WEJ4p875_400-eps-converted-to.pdf, id=324, 566.115pt x 503.8825pt
+<./Figures/3D_WEJ4p875_400-eps-converted-to.pdf, id=330, 566.115pt x 503.8825pt
 >
 File: ./Figures/3D_WEJ4p875_400-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/3D_WEJ4p875_400-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/3D_WEJ4p875_400-eps-converted-to.pdf  used o
-n input line 1246.
+n input line 1362.
 (pdftex.def)             Requested size: 129.00269pt x 114.82181pt.
 Package epstopdf Info: Source file: <./Figures/3D_WEJ4p875_800.eps>
 (epstopdf)                    date: 2024-03-07 17:30:42
@@ -950,126 +962,129 @@ Package epstopdf Info: Source file: <./Figures/3D_WEJ4p875_800.eps>
 (epstopdf)                    size: 33186 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/3D_WEJ4p875_800-
 eps-converted-to.pdf ./Figures/3D_WEJ4p875_800.eps>
-(epstopdf)             \includegraphics on input line 1247.
+(epstopdf)             \includegraphics on input line 1363.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./Figures/3D_WEJ4p875_800-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<./Figures/3D_WEJ4p875_800-eps-converted-to.pdf, id=325, 566.115pt x 503.8825pt
+<./Figures/3D_WEJ4p875_800-eps-converted-to.pdf, id=331, 566.115pt x 503.8825pt
 >
 File: ./Figures/3D_WEJ4p875_800-eps-converted-to.pdf Graphic file (type pdf)
 <use ./Figures/3D_WEJ4p875_800-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/3D_WEJ4p875_800-eps-converted-to.pdf  used o
-n input line 1247.
+n input line 1363.
 (pdftex.def)             Requested size: 129.00269pt x 114.82181pt.
-<./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0000.png, id=326, 1096.095pt x
+<./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0000.png, id=332, 1096.095pt x
  1035.87pt>
 File: ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0000.png Graphic file (ty
 pe png)
 <use ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0000.png>
 Package pdftex.def Info: ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0000.p
-ng  used on input line 1255.
+ng  used on input line 1371.
 (pdftex.def)             Requested size: 129.00269pt x 121.91231pt.
-<./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0010.png, id=327, 1096.095pt x
+<./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0010.png, id=333, 1096.095pt x
  1035.87pt>
 File: ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0010.png Graphic file (ty
 pe png)
 <use ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0010.png>
 Package pdftex.def Info: ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0010.p
-ng  used on input line 1256.
+ng  used on input line 1372.
 (pdftex.def)             Requested size: 129.00269pt x 121.91231pt.
-<./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0020.png, id=328, 1096.095pt x
+<./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0020.png, id=334, 1096.095pt x
  1035.87pt>
 File: ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0020.png Graphic file (ty
 pe png)
 <use ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0020.png>
 Package pdftex.def Info: ./Figures/PMOFtankNoBreakup/PMOFtankNB_interface0020.p
-ng  used on input line 1257.
+ng  used on input line 1373.
 (pdftex.def)             Requested size: 129.00269pt x 121.91231pt.
-[38 <./Figures/lensperimeter.png>]
-<./Figures/jet2_mof1.png, id=332, 1027.84pt x 970.62625pt>
+[40 <./Figures/lensperimeter.png>]
+<./Figures/jet2_mof1.png, id=338, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_mof1.png Graphic file (type png)
 <use ./Figures/jet2_mof1.png>
-Package pdftex.def Info: ./Figures/jet2_mof1.png  used on input line 1270.
+Package pdftex.def Info: ./Figures/jet2_mof1.png  used on input line 1386.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
-<./Figures/jet2_mof2.png, id=333, 1027.84pt x 970.62625pt>
+<./Figures/jet2_mof2.png, id=339, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_mof2.png Graphic file (type png)
 <use ./Figures/jet2_mof2.png>
-Package pdftex.def Info: ./Figures/jet2_mof2.png  used on input line 1271.
+Package pdftex.def Info: ./Figures/jet2_mof2.png  used on input line 1387.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
-<./Figures/jet2_mof3.png, id=334, 1027.84pt x 970.62625pt>
+<./Figures/jet2_mof3.png, id=340, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_mof3.png Graphic file (type png)
 <use ./Figures/jet2_mof3.png>
-Package pdftex.def Info: ./Figures/jet2_mof3.png  used on input line 1272.
+Package pdftex.def Info: ./Figures/jet2_mof3.png  used on input line 1388.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
-<./Figures/jet2_cmof1.png, id=335, 1027.84pt x 970.62625pt>
+<./Figures/jet2_cmof1.png, id=341, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_cmof1.png Graphic file (type png)
 <use ./Figures/jet2_cmof1.png>
-Package pdftex.def Info: ./Figures/jet2_cmof1.png  used on input line 1279.
+Package pdftex.def Info: ./Figures/jet2_cmof1.png  used on input line 1395.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
-<./Figures/jet2_cmof2.png, id=336, 1027.84pt x 970.62625pt>
+<./Figures/jet2_cmof2.png, id=342, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_cmof2.png Graphic file (type png)
 <use ./Figures/jet2_cmof2.png>
-Package pdftex.def Info: ./Figures/jet2_cmof2.png  used on input line 1280.
+Package pdftex.def Info: ./Figures/jet2_cmof2.png  used on input line 1396.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
-<./Figures/jet2_cmof3.png, id=337, 1027.84pt x 970.62625pt>
+<./Figures/jet2_cmof3.png, id=343, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_cmof3.png Graphic file (type png)
 <use ./Figures/jet2_cmof3.png>
-Package pdftex.def Info: ./Figures/jet2_cmof3.png  used on input line 1281.
+Package pdftex.def Info: ./Figures/jet2_cmof3.png  used on input line 1397.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
-<./Figures/jet2_pmof1.png, id=338, 1027.84pt x 970.62625pt>
+<./Figures/jet2_pmof1.png, id=344, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_pmof1.png Graphic file (type png)
 <use ./Figures/jet2_pmof1.png>
-Package pdftex.def Info: ./Figures/jet2_pmof1.png  used on input line 1288.
+Package pdftex.def Info: ./Figures/jet2_pmof1.png  used on input line 1404.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
-<./Figures/jet2_pmof2.png, id=339, 1027.84pt x 970.62625pt>
+<./Figures/jet2_pmof2.png, id=345, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_pmof2.png Graphic file (type png)
 <use ./Figures/jet2_pmof2.png>
-Package pdftex.def Info: ./Figures/jet2_pmof2.png  used on input line 1289.
+Package pdftex.def Info: ./Figures/jet2_pmof2.png  used on input line 1405.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
-<./Figures/jet2_pmof3.png, id=340, 1027.84pt x 970.62625pt>
+<./Figures/jet2_pmof3.png, id=346, 1027.84pt x 970.62625pt>
 File: ./Figures/jet2_pmof3.png Graphic file (type png)
 <use ./Figures/jet2_pmof3.png>
-Package pdftex.def Info: ./Figures/jet2_pmof3.png  used on input line 1290.
+Package pdftex.def Info: ./Figures/jet2_pmof3.png  used on input line 1406.
 (pdftex.def)             Requested size: 129.00269pt x 121.81673pt.
- [39 <./Figures/3D_WEJ4p875_0-eps-converted-to.pdf> <./Figures/3D_WEJ4p875_400-
+ [41 <./Figures/3D_WEJ4p875_0-eps-converted-to.pdf> <./Figures/3D_WEJ4p875_400-
 eps-converted-to.pdf> <./Figures/3D_WEJ4p875_800-eps-converted-to.pdf> <./Figur
 es/PMOFtankNoBreakup/PMOFtankNB_interface0000.png (PNG copy)> <./Figures/PMOFta
 nkNoBreakup/PMOFtankNB_interface0010.png (PNG copy)> <./Figures/PMOFtankNoBreak
 up/PMOFtankNB_interface0020.png (PNG copy)>]
-<./Figures/tank_reconst2d.png, id=353, 1027.84pt x 970.62625pt>
+<./Figures/tank_reconst2d.png, id=359, 1027.84pt x 970.62625pt>
 File: ./Figures/tank_reconst2d.png Graphic file (type png)
 <use ./Figures/tank_reconst2d.png>
-Package pdftex.def Info: ./Figures/tank_reconst2d.png  used on input line 1303.
+Package pdftex.def Info: ./Figures/tank_reconst2d.png  used on input line 1419.
 
 (pdftex.def)             Requested size: 210.70462pt x 198.96486pt.
-<./Figures/tankLS_compare.png, id=354, 1027.84pt x 970.62625pt>
+<./Figures/tankLS_compare.png, id=360, 1027.84pt x 970.62625pt>
 File: ./Figures/tankLS_compare.png Graphic file (type png)
 <use ./Figures/tankLS_compare.png>
-Package pdftex.def Info: ./Figures/tankLS_compare.png  used on input line 1307.
+Package pdftex.def Info: ./Figures/tankLS_compare.png  used on input line 1423.
 
 (pdftex.def)             Requested size: 210.70462pt x 198.96486pt.
 
-[40 <./Figures/jet2_mof1.png (PNG copy)> <./Figures/jet2_mof2.png (PNG copy)> <
+[42 <./Figures/jet2_mof1.png (PNG copy)> <./Figures/jet2_mof2.png (PNG copy)> <
 ./Figures/jet2_mof3.png (PNG copy)> <./Figures/jet2_cmof1.png (PNG copy)> <./Fi
 gures/jet2_cmof2.png (PNG copy)> <./Figures/jet2_cmof3.png (PNG copy)> <./Figur
 es/jet2_pmof1.png (PNG copy)> <./Figures/jet2_pmof2.png (PNG copy)> <./Figures/
 jet2_pmof3.png (PNG copy)>] (./CouplingLevelSetToMomentsAndParticles.bbl
-[41 <./Figures/tank_reconst2d.png (PNG copy)> <./Figures/tankLS_compare.png (PN
-G copy)>] [42] [43]) [44] (./CouplingLevelSetToMomentsAndParticles.aux)
+[43 <./Figures/tank_reconst2d.png (PNG copy)> <./Figures/tankLS_compare.png (PN
+G copy)>] [44] [45]) [46] (./CouplingLevelSetToMomentsAndParticles.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 7391 strings out of 480608
- 117703 string characters out of 5903631
- 376571 words of memory out of 5000000
- 23123 multiletter control sequences out of 15000+600000
+ 7394 strings out of 480608
+ 117775 string characters out of 5903631
+ 377598 words of memory out of 5000000
+ 23126 multiletter control sequences out of 15000+600000
  559095 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,23n,47p,2048b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,23n,47p,2044b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
 /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
@@ -1102,11 +1117,11 @@ onts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2020/texmf-dist/fon
 ts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2020/texmf-dist/fonts
 /type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2020/texmf-dist/fonts/t
 ype1/urw/times/utmr8a.pfb>
-Output written on CouplingLevelSetToMomentsAndParticles.pdf (44 pages, 2532335 
+Output written on CouplingLevelSetToMomentsAndParticles.pdf (46 pages, 2537850 
 bytes).
 PDF statistics:
- 463 PDF objects out of 1000 (max. 8388607)
- 306 compressed objects within 4 object streams
+ 469 PDF objects out of 1000 (max. 8388607)
+ 310 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
  231 words of extra memory for PDF output out of 10000 (max. 10000000)
 
