@@ -1,0 +1,199 @@
+\relax 
+\citation{KUMARAN2024}
+\citation{PAN2024}
+\citation{mukundan2020MOF}
+\citation{LiETAL2015IncompressibleMultiphase}
+\citation{mukundan2020MOF}
+\citation{LiETAL2015IncompressibleMultiphase}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Recent Multimaterial MOF papers and their curvature discretizations.\relax }}{2}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{curvaturediscretization_comparison}{{1}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Mathematical Model}{2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Governing Equations}{2}\protected@file@percent }
+\newlabel{governingeqs}{{3}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Multimaterial Level Sets}{2}\protected@file@percent }
+\citation{ArientiSussman2014embedded}
+\citation{yeETAL2023CMOF}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces fluid level set extension through rigid region\relax }}{3}\protected@file@percent }
+\newlabel{fig:LSextend}{{1}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Conservation of mass}{4}\protected@file@percent }
+\newlabel{eq:cnt}{{9}{4}}
+\newlabel{eq:divu}{{10}{4}}
+\newlabel{eq:massflux}{{13}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Conservation of momentum:}{4}\protected@file@percent }
+\newlabel{eq:NS}{{15}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Conservation of energy:}{5}\protected@file@percent }
+\newlabel{eq:heat}{{16}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Interfacial jump conditions:}{5}\protected@file@percent }
+\newlabel{vtp_jump}{{23}{5}}
+\citation{de2013capillarity}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Triple point junction}{6}\protected@file@percent }
+\newlabel{eq:triple_point_eqlib}{{25}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Numerical Method}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Interface Reconstruction}{6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Moment-of-Fluid reconstruction}{6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces (\textbf  {a}) Physical Domain, shown here for a triple point. The contact angles $\theta $ are determined at equilibrium by the surface tension forces $\sigma $.   (\textbf  {b}) Discretized Domain. $\times $ : cell centers, $\bullet $ : cell centroids, $\scriptstyle \blacksquare $ : MAC velocities\relax }}{6}\protected@file@percent }
+\newlabel{fig:triple_point}{{2}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces (\textbf  {a}) Material domain in a cell $\Omega _{i,j}$, a single phase shown in blue corresponding with reference volume $F_\textnormal  {ref}$ and centroid $\mbox  {\boldmath  $x$\unboldmath  }_\textnormal  {ref}^c$.   (\textbf  {b}) The piecewise linear MOF reconstruction. The line segment for the reconstructed volume can be represented as $\Omega _{i,j}\cap \{\mbox  {\boldmath  $x$\unboldmath  }|\mbox  {\boldmath  $n$\unboldmath  }\cdot (\mbox  {\boldmath  $x$\unboldmath  }-\mbox  {\boldmath  $x$\unboldmath  }_{i,j})+b=0\}$. \relax }}{7}\protected@file@percent }
+\newlabel{fig:mof_reconstruction}{{3}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces MOF reconstruction, volume-tessellation (nested dissection) procedure. Points indicate centroids, white space is the unoccupied region, and zones of color indicate reconstructed materials.\relax }}{7}\protected@file@percent }
+\newlabel{fig:mof_tess}{{4}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Continuous MOF reconstruction}{8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces CMOF reconstruction. Black dots represent cell centroids, blue dots represent `material 1' centroids, and the red dot represents the CMOF supercell (red boundary) centroid associated with the center cell (green boundary) for `material 1'.   The CMOF reconstructed interface (solid red line inside the center cell) is found such that it is the line segment which minimizes the difference between the CMOF reference centroid (red dot) and the CMOF derived centroid (centroid associated with the dashed red line) subject to the constraint that the reference MOF volume fraction (`material 1' volume fraction within the center cell) equals the actual CMOF reconstructed volume fraction (`material 1' volume fraction below the solid red line in the center cell).  \relax }}{8}\protected@file@percent }
+\newlabel{CMOFstencil}{{5}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Particle Level Set MOF reconstruction}{9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces subdividing cell, $N=4$, grid lines: $\Delta x_\textnormal  {sub}$. $\bullet $ : near-interface particles, $\times $ : on-interface particles, $\bigcirc $ : cell-centers for particle sent to interface, color indicates associated material\relax }}{9}\protected@file@percent }
+\newlabel{fig:particleseeding}{{6}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Redistancing}{10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces MOF redistancing procedure (shown for candidate cell-center $\times $ in update cell I).  (\textbf  {a}) Candidate distances (black dotted lines) are measured from the center of update cell (I) to the center, corners, and faces of the support cell (II). In this configuration, the nearest sample point coinciding with a different material is indicated by the red dotted line. If the material interface coincides with the cell boundary, this gives the exact distance.  (\textbf  {b}) The distance between update cell (I) using the reconstructed normal for the interface in support cell (II) is shown by the red dotted line. Since the intersection point is contained within the support cell, the two material ids are obtained using test points (white dots) on both sides. In this example, the signed distance and corresponding normal vector for the red material level set, green material level set, and red-green interface level sets are updated. Note: The candidate normal distance with support cell (III) is shown by the black dotted line. Since the intersection point is not contained within the support cell, this distance is not accepted.  (\textbf  {c}) The distance between update cell (I) and the material intersections in support cell (II) is measured (red dotted line). Test points (white dots)around the triple point are used to find the material ids. In this example, the red, blue, and green material level sets are updated and the red-blue, red-green, and blue-green interface level sets are updated. Similarly for the red-green-yellow triple point.  (\textbf  {d}) Distances between update cell (I) and the cell face intersections in support cell(II) is shown. Test points and level set updates follow as in (c). In this example, red and blue material level sets and blue-red interface level sets are updated (black dotted line) and similarly for red and green.\relax }}{10}\protected@file@percent }
+\newlabel{fig:MOFredistancing}{{7}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces 3D MOF redistancing. Update cell (left), querying normal distances to potential nearest interface plane intersection (black dashed line) within support cell (right) as well as distances to the line formed by the intersection of the interface plane with the cell boundaries.\relax }}{11}\protected@file@percent }
+\newlabel{fig:redistancing_3D}{{8}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces The reduced neighborhood stencil. The red cell indicates a support cell about which we construct a $9\times 9(\times 9)$ update neighborhood. The blue lines indicate the reduced band (3cells thick), aligned in the direction of the interface normal. The grey regions indicate the parts of the $9\times 9(\times 9)$ stencil that lie outside the narrow band reduction that are not evaluated. If the normal is oriented with the grid, the neighborhood stencil is reduced to a $3\times 9(\times 3)$ region.\relax }}{12}\protected@file@percent }
+\newlabel{fig:reducedstencil}{{9}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces The maximum extent of the stencil-covered region of each piecewise linear interface segment is indicated by the dashed lines. At the end of the linear segments, the update region does not extend the full thickness of the narrow band due to the orientation of the stencils. This may produce regions for which cells are within the narrow band but not updated during the redistancing step. This can seen at the junctions of the linear segments (a small gap off the left junction and a larger one on the right, the red circle is centered at a junction with the radius indicating the width of the narrow band). Directly near the end of the linear segment, cells are still guaranteed to be updated due to the stencil thickness, but further away, regions may form in which cells do not get redistanced. Since the cells in the gap region that lie farther from the interface are not updated, the error from these may pollute the level set function and therefore eventually the slopes and volume fractions. However, in practice the error introduced is found to be negligible and the speedup from the stencil reduction significant. In addition to remaining sufficiently accurate, this reduction does not affect the linearity preserving property of the reconstruction (the method is exact for piecewise linear interfaces).\relax }}{13}\protected@file@percent }
+\newlabel{fig:stencilorientation}{{10}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Staggered Grid Projection Method}{13}\protected@file@percent }
+\citation{pei2019hierarchical,LiETAL2015IncompressibleMultiphase,VAHAB2021}
+\citation{WeymouthYue2010conservative}
+\citation{scardovelli2003interface,aulisa2007DirSplit}
+\citation{STRAIN1999semiLagrangian,wang2012hybrid}
+\citation{LiETAL2015IncompressibleMultiphase}
+\newlabel{stiffconstraint}{{26}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Cell Integrated Semi-Lagrangian}{14}\protected@file@percent }
+\newlabel{CISL}{{4.4}{14}}
+\citation{pei2019hierarchical}
+\citation{pei2019hierarchical}
+\citation{VAHAB2021}
+\newlabel{advection}{{34}{15}}
+\newlabel{adv2}{{38}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces CISL-MOF method [figure from \cite  {pei2019hierarchical}], shown here for $x$-direction for the blue material.  (a) Reconstructed MOF interface and centroids at departure time $t^n$ for slab of cells [\{i-1, i, i+1\},j] and target cell $\Omega _{i,j}^\textnormal  {target}$ at arrival time $t^n+\Delta t$.  (b) Characteristics are traced backwards and CISL mapping function $T^\textnormal  {CISL}$ calculated.  (c) The CISL mapping function sends the material from the departure time to the update time and its intersection with the target cell is found.  (d) The contained region is combined to obtain the volume fraction and centroid\relax }}{16}\protected@file@percent }
+\newlabel{fig:cisl_mass}{{11}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Phase Change}{16}\protected@file@percent }
+\newlabel{Phase Change}{{4.5}{16}}
+\citation{liu2022novel,VAHAB2021}
+\citation{chorin1968numerical}
+\citation{fedkiw1999GFM,sussman2007sharp}
+\citation{BukacETAL2023diffuse}
+\newlabel{uphasechange}{{40}{17}}
+\newlabel{diffusion1}{{45}{17}}
+\newlabel{diffusion3}{{46}{17}}
+\newlabel{pressuregrad}{{47}{18}}
+\newlabel{eq:pressureproj}{{48}{18}}
+\citation{VAHAB2021}
+\citation{VAHAB2021}
+\citation{lyu2021hybrid}
+\citation{CumminsFrancoisKothe2005,sussman2003second}
+\citation{lyu2021hybrid}
+\citation{CumminsFrancoisKothe2005,sussman2003second}
+\citation{LiETAL2015IncompressibleMultiphase}
+\citation{fedkiw1999GFM,gibou2002second,sussman2007sharp,liu2005sharp}
+\citation{sussman2003second}
+\citation{LiETAL2015IncompressibleMultiphase}
+\citation{fedkiw1999GFM,gibou2002second,sussman2007sharp,liu2005sharp}
+\citation{sussman2003second}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces [figure from \cite  {VAHAB2021}]   The closest point is found on the interface by $x_\textnormal  {closest}=x_{i,j}-\phi _{m_1,m_2}\mbox  {\boldmath  $n$\unboldmath  }_{m_1,m_2}$,  two probe points are extended in either normal direction and $T(x_\textnormal  {probe})$ is found by interpolation.  $\nabla T_{m_1}=(T_{\textnormal  {probe},m_1}-T_{\textnormal  {sat},m_1,m_2})\mbox  {\boldmath  $n$\unboldmath  }_{m_1,m_2}/h$ and $\nabla T_{m_2}=-(T_{\textnormal  {probe},m_2}-T_{\textnormal  {sat},m_1,m_2})\mbox  {\boldmath  $n$\unboldmath  }_{m_1,m_2}/h$, where $T_\textnormal  {sat}$ is the phase change saturation temperature. \relax }}{19}\protected@file@percent }
+\newlabel{fig:tempgrad}{{12}{19}}
+\citation{LiETAL2015IncompressibleMultiphase}
+\citation{sussman2003second}
+\citation{LiETAL2015IncompressibleMultiphase}
+\citation{sussman2003second}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{20}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Initial level set construction for the problem of a water droplet freezing ontop of a cold substrate. $\phi _{\mbox  {substrate}}>0$ in the cold substrate, $\phi _{\mbox  {ice}}>0$ in the ice, $\phi _{\mbox  {water}}>0$ in the water, and $\phi _{\mbox  {air}}>0$ in the rest of the domain. In this problem, only the substrate is considered a region material and is prescribed a temperature $T_{w}$. The fluid/deforming materials (ice, water, and air) tessellate the full computational domain. The orthogonal extension of the air and ice materials through the rigid substrate is indicated by the dashed lines. The ice material is handled as a deforming material rather than rigid since phase change occurs at the ice/water interface. As in the freezing model presented in \cite  {lyu2021hybrid}, the ice and water are considered to be the same material during the surface tension force calculation at the triple-point where the ice, water, and air meet. That is, the interfacial curvature (both at and away from the triple point) is found using the VOF height function method \cite  {CumminsFrancoisKothe2005,sussman2003second}. \relax }}{20}\protected@file@percent }
+\newlabel{ice_levelset}{{13}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Initial level set construction for the simulation of a stretching `liquid lens' due to surface tension. $\phi _{2}>0$ represents the lens material. $\phi _{1}$, $\phi _{2}$ and $\phi _{3}$ are all deforming fluid materials. The surface tension model described in \cite  {LiETAL2015IncompressibleMultiphase}, for `Stencil contains third fluid' is used to calculate the surface tension forces at the triple points. This surface tension force, $\DOTSB \sum@ \slimits@ _{m=1}^{M} \gamma _{m}\kappa _{m}\nabla H(\phi _{m})$, is treated using a modified ghost-fluid approach \cite  {fedkiw1999GFM,gibou2002second,sussman2007sharp,liu2005sharp} in which the curvature $\kappa _{m}$ at the triple-point is approximated using finite differences of the level set functions $\phi $. Away from triple points, the interfacial curvature is obtained by the VOF height function method \cite  {sussman2003second}. \relax }}{21}\protected@file@percent }
+\newlabel{liquid_lens}{{14}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces  Initial level set functions for simulating evaporation within a cryogenic fuel tank. $\phi _{\mbox  {walls}}>0$ represents the rigid body of the tank which is embedded in the fluid materials. The upper vapor region $\phi _{V}>0$ and the lower liquid region $\phi _{L}>0$ are both extended through the tank walls to cover the full domain. The extended interface is indicated by the dashed lines. The surface tension model from \cite  {LiETAL2015IncompressibleMultiphase} for `Stencil contains rigid boundary' is used. The curvature at the (fluid, fluid, solid) triple-point is approximated with $\kappa =\nabla \cdot \mbox  {\boldmath  $n$\unboldmath  }$ in which $\mbox  {\boldmath  $n$\unboldmath  }$ is a strategically assigned `ghost normal' in the solid region, consistent with the contact angle condition. Away from the triple points, the interfacial curvature is computed with the VOF height function \cite  {sussman2003second}. \relax }}{22}\protected@file@percent }
+\newlabel{tank_levelset}{{15}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces \textbf  {MOF}, bubble formation problem.   Effective fine grid resolution : $\Delta x_\textnormal  {fine}=0.010625$cm  Step numbers are $13400$ ($t=65.3$), $21600$ ($t=101.66$), and $35800$ ($t=160.7$).\relax }}{23}\protected@file@percent }
+\newlabel{MOF_bubble_formation}{{16}{23}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces \textbf  {CMOF}, bubble formation problem.   Effective fine grid resolution : $\Delta x_\textnormal  {fine}=0.010625$cm  Step numbers are $13400$ ($t=65.3$), $21600$ ($t=103.8$), and $34200$ ($t=161.3$).\relax }}{24}\protected@file@percent }
+\newlabel{CMOF_bubble_formation}{{17}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces \textbf  {PLSMOF}, bubble formation problem.  Effective fine grid resolution : $\Delta x_\textnormal  {fine}=0.010625$cm  Step numbers are $13400$ ($t=65.3$), $21600$ ($t=103.8$), and $34200$ ($t=161.2$). \relax }}{25}\protected@file@percent }
+\newlabel{PLSMOF_bubble_formation}{{18}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Bubble Formation}{26}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Bubble formation comparison.  Effective fine grid resolution : $\Delta x_\textnormal  {fine}=0.010625$cm  Step numbers: (MOF) are $13400$ ($t=65.3$), $21600$ ($t=101.66$), and $35800$ ($t=160.7$).  \hspace  {15em}(CMOF) are $13400$ ($t=65.3$), $21600$ ($t=103.8$), and $34200$ ($t=161.3$).  (PMOF) are $13400$ ($t=65.3$), $21600$ ($t=103.8$), and $34200$ ($t=161.2$). \relax }}{26}\protected@file@percent }
+\newlabel{comparison_bubble_formation}{{19}{26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Bubble formation, PMOF reconstructed interface: $N = 0$ (black, $t=161.424$), $N = 1$ (red, $t=161.398$), $N = 4$ (blue, $t=161.174$). Note flotsam.\relax }}{27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Translating Disk}{28}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Translating disk, symmetric difference error. Time $t=100$.\relax }}{28}\protected@file@percent }
+\newlabel{errortable_translatingdisk}{{2}{28}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Rotating Disk}{28}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Comparison of the symmetric difference error $E_\textnormal  {sym}$ for the three materials after 5 revolutions ($t=3140$)\relax }}{28}\protected@file@percent }
+\newlabel{diskerror}{{3}{28}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Cost comparison for the three materials after 5 revolutions ($t=3140$)  performance profiling times shown in seconds\relax }}{28}\protected@file@percent }
+\newlabel{diskcost}{{4}{28}}
+\citation{zalesak1979fully}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Reconstruction cost (per cell)  three materials disk rotation (Step = 6280, $t=3140$)  Note: the PMOF reconstruction only involves the intercept calculation. \relax }}{29}\protected@file@percent }
+\newlabel{diskcost2}{{5}{29}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Zalesak's Disk}{29}\protected@file@percent }
+\newlabel{symmetricdiff}{{55}{29}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Comparison of symmetric difference error ($E_\textnormal  {sym}$) at $t=628$.  `GN' indicates the Gauss-Newton optimization slope reconstruction   `N' indicates the number of subdivisions used in the particle procedure.  Figures 21\hbox {} and 24\hbox {} show a comparison between PLSMOF and MOF/CMOF after one full rotation of the disk. \relax }}{29}\protected@file@percent }
+\newlabel{zalesaktable}{{6}{29}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Cost comparison of combined centroid error minimization and intercept calculation  Reconstruction cost: (average number of iterations (GN), reconstruction time).  Note: the PLSMOF reconstruction only involves the intercept calculation. \relax }}{30}\protected@file@percent }
+\newlabel{zalesakcost}{{7}{30}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Grid refinement study, PLSMOF, $t=628$.  `Coarse' and `fine' correspond the two grid resolutions used in the previous tables in which the AMR adapts about the interface (interface is fully contained at the appropriate finest level). `Curvature' indicates a curvature-based criterion in which the AMR adapts around regions of high curvature instead. The finest level of the `curvature' case is the same as the 'fine' case. Figure \G@refundefinedtrue \text  {\normalfont  \bfseries  ??}\GenericWarning  {               }{LaTeX Warning: Reference `zalesak_compare3' on page 30 undefined} shows the mesh adaptation and final interface after one full rotation of the `curvature' case.\relax }}{30}\protected@file@percent }
+\newlabel{zalesaktablerefine}{{8}{30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces (a)\relax }}{31}\protected@file@percent }
+\newlabel{zalesak_compare1}{{21}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces (b)\relax }}{31}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Zalesak's problem, $t=628.0$ on a $192^{2}$ grid.  (a) MOF(red) vs. PMOF(green), (b) CMOF(red) vs PMOF(green).\relax }}{31}\protected@file@percent }
+\newlabel{zalesak_compare}{{23}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces PLSMOF, curvature-based grid refinement, $t=628.0$, finest grid: $192^{2}$ .   red: interior particles, blue: exterior particles, pink: reconstructed interface  note: particle density is directly tied to the grid resolution.  More figures for this test problem are found in appendix \G@refundefinedtrue \text  {\normalfont  \bfseries  ??}\GenericWarning  {               }{LaTeX Warning: Reference `zalesak_appendix1' on page 32 undefined}.  Remark: particles are contained only on the finest available mesh, in underlying regions and at coarse/fine boundaries, the MOF reconstruction is used instead of the particle-assisted reconstruction. \relax }}{32}\protected@file@percent }
+\newlabel{zalesak_compare2}{{24}{32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Stretching Liquid Lens}{33}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces MOF, CMOF, and PMOF comparison of steady-state major axis length $L_{0}$, measured from the reconstructed interface. $L^\textnormal  {exact}_{0}$ is the major axis length of the expected steady-state.  Note: This distance is measured as the horizontal distance between the reconstructed triple points of the stretching lens. The numerical solutions may deflect diagonally off-axis and therefore not be a sufficiently representative metric. Figure 29\hbox {} instead shows the measured perimeter of the lens compared to the analytic solution. \relax }}{33}\protected@file@percent }
+\newlabel{liquidlens_table}{{9}{33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces \textbf  {MOF}, stretching of a liquid lens.   Times shown are:  $0.0$ (brown), $0.187$ (orange), $0.375$ (blue), $0.749$ (green), and $4.0$ (red).  Effective fine grid resolution : $\Delta x_\textnormal  {fine}=1/128$.  Initial noise persists. \relax }}{34}\protected@file@percent }
+\newlabel{MOF_liquid_lens}{{25}{34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces \textbf  {CMOF}, stretching of a liquid lens.   Times shown are:  $0.0$ (brown), $0.187$ (orange), $0.375$ (blue), $0.749$ (green), and $4.0$ (red).  Effective fine grid resolution : $\Delta x_\textnormal  {fine}=1/128$.  Initial noise immediately damped out (c.f. Figure 25\hbox {}). \relax }}{35}\protected@file@percent }
+\newlabel{CMOF_liquid_lens}{{26}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces \textbf  {PMOF} ($N=4$), stretching of a liquid lens.   Times $t=0.0$ (brown), $0.187$ (orange), $0.375$ (blue), $0.749$ (green), and $4.0$ (red).  Effective fine grid resolution : $\Delta x_\textnormal  {fine}=1/128$.  Initial noise immediately damped out (c.f. Figure 25\hbox {}). \relax }}{36}\protected@file@percent }
+\newlabel{PLSMOF_liquid_lens}{{27}{36}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Stretching liquid lense: (a) MOF, (b) CMOF, (c) PMOF ($N=4$).  Times $t=0.0$ (purple), $0.187$ (orange), $0.375$ (blue), $0.749$ (green), and $4.0$ (red).  Effective fine grid resolution : $\Delta x_\textnormal  {fine}=1/128$.\relax }}{37}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Lens perimeter vs time  purple: MOF, green: CMOF, blue: PMOF, orange: $\mathcal  {P}^\textnormal  {exact}_{0}$  Note: at the initial time, the perimeter calculation yields a $2\%$ measurement error from top and bottom material initial MOF perimeter measurements, so we expect $\mathtt  {\sim }4\%$ error in perimeter measurement.\relax }}{38}\protected@file@percent }
+\newlabel{lensperimeter}{{29}{38}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Stretching Gas Lens}{39}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Deformation of Spherical Ullage Due to Impinging Jet}{39}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces \textbf  {CMOF}, deformation of a spherical ullage due to a liquid jet, $We_{j}=4.875$. Times $t=0.0$, $8.45$, and $15.7$ shown. The jet does not penetrate the ullage. Gridsize $64\times 64\times 64$. \leavevmode {\color  {red}add above, MOF non-penetrated ullage}\relax }}{39}\protected@file@percent }
+\newlabel{3DWEJ4p875cmof}{{30}{39}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces \textbf  {PMOF}, deformation of a spherical ullage due to a liquid jet, $We_{j}=4.875$. Times $t=0.0$, $8.45$, and $15.68$ shown. The jet does not penetrate the ullage. Gridsize $64\times 64\times 64$. \relax }}{39}\protected@file@percent }
+\newlabel{3DWEJ4p875plsmof}{{31}{39}}
+\newlabel{3DWEJ5p25mof}{{\caption@xref {3DWEJ5p25mof}{ on input line 1275}}{40}}
+\newlabel{3DWEJ5p25cmof}{{\caption@xref {3DWEJ5p25cmof}{ on input line 1284}}{40}}
+\newlabel{3DWEJ5p25plsmof}{{\caption@xref {3DWEJ5p25plsmof}{ on input line 1294}}{40}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Deformation of a spherical ullage due to a liquid jet, $We_{j}=5.25$. Grid size $64\times 64\times 64$. Jet penetrates ullage.\relax }}{40}\protected@file@percent }
+\bibstyle{acm}
+\bibdata{refs_plsmof}
+\bibcite{ArientiSussman2014embedded}{{1}{}{{}}{{}}}
+\bibcite{aulisa2007DirSplit}{{2}{}{{}}{{}}}
+\bibcite{BukacETAL2023diffuse}{{3}{}{{}}{{}}}
+\bibcite{chorin1968numerical}{{4}{}{{}}{{}}}
+\bibcite{CumminsFrancoisKothe2005}{{5}{}{{}}{{}}}
+\bibcite{de2013capillarity}{{6}{}{{}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Comparison of vapor/liquid interface. Red: MOF, orange: CMOF, blue: PMOF. (\textbf  {Left}) Reconstructed interface. (\textbf  {Right}) Level set. \relax }}{41}\protected@file@percent }
+\newlabel{reconstLScompare}{{33}{41}}
+\@writefile{toc}{\let\numberline\tmptocnumberline}
+\@writefile{toc}{\contentsline {section}{\numberline {Appendix\nobreakspace  {}A}Example Appendix Section}{41}\protected@file@percent }
+\newlabel{app1}{{Appendix\nobreakspace  {}A}{41}}
+\bibcite{fedkiw1999GFM}{{7}{}{{}}{{}}}
+\bibcite{gibou2002second}{{8}{}{{}}{{}}}
+\bibcite{LiETAL2015IncompressibleMultiphase}{{9}{}{{}}{{}}}
+\bibcite{liu2005sharp}{{10}{}{{}}{{}}}
+\bibcite{liu2022novel}{{11}{}{{}}{{}}}
+\bibcite{lyu2021hybrid}{{12}{}{{}}{{}}}
+\bibcite{mukundan2020MOF}{{13}{}{{}}{{}}}
+\bibcite{PAN2024}{{14}{}{{}}{{}}}
+\bibcite{pei2019hierarchical}{{15}{}{{}}{{}}}
+\bibcite{scardovelli2003interface}{{16}{}{{}}{{}}}
+\bibcite{STRAIN1999semiLagrangian}{{17}{}{{}}{{}}}
+\bibcite{sussman2003second}{{18}{}{{}}{{}}}
+\bibcite{sussman2007sharp}{{19}{}{{}}{{}}}
+\bibcite{KUMARAN2024}{{20}{}{{}}{{}}}
+\bibcite{VAHAB2021}{{21}{}{{}}{{}}}
+\bibcite{wang2012hybrid}{{22}{}{{}}{{}}}
+\bibcite{WeymouthYue2010conservative}{{23}{}{{}}{{}}}
+\bibcite{yeETAL2023CMOF}{{24}{}{{}}{{}}}
+\bibcite{zalesak1979fully}{{25}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers

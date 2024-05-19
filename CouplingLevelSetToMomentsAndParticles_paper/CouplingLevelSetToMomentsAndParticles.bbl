@@ -1,0 +1,160 @@
+\begin{thebibliography}{10}
+
+\bibitem{ArientiSussman2014embedded}
+{\sc Arienti, M., and Sussman, M.}
+\newblock An embedded level set method for sharp-interface multiphase
+  simulations of diesel injectors.
+\newblock {\em International Journal of Multiphase Flow 59\/} (2014), 1--14.
+
+\bibitem{aulisa2007DirSplit}
+{\sc Aulisa, E., Manservisi, S., Scardovelli, R., and Zaleski, S.}
+\newblock Interface reconstruction with least-squares fit and split advection
+  in three-dimensional cartesian geometry.
+\newblock {\em Journal of Computational Physics 225}, 2 (2007), 2301--2319.
+
+\bibitem{BukacETAL2023diffuse}
+{\sc {Bukač, Martina}, {Muha, Boris}, and {Salgado, Abner J.}}
+\newblock Analysis of a diffuse interface method for the stokes-darcy coupled
+  problem.
+\newblock {\em ESAIM: M2AN 57}, 5 (2023), 2623--2658.
+
+\bibitem{chorin1968numerical}
+{\sc Chorin, A.~J.}
+\newblock Numerical solution of the navier-stokes equations.
+\newblock {\em Mathematics of computation 22}, 104 (1968), 745--762.
+
+\bibitem{CumminsFrancoisKothe2005}
+{\sc Cummins, S.~J., Francois, M.~M., and Kothe, D.~B.}
+\newblock Estimating curvature from volume fractions.
+\newblock {\em Computers \& Structures 83}, 6 (2005), 425--434.
+\newblock Frontier of Multi-Phase Flow Analysis and Fluid-Structure.
+
+\bibitem{de2013capillarity}
+{\sc De~Gennes, P.-G., Brochard-Wyart, F., and Qu{\'e}r{\'e}, D.}
+\newblock {\em Capillarity and wetting phenomena: drops, bubbles, pearls,
+  waves}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{fedkiw1999GFM}
+{\sc Fedkiw, R.~P., Aslam, T., Merriman, B., and Osher, S.}
+\newblock A non-oscillatory eulerian approach to interfaces in multimaterial
+  flows (the ghost fluid method).
+\newblock {\em Journal of computational physics 152}, 2 (1999), 457--492.
+
+\bibitem{gibou2002second}
+{\sc Gibou, F., Fedkiw, R.~P., Cheng, L.-T., and Kang, M.}
+\newblock A second-order-accurate symmetric discretization of the poisson
+  equation on irregular domains.
+\newblock {\em Journal of Computational Physics 176}, 1 (2002), 205--227.
+
+\bibitem{LiETAL2015IncompressibleMultiphase}
+{\sc Li, G., Lian, Y., Guo, Y., Jemison, M., Sussman, M., Helms, T., and
+  Arienti, M.}
+\newblock Incompressible multiphase flow and encapsulation simulations using
+  the moment-of-fluid method.
+\newblock {\em International Journal for Numerical Methods in Fluids 79}, 9
+  (2015), 456--490.
+
+\bibitem{liu2005sharp}
+{\sc Liu, H., Krishnan, S., Marella, S., and Udaykumar, H.}
+\newblock Sharp interface cartesian grid method ii: A technique for simulating
+  droplet interactions with surfaces of arbitrary shape.
+\newblock {\em Journal of Computational Physics 210}, 1 (2005), 32--54.
+
+\bibitem{liu2022novel}
+{\sc Liu, Y., Sussman, M., Lian, Y., Hussaini, M.~Y., Vahab, M., and Shoele,
+  K.}
+\newblock A novel supermesh method for computing solutions to the
+  multi-material stefan problem with complex deforming interfaces and
+  microstructure.
+\newblock {\em Journal of Scientific Computing 91}, 1 (2022), 1--40.
+
+\bibitem{lyu2021hybrid}
+{\sc Lyu, S., Wang, K., Zhang, Z., Pedrono, A., Sun, C., and Legendre, D.}
+\newblock A hybrid vof-ibm method for the simulation of freezing liquid films
+  and freezing drops.
+\newblock {\em Journal of Computational Physics 432\/} (2021), 110160.
+
+\bibitem{mukundan2020MOF}
+{\sc Mukundan, A.~A., M{\'e}nard, T., de~Motta, J. C.~B., and Berlemont, A.}
+\newblock A 3d moment of fluid method for simulating complex turbulent
+  multiphase flows.
+\newblock {\em Computers \& Fluids 198\/} (2020), 104364.
+
+\bibitem{PAN2024}
+{\sc Pan, J., Long, T., Chirco, L., Scardovelli, R., Popinet, S., and Zaleski,
+  S.}
+\newblock An edge-based interface tracking (ebit) method for multiphase-flow
+  simulation with surface tension.
+\newblock {\em Journal of Computational Physics 508\/} (2024), 113016.
+
+\bibitem{pei2019hierarchical}
+{\sc Pei, C., Vahab, M., Sussman, M., and Hussaini, M.~Y.}
+\newblock A hierarchical space-time spectral element and moment-of-fluid method
+  for improved capturing of vortical structures in incompressible
+  multi-phase/multi-material flows.
+\newblock {\em Journal of Scientific Computing 81}, 3 (2019), 1527--1566.
+
+\bibitem{scardovelli2003interface}
+{\sc Scardovelli, R., and Zaleski, S.}
+\newblock Interface reconstruction with least-square fit and split
+  eulerian--lagrangian advection.
+\newblock {\em International Journal for Numerical Methods in Fluids 41}, 3
+  (2003), 251--274.
+
+\bibitem{STRAIN1999semiLagrangian}
+{\sc Strain, J.}
+\newblock Semi-lagrangian methods for level set equations.
+\newblock {\em Journal of Computational Physics 151}, 2 (1999), 498--533.
+
+\bibitem{sussman2003second}
+{\sc Sussman, M.}
+\newblock A second order coupled level set and volume-of-fluid method for
+  computing growth and collapse of vapor bubbles.
+\newblock {\em Journal of Computational Physics 187}, 1 (2003), 110--136.
+
+\bibitem{sussman2007sharp}
+{\sc Sussman, M., Smith, K.~M., Hussaini, M.~Y., Ohta, M., and Zhi-Wei, R.}
+\newblock A sharp interface method for incompressible two-phase flows.
+\newblock {\em Journal of computational physics 221}, 2 (2007), 469--505.
+
+\bibitem{KUMARAN2024}
+{\sc {Thamil Kumaran}, S., Kumar, R., and Premachandran, B.}
+\newblock A multi-directional advection based moment of fluid method for phase
+  change problems.
+\newblock {\em Journal of Computational Physics 508\/} (2024), 113011.
+
+\bibitem{VAHAB2021}
+{\sc Vahab, M., Sussman, M., and Shoele, K.}
+\newblock Fluid-structure interaction of thin flexible bodies in multi-material
+  multi-phase systems.
+\newblock {\em Journal of Computational Physics 429\/} (2021), 110008.
+
+\bibitem{wang2012hybrid}
+{\sc Wang, Y., Simakhina, S., and Sussman, M.}
+\newblock A hybrid level set-volume constraint method for incompressible
+  two-phase flow.
+\newblock {\em Journal of Computational Physics 231}, 19 (2012), 6438--6471.
+
+\bibitem{WeymouthYue2010conservative}
+{\sc Weymouth, G., and Yue, D. K.-P.}
+\newblock Conservative volume-of-fluid method for free-surface simulations on
+  cartesian-grids.
+\newblock {\em Journal of Computational Physics 229}, 8 (2010), 2853--2865.
+
+\bibitem{yeETAL2023CMOF}
+{\sc Ye, Z., Estebe, C., Liu, Y., Vahab, M., Huang, Z., Sussman, M.,
+  Moradikazerouni, A., Shoele, K., Lian, Y., Ohta, M., and Hussaini, M.~Y.}
+\newblock An {Improved} {Coupled} {Level} {Set} and {Continuous}
+  {Moment}-of-{Fluid} {Method} for {Simulating} {Multiphase} {Flows} with
+  {Phase} {Change}.
+\newblock {\em Communications on Applied Mathematics and Computation\/} (Aug.
+  2023).
+
+\bibitem{zalesak1979fully}
+{\sc Zalesak, S.~T.}
+\newblock Fully multidimensional flux-corrected transport algorithms for
+  fluids.
+\newblock {\em Journal of computational physics 31}, 3 (1979), 335--362.
+
+\end{thebibliography}
