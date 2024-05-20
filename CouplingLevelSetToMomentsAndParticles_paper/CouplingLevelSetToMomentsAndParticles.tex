@@ -703,8 +703,10 @@ Ghost Fluid Method for surface tension \cite{kang2000boundary}:
 \frac{p_{I,L}-p_{L}}{\rho_{L}\theta_{L}\Delta x}=
 \frac{p_{R}-p_{I,R}}{\rho_{R}\theta_{R}\Delta x}
 \end{eqnarray*}
-
-% gas on left  liquid on right  normal=+1 (liquid level set) \kappa>0
+\par\noindent
+Derivation for the simple case when there is
+gas on the left, liquid on the right, the normal pointing from gas to liquid is
+$\vec{n}=(1,0,0)$ and $\kappa>0$:
 \begin{eqnarray*}
 p_{I,R}-p_{I,L}=-\sigma\kappa 
 \end{eqnarray*}
@@ -748,13 +750,32 @@ Assume
 |\kappa|<\frac{1}{\Delta x},
 \end{eqnarray*}
 then we want:
-\begin{eqnarray*}
+\begin{eqnarray}
 \left(\Delta t \sigma\frac{1}{\rho_{f}\Delta x^{2}}\right)\Delta t \le 
-\frac{1}{2}\Delta x
+	\frac{1}{2}\Delta x \label{tensioncfl}
+\end{eqnarray}
+Rationale for $\Delta x/2$ instead of $\Delta x$.  We enforce two constraints:
+\begin{enumerate}
+	\item $U\Delta t<\Delta x/2$
+	\item $(\Delta t\sigma\kappa\nabla H/\rho)\Delta t<\Delta x/2$
+\end{enumerate}
+Therefore,
+\begin{eqnarray*}
+ \left(U+\Delta t\sigma\kappa\nabla H/\rho\right)\Delta t<\Delta x
 \end{eqnarray*}
+So, from (\ref{tensioncfl}),
 \begin{eqnarray*}
 \Delta t \le \Delta x^{3/2} \sqrt{\frac{\rho_{f}}{2\sigma}}
 \end{eqnarray*}
+Consistent algorithm that is not conservative, but much more lenient time step
+constraint:
+\begin{enumerate}
+	\item Let 
+		$\rho_{cutoff}=\max(\rho_{L},\rho_{R})/\mbox{RelaxationFactor}$
+	\item if the level set function changes sign across a face; i.e. 
+		$\phi_{left}$ and $\phi_{right}$ have opposite signs then
+		$\rho_{f}$ replaced by $\min(\rho_{f},\rho_{cutoff})$.
+\end{enumerate}
 
 \newpage
 
@@ -766,10 +787,16 @@ volume fraction:
 \end{eqnarray*}
 \begin{eqnarray*}
 (\vec{n},b)=\mbox{argmin}
- \sum_{ijk}\delta(||\vec{x}_{ijk}-\vec{x}^{c}||)
+ \sum_{ijk}\delta_{4\Delta x}(||\vec{x}_{ijk}-\vec{x}^{c}||)
  (\phi(\vec{x}_{ijk})-\phi_{ijk})^{2}+
- \sum_{p}\delta(||\vec{x}_{p}-\vec{x}^{c}||)
+ \sum_{p}\delta_{4\Delta x}(||\vec{x}_{p}-\vec{x}^{c}||)
  (\phi(\vec{x}_{p})-\phi_{p})^{2}
+\end{eqnarray*}
+\begin{eqnarray*}
+	\delta_{\epsilon}(x)=\left\{ \begin{array}{cc}
+		0 & |x|>\epsilon \\
+		\frac{1+\cos(\pi x/\epsilon)}{2\epsilon}
+	\end{array} \right.
 \end{eqnarray*}
 Replace the least squares $b$ with that which is derived from the 
 reference volume fraction $F^{ref}$:
