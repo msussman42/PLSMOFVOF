@@ -298,7 +298,7 @@ flows with surface tension.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.4\textwidth]{checkerboardMOF.eps}
-\includegraphics[width=0.4\textwidth]{checkerboardPLSMOF.eps}
+%%\includegraphics[width=0.4\textwidth]{checkerboardPLSMOF.eps}
 %%\includegraphics[width=0.4\textwidth]{checkerboardCMOF.eps}
 %%REMMERSWAAL and Veldman's parabolic reconstruction WILL NOT SEE
 %%the checkerboard pattern (even though they take both F and x into
@@ -690,14 +690,18 @@ angles (see Figure \ref{fig:triple_point}.a):
         ice/air interface is extended into the substrate.
         Note: the ice is a deforming material solely due to 
         phase change at the ice/water interface.
-        Following the freezing model presented in \cite{lyu2021hybrid}, the
+	Two freezing models are implemented: (A) for comparison with
+        \cite{hu2010icing}, we follow the 
+        freezing model presented in \cite{lyu2021hybrid}. The
         ice and water materials are considered as the same
         material when calculating the surface tension force 
         at the water/ice/air triple point.
         In other words, the interfacial
         curvature both at and away from triple points is computed using
         the Volume of fluid height function technique
-        \cite{sussman2003second}.
+	\cite{sussman2003second}.  (B) for comparison with Vu et al
+	\cite{vu2013front}, we treat the ice material as a rigid solid in 
+	prescribing the contact angle boundary conditions.
     }
   \label{ice_levelset}
 \end{figure}

@@ -1,11 +1,14 @@
-This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2021)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: acm.bst
 Database file #1: cmof_paper.bib
+Warning--I didn't find a database entry for "YeEstebe..."
+Warning--I didn't find a database entry for "MOF"
+Warning--I didn't find a database entry for "SusPuckett"
 You've used 67 entries,
             2253 wiz_defined-function locations,
-            922 strings with 15868 characters,
+            928 strings with 15916 characters,
 and the built_in function-call counts, 23191 in all, are:
 = -- 2269
 > -- 1134
@@ -44,3 +47,4 @@ warning$ -- 0
 while$ -- 240
 width$ -- 69
 write$ -- 667
+(There were 3 warnings)

@@ -17,6 +17,10 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{acm}
+\citation{YeEstebe...}
+\citation{MOF}
+\citation{YeEstebe...}
+\citation{SusPuckett}
 \citation{helsby1955behaviour}
 \citation{hu2010icing}
 \citation{MIAO2021109358}
@@ -27,23 +31,23 @@
 \citation{sussman2003second}
 \citation{cummins2005estimating}
 \citation{VAHAB2021}
+\citation{smith2002projection}
+\citation{shetabivash2020multiple}
+\citation{starinshak2014new}
+\citation{HUANG2022110795}
+\citation{vu2015numerical}
+\citation{ancellin2022extension}
+\citation{schofield2008material}
+\citation{schofield2009second}
+\citation{smith2002projection}
+\citation{shetabivash2020multiple}
+\citation{starinshak2014new}
+\citation{vu2015numerical}
+\citation{HUANG2022110795}
+\citation{ancellin2022extension}
+\citation{schofield2008material}
+\citation{schofield2009second}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
-\citation{smith2002projection}
-\citation{shetabivash2020multiple}
-\citation{starinshak2014new}
-\citation{HUANG2022110795}
-\citation{vu2015numerical}
-\citation{ancellin2022extension}
-\citation{schofield2008material}
-\citation{schofield2009second}
-\citation{smith2002projection}
-\citation{shetabivash2020multiple}
-\citation{starinshak2014new}
-\citation{vu2015numerical}
-\citation{HUANG2022110795}
-\citation{ancellin2022extension}
-\citation{schofield2008material}
-\citation{schofield2009second}
 \citation{breiman1984classification}
 \citation{smith2002projection}
 \citation{ahn2007multi}
@@ -68,8 +72,9 @@
 \citation{sussman2003second}
 \citation{cummins2005estimating}
 \citation{REMMERSWAAL2022111473}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces LEFT: Standard curvature discretization methods \cite  {sussman2003second,cummins2005estimating,REMMERSWAAL2022111473} will predict zero curvature for this saw-tooth interface since the volume fractions {\em  and} centroids vary only in the $y$ direction. Repeated Moment-of-Fluid (MOF) (i) reconstruction followed by (ii) the replacement of the reference centroid with the MOF actual centroid will not alter the initial interface (ignoring round-off error). RIGHT: the gaps in the initial saw-tooth interface are reduced by at least a factor of 3 after a single replacement of the reference centroid with the CMOF actual centroid.  }}{3}{figure.1}\protected@file@percent }
-\newlabel{checkerboard}{{1}{3}{LEFT: Standard curvature discretization methods \cite {sussman2003second,cummins2005estimating,REMMERSWAAL2022111473} will predict zero curvature for this saw-tooth interface since the volume fractions {\em and} centroids vary only in the $y$ direction. Repeated Moment-of-Fluid (MOF) (i) reconstruction followed by (ii) the replacement of the reference centroid with the MOF actual centroid will not alter the initial interface (ignoring round-off error). RIGHT: the gaps in the initial saw-tooth interface are reduced by at least a factor of 3 after a single replacement of the reference centroid with the CMOF actual centroid}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces LEFT: Standard curvature discretization methods \cite  {sussman2003second,cummins2005estimating,REMMERSWAAL2022111473} will predict zero curvature for this saw-tooth interface since the volume fractions {\em  and} centroids vary only in the $y$ direction. Repeated Moment-of-Fluid (MOF) (i) reconstruction followed by (ii) the replacement of the reference centroid with the MOF actual centroid will not alter the initial interface (ignoring round-off error). RIGHT: the gaps in the initial saw-tooth interface are immediately removed with PLSMOF reconstruction since the level set function is derived as the exact signed distance function to the initial MOF reconstructed interface, and the particles are initialized from the level set function. Ensuing slopes are derived from a combination of the particles and the signed distance function (if particles available).  }}{3}{figure.1}\protected@file@percent }
+\newlabel{checkerboard}{{1}{3}{LEFT: Standard curvature discretization methods \cite {sussman2003second,cummins2005estimating,REMMERSWAAL2022111473} will predict zero curvature for this saw-tooth interface since the volume fractions {\em and} centroids vary only in the $y$ direction. Repeated Moment-of-Fluid (MOF) (i) reconstruction followed by (ii) the replacement of the reference centroid with the MOF actual centroid will not alter the initial interface (ignoring round-off error). RIGHT: the gaps in the initial saw-tooth interface are immediately removed with PLSMOF reconstruction since the level set function is derived as the exact signed distance function to the initial MOF reconstructed interface, and the particles are initialized from the level set function. Ensuing slopes are derived from a combination of the particles and the signed distance function (if particles available)}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background - deforming boundary problems in fluid mechanics}{3}{section.2}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Recent numerical methods of flows with triple points in chronological order.  }}{4}{table.1}\protected@file@percent }
 \newlabel{tab:triple_point}{{1}{4}{Recent numerical methods of flows with triple points in chronological order}{table.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Illustration of the difference between Continuous Moment-of-Fluid (CMOF) and Moment-of-Fluid (MOF) reconstruction. The black circles represent cell centroids, blue circles represent ``material 1'' centroids, and the red circle represents the ``CMOF'' centroid associated with the center cell (in green) and calculated using the $3\times 3$ data surrounded by the CMOF cell (in red). The CMOF reconstructed interface (the red line in the center cell) is the line segment which minimizes the difference between the CMOF reference centroid (red circle) and the CMOF derived centroid (centroid associated with the dashed red line) subject to the constraint that the reference MOF volume fraction (material 1 volume fraction in the center cell) equals the actual CMOF reconstructed volume fraction which is the material 1 volume fraction below the solid red line in the center cell.  }}{5}{figure.2}\protected@file@percent }
@@ -100,7 +105,6 @@
 \citation{sussman2000coupled}
 \citation{ASURIMUKUNDAN2022110864}
 \citation{jemison2013coupled}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Background - deforming boundary problems in fluid mechanics}{6}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Mathematical model}{6}{section.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Illustration of the coupled level set and CMOF method corresponding to the liquid lens benchmark problem. LEFT: zoomed in view of (a) material 1 (signed distance function) level set contours (blue curves), (b) normal vectors corresponding to material 1 derived from the closest point map, (c) CMOF reconstructed interface for all 3 materials (pink curves), (d) material 1 centroids (red dots), (e) material 2 centroids (green dots), and (f) material 3 centroids (blue dots), RIGHT: zoomed out view. Notes: $\Delta x=1/128$, contour spacing is $0.01$, the initial location of the triple point ($t=0$) is intentially offset from the grid lines $(0.501,0.501)$, tecplot level set data interpolated from the cell centers to the nodes. }}{7}{figure.3}\protected@file@percent }
 \newlabel{distancefunction}{{3}{7}{Illustration of the coupled level set and CMOF method corresponding to the liquid lens benchmark problem. LEFT: zoomed in view of (a) material 1 (signed distance function) level set contours (blue curves), (b) normal vectors corresponding to material 1 derived from the closest point map, (c) CMOF reconstructed interface for all 3 materials (pink curves), (d) material 1 centroids (red dots), (e) material 2 centroids (green dots), and (f) material 3 centroids (blue dots), RIGHT: zoomed out view. Notes: $\Delta x=1/128$, contour spacing is $0.01$, the initial location of the triple point ($t=0$) is intentially offset from the grid lines $(0.501,0.501)$, tecplot level set data interpolated from the cell centers to the nodes}{figure.3}{}}
@@ -260,10 +264,8 @@
 \citation{bentz1993low}
 \citation{bentz1992jet}
 \citation{bentz1993low}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Time to freeze a water droplet with initial volume $4.95e-5\mbox  {cm}^{3}$ as a function of the wall temperature (degrees Celsius) and Latent heat. Results are compared with experiments from \cite  {hu2010icing}. Much closer agreement is made with experiments when the latent heat is prescribed as $65.0e+9$ as opposed to when he latent heat is the physical value $3.34e+9$. }}{35}{table.7}\protected@file@percent }
-\newlabel{freezing_time}{{7}{35}{Time to freeze a water droplet with initial volume $4.95e-5\mbox {cm}^{3}$ as a function of the wall temperature (degrees Celsius) and Latent heat. Results are compared with experiments from \cite {hu2010icing}. Much closer agreement is made with experiments when the latent heat is prescribed as $65.0e+9$ as opposed to when he latent heat is the physical value $3.34e+9$}{table.7}{}}
-\newlabel{TPCEsec}{{5.5}{35}{Comparison of simulations with experiments for the break-up of a gas bubble due to a liquid jet in microgravity. \label {TPCEsec} }{subsection.5.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Comparison of simulations with experiments for the break-up of a gas bubble due to a liquid jet in microgravity.  }{35}{subsection.5.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Time to freeze a water droplet with initial volume $4.95e-5\mbox  {cm}^{3}$ as a function of the wall temperature (degrees Celsius) and Latent heat. Simulations sharply ``capture'' the triple point dynamics at the ice, water, and air interface using the hybrid PLS-MOF method. Results are compared with experiments from \cite  {hu2010icing}. Much closer agreement is made with experiments when the latent heat is prescribed as $65.0e+9$ as opposed to when he latent heat is the physical value $3.34e+9$. }}{35}{table.7}\protected@file@percent }
+\newlabel{freezing_time}{{7}{35}{Time to freeze a water droplet with initial volume $4.95e-5\mbox {cm}^{3}$ as a function of the wall temperature (degrees Celsius) and Latent heat. Simulations sharply ``capture'' the triple point dynamics at the ice, water, and air interface using the hybrid PLS-MOF method. Results are compared with experiments from \cite {hu2010icing}. Much closer agreement is made with experiments when the latent heat is prescribed as $65.0e+9$ as opposed to when he latent heat is the physical value $3.34e+9$}{table.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces  An illustration of the derivation of the volume weights for computing the cell centered mixture product of density and specific heat $\rho C_{p}$, and also for computing the volume weights for computing the cell centered mixture density $\rho $ as it appears in the viscosity equation. In the latter case, if the level set function changes sign for the appropriate materials, a user defined ``added mass density'' is used in place of the volume averaged density. The level set function values in all cells in the given 9 point stencil (27 points in 3D) are tested. Also, if the volumes for the appropriate materials are positive in the center cell, $(i,j)$, then we replace the given density with the ``added mass density.'' }}{36}{figure.20}\protected@file@percent }
 \newlabel{dencell_mixture}{{20}{36}{An illustration of the derivation of the volume weights for computing the cell centered mixture product of density and specific heat $\rho C_{p}$, and also for computing the volume weights for computing the cell centered mixture density $\rho $ as it appears in the viscosity equation. In the latter case, if the level set function changes sign for the appropriate materials, a user defined ``added mass density'' is used in place of the volume averaged density. The level set function values in all cells in the given 9 point stencil (27 points in 3D) are tested. Also, if the volumes for the appropriate materials are positive in the center cell, $(i,j)$, then we replace the given density with the ``added mass density.''}{figure.20}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces  An illustration of the derivation of the volume weights for computing the ``MAC'' grid mixture of the density, $\rho ^{\mbox  {MAC,mix}}$, as it appears in the pressure gradient equation (\ref  {pressuregrad}). $\rho ^{\mbox  {MAC,mix}}$ is determined from volume weights in a given MAC grid control volume $(i+1/2,j)$. The volume weights are derived from the CMOF reconstructed interface. If the level set function changes sign for the appropriate materials, a user defined ``added mass density'' is used in place of the volume averaged density. The level set function values in cells $(i,j)$ and $(i+1,j)$ (for the $(i+1/2,j)$ face) are tested. Also, if the ``face'' volumes for the appropriate materials are positive in the MAC grid control volume, $(i+1/2,j)$, then we replace the given density with the ``added mass density.'' }}{37}{figure.21}\protected@file@percent }
@@ -279,8 +281,9 @@
 \citation{helsby1955behaviour}
 \citation{hu2010icing}
 \citation{bentz1992jet}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Comparison of reconstruction cost (average number of iterations, reconstruction time): decision tree machine learning optimization (ML) versus Gauss Newton (GN) optimization ($t=15.5$) for the break-up of a ``spherical ullage'' due to an impinging jet. }}{40}{table.8}\protected@file@percent }
-\newlabel{3DCOST}{{8}{40}{Comparison of reconstruction cost (average number of iterations, reconstruction time): decision tree machine learning optimization (ML) versus Gauss Newton (GN) optimization ($t=15.5$) for the break-up of a ``spherical ullage'' due to an impinging jet}{table.8}{}}
+\newlabel{TPCEsec}{{5.5}{40}{Comparison of simulations with experiments for the break-up of a gas bubble due to a liquid jet in microgravity. \label {TPCEsec} }{subsection.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Comparison of simulations with experiments for the break-up of a gas bubble due to a liquid jet in microgravity.  }{40}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{40}{section.6}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces The deformation of a ``spherical ullage'' due to a liquid jet. $We_{j}=4.875$. Times=$0.0$, $8.45$, and $15.7$. The jet does not penetrate the ullage in this case. The computational grid size was $64\times 64\times 64$. }}{41}{figure.26}\protected@file@percent }
 \newlabel{3DWEJ4p875}{{26}{41}{The deformation of a ``spherical ullage'' due to a liquid jet. $We_{j}=4.875$. Times=$0.0$, $8.45$, and $15.7$. The jet does not penetrate the ullage in this case. The computational grid size was $64\times 64\times 64$}{figure.26}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces The deformation of a ``spherical ullage'' due to a liquid jet. $We_{j}=5.25$. Times=$0.0$, $7.84$, and $15.5$. The jet penetrates the ullage in this case. The computational grid size was $64\times 64\times 64$. }}{41}{figure.27}\protected@file@percent }
@@ -291,10 +294,11 @@
 \bibcite{ahn2007multi}{1}
 \bibcite{ahn2009adaptive}{2}
 \bibcite{ancellin2022extension}{3}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Comparison of reconstruction cost (average number of iterations, reconstruction time): decision tree machine learning optimization (ML) versus Gauss Newton (GN) optimization ($t=15.5$) for the break-up of a ``spherical ullage'' due to an impinging jet. }}{43}{table.8}\protected@file@percent }
+\newlabel{3DCOST}{{8}{43}{Comparison of reconstruction cost (average number of iterations, reconstruction time): decision tree machine learning optimization (ML) versus Gauss Newton (GN) optimization ($t=15.5$) for the break-up of a ``spherical ullage'' due to an impinging jet}{table.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conflict of interest statement }{43}{section.7}\protected@file@percent }
 \bibcite{arienti2014embedded}{4}
 \bibcite{ASURIMUKUNDAN2022110864}{5}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{43}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conflict of interest statement }{43}{section.7}\protected@file@percent }
 \bibcite{bentz1993low}{6}
 \bibcite{bentz1992jet}{7}
 \bibcite{bonhomme2012inertial}{8}
