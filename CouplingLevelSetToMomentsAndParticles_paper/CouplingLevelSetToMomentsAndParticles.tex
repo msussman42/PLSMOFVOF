@@ -136,7 +136,8 @@
 %%             country={}}
 %% \fntext[label3]{}
 
-\title{Coupling the Level Set Method to Moments and Particles for Computing N-phase flows with phase change.}
+\title{A novel numerical algorithm for multiphase flows; simulating the
+	interaction of shock waves, melts, ice, vapor, and elastic materials.}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{}
@@ -166,7 +167,7 @@
 
 %% Abstract
 \begin{abstract}
-A new algorithm that hybridizes marker particles with the coupled level set moment-of-fluid method to improve the interface reconstruction in N-phase flow problems is proposed. This approach uses both near and on-interface Lagrangian marker particles to improve the slope reconstruction for the multimaterial moment of fluid (MOF) method. Deriving the MOF slopes from particles overcomes the surface tension checkerboard instability of the MOF method, first discussed by Ye et al. (2023).  Ye et al. developed the Continuous Moment of Fluid (CMOF) method in order to overcome this checkerboard instability. The coupled particle moment of fluid method (PMOF) method proposed herein is compared to both MOF and CMOF on rigid body tests and multiphase flow problems in 2D, axisymmetric ``R-Z", and 3D coordinate systems. Examples include two and three material multiphase flows, with and without phase change: bubble formation, liquid lens dynamics, freezing droplet on a cold substrate, and an impinging liquid jet on vapor ullage in a cryogenic tank. It has been found that augmenting the interface representation with meshless particle produces similar results to that of the CMOF method, at a computational cost similar to that of MOF. The proposed method is volume-preserving and generalizable to unstructured grids.
+	A new algorithm that hybridizes marker particles with the coupled level set moment-of-fluid method to improve the interface reconstruction in N-phase flow problems is proposed. This approach uses both near and on-interface Lagrangian marker particles to improve the slope reconstruction for the multimaterial moment of fluid (MOF) method. Deriving the MOF slopes from particles overcomes the surface tension checkerboard instability of the MOF method, first discussed by Ye et al. (2023).  Ye et al. developed the Continuous Moment of Fluid (CMOF) method in order to overcome this checkerboard instability. The coupled particle moment of fluid method (PMOF) method proposed herein is compared to both MOF and CMOF on rigid body tests and multiphase flow problems in 2D, axisymmetric ``R-Z", and 3D coordinate systems. Examples include complex multiphase flows in which the interaction of shock waves, elastic materials, melts, ice, and gas are simulated.  In addition to the development of PMOF, the scalability of Adaptive Mesh Refinement for such multiphase flows is improved by strategically changing the ``grid granularity'' depending on the adaptive and multigrid-preconditioner level.  A third major improvement described is the development of a asymptotically preserving conservative method on a staggered grid, thereby avoiding velocity checkerboard instability present in past research; see, e.g.,  Jemison, Sussman, Arienti (2014).  
 \end{abstract}
 
 %%Graphical abstract
