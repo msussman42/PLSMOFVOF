@@ -390,6 +390,13 @@
   the presence of volume change.
 \newblock {\em International Journal of Multiphase Flow 76\/} (2015), 73--85.
 
+\bibitem{vu2013front}
+{\sc Vu, T.~V., Tryggvason, G., Homma, S., Wells, J.~C., and Takakura, H.}
+\newblock A front-tracking method for three-phase computations of
+  solidification with volume change.
+\newblock {\em Journal of Chemical Engineering of Japan 46}, 11 (2013),
+  726--731.
+
 \bibitem{welch2000volume}
 {\sc Welch, S.~W., and Wilson, J.}
 \newblock A volume of fluid based method for fluid flows with phase change.

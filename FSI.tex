@@ -1,0 +1,151 @@
+%% get rid of autoindent   :setl noai nocin nosi inde=
+%%
+%% 1. pdflatex FSI
+%% 2. bibtex FSI
+%% 3. pdflatex FSI
+%% 3. pdflatex FSI
+%\documentclass[review]{elsarticle}
+\documentclass[]{article}
+%\documentclass[preprint]{elsarticle}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\usepackage[fleqn]{amsmath} 
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tabularx} 
+\usepackage{footnote}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+\usepackage[percent]{overpic}
+\usepackage{subfigure}% subcaptions for subfigures
+\usepackage{subfigmat}% matrices of similar subfigures, aka small multiples
+\usepackage{array}
+\setlength{\mathindent}{0pt}
+
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\triangleright$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+\renewcommand{\labelitemiv}{$\triangleright$}
+
+
+%\journal{Journal of Computational Physics}
+
+\newcommand{\mb}{\mathbf}
+\newcommand{\tn}{\textnormal}
+\newcommand{\unit}[1]{\ensuremath{\, \mathrm{#1}}}
+
+\newcommand{\bmz}{\mbox{\boldmath $z$\unboldmath}}
+\newcommand{\bmr}{\mbox{\boldmath $r$\unboldmath}}
+\newcommand{\bmb}{\mbox{\boldmath $b$\unboldmath}}
+\newcommand{\bms}{\mbox{\boldmath $s$\unboldmath}}
+\newcommand{\bmg}{\mbox{\boldmath $g$\unboldmath}}
+\newcommand{\bmq}{\mbox{\boldmath $q$\unboldmath}}
+\newcommand{\bmU}{\mbox{\boldmath $U$\unboldmath}}
+\newcommand{\bmu}{\mbox{\boldmath $u$\unboldmath}}
+\newcommand{\bmv}{\mbox{\boldmath $v$\unboldmath}}
+\newcommand{\bmw}{\mbox{\boldmath $w$\unboldmath}}
+\newcommand{\bmm}{\mbox{\boldmath $m$\unboldmath}}
+\newcommand{\bmi}{\mbox{\boldmath $i$\unboldmath}}
+\newcommand{\bmj}{\mbox{\boldmath $j$\unboldmath}}
+\newcommand{\bmk}{\mbox{\boldmath $k$\unboldmath}}
+\newcommand{\bmx}{\mbox{\boldmath $x$\unboldmath}}
+\newcommand{\bmX}{\mbox{\boldmath $X$\unboldmath}}
+\newcommand{\bmH}{\mbox{\boldmath $H$\unboldmath}}
+\newcommand{\bmy}{\mbox{\boldmath $y$\unboldmath}}
+\newcommand{\bmn}{\mbox{\boldmath $n$\unboldmath}}
+\newcommand{\bmf}{\mbox{\boldmath $f$\unboldmath}}
+\newcommand{\bmF}{\mbox{\boldmath $F$\unboldmath}}
+\newcommand{\bmS}{\mbox{\boldmath $S$\unboldmath}}
+\newcommand{\bmG}{\mbox{\boldmath $G$\unboldmath}}
+\newcommand{\bmV}{\mbox{\boldmath $V$\unboldmath}}
+\newcommand{\bmI}{\mbox{\boldmath $I$\unboldmath}}
+\newcommand{\bmD}{\mbox{\boldmath $D$\unboldmath}}
+\newcommand{\bmnu}{\mbox{\boldmath $\nu$\unboldmath}}
+
+\newcommand{\DefTen}{\mathbb{D}}
+\newcommand{\EyeTen}{\mathbb{I}}
+
+\DeclareMathOperator{\Ei}{Ei}
+
+\newcommand{\MVBcmnt}[1]{{\color{red}{\em #1}}}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%%\bibliographystyle{elsarticle-num}
+\bibliographystyle{acm}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Numerical Algorithm for simulating multiphase flows: ice, melt,
+  vapor, deformable solids, high speed, and low speed flows
+  \thanks{this material is based upon work supported by National
+   Aeronautics and Space Administration under grant number
+   80NSSC20K0352}}
+
+%%!!format authors properly
+%\author{
+%	LastName1, FirstName1\\
+%	\texttt{first1.last1@xxxxx.com}
+%	\and
+%	LastName2, FirstName2\\
+%	\texttt{first2.last2@xxxxx.com}
+%}
+\author{
+  Estebe, Cody \\
+  Dept. of math, FL State Univ. 
+  \and
+  Liu, Yang \\
+  Dept. of Mech. Engr., FL State Univ.
+  \and
+  Sussman, Mark \\
+  Dept. of math, FL State Univ. 
+  \and
+  Moradikazerouni, Alireza \\
+  Dept. of Mech. Engr., FL State Univ.
+  \and
+  Shoele, Kourosh  \\
+  Dept. of Mech. Engr., FL State Univ.
+  \and
+  Ohta, Mitsuhiro \\
+  Dept. of Mech. Sci, Tokushima University 
+}
+
+\begin{document}
+\maketitle
+
+ABSTRACT:
+A staggared grid, semi-implicit, finite volume, moment of fluid (sharp
+interface), adaptive mesh
+algorithm is presented for computing solutions to general multiphase flows.
+\linenumbers
+\section{Description of the mathematics}
+The combination of (a) semi-implicit compressible projection method for
+simultaneously computing low and high speed flows, 
+(b) sharp interface moment of fluid and continuous moment of fluid 
+method for representing sharp complex multi-phase deforming interfaces, 
+(c) Eulerian algorithm for simulatig fluid structure interaction
+for realistic materials undergoing plastic  deformation, (d) 
+parallel adaptive mesh refinement for high performance computing,
+and (e) ``anecdotal'' stable and consistent numerical results,
+make our method unique.
+
+\section{Mathematical Modeling}
+
+Conservation of mass equation:
+\begin{eqnarray}
+	(\rho_{m}F_{m})
+
+%%\biboptions{sort&compress}
+\bibliography{cmof_paper}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

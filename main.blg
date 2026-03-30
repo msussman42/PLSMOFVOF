@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: acm.bst
@@ -6,45 +6,45 @@ Database file #1: cmof_paper.bib
 Warning--I didn't find a database entry for "YeEstebe..."
 Warning--I didn't find a database entry for "MOF"
 Warning--I didn't find a database entry for "SusPuckett"
-You've used 67 entries,
+You've used 68 entries,
             2253 wiz_defined-function locations,
-            928 strings with 15916 characters,
-and the built_in function-call counts, 23191 in all, are:
-= -- 2269
-> -- 1134
+            935 strings with 16200 characters,
+and the built_in function-call counts, 23610 in all, are:
+= -- 2309
+> -- 1161
 < -- 0
-+ -- 498
-- -- 400
-* -- 2038
-:= -- 3798
-add.period$ -- 200
-call.type$ -- 67
-change.case$ -- 400
++ -- 510
+- -- 410
+* -- 2079
+:= -- 3868
+add.period$ -- 203
+call.type$ -- 68
+change.case$ -- 408
 chr.to.int$ -- 0
-cite$ -- 67
-duplicate$ -- 657
-empty$ -- 1794
-format.name$ -- 400
-if$ -- 4676
+cite$ -- 68
+duplicate$ -- 666
+empty$ -- 1821
+format.name$ -- 410
+if$ -- 4757
 int.to.chr$ -- 0
-int.to.str$ -- 67
-missing$ -- 66
-newline$ -- 337
-num.names$ -- 134
-pop$ -- 316
+int.to.str$ -- 68
+missing$ -- 67
+newline$ -- 342
+num.names$ -- 136
+pop$ -- 322
 preamble$ -- 1
-purify$ -- 334
+purify$ -- 341
 quote$ -- 0
-skip$ -- 383
+skip$ -- 388
 stack$ -- 0
-substring$ -- 1755
-swap$ -- 158
+substring$ -- 1786
+swap$ -- 160
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 266
+type$ -- 270
 warning$ -- 0
-while$ -- 240
-width$ -- 69
-write$ -- 667
+while$ -- 244
+width$ -- 70
+write$ -- 677
 (There were 3 warnings)
