@@ -82,7 +82,7 @@
 \bibliographystyle{acm}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Numerical Algorithm for simulating multiphase flows: ice, melt,
+\title{A Numerical Algorithm for simulating multiphase flows: ice, melt,
   vapor, deformable solids, high speed, and low speed flows
   \thanks{this material is based upon work supported by National
    Aeronautics and Space Administration under grant number
@@ -120,26 +120,153 @@
 \maketitle
 
 ABSTRACT:
-A staggared grid, semi-implicit, finite volume, moment of fluid (sharp
-interface), adaptive mesh
-algorithm is presented for computing solutions to general multiphase flows.
-\linenumbers
-\section{Description of the mathematics}
-The combination of (a) semi-implicit compressible projection method for
-simultaneously computing low and high speed flows, 
-(b) sharp interface moment of fluid and continuous moment of fluid 
-method for representing sharp complex multi-phase deforming interfaces, 
-(c) Eulerian algorithm for simulatig fluid structure interaction
-for realistic materials undergoing plastic  deformation, (d) 
-parallel adaptive mesh refinement for high performance computing,
-and (e) ``anecdotal'' stable and consistent numerical results,
-make our method unique.
+A new Eulerian method is presented for simulating complex multiphase flows
+consisting of any number of types of materials, to include compressible
+fluids, incompressible fluids, ice, melt, vapor, and 
+solids undergoing plastic deformation.  The interfaces between materials
+is modeled and discretized as sharp. 
+ 
+ \linenumbers
 
 \section{Mathematical Modeling}
-
-Conservation of mass equation:
+There are $M$ materials and each material $1\le m \le M$ occupies the region,
 \begin{eqnarray}
-	(\rho_{m}F_{m})
+	\Omega_{m}(t)=\left{ (\vec{x},t)) | \phi_{m}(\vec{x},t)\ge 0 
+	\right}
+\end{eqnarray}
+The $\phi_{m}(\bmx,t)$ are level set functions\cite{SSO}.  The zero
+level set of such functions demarcate the boundary of material 
+$m$:
+\begin{eqnarray}
+	\partial\Omega_{m}(t)=\left{ (\vec{x},t)) | \phi_{m}(\vec{x},t)=0 
+	\right}
+\end{eqnarray}
+In the bulk regions of material $m$ we have the following
+equations for compressible materials:
+\begin{eqnarray}
+	\rho_{t}+\nabla\cdot(\rho\vec{u})=0
+\end{eqnarray}
+\begin{eqnarray}
+	(\rho\vec{u})_{t}+\nabla\cdot(
+	\rho\vec{u}\otimes\vec{u}+p\EyeTen-\tau)=\vec{F}_{body}
+\end{eqnarray}
+\begin{eqnarray}
+	(\rho E)_{t}+\nabla\cdot(
+	(\rho E + p)\vec{u}-\vec{u}\cdot\tau-k\nabla T)=
+	\vec{u}\cdot \vec{F}_{body}
+	\label{energy}
+\end{eqnarray}
+\begin{eqnarray}
+	(\rho Y)_{t}+\nabla\cdot(\rho Y\vec{u})=\nabla\cdot(\rho D\nabla Y)
+\end{eqnarray}
+
+\begin{eqnarray}
+	\tau=2\mu\bar{D}
+\end{eqnarray}
+\begin{eqnarray}
+	\bar{D}=D-\frac{\mbox{Trace}(D)\EyeTen}{\mbox{Trace}(\EyeTen)}
+\end{eqnarray}
+\begin{eqnarray}
+	D=\frac{\nabla\vec{u}+(\nabla\vec{u})^{T}}{2}
+\end{eqnarray}
+\begin{eqnarray}
+	\rho E=\rho e_{\mbox{int}}+
+	\frac{1}{2}\rho|\vec{u}|^{2}
+\end{eqnarray}
+\begin{eqnarray}
+	p=p(\rho,e) \hspace{10pt} e=c_{v}T
+\end{eqnarray}
+If the material is a viscoelastic FENE-CR material, then one has the
+additional equation for the configuration tensor $A$,
+%StewartLaySussmanOhta
+\begin{eqnarray}
+	A_{t}+\vec{u}\cdot\nabla A=A\cdot(\nabla\vec{u})^{T}+
+	\nabla\vec{u}\cdot A-\frac{f(R)}{\lambda}(A-\EyeTen),
+\end{eqnarray}
+and the momentum constitutive law term is modified,
+\begin{eqnarray}
+	\tau=\tau+\frac{\tilde{\eta}_{P}}{\lambda}f(R)A.
+\end{eqnarray}
+If the material is an elastic material undergoing plastic deformation, then
+one has the following additional equation for the deviatoric stress
+tensor,
+\begin{eqnarray}
+	s_{t}+\vec{u}\cdot\nabla s+s\Omega-\Omega s=2G(\bar{D}-D^{p})
+\end{eqnarray}
+$\Omega$ is the spin tensor,
+\begin{eqnarray}
+	\Omega_{ij}=\frac{1}{2}(
+	\frac{\partial u_{i}}{\partial x_{j}}-
+	\frac{\partial u_{j}}{\partial x_{i}})
+\end{eqnarray}
+The effective stress is defined as,
+\begin{eqnarray}
+	S_{e}=\sqrt{\frac{3}{2}s:s}
+\end{eqnarray}
+
+The plastic strain-rate is modeled as,
+\begin{eqnarray}
+	D^{p}=\Lambda N  \hspace{10pt} N=\sqrt{3/2}\frac{s}{S_{e}}
+	\hspace{10pt} (\dot{\bar{\epsilon}}^{p})^{2}=
+	\frac{2}{3}\Lambda^{2}
+	\label{plastic_strain_rate}
+\end{eqnarray}
+Therefore, the plastic strain is evolved as,
+\begin{eqnarray}
+	\bar{\epsilon}^{p}_{t}+\vec{u}\cdot\nabla\bar{\epsilon}^{p}=
+	\sqrt{\frac{2}{3}}|\Lambda|
+\end{eqnarray}
+\begin{eqnarray}
+The Johnson-Cook model yield stress is given by,
+\begin{eqnarray}
+	\sigma_{y}=(A+B(\bar{\epsilon}^{p})^{n}
+	(1+C\log(\frac{\dot{\bar{\epsilon}}^{p}}
+	{\dot{\epsilon}_{0}}))(1-\theta^{m}) \hspace{10pt}
+	\theta=\frac{T-T_{0}}{T_{m}-T_{0}}
+\end{eqnarray}
+The energy contribution due to elasto-plastic deformation is modeled as,
+\begin{eqnarray}
+	\beta\dot{\bar{\epsilon}}^{p}S_{e},
+\end{eqnarray}
+and is added to (\ref{energy}).  In order to determine $\Lambda$, as it
+appears in (\ref{plastic_strain_rate}), the following ``radial
+return algorithm'' is implemented 
+(see \cite{tran2004particle}):
+\begin{enumerate}
+\item
+	if $S_{e}-\sigma_{y}\le 0$ then $\Lambda=0$ (i.e. $D^{p}=0$).
+\item
+	if $S_{e}>\sigma_{y}$ then
+\item 
+	Assume the following relations for $0\le \tau \le \Delta\tau:
+	\begin{eqnarray}
+		\sigma_{local}(\tau)=\sigma_{y}+B(\epsilon_{local}(\tau))^{n}
+		\hspace{10pt} \epsilon_{local}(0)=0
+	\end{eqnarray}
+	\begin{eqnarray}
+		\Lambda(\tau)=\sqrt{3/2}\dot{\epsilon}_{local}
+	\end{eqnarray}
+
+
+		\dot{\sigma}=Bn
+	\begin{eqnarray}
+        S(t_{0})=S_{e}
+	\end{eqnarray}
+	\begin{eqnarray}
+        \xi=\int_{t_{0}}^{t_{1}}\Gamma(t)dt \hspace{10pt} \Gamma(0)=0
+	\end{eqnarray}
+	\begin{eqnarray}
+        
+
+	\begin{eqnarray}
+	\dot{\sigma}_{y}=\sqrt{2/3}h\Lambda=h\dot{\bar{\epsilon}}^{p}
+	\end{eqnarray}
+\item
+	Assume a local yield stress relation:
+	\begin{eqnarray}
+        \sigma_{y,loc}=\sigma_{y}+B(
+
+
 
 %%\biboptions{sort&compress}
 \bibliography{cmof_paper}
