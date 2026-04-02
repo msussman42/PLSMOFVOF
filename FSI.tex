@@ -131,15 +131,14 @@ is modeled and discretized as sharp.
 \section{Mathematical Modeling}
 There are $M$ materials and each material $1\le m \le M$ occupies the region,
 \begin{eqnarray}
-	\Omega_{m}(t)=\left{ (\vec{x},t)) | \phi_{m}(\vec{x},t)\ge 0 
-	\right}
+	\Omega_{m}(t)=\left\{ (\vec{x},t) | \phi_{m}(\vec{x},t)\ge 0 \right\}
 \end{eqnarray}
 The $\phi_{m}(\bmx,t)$ are level set functions\cite{SSO}.  The zero
 level set of such functions demarcate the boundary of material 
 $m$:
 \begin{eqnarray}
-	\partial\Omega_{m}(t)=\left{ (\vec{x},t)) | \phi_{m}(\vec{x},t)=0 
-	\right}
+	\partial\Omega_{m}(t)=\left\{ (\vec{x},t)) | \phi_{m}(\vec{x},t)=0 
+	\right\}
 \end{eqnarray}
 In the bulk regions of material $m$ we have the following
 equations for compressible materials:
@@ -191,7 +190,26 @@ If the material is an elastic material undergoing plastic deformation, then
 one has the following additional equation for the deviatoric stress
 tensor,
 \begin{eqnarray}
-	s_{t}+\vec{u}\cdot\nabla s+s\Omega-\Omega s=2G(\bar{D}-D^{p})
+	s_{t}+\vec{u}\cdot\nabla s+s\Omega-\Omega s=2G(\bar{D}-D^{p}),
+\end{eqnarray}
+and the momentum constitutive law term is modified,
+\begin{eqnarray}
+	\tau=\tau+s.
+\end{eqnarray}
+If the material is an elastic material undergoing plastic deformation, then
+the plastic strain equation is solved too,
+\begin{eqnarray}
+	\epsilon^{p}_{t}+\vec{u}\cdot\nabla\epsilon^{p}=
+	\sqrt{\frac{2}{3}}|\Lambda|.
+\end{eqnarray}
+\begin{eqnarray}
+	|\Lambda|=\sqrt{\frac{3}{2}}\sqrt{D^{p}:D^{p}}
+\end{eqnarray}
+\begin{eqnarray}
+	D^{p}=\Lambda N  \hspace{10pt} N=\sqrt{3/2}\frac{s}{S_{e}}
+	\hspace{10pt} (\dot{\epsilon}^{p})^{2}=
+	\frac{2}{3}\Lambda^{2}
+	\label{plastic_strain_rate}
 \end{eqnarray}
 $\Omega$ is the spin tensor,
 \begin{eqnarray}
@@ -201,70 +219,155 @@ $\Omega$ is the spin tensor,
 \end{eqnarray}
 The effective stress is defined as,
 \begin{eqnarray}
-	S_{e}=\sqrt{\frac{3}{2}s:s}
+	S_{e}=\sqrt{\frac{3}{2}}\sqrt{s:s}
 \end{eqnarray}
-
-The plastic strain-rate is modeled as,
-\begin{eqnarray}
-	D^{p}=\Lambda N  \hspace{10pt} N=\sqrt{3/2}\frac{s}{S_{e}}
-	\hspace{10pt} (\dot{\bar{\epsilon}}^{p})^{2}=
-	\frac{2}{3}\Lambda^{2}
-	\label{plastic_strain_rate}
-\end{eqnarray}
-Therefore, the plastic strain is evolved as,
-\begin{eqnarray}
-	\bar{\epsilon}^{p}_{t}+\vec{u}\cdot\nabla\bar{\epsilon}^{p}=
-	\sqrt{\frac{2}{3}}|\Lambda|
-\end{eqnarray}
-\begin{eqnarray}
 The Johnson-Cook model yield stress is given by,
 \begin{eqnarray}
-	\sigma_{y}=(A+B(\bar{\epsilon}^{p})^{n}
-	(1+C\log(\frac{\dot{\bar{\epsilon}}^{p}}
-	{\dot{\epsilon}_{0}}))(1-\theta^{m}) \hspace{10pt}
+	\sigma_{y}=
+	(A+B(\epsilon^{p})^{n})
+	(1+C\ln(
+	\frac{\dot{\epsilon}^{p}}
+	{\dot{\epsilon}_{0}}
+	))(1-\theta^{m}) \hspace{10pt}
 	\theta=\frac{T-T_{0}}{T_{m}-T_{0}}
+	\label{Johnson}
 \end{eqnarray}
+One form of the Zerilli Armstrong model yield stress is given by,
+\begin{eqnarray}
+	\beta=\beta_{0}-\beta_{1}
+	\log(\dot{\epsilon}^{p}/\dot{\epsilon}^{p}_{ref})
+\end{eqnarray}
+\begin{eqnarray}
+	\sigma_{y}=A+B(\epsilon^{p})^{n}e^{-\beta T}
+	\label{zerilli}
+\end{eqnarray}
+
 The energy contribution due to elasto-plastic deformation is modeled as,
 \begin{eqnarray}
-	\beta\dot{\bar{\epsilon}}^{p}S_{e},
+	\beta\dot{\epsilon}^{p}S_{e},
 \end{eqnarray}
 and is added to (\ref{energy}).  In order to determine $\Lambda$, as it
 appears in (\ref{plastic_strain_rate}), the following ``radial
 return algorithm'' is implemented 
-(see \cite{tran2004particle}):
-\begin{enumerate}
-\item
-	if $S_{e}-\sigma_{y}\le 0$ then $\Lambda=0$ (i.e. $D^{p}=0$).
-\item
-	if $S_{e}>\sigma_{y}$ then
-\item 
-	Assume the following relations for $0\le \tau \le \Delta\tau:
-	\begin{eqnarray}
-		\sigma_{local}(\tau)=\sigma_{y}+B(\epsilon_{local}(\tau))^{n}
-		\hspace{10pt} \epsilon_{local}(0)=0
-	\end{eqnarray}
-	\begin{eqnarray}
-		\Lambda(\tau)=\sqrt{3/2}\dot{\epsilon}_{local}
-	\end{eqnarray}
+(see \cite{tran2004particle} for the case when $n=1$ in (\ref{Johnson})
+or (\ref{zerilli})):
+\begin{description}
+\item[1.] $\dot{\epsilon}^{p}=0$, $k=0$
+\item[2.] $S_{e}=\sqrt{\frac{3}{2}}\sqrt{s:s}$
+\item[3.] $\sigma_{y}=\sigma_{y}(T,\epsilon^{p},\dot{\epsilon}^{p})$
+\item[4.]
+	if $S_{e}-\sigma_{y}\le 0$ then $\Lambda=0$ (i.e. $D^{p}:D^{p}=0$).
+\item[5.]
+	if $S_{e}>\sigma_{y}$ then,
+\item[6.]
+	Solve the following equation for $\epsilon^{p}_{new}$:
+        \begin{eqnarray}
+		S_{e}-\sigma_{y}=3G(\epsilon^{p}_{new}-\epsilon^{p})+
+		B((\epsilon^{p}_{new})^{n}-
+		  (\epsilon^{p})^{n})
+        \end{eqnarray}
+\item[7.] 
+	 \begin{eqnarray}
+		 \dot{\epsilon}^{p}=\frac{
+			 \epsilon^{p}_{new}-\epsilon^{p}}{\Delta t}
+	 \end{eqnarray}
+\item[8.] 
+	 \begin{eqnarray}
+		 \Lambda=\sqrt{\frac{3}{2}}\dot{\epsilon}^{p}
+	 \end{eqnarray}
+	 \begin{eqnarray}
+		 D^{p}=\Lambda N
+	 \end{eqnarray}
+\item[9.] $k=k+1$
+\item[10.] if $k=1$ then go back to step 3.
+\end{description}
 
+The mathematical model at sharp interfaces is given as follows.  First,
+define a ``closest point'' function:
+\begin{eqnarray}
+	\vec{x}_{c}(\vec{x})=\mbox{argmin}_{\vec{y},m}
+	\left\{ ||\vec{y}-\vec{x}|| | \phi_{m}(\vec{y})=0 \right\}
+\end{eqnarray}
+Taking into account mass transfer, a source material's level set function
+(e.g. ice that is melting or liquid that is turning into vapor) satisfies
+\begin{eqnarray}
+	(\phi_{m_{s}})_{t}+\vec{u}_{m_{s}}(\vec{x}_{c}(\vec{x}))\cdot
+	\nabla\phi_{m_{s}}=
+	-\frac{|\dot{m}(\vec{x}_{c}(\vec{x}))|}{\rho_{m_{s}}}
+	|\nabla\phi_{m_{s}}|
+\end{eqnarray} 
+The destination material's level set function satisfies
+\begin{eqnarray}
+	(\phi_{m_{d}})_{t}+\vec{u}_{m_{s}}(\vec{x}_{c}(\vec{x}))\cdot
+	\nabla\phi_{m_{d}}=
+	\frac{|\dot{m}(\vec{x}_{c}(\vec{x}))|}{\rho_{m_{s}}}
+	|\nabla\phi_{m_{d}}|
+\end{eqnarray} 
+The above equations are equivalent to the following:
+\begin{eqnarray}
+	(\phi_{m_{s}})_{t}+\vec{u}_{m_{d}}(\vec{x}_{c}(\vec{x}))\cdot
+	\nabla\phi_{m_{s}}=
+	-\frac{|\dot{m}(\vec{x}_{c}(\vec{x}))|}{\rho_{m_{d}}}
+	|\nabla\phi_{m_{s}}|
+\end{eqnarray} 
+\begin{eqnarray}
+	(\phi_{m_{d}})_{t}+\vec{u}_{m_{d}}(\vec{x}_{c}(\vec{x}))\cdot
+	\nabla\phi_{m_{d}}=
+	\frac{|\dot{m}(\vec{x}_{c}(\vec{x}))|}{\rho_{m_{d}}}
+	|\nabla\phi_{m_{d}}|
+\end{eqnarray} 
+Now, we define the interface normal:
+\begin{eqnarray}
+	\vec{n}_{m}=\frac{\nabla\phi_{m}}{||\nabla\phi_{m}||}
+\end{eqnarray}
+The interface curvature is,
+\begin{eqnarray}
+	\kappa_{m}=\nabla\cdot\vec{n}_{m}
+\end{eqnarray}
+The rate of mass transfer is,
+\begin{eqnarray}
+	\dot{m}=\frac{
+		k_{m_{s}}\nabla T_{m_{s}}-
+		k_{m_{d}}\nabla T_{m_{d}}}{L}\cdot \vec{n}_{m_{d}}.
+	\label{heat_flux}
+\end{eqnarray}
+For evaporation, the following rate of mass transfer should match that in
+(\ref{heat_flux}):
+\begin{eqnarray}
+	\dot{m}=\frac{-\vec{n}_{m_{s}}\cdot\nabla Y_{m_{d}}\rho_{m_{d}}D}
+	{Y^{\Gamma}-1}
+\end{eqnarray}
+%FIX ME!
+Let the tensor $\sigma$ represent pressure, viscosity, viscoelastic, and
+elastic contributions to the momentum equations.  One has:
+\begin{eqnarray}
+	\sigma=-p\EyeTen+\tau.
+\end{eqnarray}
 
-		\dot{\sigma}=Bn
-	\begin{eqnarray}
-        S(t_{0})=S_{e}
-	\end{eqnarray}
-	\begin{eqnarray}
-        \xi=\int_{t_{0}}^{t_{1}}\Gamma(t)dt \hspace{10pt} \Gamma(0)=0
-	\end{eqnarray}
-	\begin{eqnarray}
-        
-
-	\begin{eqnarray}
-	\dot{\sigma}_{y}=\sqrt{2/3}h\Lambda=h\dot{\bar{\epsilon}}^{p}
-	\end{eqnarray}
-\item
-	Assume a local yield stress relation:
-	\begin{eqnarray}
-        \sigma_{y,loc}=\sigma_{y}+B(
+The stress jump conditions are
+\begin{eqnarray}
+	\vec{n}_{m_{s}}\cdot
+	(-\sigma_{m_{s}}+\sigma_{m_{d}})
+	\cdot\vec{n}_{m_{s}}=
+	-\gamma_{m_{s},m_{d}}\kappa_{m_{s}}-
+	\dot{m}^{2}(
+	\frac{1}{\rho_{m_{s}}}-
+	\frac{1}{\rho_{m_{d}}})
+\end{eqnarray}
+\begin{eqnarray}
+	(\vec{t}_{i,tangent})_{m_{s}}\cdot
+	(-\sigma_{m_{s}}+\sigma_{m_{d}})
+	\cdot\vec{n}_{m_{s}}=0 \hspace{10pt} i=1,2
+\end{eqnarray}
+The velocity jump conditions are
+\begin{eqnarray}
+	(
+	\vec{u}_{m_{s}}-
+	\vec{u}_{m_{d}})\cdot\vec{n}_{m_{s}}=
+	\dot{m}(
+	\frac{1}{\rho_{m_{d}}}-
+	\frac{1}{\rho_{m_{s}}})
+\end{eqnarray}
 
 
 
