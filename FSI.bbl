@@ -18,4 +18,25 @@
   impact, penetration, and void collapse.
 \newblock {\em Journal of Computational Physics 193}, 2 (2004), 469--510.
 
+\bibitem{vahab2016adaptive}
+{\sc Vahab, M., Pei, C., Hussaini, M.~Y., Sussman, M., and Lian, Y.}
+\newblock An adaptive coupled level set and moment-of-fluid method for
+  simulating droplet impact and solidification on solid surfaces with
+  application to aircraft icing.
+\newblock In {\em 54th AIAA Aerospace Sciences Meeting\/} (2016), p.~1340.
+
+\bibitem{VAHAB2021}
+{\sc Vahab, M., Sussman, M., and Shoele, K.}
+\newblock Fluid-structure interaction of thin flexible bodies in multi-material
+  multi-phase systems.
+\newblock {\em Journal of Computational Physics 429\/} (2021), 110008.
+
+\bibitem{ye2024improved}
+{\sc Ye, Z., Estebe, C., Liu, Y., Vahab, M., Huang, Z., Sussman, M.,
+  Moradikazerouni, A., Shoele, K., Lian, Y., Ohta, M., et~al.}
+\newblock An improved coupled level set and continuous moment-of-fluid method
+  for simulating multiphase flows with phase change.
+\newblock {\em Communications on Applied Mathematics and Computation 6}, 2
+  (2024), 1034--1069.
+
 \end{thebibliography}

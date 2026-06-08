@@ -376,16 +376,55 @@ The velocity jump conditions are
 	\frac{1}{\rho_{m_{s}}})
 \end{eqnarray}
 
-\section{budget}
+\section{phase change algorithm}
 
-The budget should be arount 495K for this phase I grant.
+See the following articles and below: \cite{VAHAB2021}, 
+\cite{vahab2016adaptive}, \cite{ye2024improved}.
 
 \begin{description}
-	\item[1.] Sussman; two months (~28K)
-	\item[2.] Shoele; ?
-	\item[3.] Arienti (100K)
-        \item[4.] graduate students
-	\item[5.] postdoc
+\item[1.] For each cell in a narrow band about the interface, use the
+  closest point map to find the corresponding closest point on the
+  interface.  Approximate $\dot{m}$ at the closest point.
+\item[2.] extend $\dot{m}$ further into bulk regions.
+\item[3.] 
+  If distributing $\dot{m}$ to the destination material side, then
+  the velocity on the interface corresponds to the source material velocity
+  and the interface speed is:
+  \begin{eqnarray}
+  \vec{u}_{source}+\frac{|\dot{m}|}{\rho_{s}}\vec{n}_{s}
+  \end{eqnarray}
+  If distributing $\dot{m}$ to the source material side, then
+  the velocity on the interface corresponds to the destination 
+  material velocity
+  and the interface speed is:
+  \begin{eqnarray}
+  \vec{u}_{dest}+\frac{|\dot{m}|}{\rho_{d}}\vec{n}_{s}
+  \end{eqnarray}
+\item[4.] Using step 3 as a guide, do unsplit CISL phase change advection.
+\item[5.] The difference in volume fraction from step 4 gives the $\dot{m}$
+   expansion source term to be applied during the pressure update step.
+\item[6.] The $\dot{m}$ terms are distributed to one side of the interface.
+   If distributed to the destination material side, then distribute where
+   $F_{dest}>1/2$.  This guarantees that all faces with at least one 
+   adjoining source material cell with have the source material velocity
+   defined at that face.  Please refer to the diagram.
+\end{description}
+  
+For compressible flow, with a predictor and a corrector step, 
+there is a problem.
+Suppose evaporation with $\dot{m}$ distributed to the vapor (destination).
+Please refer to the diagram.  Also, in words: 
+\begin{description}
+\item[1.] During the predictor step, there is no problem because the advection
+velocity at time $t^{n}$ is used and all $t^{n}$
+source (liquid) material faces
+have the source material velocity.
+\item[2.] During the corrector step, there is a problem because the advection 
+velocity at time $t^{n+1}$ is used which has $\dot{m}$ distributed
+to the vapor side of the $t^{n+1}$ interface. But cells on the vapor side at
+$t^{n+1}$ might have been liquid cells at $t^{n}$! Now, the discretization
+is inconsistent because the interface is not wholly advected by the source
+(liquid) velocity.
 \end{description}
 
 \section{Applications}
@@ -398,34 +437,17 @@ The budget should be arount 495K for this phase I grant.
 		Wenzel and Marco Arienti).
 \end{description}
 
-\section{Proposed algorithm}
+\section{Algorithm}
 
 \begin{description}
-	\item[0.] Reseed particles with dense particle regions in narrow
-		bands about interfaces (but not on interfaces!).  
-		Initialize the state of the particles
-		using the associated PINN from the previous time step.
-	\item[1.] Cell integrated semi Lagrangian advection and
-		particle advection. Particle advection uses PINN velocity.
-	\item[2.] Cell integrated semi Lagrangian advection 
-		due to phase 
+	\item[1.] Cell integrated semi Lagrangian advection
+	\item[2.] Cell integrated semi Lagrangian advection due to phase 
 		change.  
 	\item[3.] Viscosity, Viscoelastic, and elastic forces.
 	\item[4.] Temperature Diffusion
 	\item[5.] Mass Fraction Diffusion
 	\item[6.] Pressure Gradient
-	\item[7.] Identify all separate contiguous material regions (this is
-		done already, see Wang, Simakhina, Sussman, or Sussman Ohta)
-	\item[8.] For each separate region, train a NN using PINN, CFD, and
-		experimental data.
-		The CFD data on the interface of each material region has the
-		most weight.  The PINN is trained in a Lagrangian frame of 
-		reference.  $x,t^{n+1}$ mapped to itself in the NN. 
-		$x-u\Delta t,t^{n}$ mapped to $x,t^{n}$ in the NN.  The NN is
-		valid for $t^{n}<t<t^{n+1}$.  It could be that trained NN
-		can be recycled if the associated material regions 
-		are topologically similar.
-	\item[9.] Go back to step 0.
+	\item[7.] Go back to step 1.
 \end{description}
 
 %%\biboptions{sort&compress}
