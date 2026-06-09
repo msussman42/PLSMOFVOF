@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.1)  30 MAR 2026 13:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.16)  9 JUN 2026 17:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -490,10 +490,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 292--292
  []
 
 Package epstopdf Info: Source file: <checkerboardMOF.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 33025 bytes
 (epstopdf)             Output file: <checkerboardMOF-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 6834 bytes
 (epstopdf)             Command: <repstopdf --outfile=checkerboardMOF-eps-conver
 ted-to.pdf checkerboardMOF.eps>
@@ -506,10 +506,10 @@ Package pdftex.def Info: checkerboardMOF-eps-converted-to.pdf  used on input li
 ne 300.
 (pdftex.def)             Requested size: 137.9979pt x 122.71172pt.
 Package epstopdf Info: Source file: <CMOFcentroid.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 7422 bytes
 (epstopdf)             Output file: <CMOFcentroid-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 6086 bytes
 (epstopdf)             Command: <repstopdf --outfile=CMOFcentroid-eps-converted
 -to.pdf CMOFcentroid.eps>
@@ -529,10 +529,10 @@ t cap-tur-ing methods[[],
  []
 
 Package epstopdf Info: Source file: <zoomed_in.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 41233 bytes
 (epstopdf)             Output file: <zoomed_in-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 9196 bytes
 (epstopdf)             Command: <repstopdf --outfile=zoomed_in-eps-converted-to
 .pdf zoomed_in.eps>
@@ -545,10 +545,10 @@ Package pdftex.def Info: zoomed_in-eps-converted-to.pdf  used on input line 406
 .
 (pdftex.def)             Requested size: 155.24895pt x 138.05373pt.
 Package epstopdf Info: Source file: <zoomed_out.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 116690 bytes
 (epstopdf)             Output file: <zoomed_out-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 20091 bytes
 (epstopdf)             Command: <repstopdf --outfile=zoomed_out-eps-converted-t
 o.pdf zoomed_out.eps>
@@ -563,10 +563,10 @@ Package pdftex.def Info: zoomed_out-eps-converted-to.pdf  used on input line 40
 [6] [7 <./zoomed_in-eps-converted-to.pdf> <./zoomed_out-eps-converted-to.pdf>]
 [8]
 Package epstopdf Info: Source file: <tank_levelset.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 6291 bytes
 (epstopdf)             Output file: <tank_levelset-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 8600 bytes
 (epstopdf)             Command: <repstopdf --outfile=tank_levelset-eps-converte
 d-to.pdf tank_levelset.eps>
@@ -579,10 +579,10 @@ Package pdftex.def Info: tank_levelset-eps-converted-to.pdf  used on input line
  650.
 (pdftex.def)             Requested size: 241.49895pt x 201.78928pt.
 Package epstopdf Info: Source file: <ice_levelset.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 6163 bytes
 (epstopdf)             Output file: <ice_levelset-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 7593 bytes
 (epstopdf)             Command: <repstopdf --outfile=ice_levelset-eps-converted
 -to.pdf ice_levelset.eps>
@@ -595,10 +595,10 @@ Package pdftex.def Info: ice_levelset-eps-converted-to.pdf  used on input line
 681.
 (pdftex.def)             Requested size: 241.49895pt x 178.55525pt.
 Package epstopdf Info: Source file: <liquid_lens.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 2834 bytes
 (epstopdf)             Output file: <liquid_lens-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 5123 bytes
 (epstopdf)             Command: <repstopdf --outfile=liquid_lens-eps-converted-
 to.pdf liquid_lens.eps>
@@ -613,11 +613,11 @@ Package pdftex.def Info: liquid_lens-eps-converted-to.pdf  used on input line 7
  [9] [10 <./tank_levelset-eps-converted-to.pdf>] [11 <./ice_levelset-eps-conver
 ted-to.pdf>] [12 <./liquid_lens-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <triple_point_drop_impact.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 223681 bytes
 (epstopdf)             Output file: <triple_point_drop_impact-eps-converted-to.
 pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 15294 bytes
 (epstopdf)             Command: <repstopdf --outfile=triple_point_drop_impact-e
 ps-converted-to.pdf triple_point_drop_impact.eps>
@@ -642,10 +642,10 @@ Overfull \hbox (3.48935pt too wide) in alignment at lines 881--887
  []
 
 Package epstopdf Info: Source file: <stag_uniform.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 8980 bytes
 (epstopdf)             Output file: <stag_uniform-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 5322 bytes
 (epstopdf)             Command: <repstopdf --outfile=stag_uniform-eps-converted
 -to.pdf stag_uniform.eps>
@@ -659,10 +659,10 @@ Package pdftex.def Info: stag_uniform-eps-converted-to.pdf  used on input line
 (pdftex.def)             Requested size: 241.49895pt x 213.1117pt.
 [15] [16 <./stag_uniform-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <mof_reconstruction.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 196053 bytes
 (epstopdf)             Output file: <mof_reconstruction-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 12376 bytes
 (epstopdf)             Command: <repstopdf --outfile=mof_reconstruction-eps-con
 verted-to.pdf mof_reconstruction.eps>
@@ -675,10 +675,10 @@ Package pdftex.def Info: mof_reconstruction-eps-converted-to.pdf  used on input
  line 1003.
 (pdftex.def)             Requested size: 276.00105pt x 137.47615pt.
 Package epstopdf Info: Source file: <mof_tes.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 116767 bytes
 (epstopdf)             Output file: <mof_tes-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 4315 bytes
 (epstopdf)             Command: <repstopdf --outfile=mof_tes-eps-converted-to.p
 df mof_tes.eps>
@@ -705,10 +705,10 @@ Overfull \hbox (21.66628pt too wide) in paragraph at lines 1143--1147
 
 [20]
 Package epstopdf Info: Source file: <DT_figure.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 7981 bytes
 (epstopdf)             Output file: <DT_figure-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 7886 bytes
 (epstopdf)             Command: <repstopdf --outfile=DT_figure-eps-converted-to
 .pdf DT_figure.eps>
@@ -722,10 +722,10 @@ Package pdftex.def Info: DT_figure-eps-converted-to.pdf  used on input line 121
 (pdftex.def)             Requested size: 276.00105pt x 204.16194pt.
  [21 <./DT_figure-eps-converted-to.pdf>] [22]
 Package epstopdf Info: Source file: <redistancing.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 149109 bytes
 (epstopdf)             Output file: <redistancing-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 7933 bytes
 (epstopdf)             Command: <repstopdf --outfile=redistancing-eps-converted
 -to.pdf redistancing.eps>
@@ -738,10 +738,10 @@ Package pdftex.def Info: redistancing-eps-converted-to.pdf  used on input line
 1313.
 (pdftex.def)             Requested size: 276.00105pt x 95.97057pt.
 Package epstopdf Info: Source file: <redistancing_3D.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 120375 bytes
 (epstopdf)             Output file: <redistancing_3D-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 5394 bytes
 (epstopdf)             Command: <repstopdf --outfile=redistancing_3D-eps-conver
 ted-to.pdf redistancing_3D.eps>
@@ -754,10 +754,10 @@ Package pdftex.def Info: redistancing_3D-eps-converted-to.pdf  used on input li
 ne 1322.
 (pdftex.def)             Requested size: 276.00105pt x 167.92032pt.
 Package epstopdf Info: Source file: <redistancing_ils.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 190152 bytes
 (epstopdf)             Output file: <redistancing_ils-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 10840 bytes
 (epstopdf)             Command: <repstopdf --outfile=redistancing_ils-eps-conve
 rted-to.pdf redistancing_ils.eps>
@@ -775,10 +775,10 @@ d-to.pdf> <./redistancing_ils-eps-converted-to.pdf>]
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 Package epstopdf Info: Source file: <zalesak_compare.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 104782 bytes
 (epstopdf)             Output file: <zalesak_compare-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 15839 bytes
 (epstopdf)             Command: <repstopdf --outfile=zalesak_compare-eps-conver
 ted-to.pdf zalesak_compare.eps>
@@ -792,10 +792,10 @@ ne 1422.
 (pdftex.def)             Requested size: 276.00105pt x 245.43967pt.
 [25] [26 <./zalesak_compare-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <CMOF_formation.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 160608 bytes
 (epstopdf)             Output file: <CMOF_formation-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 25231 bytes
 (epstopdf)             Command: <repstopdf --outfile=CMOF_formation-eps-convert
 ed-to.pdf CMOF_formation.eps>
@@ -808,10 +808,10 @@ Package pdftex.def Info: CMOF_formation-eps-converted-to.pdf  used on input lin
 e 1460.
 (pdftex.def)             Requested size: 310.4979pt x 276.11557pt.
 Package epstopdf Info: Source file: <MOF_formation.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 193683 bytes
 (epstopdf)             Output file: <MOF_formation-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 33015 bytes
 (epstopdf)             Command: <repstopdf --outfile=MOF_formation-eps-converte
 d-to.pdf MOF_formation.eps>
@@ -826,10 +826,10 @@ Package pdftex.def Info: MOF_formation-eps-converted-to.pdf  used on input line
  [27] [28 <./CMOF_formation-eps-converted-to.pdf>] [29 <./MOF_formation-eps-con
 verted-to.pdf>]
 Package epstopdf Info: Source file: <CMOF_lens.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 135324 bytes
 (epstopdf)             Output file: <CMOF_lens-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 21490 bytes
 (epstopdf)             Command: <repstopdf --outfile=CMOF_lens-eps-converted-to
 .pdf CMOF_lens.eps>
@@ -842,10 +842,10 @@ Package pdftex.def Info: CMOF_lens-eps-converted-to.pdf  used on input line 155
 4.
 (pdftex.def)             Requested size: 276.00105pt x 245.43967pt.
 Package epstopdf Info: Source file: <MOFNOISE.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 155216 bytes
 (epstopdf)             Output file: <MOFNOISE-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 24396 bytes
 (epstopdf)             Command: <repstopdf --outfile=MOFNOISE-eps-converted-to.
 pdf MOFNOISE.eps>
@@ -861,10 +861,10 @@ Package pdftex.def Info: MOFNOISE-eps-converted-to.pdf  used on input line 1576
 pdf>] [33]
 [34]
 Package epstopdf Info: Source file: <dencell_mixture.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 7365 bytes
 (epstopdf)             Output file: <dencell_mixture-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 6190 bytes
 (epstopdf)             Command: <repstopdf --outfile=dencell_mixture-eps-conver
 ted-to.pdf dencell_mixture.eps>
@@ -877,10 +877,10 @@ Package pdftex.def Info: dencell_mixture-eps-converted-to.pdf  used on input li
 ne 1856.
 (pdftex.def)             Requested size: 241.49895pt x 239.42885pt.
 Package epstopdf Info: Source file: <denMAC_mixture.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 4567 bytes
 (epstopdf)             Output file: <denMAC_mixture-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 6037 bytes
 (epstopdf)             Command: <repstopdf --outfile=denMAC_mixture-eps-convert
 ed-to.pdf denMAC_mixture.eps>
@@ -893,10 +893,10 @@ Package pdftex.def Info: denMAC_mixture-eps-converted-to.pdf  used on input lin
 e 1881.
 (pdftex.def)             Requested size: 241.49895pt x 239.42885pt.
 Package epstopdf Info: Source file: <freeze1d.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 91804 bytes
 (epstopdf)             Output file: <freeze1d-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 13196 bytes
 (epstopdf)             Command: <repstopdf --outfile=freeze1d-eps-converted-to.
 pdf freeze1d.eps>
@@ -909,11 +909,11 @@ Package pdftex.def Info: freeze1d-eps-converted-to.pdf  used on input line 1949
 .
 (pdftex.def)             Requested size: 276.00105pt x 245.43967pt.
 Package epstopdf Info: Source file: <freezing_verification.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 113726 bytes
 (epstopdf)             Output file: <freezing_verification-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 31926 bytes
 (epstopdf)             Command: <repstopdf --outfile=freezing_verification-eps-
 converted-to.pdf freezing_verification.eps>
@@ -926,10 +926,10 @@ Package pdftex.def Info: freezing_verification-eps-converted-to.pdf  used on in
 put line 1961.
 (pdftex.def)             Requested size: 276.00105pt x 165.60106pt.
 Package epstopdf Info: Source file: <ICE_HEIGHT.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 165264 bytes
 (epstopdf)             Output file: <ICE_HEIGHT-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 47301 bytes
 (epstopdf)             Command: <repstopdf --outfile=ICE_HEIGHT-eps-converted-t
 o.pdf ICE_HEIGHT.eps>
@@ -942,10 +942,10 @@ Package pdftex.def Info: ICE_HEIGHT-eps-converted-to.pdf  used on input line 19
 73.
 (pdftex.def)             Requested size: 276.00105pt x 165.60106pt.
 Package epstopdf Info: Source file: <freezing0000May2023.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 2156309 bytes
 (epstopdf)             Output file: <freezing0000May2023-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 179169 bytes
 (epstopdf)             Command: <repstopdf --outfile=freezing0000May2023-eps-co
 nverted-to.pdf freezing0000May2023.eps>
@@ -958,10 +958,10 @@ Package pdftex.def Info: freezing0000May2023-eps-converted-to.pdf  used on inpu
 t line 2003.
 (pdftex.def)             Requested size: 137.9979pt x 122.71172pt.
 Package epstopdf Info: Source file: <freezing3200May2023.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 2207896 bytes
 (epstopdf)             Output file: <freezing3200May2023-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 248579 bytes
 (epstopdf)             Command: <repstopdf --outfile=freezing3200May2023-eps-co
 nverted-to.pdf freezing3200May2023.eps>
@@ -974,10 +974,10 @@ Package pdftex.def Info: freezing3200May2023-eps-converted-to.pdf  used on inpu
 t line 2004.
 (pdftex.def)             Requested size: 137.9979pt x 122.71172pt.
 Package epstopdf Info: Source file: <freezing5200May2023.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 2207496 bytes
 (epstopdf)             Output file: <freezing5200May2023-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 251212 bytes
 (epstopdf)             Command: <repstopdf --outfile=freezing5200May2023-eps-co
 nverted-to.pdf freezing5200May2023.eps>
@@ -990,10 +990,10 @@ Package pdftex.def Info: freezing5200May2023-eps-converted-to.pdf  used on inpu
 t line 2005.
 (pdftex.def)             Requested size: 137.9979pt x 122.71172pt.
 Package epstopdf Info: Source file: <freezing6800May2023.eps>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 2186675 bytes
 (epstopdf)             Output file: <freezing6800May2023-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:14:00
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 252931 bytes
 (epstopdf)             Command: <repstopdf --outfile=freezing6800May2023-eps-co
 nverted-to.pdf freezing6800May2023.eps>
@@ -1015,10 +1015,10 @@ to.pdf>]
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 Package epstopdf Info: Source file: <3D_WEJ4p875_0.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 321726 bytes
 (epstopdf)             Output file: <3D_WEJ4p875_0-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 33235 bytes
 (epstopdf)             Command: <repstopdf --outfile=3D_WEJ4p875_0-eps-converte
 d-to.pdf 3D_WEJ4p875_0.eps>
@@ -1031,10 +1031,10 @@ Package pdftex.def Info: 3D_WEJ4p875_0-eps-converted-to.pdf  used on input line
  2103.
 (pdftex.def)             Requested size: 103.50105pt x 92.11732pt.
 Package epstopdf Info: Source file: <3D_WEJ4p875_400.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 320231 bytes
 (epstopdf)             Output file: <3D_WEJ4p875_400-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 33712 bytes
 (epstopdf)             Command: <repstopdf --outfile=3D_WEJ4p875_400-eps-conver
 ted-to.pdf 3D_WEJ4p875_400.eps>
@@ -1047,10 +1047,10 @@ Package pdftex.def Info: 3D_WEJ4p875_400-eps-converted-to.pdf  used on input li
 ne 2104.
 (pdftex.def)             Requested size: 103.50105pt x 92.11732pt.
 Package epstopdf Info: Source file: <3D_WEJ4p875_800.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 319124 bytes
 (epstopdf)             Output file: <3D_WEJ4p875_800-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 33385 bytes
 (epstopdf)             Command: <repstopdf --outfile=3D_WEJ4p875_800-eps-conver
 ted-to.pdf 3D_WEJ4p875_800.eps>
@@ -1063,10 +1063,10 @@ Package pdftex.def Info: 3D_WEJ4p875_800-eps-converted-to.pdf  used on input li
 ne 2105.
 (pdftex.def)             Requested size: 103.50105pt x 92.11732pt.
 Package epstopdf Info: Source file: <3D_WEJ5p25_0.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 311912 bytes
 (epstopdf)             Output file: <3D_WEJ5p25_0-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 32518 bytes
 (epstopdf)             Command: <repstopdf --outfile=3D_WEJ5p25_0-eps-converted
 -to.pdf 3D_WEJ5p25_0.eps>
@@ -1079,10 +1079,10 @@ Package pdftex.def Info: 3D_WEJ5p25_0-eps-converted-to.pdf  used on input line
 2118.
 (pdftex.def)             Requested size: 103.50105pt x 92.11732pt.
 Package epstopdf Info: Source file: <3D_WEJ5p25_400.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 313360 bytes
 (epstopdf)             Output file: <3D_WEJ5p25_400-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 33199 bytes
 (epstopdf)             Command: <repstopdf --outfile=3D_WEJ5p25_400-eps-convert
 ed-to.pdf 3D_WEJ5p25_400.eps>
@@ -1095,10 +1095,10 @@ Package pdftex.def Info: 3D_WEJ5p25_400-eps-converted-to.pdf  used on input lin
 e 2119.
 (pdftex.def)             Requested size: 103.50105pt x 92.11732pt.
 Package epstopdf Info: Source file: <3D_WEJ5p25_800.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 312793 bytes
 (epstopdf)             Output file: <3D_WEJ5p25_800-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 32765 bytes
 (epstopdf)             Command: <repstopdf --outfile=3D_WEJ5p25_800-eps-convert
 ed-to.pdf 3D_WEJ5p25_800.eps>
@@ -1111,15 +1111,20 @@ Package pdftex.def Info: 3D_WEJ5p25_800-eps-converted-to.pdf  used on input lin
 e 2120.
 (pdftex.def)             Requested size: 103.50105pt x 92.11732pt.
 Package epstopdf Info: Source file: <MLBLUE_VS_GNRED.eps>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:48
 (epstopdf)                    size: 369635 bytes
 (epstopdf)             Output file: <MLBLUE_VS_GNRED-eps-converted-to.pdf>
-(epstopdf)                    date: 2024-03-18 11:13:59
+(epstopdf)                    date: 2025-07-03 17:21:47
 (epstopdf)                    size: 71059 bytes
 (epstopdf)             Command: <repstopdf --outfile=MLBLUE_VS_GNRED-eps-conver
 ted-to.pdf MLBLUE_VS_GNRED.eps>
 (epstopdf)             \includegraphics on input line 2134.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=MLBLUE_VS_GNRED-eps-converted-to.pdf MLBLUE_VS_GN
+RED.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <MLBLUE_VS_GNRED-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-06-09 17:59:02
+(epstopdf)                    size: 70861 bytes.
 <MLBLUE_VS_GNRED-eps-converted-to.pdf, id=984, 598.235pt x 531.9875pt>
 File: MLBLUE_VS_GNRED-eps-converted-to.pdf Graphic file (type pdf)
 <use MLBLUE_VS_GNRED-eps-converted-to.pdf>
@@ -1144,7 +1149,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  11358 strings out of 474116
- 177920 string characters out of 5743683
+ 177920 string characters out of 5743681
  1959187 words of memory out of 5000000
  33351 multiletter control sequences out of 15000+600000
  570647 words of font info for 83 fonts, out of 8000000 for 9000
@@ -1172,9 +1177,9 @@ xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/202
 4/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/
 texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/te
 xmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (49 pages, 1823529 bytes).
+Output written on main.pdf (49 pages, 1823977 bytes).
 PDF statistics:
- 1203 PDF objects out of 1440 (max. 8388607)
+ 1204 PDF objects out of 1440 (max. 8388607)
  955 compressed objects within 10 object streams
  212 named destinations out of 1000 (max. 500000)
  309 words of extra memory for PDF output out of 10000 (max. 10000000)

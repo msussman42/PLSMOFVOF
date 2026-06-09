@@ -12,6 +12,8 @@
 \modulolinenumbers[5]
 
 \usepackage[fleqn]{amsmath} 
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{tabularx} 
@@ -401,19 +403,30 @@ See the following articles and below: \cite{VAHAB2021},
   \vec{u}_{dest}+\frac{|\dot{m}|}{\rho_{d}}\vec{n}_{s}
   \end{eqnarray}
 \item[4.] Using step 3 as a guide, do unsplit CISL phase change advection.
-\item[5.] The difference in volume fraction from step 4 gives the $\dot{m}$
+  e.g. if distributing $\dot{m}$ to the destination material side, the 
+  phase change contribution to the interface velocity is
+  \begin{eqnarray}
+  \frac{|\dot{m}|}{\rho_{s}}\vec{n}_{s}
+  \end{eqnarray}
+  
+\item[5.] The difference in volume fraction from step 4 gives the 
+   $\dot{m}^{conservative}$
    expansion source term to be applied during the pressure update step.
-\item[6.] The $\dot{m}$ terms are distributed to one side of the interface.
+\item[6.] The 
+   $\dot{m}^{conservative}$ 
+   terms are distributed to one side of the interface.
    If distributed to the destination material side, then distribute where
-   $F_{dest}>1/2$.  This guarantees that all faces with at least one 
-   adjoining source material cell with have the source material velocity
-   defined at that face.  Please refer to the diagram.
+   $F_{dest}>1/2$.  This guarantees, for linear interfaces,
+   that all faces with at least one 
+   adjoining source material majority cell will have 
+   the source material velocity
+   defined at that face.  Please refer to Figure \ref{mdotproblem}.
 \end{description}
   
 For compressible flow, with a predictor and a corrector step, 
 there is a problem.
 Suppose evaporation with $\dot{m}$ distributed to the vapor (destination).
-Please refer to the diagram.  Also, in words: 
+Please refer to Figure \ref{mdotproblem}.  Also, in words: 
 \begin{description}
 \item[1.] During the predictor step, there is no problem because the advection
 velocity at time $t^{n}$ is used and all $t^{n}$
@@ -426,6 +439,42 @@ $t^{n+1}$ might have been liquid cells at $t^{n}$! Now, the discretization
 is inconsistent because the interface is not wholly advected by the source
 (liquid) velocity.
 \end{description}
+
+\begin{figure}
+\begin{tikzpicture}[x=2cm,y=2cm]
+\node[draw] at (0,5) {Liquid (source)};
+\node[draw] at (2,-1.0) {Gas (destination)};
+\filldraw[draw=black,fill=blue] (0,0) -- (4,0) -- (4,5.2) -- (0,1.2) -- cycle;
+\filldraw[draw=black,fill=red] (0,0) -- (4,0) -- (4,4.7) -- (0,0.7) -- cycle;
+\draw[thick,black,->] (-0.1,1.2) -- (-1.0,2.0) node[left] {$\Gamma^{n+1}$};
+\draw[thick,black,dashed] (0,1.2) -- (4.0,5.2);
+\draw[thick,black,->] (-0.1,0.7) -- (-1.0,0.7) node[left] {$\Gamma^{n}$};
+\draw[thick,black] (0,0.7) -- (4,4.7);
+\draw[step=1.0,black,thick] (0,0) grid (4,4);
+\foreach \x in {0,...,3}
+ \foreach \y in {0,1,2,3}
+ {
+  \filldraw[draw=black,fill=pink,thick] (\x+0.5,\y+0.5) circle (0.1);
+  \pgfmathsetmacro{\xx}{(\x+\y+0.3)/2.0};
+  \pgfmathsetmacro{\yy}{(\x+\y+1.7)/2.0};
+  \pgfmathsetmacro{\ytest}{\x+0.7-\y};
+  \draw[thick,black,-{>[scale=2.0,black]}] (\x+0.5,\y+0.5) -- (\xx,\yy);
+ }
+\foreach \y in {0,1}
+ \foreach \x in {0,...,3}
+ {
+  \node at (\x+0.5,\y+0.2) {$\dot{m}$};
+ }
+\foreach \y in {2,3}
+ \foreach \x in {2,3}
+ {
+  \node at (\x+0.5,\y+0.2) {$\dot{m}$};
+ }
+\node at (1.5,2.2) {$\dot{m}$};
+\end{tikzpicture}
+\caption{Illustration of $\dot{m}$ redistribution and the problems if 
+  predictor corrector method \label{mdotproblem} }
+\end{figure}
 
 \section{Applications}
 
