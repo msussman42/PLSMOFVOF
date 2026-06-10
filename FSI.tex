@@ -14,6 +14,8 @@
 \usepackage[fleqn]{amsmath} 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
+\usetikzlibrary{math}
+\usepackage{ifthen}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{tabularx} 
@@ -109,6 +111,9 @@
   Dept. of math, FL State Univ. 
   \and
   Moradikazerouni, Alireza \\
+  Dept. of Mech. Engr., FL State Univ.
+  \and
+  Kumar Pal, Ashwani \\
   Dept. of Mech. Engr., FL State Univ.
   \and
   Shoele, Kourosh  \\
@@ -386,24 +391,27 @@ See the following articles and below: \cite{VAHAB2021},
 \begin{description}
 \item[1.] For each cell in a narrow band about the interface, use the
   closest point map to find the corresponding closest point on the
-  interface.  Approximate $\dot{m}$ at the closest point.
-\item[2.] extend $\dot{m}$ further into bulk regions.
+  interface.  Approximate the phase change speed, $|\dot{m}|/\rho$ 
+  at the closest point.
+\item[2.] extend the phase change speed $|\dot{m}|/\rho$ 
+  further into bulk regions.
 \item[3.] 
-  If distributing $\dot{m}$ to the destination material side, then
+  If distributing the mass source term due to expansion or compression,
+  $\dot{m}$, to the destination material side, then
   the velocity on the interface corresponds to the source material velocity
-  and the interface speed is:
+  and the overall interface velocity is:
   \begin{eqnarray}
   \vec{u}_{source}+\frac{|\dot{m}|}{\rho_{s}}\vec{n}_{s}
   \end{eqnarray}
   If distributing $\dot{m}$ to the source material side, then
   the velocity on the interface corresponds to the destination 
   material velocity
-  and the interface speed is:
+  and the interface velocity is:
   \begin{eqnarray}
   \vec{u}_{dest}+\frac{|\dot{m}|}{\rho_{d}}\vec{n}_{s}
   \end{eqnarray}
 \item[4.] Using step 3 as a guide, do unsplit CISL phase change advection.
-  e.g. if distributing $\dot{m}$ to the destination material side, the 
+  If distributing $\dot{m}$ to the destination material side, the 
   phase change contribution to the interface velocity is
   \begin{eqnarray}
   \frac{|\dot{m}|}{\rho_{s}}\vec{n}_{s}
@@ -425,29 +433,33 @@ See the following articles and below: \cite{VAHAB2021},
   
 For compressible flow, with a predictor and a corrector step, 
 there is a problem.
-Suppose evaporation with $\dot{m}$ distributed to the vapor (destination).
-Please refer to Figure \ref{mdotproblem}.  Also, in words: 
+For the evaporating droplet problem, the $\dot{m}$ terms are 
+distributed to the vapor (destination).
+Please refer to Figure \ref{mdotproblem}.  If the $\dot{m}$ terms
+are not distributed deep enough into the bulk of the destination material,
+then:
 \begin{description}
 \item[1.] During the predictor step, there is no problem because the advection
-velocity at time $t^{n}$ is used and all $t^{n}$
-source (liquid) material faces
-have the source material velocity.
+velocity at time $t^{n}$ is used in order to advect the interface
+that is initially defined at $t=t^{n}$ ($\Gamma^{n}$).
 \item[2.] During the corrector step, there is a problem because the advection 
-velocity at time $t^{n+1}$ is used which has $\dot{m}$ distributed
-to the vapor side of the $t^{n+1}$ interface. But cells on the vapor side at
-$t^{n+1}$ might have been liquid cells at $t^{n}$! Now, the discretization
-is inconsistent because the interface is not wholly advected by the source
-(liquid) velocity.
+velocity at time $t^{n+1}$ is used in order to advect the interface
+that is initially defined at $t=t^{n}$ ($\Gamma^{n}$).  The problem
+is that some of the
+$\dot{m}$ terms distributed to the vapor side of the $\Gamma^{n+1}$
+interface will be on the liquid side of the $t=t^{n}$ 
+($\Gamma^{n}$) interface.  See the blue region of Figure
+\ref{mdotproblem}.
 \end{description}
 
 \begin{figure}
 \begin{tikzpicture}[x=2cm,y=2cm]
 \node[draw] at (0,5) {Liquid (source)};
-\node[draw] at (2,-1.0) {Gas (destination)};
+\node[draw] at (2,-1.0) {Vapor (destination)};
 \filldraw[draw=black,fill=blue] (0,0) -- (4,0) -- (4,5.2) -- (0,1.2) -- cycle;
 \filldraw[draw=black,fill=red] (0,0) -- (4,0) -- (4,4.7) -- (0,0.7) -- cycle;
 \draw[thick,black,->] (-0.1,1.2) -- (-1.0,2.0) node[left] {$\Gamma^{n+1}$};
-\draw[thick,black,dashed] (0,1.2) -- (4.0,5.2);
+\draw[line width=2mm,black,dash pattern=on 5mm off 2mm] (0,1.2) -- (4.0,5.2);
 \draw[thick,black,->] (-0.1,0.7) -- (-1.0,0.7) node[left] {$\Gamma^{n}$};
 \draw[thick,black] (0,0.7) -- (4,4.7);
 \draw[step=1.0,black,thick] (0,0) grid (4,4);
@@ -457,23 +469,36 @@ is inconsistent because the interface is not wholly advected by the source
   \filldraw[draw=black,fill=pink,thick] (\x+0.5,\y+0.5) circle (0.1);
   \pgfmathsetmacro{\xx}{(\x+\y+0.3)/2.0};
   \pgfmathsetmacro{\yy}{(\x+\y+1.7)/2.0};
-  \pgfmathsetmacro{\ytest}{\x+0.7-\y};
+  \pgfmathsetmacro{\ytest}{\x+1.2-\y};
+  \tikzmath{
+    if \ytest>0 then {
+     \yinteger=1;
+    } else {
+     \yinteger=0;
+    };
+  }
   \draw[thick,black,-{>[scale=2.0,black]}] (\x+0.5,\y+0.5) -- (\xx,\yy);
+  \node at (\x+0.5,\y+0.7) {$\dot{m}/\rho$};
+  \ifthenelse{\yinteger>0}{
+    \node at (\x+0.5,\y+0.2) {$\dot{m}^{redist}$};
+  }{
+   %%do nothing
+  }
  }
-\foreach \y in {0,1}
- \foreach \x in {0,...,3}
- {
-  \node at (\x+0.5,\y+0.2) {$\dot{m}$};
- }
-\foreach \y in {2,3}
- \foreach \x in {2,3}
- {
-  \node at (\x+0.5,\y+0.2) {$\dot{m}$};
- }
-\node at (1.5,2.2) {$\dot{m}$};
 \end{tikzpicture}
-\caption{Illustration of $\dot{m}$ redistribution and the problems if 
-  predictor corrector method \label{mdotproblem} }
+\caption{The phase change algorithm: (1) the phase change speed, 
+$\dot{m}/\rho$, is approximated at all narrow band cells by evaluating
+$\dot{m}/\rho$ at the corresponding closest point on the interface
+($\Gamma^{n}$). (2) The change in volume fraction due to unsplit CISL
+advection determines the mass source, $\dot{m}$, for the projection
+step.  (3) the mass source, $\dot{m}$ is distributed to the vapor
+side of the $\Gamma^{n+1}$ interface.  At the next time step, the
+interface is advected using $\vec{u}^{source}$.  For compressible flow,
+there is a problem if $\dot{m}$ is not distributed deep enough into
+the vapor material.  This is because the corrector advection of 
+$\Gamma^{n}$ will now have some redistributed $\dot{m}$ terms on the
+liquid side of the $\Gamma_{n}$ interface (the blue region).
+   \label{mdotproblem} }
 \end{figure}
 
 \section{Applications}

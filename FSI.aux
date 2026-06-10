@@ -1,5 +1,19 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{acm}
@@ -16,9 +30,8 @@
 \citation{ye2024improved}
 \newlabel{heat_flux}{{36}{5}{Mathematical Modeling}{equation.1.36}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}phase change algorithm}{5}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Applications}{6}{section.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Illustration of $\dot  {m}$ redistribution and the problems if predictor corrector method  }}{7}{figure.1}\protected@file@percent }
-\newlabel{mdotproblem}{{1}{7}{Illustration of $\dot {m}$ redistribution and the problems if predictor corrector method}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The phase change algorithm: (1) the phase change speed, $\dot  {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot  {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the mass source, $\dot  {m}$, for the projection step. (3) the mass source, $\dot  {m}$ is distributed to the vapor side of the $\Gamma ^{n+1}$ interface. At the next time step, the interface is advected using $\vec  {u}^{source}$. For compressible flow, there is a problem if $\dot  {m}$ is not distributed deep enough into the vapor material. This is because the corrector advection of $\Gamma ^{n}$ will now have some redistributed $\dot  {m}$ terms on the liquid side of the $\Gamma _{n}$ interface (the blue region).  }}{7}{figure.1}\protected@file@percent }
+\newlabel{mdotproblem}{{1}{7}{The phase change algorithm: (1) the phase change speed, $\dot {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the mass source, $\dot {m}$, for the projection step. (3) the mass source, $\dot {m}$ is distributed to the vapor side of the $\Gamma ^{n+1}$ interface. At the next time step, the interface is advected using $\vec {u}^{source}$. For compressible flow, there is a problem if $\dot {m}$ is not distributed deep enough into the vapor material. This is because the corrector advection of $\Gamma ^{n}$ will now have some redistributed $\dot {m}$ terms on the liquid side of the $\Gamma _{n}$ interface (the blue region)}{figure.1}{}}
 \bibdata{cmof_paper}
 \bibcite{osher1988fronts}{1}
 \bibcite{sussman1994level}{2}
@@ -26,5 +39,5 @@
 \bibcite{vahab2016adaptive}{4}
 \bibcite{VAHAB2021}{5}
 \bibcite{ye2024improved}{6}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Applications}{8}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Algorithm}{8}{section.4}\protected@file@percent }
-\gdef \@abspage@last{8}
