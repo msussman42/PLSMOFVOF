@@ -386,6 +386,99 @@ The velocity jump conditions are
 	\frac{1}{\rho_{m_{s}}})
 \end{eqnarray}
 
+\section{temporal discretization}
+
+\begin{description}
+\item[0.] Initially the fluid volume fractions tessellate the whole
+  computational domain and the elastic materials tessellate the 
+  ``elastic material domain.'' See figure \ref{tessellating}. For stability
+  purposes, the velocity is discretized at face centroids and
+  the configuration tensor off-diagonals are discretized at
+  edge centers \cite{sugiyama2011full,GUITTET2015215}. 
+\item[1.] for $k=0,1$
+\item[2.] cell integrated semi-Lagrangian advection using 
+  $\vec{u}^{(k)}$.  See section \ref{CISL}.
+\item[3.] extrapolate $\vec{u}^{(k)}$ from the elastic regions into the
+  fluid regions: $\vec{u}^{extrap}$
+\item[4.] advect the elastic material volume fractions and centroids using
+  $\vec{u}^{extrap}$.
+\item[5.] If phase change is modeled, see section \ref{phasechange}
+\item[6.] Jaumann derivative equation or upper convective derivative.
+  See section \ref{upper_convective_derivative}.
+%%the configuration tensor variables (off-diagonal) live at edge centers.
+\item[7.] for $r=0,1$
+\item[8.] Viscosity; elastic materials clamped if $r=1$.  See section
+  \ref{viscosity}.
+  \begin{eqnarray}
+  \frac{\vec{u}^{\ast,k,r}-\vec{u}^{CISL,k}}{\Delta t}=
+   F_{viscosity}(\vec{u}^{\ast,k,r})
+  \end{eqnarray}
+\item[9.] Thermal diffusion and species diffusion.  See section \ref{heat}.
+  \begin{eqnarray}
+  \frac{\vec{T}^{\ast,k,r}-\vec{T}^{CISL,k}}{\Delta t}=
+   F_{heat}(T^{\ast,k,r})
+  \end{eqnarray}
+\item[10.] Elastic forces ($r=0$); see section \ref{elastic}.
+  \begin{eqnarray}
+  \frac{\vec{u}^{\ast\ast,k}-\vec{u}^{\ast,k,r}}{\Delta t}=
+   F_{elastic}
+  \end{eqnarray}
+\item[11.] Pressure gradient; elastic materials clamped if $r=1$.  See 
+  section \ref{pressure_gradient}:
+  \begin{eqnarray}
+  \vec{u}^{\ast\ast,k}=\vec{u}^{(k+1)}+\Delta t\frac{\nabla p^{(k+1)}}{\rho}
+  \end{eqnarray}
+  \begin{eqnarray}
+  \frac{p^{(k+1)}-p(\rho,e)}{\Delta t}=-\Delta t \rho c^{2}
+    \nabla\cdot\vec{u}^{(k+1)}
+  \end{eqnarray}
+\item[12.] end for $r=0,1$
+\item[13.] end for $k=0,1$
+\end{description}
+Remarks:
+\begin{itemize}
+\item steps 3 and 4 above are necessary to allow slip between fluid
+ and elastic materials without unphysically modifying the elastic boundary.
+ See sections \ref{drop_on_slope} and \ref{high_drag} which demonstrate the
+ effectiveness of this algorithm.
+\item steps 3 and 4 will induce a violation of mass, momentum, and energy
+  conservation at the elastic fluid boundaries, but we have found the
+  error to be minimal and converge to zero with grid refinement (see sections
+  \ref{drop_on_slope} and \ref{drop_impact_flexible_plate}).
+\item similar ideas, as steps 3 and 4, were implemented in 
+  \cite{sussman2007sharp}.
+\item the outer for loop, $k=0,1$, was implemented in 
+ \cite{jemison2014compressible}. 
+\item the inner loop, $r=0,1$, was recommended in the article by
+ \cite{shin2020interaction}.
+\item The pressure and velocity is tightly coupled between all materials; 
+  regardless of elastic, fluid, or rigid.  See step 11 above in our
+  algorithm also see \cite{sugiyama2011full,shin2020interaction}.  
+  Thereby we our method
+  avoids the stability problems discussed in 
+  \cite{banks2018stable} and \cite{banks2014analysis}.
+%%V=U+grad phi
+%%U=V-grad phi
+%%div grad phi=div V
+%%phi=(div grad)^{-1} div V
+%%U=(I-(div grad)^{-1}div)V
+\item In contrast to \cite{jemison2014compressible}, which is a 
+  collocated method, our method is a 
+  staggered grid (conservative) method.
+  In a collocated method, for incompressible flow,  it is possible 
+  for the discretized projection step, even for constant density case, 
+  \begin{eqnarray}
+  U=(I-grad(div grad)^{-1}div)V 
+  \end{eqnarray}
+  to be non-unique\cite{GUITTET2015215}.
+  Also in contrast to \cite{jemison2014compressible}, our method preserves
+  overall conservation (of non elastic fluids) of energy in contrast 
+  to preserving conservation of energy overall and for each individual
+  material.  This simplification was necessary in order to avoid 
+  temperature overheating at material boundaries with volume fractions
+  close to zero or one.
+\end{itemize}
+
 \section{phase change algorithm}
 
 See the following articles and below: \cite{VAHAB2021}, 
