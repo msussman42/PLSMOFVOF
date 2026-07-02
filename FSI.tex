@@ -191,18 +191,26 @@ If the material is a viscoelastic FENE-CR material, then one has the
 additional equation for the configuration tensor $A$,
 %StewartLaySussmanOhta
 \begin{eqnarray}
-	A_{t}+\vec{u}\cdot\nabla A=A\cdot(\nabla\vec{u})^{T}+
-	\nabla\vec{u}\cdot A-\frac{f(R)}{\lambda}(A-\EyeTen),
+	(\rho A)_{t}+\nabla\cdot(\rho\vec{u} A)=
+       \rho( A\cdot(\nabla\vec{u})^{T}+
+	\nabla\vec{u}\cdot A-\frac{f(R)}{\lambda}(A-\EyeTen)) ,
 \end{eqnarray}
 and the momentum constitutive law term is modified,
+%units of div tau should be (kg/m^3)(m/s^2)
+%units of tau should (kg/m^3)(m^2/s^2)=(kg/(s^2 m))=1 Pa
 \begin{eqnarray}
 	\tau=\tau+\frac{\tilde{\eta}_{P}}{\lambda}f(R)A.
+\label{nonnewtonian}
 \end{eqnarray}
 If the material is an elastic material undergoing plastic deformation, then
 one has the following additional equation for the deviatoric stress
 tensor,
+% units of D are (1/s) units of s are the same as G.  Units of G are
+% Pascal=N/m^2=kg (m/s^2)/m^2=kg/(s^2 m)
+% G/\rho=kg/(s^2 m) (m^3/kg)=m^2/s^2
 \begin{eqnarray}
-	s_{t}+\vec{u}\cdot\nabla s+s\Omega-\Omega s=2G(\bar{D}-D^{p}),
+	(\rho s)_{t}+\nabla\cdot(\rho\vec{u}s)= 
+\rho(\Omega s-s\Omega+2G(\bar{D}-D^{p})), \label{plastic}
 \end{eqnarray}
 and the momentum constitutive law term is modified,
 \begin{eqnarray}
@@ -389,12 +397,20 @@ The velocity jump conditions are
 \section{temporal discretization}
 
 \begin{description}
-\item[0.] Initially the fluid volume fractions tessellate the whole
-  computational domain and the elastic materials tessellate the 
+\item[0.] Initially the fluid (Newtonian and/or Non-Newtonian)
+  volume fractions tessellate the whole
+  computational domain and the elastic materials (in which we
+  distinguish from
+  Non-Newtonian fluids in which the characteristic wave speed
+  $\sqrt{\tilde{\eta}_{P}/\rho}$ (see (\ref{nonnewtonian})) or
+  $\sqrt{G/\rho}$ (see (\ref{plastic})) has the
+  same order of magnitude, or larger, as the sound speed of the material)
+  tessellate the 
   ``elastic material domain.'' See figure \ref{tessellating}. For stability
   purposes, the velocity is discretized at face centroids and
   the configuration tensor off-diagonals are discretized at
-  edge centers \cite{sugiyama2011full,GUITTET2015215}. 
+  edge centers\cite{sugiyama2011full,GUITTET2015215} 
+  (see Figure \ref{vars_on_grid}). 
 \item[1.] for $k=0,1$
 \item[2.] cell integrated semi-Lagrangian advection using 
   $\vec{u}^{(k)}$.  See section \ref{CISL}.
@@ -423,7 +439,12 @@ The velocity jump conditions are
   \frac{\vec{u}^{\ast\ast,k}-\vec{u}^{\ast,k,r}}{\Delta t}=
    F_{elastic}
   \end{eqnarray}
-\item[11.] Pressure gradient; elastic materials clamped if $r=1$.  See 
+\item[11.] surface tension forces ($r=1$); see section \ref{surface_tension}.
+  \begin{eqnarray}
+  \frac{\vec{u}^{\ast\ast,k}-\vec{u}^{\ast,k,r}}{\Delta t}=
+   F_{elastic}
+  \end{eqnarray}
+\item[12.] Pressure gradient; elastic materials clamped if $r=1$.  See 
   section \ref{pressure_gradient}:
   \begin{eqnarray}
   \vec{u}^{\ast\ast,k}=\vec{u}^{(k+1)}+\Delta t\frac{\nabla p^{(k+1)}}{\rho}
@@ -451,6 +472,11 @@ Remarks:
  \cite{jemison2014compressible}. 
 \item the inner loop, $r=0,1$, was recommended in the article by
  \cite{shin2020interaction}.
+% one must distinguish between elastic materials and
+% non-newtonian fluids.
+\item The effect of surface tension forces on the motion of elastic
+  materials is not considered; so surface tension is not included when
+  $r=0$.
 \item The pressure and velocity is tightly coupled between all materials; 
   regardless of elastic, fluid, or rigid.  See step 11 above in our
   algorithm also see \cite{sugiyama2011full,shin2020interaction}.  
