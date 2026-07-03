@@ -1,0 +1,49 @@
+\documentclass[]{article}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{math}
+
+\begin{document}
+
+\begin{eqnarray}
+u_{t}+\sigma u_{x}=0 \hspace{10pt} 0\le x \le 1 \hspace{10pt} \sigma>0
+\end{eqnarray}
+\begin{eqnarray}
+u(0,x)=\sin(2\pi x)
+\end{eqnarray}
+periodic boundary conditions:
+\begin{eqnarray}
+u(t,x)=u(t,x+1)
+\end{eqnarray}
+Method of lines:
+\begin{eqnarray}
+i=0,\ldots,I-1 \\
+x_{i}=i\Delta x \\
+\Delta x=\frac{1.0}{I}
+\end{eqnarray}
+Discretize in space, but not in time.
+\begin{eqnarray}
+u_{i}(t)\approx u(t,x_{i})
+\end{eqnarray}
+\begin{eqnarray}
+u_{i}(0)=\sin(2\pi x_{i}) \hspace{10pt} 0\le i\le I-1
+\end{eqnarray}
+\begin{eqnarray}
+\frac{du_{i}}{dt}=-\sigma\frac{u_{i}(t)-u_{i-1}(t)}{\Delta x} 
+\hspace{10pt} 0<i<I
+\end{eqnarray}
+\begin{eqnarray}
+\frac{du_{0}}{dt}=-\sigma\frac{u_{0}(t)-u_{I-1}(t)}{\Delta x} 
+\end{eqnarray}
+We solve the above ODE system for $0\le t\le T$. \\
+Quantifying the error:
+\begin{eqnarray}
+E=\max_{0\le i\le I-1} |u_{i}(T)-u^{\mbox{exact}}(T,x_{i})|
+\end{eqnarray}
+
+
+
+\end{document}
+
+

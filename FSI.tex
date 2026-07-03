@@ -136,10 +136,15 @@ consisting of any number of types of materials, to include compressible
 fluids, incompressible fluids, ice, melt, vapor, and 
 solids undergoing plastic deformation.  The interfaces between materials
 is modeled and discretized as sharp.  The new method is robust with respect 
-to extreme material properties and large interface deformation.  
+to a wide range of material properties and large interface deformation.  
 %%Asymptotically preserving according to Degond? 
  
- \linenumbers
+\linenumbers
+
+\section{Introduction}
+
+Table captions: asymptotically preserving? solvability guaranteed? 
+complex topology? sharp interface representation?
 
 \section{Mathematical Modeling}
 There are $M$ materials and each material $1\le m \le M$ occupies the region,
@@ -397,6 +402,12 @@ The velocity jump conditions are
 	\frac{1}{\rho_{m_{s}}})
 \end{eqnarray}
 
+\section{Positioning of discrete variables on the computational grid}
+
+Note: for conservation form, velocity on face centroids, off-diagonal
+configuration tensor variables on edge centroids, the density is stored
+on a refined mesh.   
+
 \section{temporal discretization}
 
 \begin{description}
@@ -465,14 +476,17 @@ Remarks:
  and elastic materials without unphysically modifying the elastic boundary.
  See sections \ref{drop_on_slope} and \ref{high_drag} which demonstrate the
  effectiveness of this algorithm.
-\item steps 3 and 4 will induce a violation of mass, momentum, and energy
-  conservation at the elastic fluid boundaries, but we have found the
+\item steps 3 and 4 can induce a violation of mass, momentum, and energy
+  conservation for the non-elastic materials 
+  at the elastic fluid boundaries, but we have found the
   error to be minimal and converge to zero with grid refinement (see sections
   \ref{drop_on_slope} and \ref{drop_impact_flexible_plate}).
 \item similar ideas, as steps 3 and 4, were implemented in 
   \cite{sussman2007sharp}.
 \item the outer for loop, $k=0,1$, was implemented in 
- \cite{jemison2014compressible}. 
+ \cite{jemison2014compressible}.  THIS OUTER LOOP MIGHT BE OPTIONAL
+ SINCE (A) VELOCITY ON MAC GRID AND (B) A SINGLE VARIABLE IS USED FOR
+ ENERGY IN CONTRAST TO A SEPARATE ENERGY VARIABLE FOR EACH MATERIAL.
 \item the inner loop, $r=0,1$, was recommended in the article by
  \cite{shin2020interaction}.
 % one must distinguish between elastic materials and
