@@ -136,7 +136,10 @@ consisting of any number of types of materials, to include compressible
 fluids, incompressible fluids, ice, melt, vapor, and 
 solids undergoing plastic deformation.  The interfaces between materials
 is modeled and discretized as sharp.  The new method is robust with respect 
-to a wide range of material properties and large interface deformation.  
+to a wide range of material properties,  and large interface deformation.  
+The new method is scalable on MIMD (Multi Instruction Distributed memory using
+MPI) and MISD (Multi Instructuion Shared memory using OpenMP) computer systems.
+The new method is also scalable with respect to adaptive mesh refinement.
 %%Asymptotically preserving according to Degond? 
  
 \linenumbers
