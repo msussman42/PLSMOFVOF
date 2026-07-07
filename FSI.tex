@@ -146,8 +146,38 @@ The new method is also scalable with respect to adaptive mesh refinement.
 
 \section{Introduction}
 
-Table captions: asymptotically preserving? solvability guaranteed? 
-complex topology? sharp interface representation?
+Table captions: coupling algorithm? fluid and structure partitioned or 
+no-partitioning?
+multiphase flow? compressible vs incompressible vs both
+complex topology? interface representation (MOF, CMOF, front tracking,
+diffuse interface) ? Eulerian/Lagrangian
+fluids? Eulerian/Lagrangian Elastic materials?
+
+Our method: multiphase flow? yes, both compressible and incompressible,
+complex topology? yes, interface representation CMOF-multimaterial,
+Eulerian block structured dynamic AMR for all materials (no partitioning).
+
+Strongly coupled Fictitious Domain-SPH for fluid-structure interactions: Application to beam elements
+multiphase flow? yes, incompressible, complex topology? fluids yes,
+elastics no (FEM), SPH for fluid interfaces, body fitted front tracking for
+elastic-fluid interface, Lagrangian both fluids and elastics.
+
+Tightly coupled => velocity and normal stress jump conditions are strictly enforced at the end of each time step.  (pros: more accurate cons: requires the 
+inversion of a nonlinear system of equations) The fluid and elastic materials
+are solved concurrently
+
+Weakly coupled => The fluid and elastic materials are solved consecutively
+as in contrast to  concurrently;
+Only one of the velocity or stress jump conditions are
+enforced at the end of each time step. (pros: very fast; cons:
+provably unconditionally unstable) 
+
+``Hybrid coupling'' => the fluid and elastic materials are solved concurrently
+during a predictor sweep; normal velocity jump condition is strictly enforced.
+normal stress condition is not strictly enforced.  During the corrector sweep,
+the normal velocity jump condition is preserved, and surface tension effects
+are included.
+
 
 \section{Mathematical Modeling}
 There are $M$ materials and each material $1\le m \le M$ occupies the region,
