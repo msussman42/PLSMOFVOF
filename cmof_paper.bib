@@ -1725,6 +1725,18 @@ eprint = {
   publisher={Wiley Online Library}
 }
 
+@article{PARK2026132,
+title = {A CLSVOF method for simulating bubble motion in ultrasonic fields near a deformable solid cell},
+journal = {Mathematics and Computers in Simulation},
+volume = {250},
+pages = {132-151},
+year = {2026},
+issn = {0378-4754},
+doi = {https://doi.org/10.1016/j.matcom.2026.06.026},
+url = {https://www.sciencedirect.com/science/article/pii/S0378475426002703},
+author = {Jaesung Park and Gihun Son},
+keywords = {Coupled level-set and volume-of-fluid (CLSVOF), Ultrasound, Compressible multiphase flow, Mass conservation, Solid deformation} }
+
 @article{shin2020interaction,
   title={Interaction of a deformable solid with two-phase flows: An Eulerian-based numerical model for fluid-structure interaction using the level contour reconstruction method},
   author={Shin, Seungwon and Chergui, Jalel and Juric, Damir},
@@ -1822,4 +1834,44 @@ abstract = {We present a numerical method for solving the incompressible Navier�
   pages={455--492},
   year={2018},
   publisher={Elsevier}
+}
+
+@article{MokbelMokbelLieseWeberAland2024,
+author = {Mokbel, Marcel and Mokbel, Dominic and Liese, Susanne and Weber, Christoph and Aland, Sebastian},
+title = {A Simulation Method for the Wetting Dynamics of Liquid Droplets on Deformable Membranes},
+journal = {SIAM Journal on Scientific Computing},
+volume = {46},
+number = {6},
+pages = {B806-B829},
+year = {2024},
+doi = {10.1137/24M1641142},
+URL = { https://doi.org/10.1137/24M1641142 },
+eprint = { https://doi.org/10.1137/24M1641142 } }
+
+@article{KLOPPE2024117090,
+title = {A phase-field model of elastic and viscoelastic surfaces in fluids},
+journal = {Computer Methods in Applied Mechanics and Engineering},
+volume = {428},
+pages = {117090},
+year = {2024},
+issn = {0045-7825},
+doi = {https://doi.org/10.1016/j.cma.2024.117090},
+url = {https://www.sciencedirect.com/science/article/pii/S0045782524003463},
+author = {Maximilian Kloppe and Sebastian Aland},
+keywords = {Phase-field modeling, Diffuse interface modeling, Elastic shell, Viscoelastic surfaces, Two-phase flow} }
+
+@article{WILFONG2026110055,
+title = {MFC 5.0: An exascale many-physics flow solver},
+journal = {Computer Physics Communications},
+volume = {322},
+pages = {110055},
+year = {2026},
+issn = {0010-4655},
+doi = {https://doi.org/10.1016/j.cpc.2026.110055},
+url = {https://www.sciencedirect.com/science/article/pii/S0010465526000378},
+author = {Benjamin Wilfong and Henry A. {Le Berre} and Anand Radhakrishnan and Ansh Gupta and Daniel J. Vickers and Diego Vaca-Revelo and Dimitrios Adam and Haocheng Yu and Hyeoksu Lee and Jose Rodolfo Chreim and Mirelys {Carcana Barbosa} and Yanjun Zhang and Esteban Cisneros-Garibay and Aswin Gnanaskandan and Mauro {Rodriguez Jr} and Reuben D. Budiardja and Stephen Abbott and Tim Colonius and Spencer H. Bryngelson},
+keywords = {Computational fluid dynamics, Multiphase flow, Exascale simulation, Numerical methods and modeling},
+abstract = {Many problems of interest in engineering, medicine, and the fundamental sciences rely on high-fidelity flow simulation, making performant computational fluid dynamics solvers a mainstay of the open-source software community. Previous work MFC 3.0 was made a published, documented, and open-source solver via Bryngelson et al. Comp. Phys. Comm. (2021) with numerous physical features, numerical methods, and scalable infrastructure. MFC 5.0 is a significant update to MFC 3.0, featuring a broad set of well-established and novel physical models and numerical methods, as well as the introduction of GPU and APU (or superchip) acceleration. We exhibit state-of-the-art performance and ideal scaling on the first two exascale supercomputers, OLCF Frontier and LLNL El Capitan. Combined with MFC’s single-accelerator performance, MFC achieves exascale computation in practice, and achieved the largest-to-date public CFD simulation at 200 trillion grid points as a 2025 ACM Gordon Bell Prize finalist. New physical features include the immersed boundary method, N-fluid phase change, Euler–Euler and Euler–Lagrange sub-grid bubble models, fluid-structure interaction, hypo- and hyper-elastic materials, chemically reacting flow, two-material surface tension, magnetohydrodynamics (MHD), and more. Numerical techniques now represent the current state-of-the-art, including general relaxation characteristic boundary conditions, WENO variants, Strang splitting for stiff sub-grid flow features, and low Mach number treatments. Weak scaling to tens of thousands of GPUs on OLCF Summit and Frontier and LLNL El Capitan achieves efficiencies within 5% of ideal to over 90% of their respective system sizes. Strong scaling results for a 16-times increase in device count show parallel efficiencies over 90% on OLCF Frontier. MFC’s software stack has undergone further improvements, including continuous integration, which ensures code resilience and correctness through over 300 regression tests; metaprogramming, which reduces code length while maintaining performance portability; and code generation for computing chemical reactions
+PROGRAM SUMMARY
+Program title: MFC 5.0 CPC Library link to program files: https://doi.org/10.17632/8y55zscjd3.2 Developer’s repository link: https://github.com/MFlowCode/MFC Licensing provisions: MIT license Programming language: Fortran08 and Python Journal reference of previous version: Comput. Phys. Commun. 266 (2021) 107396, doi:https://doi.org/10.1016/j.cpc.2020.107396 Does the new version supersede the previous version?: Yes Reasons for the new version: An abundance of new features and capabilities that are challenging to convey outside of an academic article. Nature of problem: Simulation of compressible flows requires physical model selection and treatment of spatial derivatives to keep solutions physically consistent and free of artifacts. The methods should be high-order accurate to reduce computational cost. Solution method: The present software uses multiple physical models and numerical schemes for the treatment of multi-phase, multi-component, chemically reacting, and magnetohydrodynamic flows. Additional physical effects and models are included. The numerical method is based on the finite volume method.}
 }

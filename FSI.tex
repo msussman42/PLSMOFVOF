@@ -146,9 +146,26 @@ The new method is also scalable with respect to adaptive mesh refinement.
 
 \section{Introduction}
 
-Table captions: coupling algorithm? fluid and structure partitioned or 
-no-partitioning?
-multiphase flow? compressible vs incompressible vs both
+banks2018stable
+banks2014analysis
+MokbelMokbelLieseWeberAland2024
+KLOPPE2024117090
+TranUdaykumar
+Sugiyama
+ShinCherguiJuric
+PARK2026132
+WILFONG2026110055 (diffuse interface model, not asymptotically preserving,
+                   explict non-partitioned)
+
+
+Table captions: 
+1. coupling: fully coupled, partitioned, non-partitioned and 
+explicit, semi-partitioned and semi-implicit
+
+
+maximum bulk modulus?
+multiphase flow interaction with elastic materials? 
+compressible vs incompressible vs both
 complex topology? interface representation (MOF, CMOF, front tracking,
 diffuse interface) ? Eulerian/Lagrangian
 fluids? Eulerian/Lagrangian Elastic materials?
@@ -157,6 +174,7 @@ Our method: multiphase flow? yes, both compressible and incompressible
 (Asymptotically preserving by def. of Degond),
 complex topology? yes, interface representation CMOF-multimaterial,
 Eulerian block structured dynamic AMR for all materials (no partitioning).
+wetting dynamics?
 
 Strongly coupled Fictitious Domain-SPH for fluid-structure interactions: Application to beam elements
 multiphase flow? yes, incompressible, complex topology? fluids yes,
@@ -178,7 +196,6 @@ during a predictor sweep; normal velocity jump condition is strictly enforced.
 normal stress condition is not strictly enforced.  During the corrector sweep,
 the normal velocity jump condition is preserved, and surface tension effects
 are included.
-
 
 \section{Mathematical Modeling}
 There are $M$ materials and each material $1\le m \le M$ occupies the region,
@@ -442,6 +459,26 @@ Note: for conservation form, velocity on face centroids, off-diagonal
 configuration tensor variables on edge centroids, the density is stored
 on a refined mesh.   
 
+Remarks:
+\begin{description}
+\item[1. ] The positioning of discrete variables in our earlier
+  work \cite{jemison2014compressible} were collocated instead of 
+  staggered thereby susceptible to ``checkerboard'' instability
+  \cite{GUITTET2015215}.
+\item[2. ] In our earlier work \cite{jemison2014compressible},
+  density, temperature, volume fraction, and centroid
+  were discretized for each material, separately.   The velocity in this 
+  previous work was a single variable that represented the mass weighted
+  average of each materials' velocity.  In the present work, density,
+  volume fraction, and centroid are discretized for each material separately.
+  The velocity is still a mass weighted average of each materials' velocity.
+  The temperature is also a mass weighted average of each materials' 
+  temperature. The rationale for having the temperature as a mass
+  weighted average is that we observed temperature 
+  overheating or undercooling
+  in computational cells with ``small'' volume fraction.
+\end{description}
+ 
 \section{temporal discretization}
 
 \begin{description}
