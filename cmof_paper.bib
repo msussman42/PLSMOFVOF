@@ -1875,3 +1875,33 @@ abstract = {Many problems of interest in engineering, medicine, and the fundamen
 PROGRAM SUMMARY
 Program title: MFC 5.0 CPC Library link to program files: https://doi.org/10.17632/8y55zscjd3.2 Developer’s repository link: https://github.com/MFlowCode/MFC Licensing provisions: MIT license Programming language: Fortran08 and Python Journal reference of previous version: Comput. Phys. Commun. 266 (2021) 107396, doi:https://doi.org/10.1016/j.cpc.2020.107396 Does the new version supersede the previous version?: Yes Reasons for the new version: An abundance of new features and capabilities that are challenging to convey outside of an academic article. Nature of problem: Simulation of compressible flows requires physical model selection and treatment of spatial derivatives to keep solutions physically consistent and free of artifacts. The methods should be high-order accurate to reduce computational cost. Solution method: The present software uses multiple physical models and numerical schemes for the treatment of multi-phase, multi-component, chemically reacting, and magnetohydrodynamic flows. Additional physical effects and models are included. The numerical method is based on the finite volume method.}
 }
+
+
+@article{FERRARI2025113553,
+title = {A unified HTC multiphase model of continuum mechanics},
+journal = {Journal of Computational Physics},
+volume = {521},
+pages = {113553},
+year = {2025},
+issn = {0021-9991},
+doi = {https://doi.org/10.1016/j.jcp.2024.113553},
+url = {https://www.sciencedirect.com/science/article/pii/S0021999124008015},
+author = {Davide Ferrari and Ilya Peshkov and Evgeniy Romenski and Michael Dumbser},
+keywords = {Compressible multiphase flows, Symmetric hyperbolic and thermodynamically compatible (SHTC) theory, Baer-Nunziato-type model, Computational fluid and solid mechanics, Diffuse interface approach stiff source terms and non-conservative products},
+abstract = {In this paper, we present a unified nonequilibrium model of continuum mechanics for compressible multiphase flows. The model, which is formulated within the framework of Hyperbolic Thermodynamically Compatible (HTC) equations, can describe an arbitrary number of phases that can be heat conducting inviscid and viscous fluids, as well as elastoplastic solids. The phases are allowed to have different velocities, pressures, temperatures, and shear stresses, while the material interfaces are treated as diffuse interfaces with the volume fraction playing the role of the interface field. To relate our model to other multiphase approaches, we reformulate the novel HTC governing equations in terms of the phase state parameters and put them in the form of Baer-Nunziato-type models. It is the Baer-Nunziato form of the HTC equations which is then solved numerically using a robust second-order path-conservative MUSCL-Hancock finite volume method on Cartesian meshes. Due to the fact that the obtained governing equations are very challenging we restrict our numerical examples to a simplified version of the model for three-phase mixtures. To address the stiffness properties of the relaxation source terms present in the model, the implemented scheme incorporates a semi-analytical time integration method specifically designed for the non-linear stiff source terms governing the strain relaxation. The validation process involves a wide range of benchmarks and several applications to compressible multiphase problems. Notably, results are presented for multiphase flows in several relaxation limit cases of the model, including inviscid and viscous Newtonian fluids, as well as non-linear hyperelastic and elastoplastic solids. In all cases, the numerical results demonstrate good agreement with established models, including the Euler or Navier-Stokes equations for fluids and the classical hypo-elastic model with plasticity for solids. Importantly, however, this approach achieves these results within a unified multiphase framework of continuum mechanics.}
+}
+
+@article{GAO2024106124,
+title = {Shock capturing for a high-order ALE discontinuous Galerkin method with applications to fluid flows in time-dependent domains},
+journal = {Computers & Fluids},
+volume = {269},
+pages = {106124},
+year = {2024},
+issn = {0045-7930},
+doi = {https://doi.org/10.1016/j.compfluid.2023.106124},
+url = {https://www.sciencedirect.com/science/article/pii/S0045793023003493},
+author = {Min Gao and Pascal Mossier and Claus-Dieter Munz},
+keywords = {Discontinuous Galerkin, High-order methods, Arbitrary Lagrangian-Eulerian Approach, Moving mesh, Shock capturing, Fluid–structure interaction},
+abstract = {In recent decades, the arbitrary Lagrangian–Eulerian (ALE) approach has been one of the most popular choices to deal with the fluid flows having moving boundaries. The ALE finite volume (FV) method is well-known for its capability of shock capturing. Several ALE discontinuous Galerkin (DG) methods are developed to fully explore the advantages of high-order methods, especially in complex flows. The DG scheme is highly efficient and has high resolution in smooth parts of the flow while the FV scheme has advantage on the robustness against shocks. In this paper, we present a novel algorithm to combine both the ALE FV and ALE DG methods into one stable and efficient hybrid approach. The main challenge for a mixed ALE FV method and ALE DG method is to reduce the inconsistency between both discretizations. Of particular concern are the same mesh velocity distribution between DG and FV elements and a continuous mesh velocity at the coupling interfaces. Since the computational efficiency of the proposed algorithm is of major concern, performance aspects will be considered during the construction of the scheme. To investigate the accuracy of the new scheme, several benchmark test cases with prescribed movements are included. Afterwards, the algorithm is applied to more general and complex scenarios to show its ability to cope with complex setups. In our paper, the scheme is implemented into a loosely-coupled fluid–structure interaction (FSI) framework. With a shock-driven cylinder movement in a channel flow and a transonic flow-induced airfoil vibration, we demonstrate our method for FSI applications.}
+}
+
