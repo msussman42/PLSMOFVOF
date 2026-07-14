@@ -1,0 +1,108 @@
+\documentstyle{article}
+
+\begin{document}
+
+\begin{center}
+Review of final report: \\
+International Research Training Group \\
+DROPIT: ``Droplet Interaction Technologies \\
+Lead PIs: \\
+Dr. Bernhard Weigant University of Stuttgart \\
+Dr. Gianpietro Elvio Cossali  University of Bergamo \\
+\today  \\
+\end{center}
+As quoted from the final report:
+``The research of DROPIT had been organised in three
+thematic areas (TA): TA-A: Drop-Gas Interaction, 
+TA-B: Drop-Wall Interaction, TA-C: Drop-Liquid Interaction.''  
+\par\noindent
+The results of this study have many applications: atomization and spray
+in internal combustion engines, aircraft icing, sloshing in cryogenic
+fuel tanks, nuclear reactor cooling systems, microfluidic devices, 
+additive manufacturing, hydraulic fracturing, spray cooling,
+medical inhalers, human perspiration, PEM fuel cells, membrane
+emulsification and filtration, thermal insulation, 
+air-conditioning of buildings, distribution of plant protection
+agents, coating processes, gluing, fire suppression,
+medical sprays, 
+shelf life of food, asphalt preservation, biomass,
+ceramic green bodies, soil erosion, encapsulation technologies,
+and the design of ``breathable'' fabrics.
+\par\noindent
+I find that all of the published articles and PhD Thesis, that were supported
+by way of the DFG ``Dropit'' program,  make important
+contributions towards furthering our understanding of the 
+fundamental mechanisms governing multiphase and multiphysics
+flows in general, and droplet
+technologies in particular.  I highlight below some
+of the research here which report on 
+studies in which recent experimental results
+were compared to novel simulations and mathematical modeling.
+\begin{itemize}
+\item Palmetshofer, P., Saha, R., Bryce, J., Geppert, A., 
+Cossali, G.E., Weigand, B., 2025. Droplet impact onto 
+sub-millimeter microstructures fully and barely submerged in a liquid film.
+Phys. Fluids 37, 082130.
+\item Palmetshofer, P., Wurst, J., Geppert, A., Schulte, K., Cossali, G.E., Weigand, B., 2025. Wetting
+behavior in the inertial phase of droplet impacts onto sub-millimeter microstructured surfaces. Journal
+of Colloid and Interface Science 682, 413–422. 
+\item Palmetshofer, P., Geppert, A., Steigerwald, J., Arcos Marz, T., Weigand, B., 2024. Thermocapillary
+central lamella recess during droplet impacts onto a heated wall. Sci Rep 14, 1102.
+\item Schubert, S., Steigerwald, J., Geppert, A., 
+Weigand, B., Lamanna, G., 2024. Micro-PIV study on the
+influence of viscosity on the dynamics of droplet 
+impact onto a thin film. Exp Fluids 65, 69.
+\item Geppert, A., Stober, J., Steigerwald, J., Schulte, K., Tonini, S., 
+Lamanna, G., 2024. Analyzing the early impact dynamics of single 
+droplets impacting onto wetted surfaces. Phys.  Fluids 36, 012005.
+\item Veyskarami, M., Bringedal, C., Helmig, R., 2024. Modeling and 
+Analysis of Droplet Evaporation at the Interface of a Coupled 
+Free-Flow-Porous Medium System. Transp Porous Med 151, 2745–2775.
+\item Ackermann, S., Fest-Santini, S., Veyskarami, M., Helmig, R., 
+Santini, M., 2023. Experimental validation of a coupling 
+concept for drop formation and growth onto porous materials 
+by high-resolution X-ray imaging technique. Int J Multiphas Flow 160, 104371. 
+\item Lamanna, G., Geppert, A., Bernard, R., Weigand, B., 2022. 
+ Drop impact onto wetted walls: an unsteady analytical 
+ solution for modelling crown spreading. J. Fluid Mech. 938, A34.
+\item Michalkowski, C., Veyskarami, M., Bringedal, C., Helmig, R., 
+Schleper, V., 2022. Two-phase Flow Dynamics at the Interface Between 
+GDL and Gas Distributor Channel Using a Pore-Network Model. 
+Transp Porous Med 144, 429–458. 
+\item Liu, Y., Geppert, A., Chu, X., Heine, B., Weigand, B., 2021. 
+Simulation of an Annular Liquid
+Jet with a Coaxial Supersonic Gas Jet in a 
+Medical Inhaler. Atomization Spray 31, 95–116.
+\item Ren, W., Foltyn, P., Geppert, A., Weigand, B., 2021. 
+Air entrapment and bubble formation
+during droplet impact onto a single cubic pillar. Sci Rep 11, 18018.
+\item Steigerwald, J., Geppert, A., Weigand, B., 2021. 
+Numerical study of drop shape effects in
+binary drop film interactions for different density ratios, in: 
+Proceedings of 15th International
+Conference on Liquid Atomization and Spray Systems (ICLASS).
+\item Baggio, M., Weigand, B., 2019. Numerical simulation of a 
+drop impact on a superhydrophobic surface with a wire. Phys. Fluids 31, 112107.
+\item Fasoulas, S., Munz, C.-D., Pfeiffer, M., Beyer, J., Binder, T., 
+Copplestone, S., Mirza, A., Nizenkov, P., Ortwein, P., Reschke, W., 2019. 
+Combining particle-in-cell and direct simulation Monte Carlo for 
+the simulation of reactive plasma flows. Phys. Fluids 31, 072006.
+\item Geppert, A., Chatzianagnostou, D., Meister, C., Gomaa, H., 
+Lamanna, G., Weigand, B., 2016. Classification of Impact Morphology 
+and Splashing/Deposition Limit for N-Hexadecane. Atomization 
+Spray 26, 983–1007. 
+\end{itemize}
+Some possible future directions could be as follows:
+\begin{itemize}
+\item There is renewed interest in ``Rotating Detonation Engines'':
+Jose I. Guerrero, Mirko Gamba, Quantifying combustion efficiency in 
+rotating detonation engines using MHz-rate scanned-wavelength-modulation 
+spectroscopy, Combustion and Flame, Volume 285, 2026, 114744, ISSN 0010-2180,
+https://doi.org/10.1016/j.combustflame.2025.114744.
+(https://www.sciencedirect.com/science/article/pii/S0010218025007795)
+\item The Physics of Fluids Journal has an upcoming special topics
+ issue entitled ``Scientific Machine Learning and Physics-Informed 
+AI for Multiscale and Multiphysics Fluid Mechanics.''
+\end{itemize}
+
+\end{document}
