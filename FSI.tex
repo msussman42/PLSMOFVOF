@@ -131,12 +131,13 @@
 \maketitle
 
 ABSTRACT:
-A new Eulerian method is presented for simulating complex multiphase flows
-consisting of any number of types of materials, to include compressible
+A new Eulerian method is presented for simulating complex three dimensional
+and three dimensional axisymmetric multiphase flows
+consisting of any number of materials, to include compressible
 fluids, incompressible fluids, ice, melt, vapor, and 
 solids undergoing plastic deformation.  The interfaces between materials
 is modeled and discretized as sharp.  The new method is robust with respect 
-to a wide range of material properties,  and large interface deformation.  
+to a wide range of material properties, and large interface deformation.  
 The new method is scalable on MIMD (Multi Instruction Distributed memory using
 MPI) and MISD (Multi Instructuion Shared memory using OpenMP) computer systems.
 The new method is also scalable with respect to adaptive mesh refinement.
@@ -145,6 +146,76 @@ The new method is also scalable with respect to adaptive mesh refinement.
 \linenumbers
 
 \section{Introduction}
+
+The ability to simulate multiphase flows has a number of applications:
+atomization and spray in internal combustion engines\cite{arienti2014embedded}, 
+aircraft icing, 
+sloshing in cryogenic fuel tanks, 
+nuclear reactor cooling systems, 
+microfluidic devices, 
+additive manufacturing, 
+hydraulic fracturing, spray cooling,
+medical inhalers, 
+human perspiration, 
+PEM fuel cells, 
+membrane emulsification and filtration, thermal insulation, 
+air-conditioning of buildings, distribution of plant protection
+agents, coating processes, gluing, fire suppression,
+medical sprays, 
+shelf life of food, asphalt preservation, biomass,
+rotating detonation engines\cite{arienti2025simulation},
+ceramic green bodies, soil erosion, encapsulation technologies,
+and the design of ``breathable'' fabrics.
+
+\begin{table}[htbp]
+ 
+\centering
+\scalebox{0.7} {
+ \begin{tabular}[h]{|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
+ \hline
+ Author(s) & 
+ Asymptotically \newline preserving &
+ Coupling Method &
+ Mass Transfer &
+ Interface \newline
+ Representation &
+ Volume\newline preserving &
+ Mass\newline preserving &
+ Complex\newline topology \\
+ \hline
+Banks et al.~\cite{banks2014analysis} & Incompressible & Partitioned & 
+  No  & Body fitted & No & No & No \\ \hline
+Banks et al.~\cite{banks2018analysis} & Incompressible & Partitioned & 
+  No  & Body fitted & No & No & No \\ \hline
+    Ahn and Shahkov\cite{ahn2007multi} & $\tn{VOF-GRAD}^2$\newline $\tn{VOF-LVIRA}^3$ \newline MOF 
+                 \newline 27 or 3 $\times(M-1)$& No & Yes & Yes & N/A\\ \hline
+    Kim\cite{kim2007phase} & Phase field & Yes & Yes & No & Phase field \\ \hline
+    Dyadechko and Shashkov\cite{dyadechko2008reconstruction} & MOF \newline $3(M-1)$ & No & Yes & Yes & N/A \\ \hline
+    Caboussat et al.~\cite{caboussat2008numerical} & $\tn{VOF-IP}^4$ \newline $27(M-1)$ & Yes & No & Yes & 
+                                           Convolution/Height function\cite{francois2006balanced}\\ \hline
+    Schofield et al.~\cite{schofield2008material, schofield2009second} & $\tn{VOF-PD}^5$ \newline $27(M-1)$ 
+	                                         & No & Yes & Yes & N/A \\ \hline
+    Sijoy and Chaturvedi\cite{sijoy2010volume} & $\tn{VOF-PLIC}^6$ \newline $27(M-1)$& 
+	                                      Yes & Yes & Yes & N/A \\ \hline
+    Kucharik et al.~\cite{kucharik2010comparative} & VOF-PLIC \newline VOF-PD \newline MOF \newline 27 or 3 $\times(M-1)$ &
+	                                         Yes & Yes & Yes & N/A \\ \hline
+    Bonhomme et al.~\cite{bonhomme2012inertial} & VOF \newline $27(M-1)$ & Yes & Yes & No & VOF \\ \hline
+    Starinshak et al.~\cite{starinshak2014new} & Interface level set & Yes & No & Yes & N/A \\ \hline
+    Vu et al.~\cite{vu2015numerical} & Front tracking & Yes & No & Yes & Front tracking \\ \hline
+    Pathak and Raessi\cite{pathak2016three} & VOF-PLIC \newline $27(M-1)$ & No & Yes & Yes & N/A \\ \hline
+    Shetabivash et al.~\cite{shetabivash2020multiple} & Level Set & Yes & No & Yes & Finite Difference \\ \hline
+    Ancellin et al.~\cite{ancellin2022extension} & VOF-PLIC \newline $27(M-1)$ & No & Yes & Yes & N/A \\ \hline
+    Huang et al.~\cite{HUANG2022110795} & Phase field & Yes & Yes & No & Phase field \\ \hline
+    Present Article, Ye et al & CMOF$^7$ \newline $3(M-1)$ & Yes & Yes & Yes & VOF Height function \\ \hline
+  \end{tabular}
+  }
+\caption{Recent multiphase and multimaterial numerical methods with 
+  fluid interaction with deformable structures. \label{tab:FSI} }
+\end{table}
+
+
+
+
 
 banks2018stable
 banks2014analysis
@@ -163,7 +234,7 @@ GAO2024106124  (not multiphase flow, ALE, explicit non-partitioned, explicit)
 
 Table captions: 
 1. coupling: fully coupled, partitioned, non-partitioned and 
-explicit, semi-partitioned and semi-implicit
+explicit, pressure-velocity coupling
 
 
 maximum bulk modulus?
