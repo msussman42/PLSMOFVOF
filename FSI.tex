@@ -538,7 +538,7 @@ Remarks:
 \item[1. ] The positioning of discrete variables in our earlier
   work \cite{jemison2014compressible} were collocated instead of 
   staggered thereby susceptible to ``checkerboard'' instability
-  \cite{GUITTET2015215}.
+  \cite{GUITTET2015215,LECHENADEC2013185}.
 \item[2. ] In our earlier work \cite{jemison2014compressible},
   density, temperature, volume fraction, and centroid
   were discretized for each material, separately.   The velocity in this 
@@ -568,7 +568,7 @@ Remarks:
   ``elastic material domain.'' See figure \ref{tessellating}. For stability
   purposes, the velocity is discretized at face centroids and
   the configuration tensor off-diagonals are discretized at
-  edge centers\cite{sugiyama2011full,GUITTET2015215} 
+  edge centers\cite{sugiyama2011full,GUITTET2015215,LECHENADEC2013185} 
   (see Figure \ref{vars_on_grid}). 
 \item[1.] for $k=0,1$
 \item[2.] cell integrated semi-Lagrangian advection using 
@@ -658,7 +658,7 @@ Remarks:
   \begin{eqnarray}
   U=(I-grad(div grad)^{-1}div)V 
   \end{eqnarray}
-  to be non-unique\cite{GUITTET2015215}.
+  to be non-unique\cite{GUITTET2015215,LECHENADEC2013185}.
   Also in contrast to \cite{jemison2014compressible}, our method preserves
   overall conservation (of non elastic fluids) of energy in contrast 
   to preserving conservation of energy overall and for each individual
