@@ -140,6 +140,10 @@ evaporation, and liquid lens dynamics.
 %%compare MOF to CMOF to PLSMOF for static freezing test.
 \linenumbers
 \section{Introduction}
+% methods guaranteed to converge for compressible single phase flow:
+% 1. Godunov's method (drawback: not generalizable to all EOS, difficult
+% to combine with incompressible fluids (but can be done see Ron Fedkiw et al)
+% 2. Lax Friedrichs (too dissipative compared to Godunov's method)
 In Ye et al\cite{YeEstebe...},
 an improved ``Continuous Moment-of-Fluid'' (CMOF) algorithm
 for computing solutions to multiphase (multimaterial) flows was

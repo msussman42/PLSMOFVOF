@@ -150,7 +150,7 @@ The new method is also scalable with respect to adaptive mesh refinement.
 The ability to simulate multiphase flows has a number of applications:
 atomization and spray in internal combustion engines\cite{arienti2014embedded}, 
 aircraft icing, 
-sloshing in cryogenic fuel tanks, 
+sloshing and pressurization in cryogenic fuel tanks\cite{kassemi2016effect}, 
 nuclear reactor cooling systems, 
 microfluidic devices, 
 additive manufacturing, 
@@ -174,39 +174,35 @@ and the design of ``breathable'' fabrics.
  \begin{tabular}[h]{|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
  \hline
  Author(s) & 
- Asymptotically \newline preserving &
+ incompressible fluids  &
+ compressible fluids  &
+ multiphase flow  &
+ multimaterial flow  &
+ shock waves &
  Coupling Method &
- Mass Transfer &
  Interface \newline
  Representation &
- Volume\newline preserving &
- Mass\newline preserving &
  Complex\newline topology \\
  \hline
-Banks et al.~\cite{banks2014analysis} & Incompressible & Partitioned & 
-  No  & Body fitted & No & No & No \\ \hline
-Banks et al.~\cite{banks2018analysis} & Incompressible & Partitioned & 
-  No  & Body fitted & No & No & No \\ \hline
-    Ahn and Shahkov\cite{ahn2007multi} & $\tn{VOF-GRAD}^2$\newline $\tn{VOF-LVIRA}^3$ \newline MOF 
-                 \newline 27 or 3 $\times(M-1)$& No & Yes & Yes & N/A\\ \hline
-    Kim\cite{kim2007phase} & Phase field & Yes & Yes & No & Phase field \\ \hline
-    Dyadechko and Shashkov\cite{dyadechko2008reconstruction} & MOF \newline $3(M-1)$ & No & Yes & Yes & N/A \\ \hline
-    Caboussat et al.~\cite{caboussat2008numerical} & $\tn{VOF-IP}^4$ \newline $27(M-1)$ & Yes & No & Yes & 
-                                           Convolution/Height function\cite{francois2006balanced}\\ \hline
-    Schofield et al.~\cite{schofield2008material, schofield2009second} & $\tn{VOF-PD}^5$ \newline $27(M-1)$ 
-	                                         & No & Yes & Yes & N/A \\ \hline
-    Sijoy and Chaturvedi\cite{sijoy2010volume} & $\tn{VOF-PLIC}^6$ \newline $27(M-1)$& 
-	                                      Yes & Yes & Yes & N/A \\ \hline
-    Kucharik et al.~\cite{kucharik2010comparative} & VOF-PLIC \newline VOF-PD \newline MOF \newline 27 or 3 $\times(M-1)$ &
-	                                         Yes & Yes & Yes & N/A \\ \hline
-    Bonhomme et al.~\cite{bonhomme2012inertial} & VOF \newline $27(M-1)$ & Yes & Yes & No & VOF \\ \hline
-    Starinshak et al.~\cite{starinshak2014new} & Interface level set & Yes & No & Yes & N/A \\ \hline
-    Vu et al.~\cite{vu2015numerical} & Front tracking & Yes & No & Yes & Front tracking \\ \hline
-    Pathak and Raessi\cite{pathak2016three} & VOF-PLIC \newline $27(M-1)$ & No & Yes & Yes & N/A \\ \hline
-    Shetabivash et al.~\cite{shetabivash2020multiple} & Level Set & Yes & No & Yes & Finite Difference \\ \hline
-    Ancellin et al.~\cite{ancellin2022extension} & VOF-PLIC \newline $27(M-1)$ & No & Yes & Yes & N/A \\ \hline
-    Huang et al.~\cite{HUANG2022110795} & Phase field & Yes & Yes & No & Phase field \\ \hline
-    Present Article, Ye et al & CMOF$^7$ \newline $3(M-1)$ & Yes & Yes & Yes & VOF Height function \\ \hline
+Tran and \newline Udaykumar~\cite{tran2004particle} & No & Yes & No & Yes &
+Yes & Explicit & Particle \newline Level Set & Yes \\ \hline
+Robinson-Mosher et al.~\cite{robinson2011symmetric} & Yes & No & No & No & No & 
+Monolithic & Connected Markers & No \\ \hline
+Gretarsson et al.~\cite{gretarsson2011numerically} & No & Yes & No & No & Yes & 
+Monolithic & one dimension & No \\ \hline
+Banks et al.~\cite{banks2014analysis} & Yes & No & No & No & No & Partitioned & 
+  Body fitted & No  \\ \hline
+Patkar et al.~\cite{patkar2016towards} & No & Yes & No & No & Yes & 
+Monolithic & Connected Markers & No \\ \hline
+Banks et al.~\cite{banks2018stable} & Yes & No & No & No & No & Partitioned &
+  Body fitted & No \\ \hline
+Mokbel et al.~\cite{MokbelMokbelLieseWeberAland2024} & Yes & No & No & Yes &
+No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
+Kloppe and \newline Aland~\cite{KLOPPE2024117090} & Yes & No & No & Yes &
+No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
+Present Article, \newline Estebe et al & Yes & Yes & Yes & Yes & Yes & 
+ pressure\newline and\newline velocity & 
+ Continuous\newline Moment of \newline Fluid & Yes \\ \hline
   \end{tabular}
   }
 \caption{Recent multiphase and multimaterial numerical methods with 
@@ -217,10 +213,6 @@ Banks et al.~\cite{banks2018analysis} & Incompressible & Partitioned &
 
 
 
-banks2018stable
-banks2014analysis
-MokbelMokbelLieseWeberAland2024
-KLOPPE2024117090
 TranUdaykumar
 Sugiyama
 ShinCherguiJuric
