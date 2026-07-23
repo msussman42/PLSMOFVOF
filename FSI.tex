@@ -147,7 +147,8 @@ The new method is also scalable with respect to adaptive mesh refinement.
 
 \section{Introduction}
 
-The ability to simulate multiphase and multimaterial flows, 
+The ability to simulate multiphase and multimaterial high and low 
+speed flows,
 to include the interaction of fluid(s) and elastic material(s),
 has a number of applications:
 bubble growth and collapse interacting with flexible
@@ -159,8 +160,44 @@ underwater explosions near
 structures\cite{leger2023experimental,yin2022experimental,chen2026numerical,
 gao2025study,he2024research}, 
 hydroelastic applications\cite{MENG2022114522},
+vibration of pipes due to internal boiling flow\cite{AN2016201},
 and the measurement of the tensile strength properties of colliding
 and deforming structures\cite{cui2024oblique}.
+
+We are not aware of previously reported research on the robust numerical
+simulation of the interaction of multiphase flows with elastic materials, 
+to include incompressible materials, weakly compressible materials, and/or
+strongly compressible materials.  The research that we report here is a
+continuation of research that started with the following
+article by Jemison et al\cite{jemison2014compressible}.  In Jemison et al's
+research, a novel adaptive, parallel, moment-of-fluid method was presented
+for simulating two phase flows to include incompressible, low speed, and
+high speed flows.  The method in Jemison et al was a collocated generalization
+of the projection method from incompressible flows\cite{jemison2013coupled} 
+to both compressible and incompressible flows.
+
+In the present work, we have mainly improved upon 
+\cite{jemison2014compressible}
+in the following important ways:
+\begin{description}
+\item[1.] the present method is now a staggered grid
+  method instead of colocated.  See Figure \ref{staggered}.  The
+  following research for incompressible flows underscore the
+  importance of a staggered grid\cite{LECHENADEC2013185,
+  sugiyama2011full,shin2020interaction,GUITTET2015215} for
+  projection methods. 
+\item[2.] the present method represents complex deforming interfaces
+  using the Continuous Moment-of-Fluid method\cite{ye2024improved} (CMOF),
+  instead of the Moment-of-Fluid (MOF) method\cite{jemison2015filament}.
+  The CMOF method\cite{ye2024improved} removes a ``checkerboard instability''
+  that appears for surface tension driven flows.
+\item[3.] We have developed a conservative, staggered grid, algorithm for
+  solving the equations associated with standard elastic materials and
+  materials undergoing plastic deformation. Our new algorithm is an 
+  improvement on the algorithms reported in
+  \cite{sugiyama2011full,shin2020interaction} so that we can
+  simulate both low and high speed elastic deformation.
+\end{description}
 
 
 \begin{table}[htbp]
