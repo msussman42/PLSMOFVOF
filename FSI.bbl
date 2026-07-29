@@ -1,10 +1,185 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{almgren2006low}
+{\sc Almgren, A.~S., Bell, J.~B., Rendleman, C.~A., and Zingale, M.}
+\newblock Low mach number modeling of type ia supernovae. i. hydrodynamics.
+\newblock {\em The Astrophysical Journal 637}, 2 (2006), 922--936.
+
+\bibitem{AN2016201}
+{\sc An, M., Liu, M., Ma, Y., and Xu, X.}
+\newblock Multi-scale vibration behavior of a graphite tube with an internal
+  vapor–liquid–solid boiling flow.
+\newblock {\em Powder Technology 291\/} (2016), 201--213.
+
+\bibitem{banks2014analysis}
+{\sc Banks, J.~W., Henshaw, W.~D., and Schwendeman, D.~W.}
+\newblock An analysis of a new stable partitioned algorithm for fsi problems.
+  part i: Incompressible flow and elastic solids.
+\newblock {\em Journal of Computational Physics 269\/} (2014), 108--137.
+
+\bibitem{banks2018stable}
+{\sc Banks, J.~W., Henshaw, W.~D., Schwendeman, D.~W., and Tang, Q.}
+\newblock A stable partitioned fsi algorithm for rigid bodies and
+  incompressible flow in three dimensions.
+\newblock {\em Journal of Computational Physics 373\/} (2018), 455--492.
+
+\bibitem{BIBAL2024112750}
+{\sc Bibal, M., Deferrez, M., Tanguy, S., and Urbano, A.}
+\newblock A compressible solver for two phase-flows with phase change for
+  bubble cavitation.
+\newblock {\em Journal of Computational Physics 500\/} (2024), 112750.
+
+\bibitem{boscarino2018all}
+{\sc Boscarino, S., Russo, G., and Scandurra, L.}
+\newblock All mach number second order semi-implicit scheme for the euler
+  equations of gas dynamics.
+\newblock {\em Journal of Scientific Computing 77}, 2 (2018), 850--884.
+
+\bibitem{chen2026numerical}
+{\sc Chen, H., Zhang, A.-M., Ming, F.-R., Sun, S.-L., and Peng, Y.-X.}
+\newblock Numerical simulation of the entire fluid-structure interaction
+  process of ship structures subjected to underwater explosion.
+\newblock {\em Science China Physics, Mechanics \& Astronomy 69}, 5 (2026),
+  254512.
+
+\bibitem{choi2024novel}
+{\sc Choi, Y.-R., Yeo, D., Lee, J.-C., Cho, J.-W., and Moon, S.}
+\newblock A novel ultrasonic leak detection system in nuclear power plants
+  using rigid guide tubes with fcog and snr.
+\newblock {\em Sensors 24}, 20 (2024), 6524.
+
+\bibitem{cui2024oblique}
+{\sc Cui, X.-y., Xue, H., Han, H.-y., Wang, T., and Huang, G.-y.}
+\newblock Oblique penetration of spherical tungsten alloy projectiles on
+  high-strength steel plates.
+\newblock {\em International Journal of Impact Engineering 192\/} (2024),
+  105030.
+
+\bibitem{dressaire2015drop}
+{\sc Dressaire, E., Sauret, A., Boulogne, F., and Stone, H.~A.}
+\newblock Drop impact on a flexible fiber.
+\newblock {\em Soft matter 12}, 1 (2015), 200--208.
+
+\bibitem{gao2025study}
+{\sc Gao, Y.-Q., Zhong, Q., Liu, Y.-L., Li, S., Zhang, J.-F., and Zhang, A.}
+\newblock Study on the dynamics of underwater explosion bubbles near
+  elastic--plastic cylindrical shells.
+\newblock {\em Physics of Fluids 37}, 10 (2025).
+
+\bibitem{gretarsson2011numerically}
+{\sc Gr{\'e}tarsson, J.~T., Kwatra, N., and Fedkiw, R.}
+\newblock Numerically stable fluid--structure interactions between compressible
+  flow and solid structures.
+\newblock {\em Journal of Computational Physics 230}, 8 (2011), 3062--3084.
+
+\bibitem{GUITTET2015215}
+{\sc Guittet, A., Theillard, M., and Gibou, F.}
+\newblock A stable projection method for the incompressible navier–stokes
+  equations on arbitrary geometries and adaptive quad/octrees.
+\newblock {\em Journal of Computational Physics 292\/} (2015), 215--238.
+
+\bibitem{he2024research}
+{\sc He, M., Yan, J., Lv, P., Duan, H., and Zhang, A.-M.}
+\newblock Research on ice-breaking characteristics of underwater explosion
+  bubbles based on an effective coupled model.
+\newblock {\em Applied Ocean Research 153\/} (2024), 104259.
+
+\bibitem{jemison2013coupled}
+{\sc Jemison, M., Loch, E., Sussman, M., Shashkov, M., Arienti, M., Ohta, M.,
+  and Wang, Y.}
+\newblock A coupled level set-moment of fluid method for incompressible
+  two-phase flows.
+\newblock {\em Journal of Scientific Computing 54}, 2-3 (2013), 454--491.
+
+\bibitem{jemison2014compressible}
+{\sc Jemison, M., Sussman, M., and Arienti, M.}
+\newblock Compressible, multiphase semi-implicit method with moment of fluid
+  interface representation.
+\newblock {\em Journal of Computational Physics 279\/} (2014), 182--217.
+
+\bibitem{jemison2015filament}
+{\sc Jemison, M., Sussman, M., and Shashkov, M.}
+\newblock Filament capturing with the multimaterial moment-of-fluid method.
+\newblock {\em Journal of Computational Physics 285\/} (2015), 149--172.
+
+\bibitem{KLOPPE2024117090}
+{\sc Kloppe, M., and Aland, S.}
+\newblock A phase-field model of elastic and viscoelastic surfaces in fluids.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering 428\/}
+  (2024), 117090.
+
+\bibitem{kwatra2009method}
+{\sc Kwatra, N., Su, J., Gr{\'e}tarsson, J.~T., and Fedkiw, R.}
+\newblock A method for avoiding the acoustic time step restriction in
+  compressible flow.
+\newblock {\em Journal of Computational Physics 228}, 11 (2009), 4146--4161.
+
+\bibitem{LECHENADEC2013185}
+{\sc {Le Chenadec}, V., and Pitsch, H.}
+\newblock A monotonicity preserving conservative sharp interface flow solver
+  for high density ratio two-phase flows.
+\newblock {\em Journal of Computational Physics 249\/} (2013), 185--203.
+
+\bibitem{leger2023experimental}
+{\sc Leger, M., Matos, H., Shukla, A., and Javier, C.}
+\newblock Experimental evaluation of curved aluminum structures subjected to
+  underwater explosions.
+\newblock {\em Experimental Mechanics 63}, 5 (2023), 925--937.
+
+\bibitem{MENG2022114522}
+{\sc Meng, Z.-F., Zhang, A.-M., Yan, J.-L., Wang, P.-P., and Khayyer, A.}
+\newblock A hydroelastic fluid–structure interaction solver based on the
+  riemann-sph method.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering 390\/}
+  (2022), 114522.
+
+\bibitem{MokbelMokbelLieseWeberAland2024}
+{\sc Mokbel, M., Mokbel, D., Liese, S., Weber, C., and Aland, S.}
+\newblock A simulation method for the wetting dynamics of liquid droplets on
+  deformable membranes.
+\newblock {\em SIAM Journal on Scientific Computing 46}, 6 (2024), B806--B829.
 
 \bibitem{osher1988fronts}
 {\sc Osher, S., and Sethian, J.~A.}
 \newblock Fronts propagating with curvature-dependent speed: algorithms based
   on hamilton-jacobi formulations.
 \newblock {\em Journal of computational physics 79}, 1 (1988), 12--49.
+
+\bibitem{patkar2016towards}
+{\sc Patkar, S., Aanjaneya, M., Lu, W., Lentine, M., and Fedkiw, R.}
+\newblock Towards positivity preservation for monolithic two-way solid--fluid
+  coupling.
+\newblock {\em Journal of Computational Physics 312\/} (2016), 82--114.
+
+\bibitem{robinson2011symmetric}
+{\sc Robinson-Mosher, A., Schroeder, C., and Fedkiw, R.}
+\newblock A symmetric positive definite formulation for monolithic fluid
+  structure interaction.
+\newblock {\em Journal of Computational Physics 230}, 4 (2011), 1547--1566.
+
+\bibitem{sandusky1999dynamic}
+{\sc Sandusky, H., Chambers, P., Zerilli, F., Fabini, L., and Gottwald, W.}
+\newblock Dynamic measurements of plastic deformation in a water-filled
+  aluminum tube in response to detonation of a small explosives charge.
+\newblock {\em Shock and Vibration 6}, 3 (1999), 125--132.
+
+\bibitem{scandurra2016numerical}
+{\sc Scandurra, L.}
+\newblock Numerical methods for all mach number flows for gas dynamics.
+
+\bibitem{shin2020interaction}
+{\sc Shin, S., Chergui, J., and Juric, D.}
+\newblock Interaction of a deformable solid with two-phase flows: An
+  eulerian-based numerical model for fluid-structure interaction using the
+  level contour reconstruction method.
+\newblock {\em International Journal for Numerical Methods in Fluids 92}, 11
+  (2020), 1478--1505.
+
+\bibitem{sugiyama2011full}
+{\sc Sugiyama, K., Ii, S., Takeuchi, S., Takagi, S., and Matsumoto, Y.}
+\newblock A full eulerian finite difference approach for solving
+  fluid--structure coupling problems.
+\newblock {\em Journal of Computational Physics 230}, 3 (2011), 596--627.
 
 \bibitem{sussman1994level}
 {\sc Sussman, M., Smereka, P., and Osher, S.}
@@ -31,6 +206,31 @@
   multi-phase systems.
 \newblock {\em Journal of Computational Physics 429\/} (2021), 110008.
 
+\bibitem{wang2017multiphase}
+{\sc Wang, K.~G.}
+\newblock Multiphase fluid-solid coupled analysis of shock-bubble-stone
+  interaction in shockwave lithotripsy.
+\newblock {\em International journal for numerical methods in biomedical
+  engineering 33}, 10 (2017), e2855.
+
+\bibitem{wardlaw2000fluid}
+{\sc Wardlaw~Jr, A.~B., and Luton, J.~A.}
+\newblock Fluid-structure interaction mechanisms for close-in explosions.
+\newblock {\em Shock and Vibration 7}, 5 (2000), 265--275.
+
+\bibitem{xiong2026bubble}
+{\sc Xiong, Q., Liu, L., Zhu, X., Li, Y., Wang, T., and Dong, X.}
+\newblock Bubble dynamics and heat transfer characteristics during boiling of
+  water droplets on flexible pdms substrates.
+\newblock {\em International Journal of Heat and Mass Transfer 259\/} (2026),
+  128364.
+
+\bibitem{xu2019experimental}
+{\sc Xu, W., Zhai, Y., Luo, J., Zhang, Q., and Li, J.}
+\newblock Experimental study of the influence of flexible boundaries with
+  different elastic moduli on cavitation bubbles.
+\newblock {\em Experimental Thermal and Fluid Science 109\/} (2019), 109897.
+
 \bibitem{ye2024improved}
 {\sc Ye, Z., Estebe, C., Liu, Y., Vahab, M., Huang, Z., Sussman, M.,
   Moradikazerouni, A., Shoele, K., Lian, Y., Ohta, M., et~al.}
@@ -38,5 +238,16 @@
   for simulating multiphase flows with phase change.
 \newblock {\em Communications on Applied Mathematics and Computation 6}, 2
   (2024), 1034--1069.
+
+\bibitem{yin2022experimental}
+{\sc Yin, C., Liu, J., and Jin, Z.}
+\newblock Experimental and numerical study of the near-field underwater
+  explosion of a circular plate coated by rigid polyurethane foam.
+\newblock {\em Ocean Engineering 252\/} (2022), 111248.
+
+\bibitem{sussman2007sharp}
+{\sc Zhi-Wei, R, e.~a.}
+\newblock A sharp interface method for incompressible two-phase flows.
+\newblock {\em Journal of computational physics 221}, 2 (2007), 469--505.
 
 \end{thebibliography}

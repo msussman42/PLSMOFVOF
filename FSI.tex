@@ -177,10 +177,11 @@ scandurra2016numerical},
 moment-of-fluid method was presented
 for simulating two phase flows to include incompressible, low speed, and
 high speed flows.  The method in Jemison et al was a collocated generalization
-of the projection method from incompressible flows\cite{jemison2013coupled} 
-to both compressible and incompressible flows.
+of the projection method for incompressible flows\cite{jemison2013coupled} 
+in order to simulate both compressible (with shock waves) and 
+incompressible flows.
 
-In the present work, we have mainly improved upon 
+In the present work, we have improved upon 
 \cite{jemison2014compressible}
 in the following important ways:
 \begin{description}
@@ -200,7 +201,151 @@ in the following important ways:
   materials undergoing plastic deformation. Our new algorithm is an 
   improvement on the algorithms reported in
   \cite{sugiyama2011full,shin2020interaction} so that we can
-  simulate both low and high speed elastic deformation.
+  simulate both low and high speed fluid structure interaction problems.
+  Our new method can simulate incompressible elastic materials or 
+  compressible elastic materials (with shock waves).
+\end{description}
+
+\subsection{Further motivation for enhancing our asymptotically preserving
+  algorithm from collocated grid to staggered grid }
+
+In this section, we just focus on single material compressible gas dynamics
+with a general equation of state.  The derivations here are applicable to the
+general multimaterial case.  The compressible gas dynamic 
+equations\cite{almgren2006low,boscarino2018all,scandurra2016numerical} are:
+\begin{eqnarray}
+\rho_{t}+\nabla\cdot(\rho\vec{u})=0 \label{pde1}
+\end{eqnarray}
+\begin{eqnarray}
+(\rho \vec{u})_{t}+\nabla\cdot(\rho\vec{u}\otimes\vec{u}+pI)=0
+\end{eqnarray}
+\begin{eqnarray}
+(\rho E)_{t}+\nabla\cdot(\rho\vec{u}E+p\vec{u})=0
+\end{eqnarray}
+\begin{eqnarray}
+E=e+\frac{1}{2}\vec{u}\cdot\vec{u}
+\end{eqnarray}
+\begin{eqnarray}
+p=p(\rho,e) \hspace{20pt} c^{2}=p_{\rho}+\frac{p_{e}p}{\rho^{2}} \label{pde2}
+\end{eqnarray}
+
+In accordance with the nondimensionalization steps in 
+\cite{almgren2006low,boscarino2018all,scandurra2016numerical}, the
+following scaling strategy is taken:
+\begin{eqnarray}
+\vec{x}=x_{0}\vec{\hat{x}} \hspace{20pt} 
+t=t_{0}\hat{t} \hspace{20pt}
+u_{0}=\frac{x_{0}}{t_{0}}  \hspace{20pt}
+\vec{u}=u_{0}\vec{\hat{u}} \label{scale1}
+\end{eqnarray}
+\begin{eqnarray}
+\rho=\rho_{0}\hat{\rho} \hspace{20pt}
+p=p_{0}\hat{p} \hspace{20pt}
+E=E_{0}\hat{E} \hspace{20pt}
+e=e_{0}\hat{e} \hspace{20pt}
+c=c_{0}\hat{c} \hspace{20pt}
+\end{eqnarray}
+\begin{eqnarray}
+M^{2}=\frac{u_{0}^{2}}{c_{0}^{2}} \hspace{20pt}
+c_{0}^{2}=\frac{p_{0}}{\rho_{0}} \hspace{20pt}
+c_{0}^{2}=E_{0}=e_{0}=\frac{u_{0}^{2}}{M^{2}} \label{scale2}
+\end{eqnarray}
+After substituting (\ref{scale1}) through (\ref{scale2}) into
+(\ref{pde1}) through (\ref{pde2}), and dropping the ``hats,'' one
+has the following dimensionless equations:
+\begin{eqnarray}
+\rho_{t}+\nabla\cdot(\rho\vec{u})=0 \label{pde1scale}
+\end{eqnarray}
+\begin{eqnarray}
+(\rho \vec{u})_{t}+\nabla\cdot(\rho\vec{u}\otimes\vec{u})+
+\frac{1}{M^{2}}\nabla p=0
+\end{eqnarray}
+\begin{eqnarray}
+(\rho E)_{t}+\nabla\cdot(\rho\vec{u}E+p\vec{u})=0
+\end{eqnarray}
+\begin{eqnarray}
+E=e+M^{2}\frac{1}{2}\vec{u}\cdot\vec{u} \label{pde2scale}
+\end{eqnarray}
+$M$ is the Mach number and it can be shown that as $M\rightarrow 0$, 
+equations (\ref{pde1scale}) through (\ref{pde2scale}) approach the
+incompressible flow equations.  
+\par\noindent
+To be specific, after substituting the following asymptotic ansatz into 
+(\ref{pde1scale}) through (\ref{pde2scale}),
+\begin{eqnarray}
+\rho=\rho_{0}+M^{2}\rho_{2}+\ldots, \label{asympt1}
+\end{eqnarray}
+\begin{eqnarray}
+p=p_{0}+M^{2}p_{2}+\ldots,
+\end{eqnarray}
+\begin{eqnarray}
+\vec{u}=\vec{u}_{0}+M^{2}\vec{u}_{2}+\ldots,
+\end{eqnarray}
+\begin{eqnarray}
+E=E_{0}+M^{2}E_{2}+\ldots, \label{asympt2}
+\end{eqnarray}
+and then equating like orders of $M$, the following incompressible
+flow equations emerge:
+\begin{eqnarray}
+p_{0}=\mbox{constant}
+\end{eqnarray}
+\begin{eqnarray}
+(\rho_{0})_{t}+\vec{u}_{0}\cdot\nabla\rho_{0}=0
+\end{eqnarray}
+\begin{eqnarray}
+\rho_{0}((\vec{u}_{0})_{t}+\vec{u}_{0}\cdot\nabla\vec{u}_{0})+\nabla p_{2}=0
+\end{eqnarray}
+\begin{eqnarray}
+(e_{0})_{t}+\vec{u}_{0}\cdot\nabla e_{0}=0
+\end{eqnarray}
+\begin{eqnarray}
+\nabla\cdot\vec{u}_{0}=0
+\end{eqnarray}
+If one assumes the same asymptotic ansatz as in 
+(\ref{asympt1}) through (\ref{asympt2}), and also if
+one assumes ``well prepared'' initial 
+conditions\cite{boscarino2018all,scandurra2016numerical}, then
+it can be shown that the following 
+Cell Integrated Semi-Lagrangian (CISL) algorithm
+approaches a discretization consistent with the incompressible flow
+equations in the zero Mach number limit:
+\begin{description}
+\item[CISL]
+\begin{eqnarray}
+\rho^{n+1}_{i_{f},j_{f}}=\frac{\int_{\Omega^{D}} \rho^{n} d\vec{x}}
+  {\int_{\Omega^{T}} 1 d\vec{x} }
+\end{eqnarray}
+\begin{eqnarray}
+u^{\ast}_{i+1/2,j}=\frac{\int_{\Omega^{D}} \rho^{n}u^{n}d\vec{x}}
+  {\int_{\Omega^{D}} \rho^{n} d\vec{x} } \\
+v^{\ast}_{i,j+1/2}=\frac{\int_{\Omega^{D}} \rho^{n}v^{n}d\vec{x}}
+  {\int_{\Omega^{D}} \rho^{n} d\vec{x} }
+\end{eqnarray}
+\begin{eqnarray}
+E^{\ast}_{ij}=\frac{\int_{\Omega^{D}} \rho^{n}E^{n}d\vec{x}}
+  {\int_{\Omega^{D}} \rho^{n} d\vec{x} }
+\end{eqnarray}
+\item[Pressure-Velocity]
+\begin{eqnarray}
+\frac{\rho^{n+1}_{i+1/2,j}(u_{i+1/2,j}^{n+1}-u_{i+1/2,j}^{\ast})}{\Delta t}=
+-\frac{1}{M^{2}}\frac{p^{n+1}_{i+1,j}-p^{n+1}_{i,j}}{\Delta x}
+\end{eqnarray}
+\begin{eqnarray}
+\frac{\rho^{n+1}_{i,j+1/2}(v_{i,j+1/2}^{n+1}-v_{i,j+1/2}^{\ast})}{\Delta t}=
+-\frac{1}{M^{2}}\frac{p^{n+1}_{i,j+1}-p^{n+1}_{i,j}}{\Delta y}
+\end{eqnarray}
+\begin{eqnarray}
+\frac{1}{\rho^{n+1}c^{2}(\rho^{n+1},e^{\ast})_{ij}}
+\frac{(p^{n+1}-p(\rho^{n+1},e^{\ast}))_{ij}}{\Delta t}=
+ -\frac{u_{i+1/2,j}^{n+1}-u_{i-1/2,j}^{n+1}}{\Delta x}-
+  \frac{v_{i,j+1/2}^{n+1}-v_{i,j-1/2}^{n+1}}{\Delta y}
+\end{eqnarray}
+\item[Total Energy]
+\begin{eqnarray}
+\frac{\rho^{n+1}_{ij}(E^{n+1}-E^{\ast})_{ij}}{\Delta t}=
+ -\frac{(up)_{i+1/2,j}^{n+1}-(up)_{i-1/2,j}^{n+1}}{\Delta x}-
+  \frac{(vp)_{i,j+1/2}^{n+1}-(vp)_{i,j-1/2}^{n+1}}{\Delta y}
+\end{eqnarray}
 \end{description}
 
 
@@ -208,8 +353,8 @@ in the following important ways:
  
 \centering
 \scalebox{0.7} {
- \begin{tabular}[h]{|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
- \hline
+
+\begin{tabular}[h]{|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|} \hline
  Author(s) & 
  incompressible fluids  &
  compressible fluids  &
@@ -240,8 +385,8 @@ No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
 Present Article, \newline Estebe et al & Yes & Yes & Yes & Yes & Yes & 
  pressure\newline and\newline velocity & 
  Continuous\newline Moment of \newline Fluid & Yes \\ \hline
-  \end{tabular}
-  }
+\end{tabular}
+}
 \caption{Recent numerical methods with 
   fluid interaction with deformable structures. \label{tab:FSI} }
 \end{table}
