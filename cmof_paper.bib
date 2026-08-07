@@ -2203,3 +2203,26 @@ keywords = {Mass redistribution, Repair, Remapping, Advection},
 abstract = {Repair is a conservative, post-processing procedure to be used in numerical methods for hyperbolic conservation laws in order to preserve certain qualitative characteristics of the numerical solution, such as positivity of density and internal energy, by means of redistribution of conserved quantities such as mass, momentum and total energy among the cells of the mesh. In this paper we describe the repair paradigm and prove several theorems which form a theoretical foundation for the repair procedures. We consider two applications of repair and present corresponding numerical results. The first application deals with improving properties of the remapping (conservative interpolation) stage of arbitrary Lagrangian–Eulerian (ALE) methods for the gas dynamics equations, in which the solution is conservatively transferred from one mesh to another. One requirement for remapping is that the interpolated density and internal energy on the new mesh have to stay positive. Another desirable property is that the remapping procedure should not create new extrema for the velocity field. For various reasons these properties may not be satisfied, especially for high-order methods. Repair plays a supplemental role by bringing gas dynamics quantities into physically justified bounds. Another application of repair is to improve the quality of numerical methods for advection of some scalar tracer field with prescribed divergence-free velocity field, in which case the advection equation can be written as a conservation law, and therefore the total amount of tracer is conserved. We show how the repair procedure allows us to reduce oscillations in a numerical solution obtained by a formally high-order method. Repair offers an alternative to more classical methods of reducing oscillations and maintaining positivity.}
 }
 
+@article{ZHANG2022105267,
+title = {Direct numerical simulation of compressible interfacial multiphase flows using a mass–momentum–energy consistent volume-of-fluid method},
+journal = {Computers & Fluids},
+volume = {236},
+pages = {105267},
+year = {2022},
+issn = {0045-7930},
+doi = {https://doi.org/10.1016/j.compfluid.2021.105267},
+url = {https://www.sciencedirect.com/science/article/pii/S0045793021003650},
+author = {Bo Zhang and Bradley Boyd and Yue Ling},
+keywords = {Compressible flows, Multiphase flows, Shock-interface interaction, Volume-of-fluid, Richtmyer–Meshkov instability},
+abstract = {Compressible interfacial multiphase flows (CIMF) are essential to different applications, such as liquid fuel injection in supersonic propulsion systems. Since high-level details in CIMF are often difficult to measure in experiments, numerical simulation is an important alternative to shed light on the unclear physics. A direct numerical simulation (DNS) of CIMF will need to rigorously resolve the shock waves, the interfaces, and the interaction between the two. A novel numerical method has been developed and implemented in the present study. The geometric volume-of-fluid (VOF) method is employed to resolve the sharp interfaces between the two phases. The advection of the density, momentum, and energy is carried out consistently with VOF advection. To suppress spurious oscillations near shocks, numerical diffusion is introduced based on the Kurganov–Tadmor method in the region away from the interface. The contribution of pressure is incorporated using the projection method and the pressure is obtained by solving the Poisson–Helmholtz equation, which allows the present method to handle flows with all Mach numbers. The present method is tested by a sequence of CIMF problems. The simulation results are validated against theories, experiments, and other simulations, and excellent agreement has been achieved. In particular, the linear single-mode Richtmyer–Meshkov instabilities with finite Weber and Reynolds numbers are simulated. The simulation results agree very well with the linear stability theory, which affirms the capability of the present method in capturing the viscous and capillary effects on shock-interface interaction.}
+}
+
+@article{lei2026high,
+  title={A high-order, conservative and positivity-preserving intersection-based remapping method between meshes with isoparametric curvilinear cells},
+  author={Lei, Nuo and Cheng, Juan and Shu, Chi-Wang},
+  journal={Journal of Computational Physics},
+  pages={114669},
+  year={2026},
+  publisher={Elsevier}
+}
+
