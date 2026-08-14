@@ -207,13 +207,17 @@ in the following important ways:
   simulate both low and high speed fluid structure interaction problems.
   Our new method can simulate incompressible elastic materials or 
   compressible elastic materials (with shock waves).
+\item[4.] We have developed an exactly mass and volume preserving algorithm for
+  simulating contact line dynamics of drops and bubbles along flexible 
+  surfaces.
 \end{description}
 
-\subsection{Further motivation for enhancing our asymptotically preserving
+\subsection{Motivation for enhancing our asymptotically preserving
   algorithm from collocated grid to staggered grid }
 
 In this section, we just focus on single material compressible gas dynamics
-with a general equation of state.  The derivations here are applicable to the
+with a general equation of state and periodic boundary conditions.  
+The derivations here are applicable to the
 general multimaterial case.  The compressible gas dynamic 
 equations\cite{almgren2006low,boscarino2018all,scandurra2016numerical} are:
 \begin{eqnarray}
@@ -316,7 +320,7 @@ equations in the zero Mach number limit:
 \item[CISL]
 \begin{eqnarray}
 \rho^{n+1}_{i_{f},j_{f}}=\frac{\int_{\Omega^{D}} \rho^{n} d\vec{x}}
-  {\int_{\Omega^{T}} 1 d\vec{x} }
+  {\int_{\Omega^{T}} 1 d\vec{x} } \label{CISL1}
 \end{eqnarray}
 \begin{eqnarray}
 u^{\ast}_{i+1/2,j}=\frac{\int_{\Omega^{D}} \rho^{n}u^{n}d\vec{x}}
@@ -326,12 +330,13 @@ v^{\ast}_{i,j+1/2}=\frac{\int_{\Omega^{D}} \rho^{n}v^{n}d\vec{x}}
 \end{eqnarray}
 \begin{eqnarray}
 E^{\ast}_{ij}=\frac{\int_{\Omega^{D}} \rho^{n}E^{n}d\vec{x}}
-  {\int_{\Omega^{D}} \rho^{n} d\vec{x} }
+  {\int_{\Omega^{D}} \rho^{n} d\vec{x} } \label{CISL2}
 \end{eqnarray}
 \item[Pressure-Velocity]
 \begin{eqnarray}
 \frac{\rho^{n+1}_{i+1/2,j}(u_{i+1/2,j}^{n+1}-u_{i+1/2,j}^{\ast})}{\Delta t}=
 -\frac{1}{M^{2}}\frac{p^{n+1}_{i+1,j}-p^{n+1}_{i,j}}{\Delta x}
+\label{pres_vel1}
 \end{eqnarray}
 \begin{eqnarray}
 \frac{\rho^{n+1}_{i,j+1/2}(v_{i,j+1/2}^{n+1}-v_{i,j+1/2}^{\ast})}{\Delta t}=
@@ -339,9 +344,12 @@ E^{\ast}_{ij}=\frac{\int_{\Omega^{D}} \rho^{n}E^{n}d\vec{x}}
 \end{eqnarray}
 \begin{eqnarray}
 \frac{1}{\rho^{n+1}c^{2}(\rho^{n+1},e^{\ast})_{ij}}
-\frac{(p^{n+1}-p(\rho^{n+1},e^{\ast}))_{ij}}{\Delta t}=
+\frac{(p^{n+1}-
+p(\rho^{n+1},e^{\ast}))_{ij}
+}{\Delta t}=
  -\frac{u_{i+1/2,j}^{n+1}-u_{i-1/2,j}^{n+1}}{\Delta x}-
   \frac{v_{i,j+1/2}^{n+1}-v_{i,j-1/2}^{n+1}}{\Delta y}
+\label{pres_vel2}
 \end{eqnarray}
 \item[Total Energy]
 \begin{eqnarray}
@@ -351,7 +359,48 @@ E^{\ast}_{ij}=\frac{\int_{\Omega^{D}} \rho^{n}E^{n}d\vec{x}}
 \end{eqnarray}
 \end{description}
 
+For the cell integrated semi-Lagrangian step, (\ref{CISL1}) through
+(\ref{CISL2}), our numerical method represents state variables as 
+piecewise constant in the variables respective control volumes.  See Figure
+\ref{controlvolumes}.  The piecewise constant representation guarantees
+that no new extrama are generated for $\vec{u}^{\ast}$ and $E^{\ast}$, the
+updated density $\rho^{n+1}$ is positive, and the discrete mass is conserved:
+\begin{eqnarray}
+\sum_{ij} |\Omega_{ij}|(\rho^{n+1}_{ij}-\rho^{n}_{ij})=0
+\end{eqnarray}
+$|\Omega_{ij}|$ is the volume of the computational cell $(i,j)$ 
+(see Figure \ref{controlvolumes}).
 
+In the zero Mach number limit, the flow is incompressible.  Our staggered
+grid discretization \cite{LECHENADEC2013185} of (\ref{pres_vel1}) through
+(\ref{pres_vel2}) therefore discretely 
+guarantees 
+\begin{eqnarray}
+\int_{\Omega} \frac{1}{2}\rho^{n+1}|\vec{u}^{n+1}|\le
+\int_{\Omega} \frac{1}{2}\rho^{n+1}|\vec{u}^{\ast}|
+\end{eqnarray}
+So, for the incompressible and inviscid case, 
+the staggered grid approach guarantees energy stability.
+
+For the compressible case, if we consider a simplified problem,
+in which the discretization
+(\ref{pres_vel1}) through (\ref{pres_vel2}) is applied to the wave
+equation:
+\begin{eqnarray}
+\rho\vec{u}_{t}=-\nabla p
+\end{eqnarray}
+\begin{eqnarray}
+\frac{1}{\rho c^{2}} p_{t}=-\nabla\cdot\vec{u}
+\end{eqnarray}
+where $\rho(t,\vec{x})>0$ and $c(t,\vec{x})>0$ are prescribed, then the
+staggered grid approach guarantees unconditional stability for any
+fixed 
+\begin{eqnarray}
+\frac{\Delta t}{\Delta x}
+\end{eqnarray}
+
+
+ 
 \begin{table}[htbp]
  
 \centering
