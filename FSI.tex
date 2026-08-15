@@ -143,7 +143,8 @@ is modeled and discretized as sharp.  The new method is robust with respect
 to a wide range of material properties, and large interface deformation.  
 The new method is scalable on MIMD (Multi Instruction Distributed memory using
 MPI) and MISD (Multi Instructuion Shared memory using OpenMP) computer systems.
-The new method is also scalable with respect to adaptive mesh refinement.
+The new method is also scalable with respect to 
+dynamic adaptive mesh refinement.
 %%Asymptotically preserving according to Degond? 
  
 \linenumbers
@@ -215,16 +216,18 @@ in the following important ways:
 \subsection{Motivation for enhancing our asymptotically preserving
   algorithm from collocated grid to staggered grid }
 
-In this section, we just focus on single material compressible gas dynamics
+In this section, we just focus on single material inviscid
+compressible gas dynamics
 with a general equation of state and periodic boundary conditions.  
 The derivations here are applicable to the
-general multimaterial case.  The compressible gas dynamic 
+general multimaterial case.  
+The compressible gas dynamic 
 equations\cite{almgren2006low,boscarino2018all,scandurra2016numerical} are:
 \begin{eqnarray}
 \rho_{t}+\nabla\cdot(\rho\vec{u})=0 \label{pde1}
 \end{eqnarray}
 \begin{eqnarray}
-(\rho \vec{u})_{t}+\nabla\cdot(\rho\vec{u}\otimes\vec{u}+pI)=0
+(\rho \vec{u})_{t}+\nabla\cdot(\rho\vec{u}\otimes\vec{u}+p\EyeTen)=0
 \end{eqnarray}
 \begin{eqnarray}
 (\rho E)_{t}+\nabla\cdot(\rho\vec{u}E+p\vec{u})=0
@@ -233,7 +236,8 @@ equations\cite{almgren2006low,boscarino2018all,scandurra2016numerical} are:
 E=e+\frac{1}{2}\vec{u}\cdot\vec{u}
 \end{eqnarray}
 \begin{eqnarray}
-p=p(\rho,e) \hspace{20pt} c^{2}=p_{\rho}+\frac{p_{e}p}{\rho^{2}} \label{pde2}
+p=p(\rho,e) \hspace{20pt} c^{2}=p_{\rho}+\frac{p_{e}p}{\rho^{2}} 
+\hspace{20pt} e=c_{v}T \label{pde2}
 \end{eqnarray}
 
 In accordance with the nondimensionalization steps in 
@@ -317,51 +321,57 @@ Cell Integrated Semi-Lagrangian (CISL) algorithm
 approaches a discretization consistent with the incompressible flow
 equations in the zero Mach number limit:
 \begin{description}
+\item For $k=0,1$
 \item[CISL]
 \begin{eqnarray}
-\rho^{n+1}_{i_{f},j_{f}}=\frac{\int_{\Omega^{D}} \rho^{n} d\vec{x}}
+\rho^{n+1,(k+1)}_{i_{f},j_{f}}=\frac{\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x}}
   {\int_{\Omega^{T}} 1 d\vec{x} } \label{CISL1}
 \end{eqnarray}
 \begin{eqnarray}
-u^{\ast}_{i+1/2,j}=\frac{\int_{\Omega^{D}} \rho^{n}u^{n}d\vec{x}}
-  {\int_{\Omega^{D}} \rho^{n} d\vec{x} } \\
-v^{\ast}_{i,j+1/2}=\frac{\int_{\Omega^{D}} \rho^{n}v^{n}d\vec{x}}
-  {\int_{\Omega^{D}} \rho^{n} d\vec{x} }
+u^{\ast,(k+1)}_{i+1/2,j}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}u^{n}d\vec{x}}
+  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } \\
+v^{\ast,(k+1)}_{i,j+1/2}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}v^{n}d\vec{x}}
+  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} }
 \end{eqnarray}
 \begin{eqnarray}
-E^{\ast}_{ij}=\frac{\int_{\Omega^{D}} \rho^{n}E^{n}d\vec{x}}
-  {\int_{\Omega^{D}} \rho^{n} d\vec{x} } \label{CISL2}
+E^{\ast,(k+1)}_{ij}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}E^{n}d\vec{x}}
+  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } \label{CISL2}
 \end{eqnarray}
 \item[Pressure-Velocity]
 \begin{eqnarray}
-\frac{\rho^{n+1}_{i+1/2,j}(u_{i+1/2,j}^{n+1}-u_{i+1/2,j}^{\ast})}{\Delta t}=
--\frac{1}{M^{2}}\frac{p^{n+1}_{i+1,j}-p^{n+1}_{i,j}}{\Delta x}
+\frac{\rho^{n+1,(k+1)}_{i+1/2,j}(u_{i+1/2,j}^{n+1,(k+1)}-
+u_{i+1/2,j}^{\ast,(k+1)})}{\Delta t}=
+-\frac{1}{M^{2}}\frac{p^{n+1,(k+1)}_{i+1,j}-p^{n+1,(k+1)}_{i,j}}{\Delta x}
 \label{pres_vel1}
 \end{eqnarray}
 \begin{eqnarray}
-\frac{\rho^{n+1}_{i,j+1/2}(v_{i,j+1/2}^{n+1}-v_{i,j+1/2}^{\ast})}{\Delta t}=
--\frac{1}{M^{2}}\frac{p^{n+1}_{i,j+1}-p^{n+1}_{i,j}}{\Delta y}
+\frac{\rho^{n+1,(k+1)}_{i,j+1/2}(v_{i,j+1/2}^{n+1,(k+1)}-
+v_{i,j+1/2}^{\ast,(k+1)})}{\Delta t}=
+-\frac{1}{M^{2}}\frac{p^{n+1,(k+1)}_{i,j+1}-p^{n+1,(k+1)}_{i,j}}{\Delta y}
 \end{eqnarray}
 \begin{eqnarray}
-\frac{1}{\rho^{n+1}c^{2}(\rho^{n+1},e^{\ast})_{ij}}
-\frac{(p^{n+1}-
-p(\rho^{n+1},e^{\ast}))_{ij}
+\frac{1}{\rho^{n+1,(k+1)}c^{2}(\rho^{n+1,(k+1)},e^{\ast,(k+1)})_{ij}}
+\frac{(p^{n+1,(k+1)}-
+p(\rho^{n+1,(k+1)},e^{\ast,(k+1)}))_{ij}
 }{\Delta t}=
- -\frac{u_{i+1/2,j}^{n+1}-u_{i-1/2,j}^{n+1}}{\Delta x}-
-  \frac{v_{i,j+1/2}^{n+1}-v_{i,j-1/2}^{n+1}}{\Delta y}
+ -\frac{u_{i+1/2,j}^{n+1,(k+1)}-u_{i-1/2,j}^{n+1,(k+1)}}
+       {\Delta x}-
+  \frac{v_{i,j+1/2}^{n+1,(k+1)}-v_{i,j-1/2}^{n+1,(k+1)}}
+       {\Delta y}
 \label{pres_vel2}
 \end{eqnarray}
 \item[Total Energy]
 \begin{eqnarray}
-\frac{\rho^{n+1}_{ij}(E^{n+1}-E^{\ast})_{ij}}{\Delta t}=
- -\frac{(up)_{i+1/2,j}^{n+1}-(up)_{i-1/2,j}^{n+1}}{\Delta x}-
-  \frac{(vp)_{i,j+1/2}^{n+1}-(vp)_{i,j-1/2}^{n+1}}{\Delta y}
+\frac{\rho^{n+1,(k+1)}_{ij}(E^{n+1,(k+1)}-E^{\ast,(k+1)})_{ij}}{\Delta t}=
+ -\frac{(up)_{i+1/2,j}^{n+1,(k+1)}-(up)_{i-1/2,j}^{n+1,(k+1)}}{\Delta x}-
+  \frac{(vp)_{i,j+1/2}^{n+1,(k+1)}-(vp)_{i,j-1/2}^{n+1,(k+1)}}{\Delta y}
 \end{eqnarray}
+\item End For $k=0,1$
 \end{description}
 
 For the cell integrated semi-Lagrangian step, (\ref{CISL1}) through
 (\ref{CISL2}), our numerical method represents state variables as 
-piecewise constant in the variables respective control volumes.  See Figure
+piecewise constant in the variables' respective control volumes.  See Figure
 \ref{controlvolumes}.  The piecewise constant representation guarantees
 that no new extrama are generated for $\vec{u}^{\ast}$ and $E^{\ast}$, the
 updated density $\rho^{n+1}$ is positive, and the discrete mass is conserved:
@@ -399,6 +409,97 @@ fixed
 \frac{\Delta t}{\Delta x}
 \end{eqnarray}
 
+\subsection{Lax diffusion for elastic materials }
+
+In this section, we just focus on single material compressible 
+elastic fluid dynamics
+with a general equation of state and periodic boundary conditions.  
+The derivations here are applicable to the
+general multimaterial case.  
+\par\noindent
+The compressible elastic fluid dynamic 
+equations\cite{tran2004particle,maire2013nominally,camacho1997adaptive} are:
+\begin{eqnarray}
+\rho_{t}+\nabla\cdot(\rho\vec{u})=0 \label{pde1elastic}
+\end{eqnarray}
+\begin{eqnarray}
+(\rho \vec{u})_{t}+\nabla\cdot(\rho\vec{u}\otimes\vec{u}+p\EyeTen-s)=0
+\label{elastic_mom}
+\end{eqnarray}
+\begin{eqnarray}
+(\rho E)_{t}+\nabla\cdot(\rho\vec{u}E+p\vec{u}-\vec{u}\cdot s)=0
+\label{energy_elastic}
+\end{eqnarray}
+\begin{eqnarray}
+E=e+\frac{1}{2}\vec{u}\cdot\vec{u}
+\end{eqnarray}
+\begin{eqnarray}
+(\rho s)_{t}+\nabla\cdot(\rho\vec{u}s)= 
+\rho(\Omega s-s\Omega+2G(\bar{D}-D^{p}))
+\end{eqnarray}
+\begin{eqnarray}
+D=\frac{\nabla\vec{u}+(\nabla\vec{u})^{T}}{2}
+\end{eqnarray}
+\begin{eqnarray}
+\Omega_{ij}=\frac{1}{2}(
+\frac{\partial u_{i}}{\partial x_{j}}-
+\frac{\partial u_{j}}{\partial x_{i}})
+\end{eqnarray}
+\begin{eqnarray}
+p=p(\rho,e) \hspace{20pt} c^{2}=p_{\rho}+\frac{p_{e}p}{\rho^{2}} 
+\hspace{20pt} e=c_{v}T \label{pde2elastic}
+\end{eqnarray}
+$D^{p}$ is the plastic strain rate and is defined 
+below (\ref{plastic_strain_rate}).
+\par\noindent
+The elastic tensor $s$ is discretized on a staggered grid as 
+illustrated in Figure \ref{staggered} and as recommended by
+\cite{sugiyama2011full,shin2020interaction}.
+\par\noindent
+We discretize the elastic term, 
+$\nabla\cdot s$ in (\ref{elastic_mom}), and
+the $\nabla\cdot(\vec{u}p)$ term in (\ref{energy_elastic}) using 
+central differencing for which we have found to cause problems in elastic
+materials for realistic values of the shear modulus $G$.  
+In order to overcome 
+this difficulty, we add Lax Friedrichs Diffusion\cite{Lax1954} 
+to both the momentum equation (\ref{elastic_mom}),
+\begin{eqnarray}
+\nabla\cdot (2\mu_{\mbox{Lax}}D),
+\end{eqnarray}
+\begin{eqnarray}
+\mu_{\mbox{Lax}}=\frac{\rho_{\mbox{max}}\Delta x^{2}}{2\mbox{DIM}\Delta t}
+\hspace{20pt} D=\frac{\nabla\vec{u}+(\nabla\vec{u})^{T}}{2} \hspace{20pt}
+\mbox{DIM}=2 \mbox{ or } 3,
+\end{eqnarray}
+and the energy equation (\ref{energy_elastic}),
+\begin{eqnarray}
+\nabla\cdot (k_{\mbox{Lax}}\nabla T),
+\end{eqnarray}
+\begin{eqnarray}
+k_{\mbox{Lax}}=\frac{\rho_{\mbox{max}}c_{v}\Delta x^{2}}{2\mbox{DIM}\Delta t}.
+\end{eqnarray}
+Remarks:
+\begin{description}
+\item[1.] In \cite{Lax1954}, the artificial diffusion term(s) are discretized
+  explicitly in time, but in our implementation, diffusion is discretized
+  in time semi-implicitly; see section \ref{numerical_alg_sec}.
+\item[2.] In \cite{Lax1954}, it is proved for general scalar hyperbolic
+  problems that the Lax method converges if the CFL condition
+  is met.  For systems of hyperbolic conservation laws, Lax 
+  conjectures that the method converges, but does not offer a proof.  
+  We have a similar conjecture, that Lax artificial diffusion guarantees 
+  convergence, except that our conjecture is stronger.  We conjecture
+  that adding Lax artificial diffusion to our method guarantees
+  convergence so long as the ``velocity'' CFL condition and 
+  ``shear modulus'' CFL conditions are met (\ref{CFLcondition}), 
+  but sound speed restrictions
+  on the time step are unnecessary.
+\item[3.] We have done extensive testing of our numerical method and have
+  found that Lax artificial diffusion to be necessary only for stiff
+  elastic materials.  We have found that adding Lax diffusion to 
+  liquid materials would impose excessive damping.
+\end{description}
 
  
 \begin{table}[htbp]
@@ -568,12 +669,12 @@ tensor,
 % Pascal=N/m^2=kg (m/s^2)/m^2=kg/(s^2 m)
 % G/\rho=kg/(s^2 m) (m^3/kg)=m^2/s^2
 \begin{eqnarray}
-	(\rho s)_{t}+\nabla\cdot(\rho\vec{u}s)= 
+(\rho s)_{t}+\nabla\cdot(\rho\vec{u}s)= 
 \rho(\Omega s-s\Omega+2G(\bar{D}-D^{p})), \label{plastic}
 \end{eqnarray}
 and the momentum constitutive law term is modified,
 \begin{eqnarray}
-	\tau=\tau+s.
+\tau=\tau+s.
 \end{eqnarray}
 If the material is an elastic material undergoing plastic deformation, then
 the plastic strain equation is solved too,
