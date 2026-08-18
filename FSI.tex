@@ -222,7 +222,8 @@ with a general equation of state and periodic boundary conditions.
 The derivations here are applicable to the
 general multimaterial case.  
 The compressible gas dynamic 
-equations\cite{almgren2006low,boscarino2018all,scandurra2016numerical} are:
+equations\cite{almgren2006low,boscarino2018all,scandurra2016numerical,
+CHERTOCK2026119292} are:
 \begin{eqnarray}
 \rho_{t}+\nabla\cdot(\rho\vec{u})=0 \label{pde1}
 \end{eqnarray}
@@ -241,7 +242,8 @@ p=p(\rho,e) \hspace{20pt} c^{2}=p_{\rho}+\frac{p_{e}p}{\rho^{2}}
 \end{eqnarray}
 
 In accordance with the nondimensionalization steps in 
-\cite{almgren2006low,boscarino2018all,scandurra2016numerical}, the
+\cite{almgren2006low,boscarino2018all,scandurra2016numerical,
+CHERTOCK2026119292}, the
 following scaling strategy is taken:
 \begin{eqnarray}
 \vec{x}=x_{0}\vec{\hat{x}} \hspace{20pt} 
@@ -402,7 +404,7 @@ equation:
 \begin{eqnarray}
 \frac{1}{\rho c^{2}} p_{t}=-\nabla\cdot\vec{u}
 \end{eqnarray}
-where $\rho(t,\vec{x})>0$ and $c(t,\vec{x})>0$ are prescribed, then the
+where $\rho(\vec{x})>0$ and $c(\vec{x})>0$ are prescribed, then the
 staggered grid approach guarantees unconditional stability for any
 fixed 
 \begin{eqnarray}
@@ -489,7 +491,7 @@ Remarks:
   is met.  For systems of hyperbolic conservation laws, Lax 
   conjectures that the method converges, but does not offer a proof.  
   We have a similar conjecture, that Lax artificial diffusion guarantees 
-  convergence, except that our conjecture is stronger.  We conjecture
+  convergence; our conjecture is stronger.  We conjecture
   that adding Lax artificial diffusion to our method guarantees
   convergence so long as the ``velocity'' CFL condition and 
   ``shear modulus'' CFL conditions are met (\ref{CFLcondition}), 
@@ -501,7 +503,7 @@ Remarks:
   liquid materials would impose excessive damping.
 \item[4.] We are only aware of proofs for the Godunov method and
   fractional step Lax-Friedrichs method for isentropic gas
-  dynamics\cite{xiaxi1989convergence}.  Both these methods use
+  dynamics\cite{xiaxi1989convergence}.  Both these methods require
   an exact Riemann solver and both methods' time step constraints depend
   on the sound speed.
 \end{description}

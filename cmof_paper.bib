@@ -2281,3 +2281,18 @@ year = {1954}
   year={1989},
   publisher={Springer}
 }
+
+@article{CHERTOCK2026119292,
+title = {A new asymptotic-preserving dual formulation finite-volume method for the compressible Euler equations},
+journal = {Computer Methods in Applied Mechanics and Engineering},
+volume = {461},
+pages = {119292},
+year = {2026},
+issn = {0045-7825},
+doi = {https://doi.org/10.1016/j.cma.2026.119292},
+url = {https://www.sciencedirect.com/science/article/pii/S0045782526005657},
+author = {Alina Chertock and Smadar Karni and Alexander Kurganov and Lorenzo Micalizzi},
+keywords = {Compressible Euler equations, Low Mach number, Asymptotic preserving (AP) schemes, Hyperbolic splitting, Semi-implicit methods, Deferred correction},
+abstract = {The paper focuses on the development of numerical methods for the compressible Euler equations. It is well-known that if the Mach number is small, the system becomes stiff and hence explicit schemes suffer from severe time-step restrictions, making them inefficient or even impractical. Our objective is to develop an asymptotic preserving (AP) scheme that remains uniformly accurate and stable across all Mach numbers. Instead of the conservative hyperbolic flux splitting approach, which is widely used to design AP schemes, we consider a primitive (nonconservative) formulation and introduce a nonconservative hyperbolic splitting. The resulting system is discretized using a semi-implicit approach: the stiff part is handled semi-implicitly using second-order central differences, while the nonstiff part is treated explicitly using a second-order path-conservative central-upwind discretization. A key feature of our method is that the pressure at each time level is computed by solving a well-posed Poisson-type elliptic equation, thereby enforcing the AP property. Simultaneously, we evolve the conservative form of the system using a semi-discrete central-upwind (CU) scheme. At the end of each stage of the time discretization, we perform a special post-processing that selects the appropriate numerical solution depending on the Mach number. This guarantees that in low-Mach-number regimes, the solution is obtained by the AP nonconservative scheme, while in higher-Mach-number regimes, a sharp and physically relevant solution is computed by the conservative CU scheme. Numerical experiments confirm that the proposed AP scheme achieves the expected second order of accuracy and that the time-step constraint is independent of the Mach number, making it a robust and efficient alternative to conventional explicit methods.}
+}
+
