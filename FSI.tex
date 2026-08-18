@@ -194,7 +194,10 @@ in the following important ways:
   following research for incompressible flows underscore the
   importance of a staggered grid\cite{LECHENADEC2013185,
   sugiyama2011full,shin2020interaction,GUITTET2015215} for
-  projection methods. 
+  projection methods.  We also report recent work by
+  Park and Son\cite{PARK2026132} in which they developed
+  a staggered grid method for compressible flows in which the
+  acoustic time step constraint was avoided.
 \item[2.] the present method represents complex deforming interfaces
   using the Continuous Moment-of-Fluid method\cite{ye2024improved} (CMOF),
   instead of the Moment-of-Fluid (MOF) method\cite{jemison2015filament}.
@@ -204,14 +207,18 @@ in the following important ways:
   solving the equations associated with standard elastic materials and
   materials undergoing plastic deformation. Our new algorithm is an 
   improvement on the algorithms reported in
-  \cite{sugiyama2011full,shin2020interaction} so that we can
+  \cite{sugiyama2011full,shin2020interaction,PARK2026132} so that we can
   simulate both low and high speed fluid structure interaction problems.
   Our new method can simulate incompressible elastic materials or 
-  compressible elastic materials (with shock waves).
+  compressible elastic materials with shock waves.
 \item[4.] We have developed an exactly mass and volume preserving algorithm for
   simulating contact line dynamics of drops and bubbles along flexible 
   surfaces.
 \end{description}
+
+In Table \ref{tablecompare}, we compare and contrast our method with
+the current state of the art.
+
 
 \subsection{Motivation for enhancing our asymptotically preserving
   algorithm from collocated grid to staggered grid }
@@ -319,12 +326,13 @@ If one assumes the same asymptotic ansatz as in
 one assumes ``well prepared'' initial 
 conditions\cite{boscarino2018all,scandurra2016numerical}, then
 it can be shown that the following 
-Cell Integrated Semi-Lagrangian (CISL) algorithm
+Cell Integrated Semi-Lagrangian (CISL) algorithm (see
+Section \ref{CISL})
 approaches a discretization consistent with the incompressible flow
 equations in the zero Mach number limit:
 \begin{description}
 \item For $k=0,1$
-\item[CISL]
+\item[1. CISL]
 \begin{eqnarray}
 \rho^{n+1,(k+1)}_{i_{f},j_{f}}=\frac{\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x}}
   {\int_{\Omega^{T}} 1 d\vec{x} } \label{CISL1}
@@ -339,7 +347,7 @@ v^{\ast,(k+1)}_{i,j+1/2}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}v^{n}d\vec{x}}
 E^{\ast,(k+1)}_{ij}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}E^{n}d\vec{x}}
   {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } \label{CISL2}
 \end{eqnarray}
-\item[Pressure-Velocity]
+\item[2. Pressure-Velocity]
 \begin{eqnarray}
 \frac{\rho^{n+1,(k+1)}_{i+1/2,j}(u_{i+1/2,j}^{n+1,(k+1)}-
 u_{i+1/2,j}^{\ast,(k+1)})}{\Delta t}=
@@ -362,11 +370,12 @@ p(\rho^{n+1,(k+1)},e^{\ast,(k+1)}))_{ij}
        {\Delta y}
 \label{pres_vel2}
 \end{eqnarray}
-\item[Total Energy]
+\item[3. Total Energy]
 \begin{eqnarray}
 \frac{\rho^{n+1,(k+1)}_{ij}(E^{n+1,(k+1)}-E^{\ast,(k+1)})_{ij}}{\Delta t}=
  -\frac{(up)_{i+1/2,j}^{n+1,(k+1)}-(up)_{i-1/2,j}^{n+1,(k+1)}}{\Delta x}-
   \frac{(vp)_{i,j+1/2}^{n+1,(k+1)}-(vp)_{i,j-1/2}^{n+1,(k+1)}}{\Delta y}
+\label{total_energy}
 \end{eqnarray}
 \item End For $k=0,1$
 \end{description}
@@ -376,12 +385,38 @@ For the cell integrated semi-Lagrangian step, (\ref{CISL1}) through
 piecewise constant in the variables' respective control volumes.  See Figure
 \ref{controlvolumes}.  The piecewise constant representation guarantees
 that no new extrama are generated for $\vec{u}^{\ast}$ and $E^{\ast}$, the
-updated density $\rho^{n+1}$ is positive, and the discrete mass is conserved:
+updated density $\rho^{n+1}$ is positive, and the discrete mass,
+momentum, and energy are conserved:
 \begin{eqnarray}
-\sum_{ij} |\Omega_{ij}|(\rho^{n+1}_{ij}-\rho^{n}_{ij})=0
+\sum_{i_{f}j_{f}} |\Omega_{i_{f}j_{f}}|
+  (\rho^{n+1}_{i_{f}j_{f}}-\rho^{n}_{i_{f}j_{f}})=0.
 \end{eqnarray}
-$|\Omega_{ij}|$ is the volume of the computational cell $(i,j)$ 
+\begin{eqnarray}
+\sum_{i_{f}j_{f}} |\Omega_{i_{f}j_{f}}|
+  (\rho^{n+1}_{i_{f}j_{f}}\vec{u}^{\ast}_{i_{f},j_{f}}-
+   \rho^{n}_{i_{f}j_{f}}\vec{u}^{n}_{i_{f}j_{f}})=0.
+\end{eqnarray}
+\begin{eqnarray}
+\sum_{i_{f}j_{f}} |\Omega_{i_{f}j_{f}}|
+  (\rho^{n+1}_{i_{f}j_{f}}E^{\ast}_{i_{f},j_{f}}-
+   \rho^{n}_{i_{f}j_{f}}E^{n}_{i_{f}j_{f}})=0.
+\end{eqnarray}
+$|\Omega_{i_{f}j_{f}}|$ is the volume of the computational cell $(i_{f},j_{f})$ 
 (see Figure \ref{controlvolumes}).
+\par\noindent
+The pressure-velocity step ((\ref{pres_vel1} thru \ref{pres_vel2}), and
+the total energy step (\ref{total_energy}) also preserve momentum and
+energy exactly:
+\begin{eqnarray}
+\sum_{i_{f}j_{f}} |\Omega_{i_{f}j_{f}}|
+  (\rho^{n+1}_{i_{f}j_{f}}\vec{u}^{n+1}_{i_{f},j_{f}}-
+   \rho^{n+1}_{i_{f}j_{f}}\vec{u}^{\ast}_{i_{f}j_{f}})=0.
+\end{eqnarray}
+\begin{eqnarray}
+\sum_{i_{f}j_{f}} |\Omega_{i_{f}j_{f}}|
+  (\rho^{n+1}_{i_{f}j_{f}}E^{n+1}_{i_{f},j_{f}}-
+   \rho^{n+1}_{i_{f}j_{f}}E^{\ast}_{i_{f}j_{f}})=0.
+\end{eqnarray}
 
 In the zero Mach number limit, the flow is incompressible.  Our staggered
 grid discretization \cite{LECHENADEC2013185} of (\ref{pres_vel1}) through
@@ -456,7 +491,7 @@ below (\ref{plastic_strain_rate}).
 \par\noindent
 The elastic tensor $s$ is discretized on a staggered grid as 
 illustrated in Figure \ref{staggered} and as recommended by
-\cite{sugiyama2011full,shin2020interaction}.
+\cite{sugiyama2011full,shin2020interaction,PARK2026132}.
 \par\noindent
 We discretize the elastic term, 
 $\nabla\cdot s$ in (\ref{elastic_mom}), and
@@ -481,11 +516,105 @@ and the energy equation (\ref{energy_elastic}),
 \begin{eqnarray}
 k_{\mbox{Lax}}=\frac{\rho_{\mbox{max}}c_{v}\Delta x^{2}}{2\mbox{DIM}\Delta t}.
 \end{eqnarray}
+So, an outline of our temporal discretization of non-isothermal gas dynamics,
+for a single elastic material, is:
+\begin{description}
+\item For $k=0,1$
+\item[1. CISL (section \ref{CISL})]
+\begin{eqnarray}
+\rho^{n+1,(k+1)}_{i_{f},j_{f}}=\frac{\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x}}
+  {\int_{\Omega^{T}} 1 d\vec{x} } \label{CISL1elastic}
+\end{eqnarray}
+\begin{eqnarray}
+u^{\ast,(k+1)}_{i+1/2,j}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}u^{n}d\vec{x}}
+  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } \\
+v^{\ast,(k+1)}_{i,j+1/2}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}v^{n}d\vec{x}}
+  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} }
+\end{eqnarray}
+\begin{eqnarray}
+E^{\ast,(k+1)}_{ij}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}E^{n}d\vec{x}}
+  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } 
+\end{eqnarray}
+\begin{eqnarray}
+s^{\ast,(k+1)}_{i_{f},j_{f}}=
+  \frac{\int_{\Omega^{D,(k)}} \rho^{n}s d\vec{x}}
+  {\int_{\Omega^{T}} \rho^{n} d\vec{x} } \label{CISL2elastic}
+\end{eqnarray}
+\item[2. Jaumann Derivative (second half) (section \ref{jaumann}) ]
+\begin{eqnarray}
+s^{n+1,(k+1)}_{i_{f},j_{f}}=
+s^{\ast,(k+1)}_{i_{f},j_{f}}+
+\Delta t ( \Omega^{\ast,(k+1)}_{i_{f},j_{f}}
+           s^{\ast,(k+1)}_{i_{f},j_{f}}-
+           s^{\ast,(k+1)}_{i_{f},j_{f}}
+           \Omega^{\ast,(k+1)}_{i_{f},j_{f}}+
+           2G(
+           \bar{D}^{\ast,(k+1)}-
+           D^{p}^{\ast,(k+1)}))
+\end{eqnarray}
+\item[3. Viscosity and Thermal Diffusion (section \ref{diffusion})]
+\begin{eqnarray}
+\rho^{n+1,(k+1)}\frac{\vec{u}^{\ast\ast,(k+1)}-\vec{u}^{\ast,(k+1)}}{\Delta t}=
+\nabla\cdot (2(\mu+\mu_{\mbox{Lax}})D^{\ast\ast,(k+1)})
+\label{diffusion1}
+\end{eqnarray}
+\begin{eqnarray}
+\rho^{n+1,(k+1)}c_{v}
+\frac{T^{\ast\ast,(k+1)}-T^{\ast,(k+1)}}{\Delta t}=
+\nabla\cdot ((k+k_{\mbox{Lax}})\nabla T^{\ast\ast,(k+1)})
+\label{diffusion2}
+\end{eqnarray}
+\item[4. Elastic force (section \ref{elasticforce})]
+\begin{eqnarray}
+\rho^{n+1,(k+1)}\frac{\vec{u}^{\ast\ast\ast,(k+1)}-
+                      \vec{u}^{\ast\ast,(k+1)}}{\Delta t}=
+\nabla\cdot s^{\ast,(k+1)})
+\end{eqnarray}
+\item[5. Elastic heating (section \ref{elasticheating})]
+\begin{eqnarray}
+\rho^{n+1,(k+1)}c_{v}
+\frac{T^{\ast\ast\ast,(k+1)}-T^{\ast\ast,(k+1)}}{\Delta t}=
+\nabla\vec{u}^{\ast\ast\ast,(k+1)}:s^{\ast,(k+1)}
+\end{eqnarray}
+\item[6. Pressure-Velocity (section \ref{presvel})]
+\begin{eqnarray}
+\frac{\rho^{n+1,(k+1)}_{i+1/2,j}(u_{i+1/2,j}^{n+1,(k+1)}-
+u_{i+1/2,j}^{\ast\ast\ast,(k+1)})}{\Delta t}=
+-\frac{1}{M^{2}}\frac{p^{n+1,(k+1)}_{i+1,j}-p^{n+1,(k+1)}_{i,j}}{\Delta x}
+\label{pres_vel1}
+\end{eqnarray}
+\begin{eqnarray}
+\frac{\rho^{n+1,(k+1)}_{i,j+1/2}(v_{i,j+1/2}^{n+1,(k+1)}-
+v_{i,j+1/2}^{\ast\ast\ast,(k+1)})}{\Delta t}=
+-\frac{1}{M^{2}}\frac{p^{n+1,(k+1)}_{i,j+1}-p^{n+1,(k+1)}_{i,j}}{\Delta y}
+\end{eqnarray}
+\begin{eqnarray}
+\frac{1}{\rho^{n+1,(k+1)}c^{2}(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})_{ij}}
+\frac{(p^{n+1,(k+1)}-
+p(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)}))_{ij}
+}{\Delta t}=
+ -\frac{u_{i+1/2,j}^{n+1,(k+1)}-u_{i-1/2,j}^{n+1,(k+1)}}
+       {\Delta x}-
+  \frac{v_{i,j+1/2}^{n+1,(k+1)}-v_{i,j-1/2}^{n+1,(k+1)}}
+       {\Delta y}
+\label{pres_vel2}
+\end{eqnarray}
+\item[7. Total Energy (section \ref{energy}) ]
+\begin{eqnarray}
+\frac{\rho^{n+1,(k+1)}_{ij}(E^{n+1,(k+1)}-
+  E^{\ast\ast\ast,(k+1)})_{ij}}{\Delta t}=
+ -\frac{(up)_{i+1/2,j}^{n+1,(k+1)}-(up)_{i-1/2,j}^{n+1,(k+1)}}{\Delta x}-
+  \frac{(vp)_{i,j+1/2}^{n+1,(k+1)}-(vp)_{i,j-1/2}^{n+1,(k+1)}}{\Delta y}
+\label{total_energy}
+\end{eqnarray}
+\item End For $k=0,1$
+\end{description}
+
 Remarks:
 \begin{description}
 \item[1.] In \cite{Lax1954}, the artificial diffusion term(s) are discretized
   explicitly in time, but in our implementation, diffusion is discretized
-  in time semi-implicitly; see section \ref{numerical_alg_sec}.
+  in time semi-implicitly; see (\ref{diffusion1}) and (\ref{diffusion2}).
 \item[2.] In \cite{Lax1954}, it is proved for general scalar hyperbolic
   problems that the Lax method converges if the CFL condition
   is met.  For systems of hyperbolic conservation laws, Lax 
@@ -506,6 +635,10 @@ Remarks:
   dynamics\cite{xiaxi1989convergence}.  Both these methods require
   an exact Riemann solver and both methods' time step constraints depend
   on the sound speed.
+\item[5.] Our numerical algorithm never requires the solution of 
+  nonlinear algebraic equations, thereby avoiding robustness problems
+  in which a discrete solution cannot be found or avoiding problems in
+  which the discrete solution is not unique.
 \end{description}
 
  
@@ -532,16 +665,28 @@ Robinson-Mosher et al.~\cite{robinson2011symmetric} & Yes & No & No & No & No &
 Monolithic & Connected Markers & No \\ \hline
 Gretarsson et al.~\cite{gretarsson2011numerically} & No & Yes & No & No & Yes & 
 Monolithic & one dimension & No \\ \hline
+Sugiyama et al.~\cite{sugiyama2011full} & Yes & No & No & No & No & 
+pressure\newline and\newline velocity & 
+Volume of \newline fluid & yes \\ \hline
+
 Banks et al.~\cite{banks2014analysis} & Yes & No & No & No & No & Partitioned & 
   Body fitted & No  \\ \hline
 Patkar et al.~\cite{patkar2016towards} & No & Yes & No & No & Yes & 
 Monolithic & Connected Markers & No \\ \hline
 Banks et al.~\cite{banks2018stable} & Yes & No & No & No & No & Partitioned &
   Body fitted & No \\ \hline
+
+Shin et al.~\cite{shin2020interaction} & Yes & No & Yes & Yes & No & pressure\newline and \newline velocity &
+  level\newline contour\newline reconstruction & Yes \\ \hline
+
 Mokbel et al.~\cite{MokbelMokbelLieseWeberAland2024} & Yes & No & No & Yes &
 No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
 Kloppe and \newline Aland~\cite{KLOPPE2024117090} & Yes & No & No & Yes &
 No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
+
+Park and \newline Son~\cite{PARK2026132} & Yes & Yes & Yes & Yes &
+No & pressure\newline and\newline velocity & Coupled \newline level set \newline volume of fluid & Yes \\ \hline
+
 Present Article, \newline Estebe et al & Yes & Yes & Yes & Yes & Yes & 
  pressure\newline and\newline velocity & 
  Continuous\newline Moment of \newline Fluid & Yes \\ \hline
@@ -555,10 +700,6 @@ Present Article, \newline Estebe et al & Yes & Yes & Yes & Yes & Yes &
 
 
 
-TranUdaykumar
-Sugiyama
-ShinCherguiJuric
-PARK2026132
 WILFONG2026110055 (diffuse interface model, not asymptotically preserving,
                    explict non-partitioned)
 FERRARI2025113553 (diffuse interface model, not asymptotically preserving,
