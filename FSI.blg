@@ -4,45 +4,45 @@ The top-level auxiliary file: FSI.aux
 The style file: acm.bst
 Database file #1: cmof_paper.bib
 Warning--empty journal in scandurra2016numerical
-You've used 41 entries,
+You've used 50 entries,
             2253 wiz_defined-function locations,
-            792 strings with 12659 characters,
-and the built_in function-call counts, 15281 in all, are:
-= -- 1454
-> -- 877
+            851 strings with 14858 characters,
+and the built_in function-call counts, 18840 in all, are:
+= -- 1781
+> -- 1110
 < -- 0
-+ -- 377
-- -- 318
-* -- 1406
-:= -- 2559
-add.period$ -- 122
-call.type$ -- 41
-change.case$ -- 281
++ -- 476
+- -- 404
+* -- 1743
+:= -- 3165
+add.period$ -- 149
+call.type$ -- 50
+change.case$ -- 351
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 383
-empty$ -- 1087
-format.name$ -- 318
-if$ -- 3030
+cite$ -- 51
+duplicate$ -- 464
+empty$ -- 1324
+format.name$ -- 404
+if$ -- 3728
 int.to.chr$ -- 0
-int.to.str$ -- 41
-missing$ -- 41
-newline$ -- 207
-num.names$ -- 82
-pop$ -- 209
+int.to.str$ -- 50
+missing$ -- 50
+newline$ -- 252
+num.names$ -- 100
+pop$ -- 261
 preamble$ -- 1
-purify$ -- 240
+purify$ -- 301
 quote$ -- 0
-skip$ -- 218
+skip$ -- 263
 stack$ -- 0
-substring$ -- 1099
-swap$ -- 89
+substring$ -- 1331
+swap$ -- 107
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 164
+type$ -- 200
 warning$ -- 1
-while$ -- 143
-width$ -- 43
-write$ -- 408
+while$ -- 173
+width$ -- 52
+write$ -- 498
 (There was 1 warning)

@@ -35,12 +35,26 @@
   equations of gas dynamics.
 \newblock {\em Journal of Scientific Computing 77}, 2 (2018), 850--884.
 
+\bibitem{camacho1997adaptive}
+{\sc Camacho, G., and Ortiz, M.}
+\newblock Adaptive lagrangian modelling of ballistic penetration of metallic
+  targets.
+\newblock {\em Computer methods in applied mechanics and engineering 142}, 3-4
+  (1997), 269--301.
+
 \bibitem{chen2026numerical}
 {\sc Chen, H., Zhang, A.-M., Ming, F.-R., Sun, S.-L., and Peng, Y.-X.}
 \newblock Numerical simulation of the entire fluid-structure interaction
   process of ship structures subjected to underwater explosion.
 \newblock {\em Science China Physics, Mechanics \& Astronomy 69}, 5 (2026),
   254512.
+
+\bibitem{CHERTOCK2026119292}
+{\sc Chertock, A., Karni, S., Kurganov, A., and Micalizzi, L.}
+\newblock A new asymptotic-preserving dual formulation finite-volume method for
+  the compressible euler equations.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering 461\/}
+  (2026), 119292.
 
 \bibitem{choi2024novel}
 {\sc Choi, Y.-R., Yeo, D., Lee, J.-C., Cho, J.-W., and Moon, S.}
@@ -59,6 +73,17 @@
 {\sc Dressaire, E., Sauret, A., Boulogne, F., and Stone, H.~A.}
 \newblock Drop impact on a flexible fiber.
 \newblock {\em Soft matter 12}, 1 (2015), 200--208.
+
+\bibitem{FERRARI2025113553}
+{\sc Ferrari, D., Peshkov, I., Romenski, E., and Dumbser, M.}
+\newblock A unified htc multiphase model of continuum mechanics.
+\newblock {\em Journal of Computational Physics 521\/} (2025), 113553.
+
+\bibitem{GAO2024106124}
+{\sc Gao, M., Mossier, P., and Munz, C.-D.}
+\newblock Shock capturing for a high-order ale discontinuous galerkin method
+  with applications to fluid flows in time-dependent domains.
+\newblock {\em Computers \& Fluids 269\/} (2024), 106124.
 
 \bibitem{gao2025study}
 {\sc Gao, Y.-Q., Zhong, Q., Liu, Y.-L., Li, S., Zhang, J.-F., and Zhang, A.}
@@ -114,6 +139,13 @@
   compressible flow.
 \newblock {\em Journal of Computational Physics 228}, 11 (2009), 4146--4161.
 
+\bibitem{Lax1954}
+{\sc Lax, P.~D.}
+\newblock Weak solutions of nonlinear hyperbolic equations and their numerical
+  computation.
+\newblock {\em Communications on Pure and Applied Mathematics 7}, 1 (1954),
+  159--193.
+
 \bibitem{LECHENADEC2013185}
 {\sc {Le Chenadec}, V., and Pitsch, H.}
 \newblock A monotonicity preserving conservative sharp interface flow solver
@@ -125,6 +157,12 @@
 \newblock Experimental evaluation of curved aluminum structures subjected to
   underwater explosions.
 \newblock {\em Experimental Mechanics 63}, 5 (2023), 925--937.
+
+\bibitem{maire2013nominally}
+{\sc Maire, P.-H., Abgrall, R., Breil, J., Loub{\`e}re, R., and Rebourcet, B.}
+\newblock A nominally second-order cell-centered lagrangian scheme for
+  simulating elastic--plastic flows on two-dimensional unstructured grids.
+\newblock {\em Journal of Computational Physics 235\/} (2013), 626--665.
 
 \bibitem{MENG2022114522}
 {\sc Meng, Z.-F., Zhang, A.-M., Yan, J.-L., Wang, P.-P., and Khayyer, A.}
@@ -144,6 +182,12 @@
 \newblock Fronts propagating with curvature-dependent speed: algorithms based
   on hamilton-jacobi formulations.
 \newblock {\em Journal of computational physics 79}, 1 (1988), 12--49.
+
+\bibitem{PARK2026132}
+{\sc Park, J., and Son, G.}
+\newblock A clsvof method for simulating bubble motion in ultrasonic fields
+  near a deformable solid cell.
+\newblock {\em Mathematics and Computers in Simulation 250\/} (2026), 132--151.
 
 \bibitem{patkar2016towards}
 {\sc Patkar, S., Aanjaneya, M., Lu, W., Lentine, M., and Fedkiw, R.}
@@ -177,8 +221,8 @@
 
 \bibitem{sugiyama2011full}
 {\sc Sugiyama, K., Ii, S., Takeuchi, S., Takagi, S., and Matsumoto, Y.}
-\newblock A full eulerian finite difference approach for solving
-  fluid--structure coupling problems.
+\newblock A full eulerian finite difference approach for solving fluid
+  structure coupling problems.
 \newblock {\em Journal of Computational Physics 230}, 3 (2011), 596--627.
 
 \bibitem{sussman1994level}
@@ -217,6 +261,20 @@
 {\sc Wardlaw~Jr, A.~B., and Luton, J.~A.}
 \newblock Fluid-structure interaction mechanisms for close-in explosions.
 \newblock {\em Shock and Vibration 7}, 5 (2000), 265--275.
+
+\bibitem{WILFONG2026110055}
+{\sc Wilfong, B., {Le Berre}, H.~A., Radhakrishnan, A., Gupta, A., Vickers,
+  D.~J., Vaca-Revelo, D., Adam, D., Yu, H., Lee, H., Chreim, J.~R., {Carcana
+  Barbosa}, M., Zhang, Y., Cisneros-Garibay, E., Gnanaskandan, A., {Rodriguez
+  Jr}, M., Budiardja, R.~D., Abbott, S., Colonius, T., and Bryngelson, S.~H.}
+\newblock Mfc 5.0: An exascale many-physics flow solver.
+\newblock {\em Computer Physics Communications 322\/} (2026), 110055.
+
+\bibitem{xiaxi1989convergence}
+{\sc Xiaxi, D., Gui-Qiang, C., and Peizhu, L.}
+\newblock Convergence of the fractional step lax-friedrichs scheme and godunov
+  scheme for the isentropic system of gas dynamics.
+\newblock {\em Communications in mathematical physics 121}, 1 (1989), 63--84.
 
 \bibitem{xiong2026bubble}
 {\sc Xiong, Q., Liu, L., Zhu, X., Li, Y., Wang, T., and Dong, X.}

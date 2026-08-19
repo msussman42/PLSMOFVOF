@@ -21,6 +21,9 @@
 \usepackage{tabularx} 
 \usepackage{footnote}
 \usepackage{titlesec}
+\usepackage{comment}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
 
 \makesavenoteenv{tabular}
@@ -219,6 +222,72 @@ in the following important ways:
 In Table \ref{tablecompare}, we compare and contrast our new method with
 the current state of the art.
 
+\begin{table}[htbp]
+ 
+\centering
+\scalebox{0.7} {
+
+\begin{tabular}[h]{|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|} \hline
+ Author(s) & 
+ incompressible fluids  &
+ compressible fluids  &
+ multiphase flow  &
+ multimaterial flow  &
+ shock waves &
+ Coupling Method &
+ Interface \newline
+ Representation &
+ Complex\newline topology \\
+ \hline
+Wardlaw and \newline Luton~\cite{wardlaw2000fluid} & No & Yes & No & Yes &
+Yes & partitioned & ALE (fluid interfaces)\newline Lagrangian (structure) & Yes \\ \hline
+Tran and \newline Udaykumar~\cite{tran2004particle} & No & Yes & No & Yes &
+Yes & Explicit & Particle \newline Level Set & Yes \\ \hline
+Robinson-Mosher et al.~\cite{robinson2011symmetric} & Yes & No & No & No & No & 
+Monolithic & Connected Markers & No \\ \hline
+Gretarsson et al.~\cite{gretarsson2011numerically} & No & Yes & No & No & Yes & 
+Monolithic & one dimension & No \\ \hline
+Sugiyama et al.~\cite{sugiyama2011full} & Yes & No & No & No & No & 
+pressure\newline and\newline velocity & 
+Volume of \newline fluid & yes \\ \hline
+Banks et al.~\cite{banks2014analysis} & Yes & No & No & No & No & Partitioned & 
+  Body fitted & No  \\ \hline
+Patkar et al.~\cite{patkar2016towards} & No & Yes & No & No & Yes & 
+Monolithic & Connected Markers & No \\ \hline
+Banks et al.~\cite{banks2018stable} & Yes & No & No & No & No & Partitioned &
+  Body fitted & No \\ \hline
+Shin et al.~\cite{shin2020interaction} & Yes & No & Yes & Yes & No & pressure\newline and \newline velocity &
+  level\newline contour\newline reconstruction & Yes \\ \hline
+Mokbel et al.~\cite{MokbelMokbelLieseWeberAland2024} & Yes & No & No & Yes &
+No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
+Kloppe and \newline Aland~\cite{KLOPPE2024117090} & Yes & No & No & Yes &
+No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
+Gao et al.~\cite{GAO2024106124} & No & Yes & No & Yes &
+Yes & explicit\newline moving mesh\newline ALE & moving mesh \newline ALE & Yes \\ \hline
+Ferrari et al.~\cite{FERRARI2025113553} & No & Yes & Yes & Yes &
+Yes & explicit\newline non-partitioned & Diffuse \newline interface & Yes \\ \hline
+Wilfong et al.~\cite{WILFONG2026110055} & No & Yes & Yes & Yes &
+Yes & explicit\newline non-partitioned & Diffuse \newline interface & Yes \\ \hline
+Park and \newline Son~\cite{PARK2026132} & Yes & Yes & Yes & Yes &
+No & pressure\newline and\newline velocity & Coupled \newline level set \newline volume of fluid & Yes \\ \hline
+Present Article, \newline Estebe et al & Yes & Yes & Yes & Yes & Yes & 
+ pressure\newline and\newline velocity & 
+ Continuous\newline Moment of \newline Fluid & Yes \\ \hline
+\end{tabular}
+}
+\caption{Recent numerical methods with 
+  fluid interaction with deformable structures. 
+  Legend: ALE (Arbitrary Lagrangian Eulerian), ``pressure and velocity
+  coupling'' refers to the asymptotically preserving methods which 
+  reduce to the projection method in the zero Mach number
+  limit\cite{PARK2026132,sugiyama2011full,shin2020interaction}, 
+  ``Partitioned coupling'' refers to alternating solving the
+  fluid equations with elastic material boundary conditions and then solving 
+  the elastic material equations with fluid boundary conditions.
+  \label{tablecompare} }
+\end{table}
+
+
 
 \subsection{Motivation for enhancing our asymptotically preserving
   algorithm from collocated grid to staggered grid }
@@ -248,10 +317,18 @@ p=p(\rho,e) \hspace{20pt} c^{2}=p_{\rho}+\frac{p_{e}p}{\rho^{2}}
 \hspace{20pt} e=c_{v}T \label{pde2}
 \end{eqnarray}
 
-In accordance with the nondimensionalization steps in 
+Following the ``asymptotically preserving'' analysis in these articles,
 \cite{almgren2006low,boscarino2018all,scandurra2016numerical,
-CHERTOCK2026119292}, the
-following scaling strategy is taken:
+CHERTOCK2026119292}, 
+it can be shown that the 
+Directionally split Cell Integrated Semi-Lagrangian (CISL) algorithm 
+given by
+Algorithm \ref{asym_preserve}
+approaches a discretization consistent with the incompressible flow
+equations in the zero Mach number limit.
+
+\begin{comment}
+
 \begin{eqnarray}
 \vec{x}=x_{0}\vec{\hat{x}} \hspace{20pt} 
 t=t_{0}\hat{t} \hspace{20pt}
@@ -325,68 +402,38 @@ If one assumes the same asymptotic ansatz as in
 (\ref{asympt1}) through (\ref{asympt2}), and also if
 one assumes ``well prepared'' initial 
 conditions\cite{boscarino2018all,scandurra2016numerical}, then
-it can be shown that the following 
-Cell Integrated Semi-Lagrangian (CISL) algorithm (see
-Section \ref{CISL})
-approaches a discretization consistent with the incompressible flow
-equations in the zero Mach number limit:
-\begin{description}
-\item For $k=0,1$
-\item[1. CISL]
-\begin{eqnarray}
-\rho^{n+1,(k+1)}_{i_{f},j_{f}}=\frac{\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x}}
-  {\int_{\Omega^{T}} 1 d\vec{x} } \label{CISL1}
-\end{eqnarray}
-\begin{eqnarray}
-u^{\ast,(k+1)}_{i+1/2,j}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}u^{n}d\vec{x}}
-  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } \\
-v^{\ast,(k+1)}_{i,j+1/2}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}v^{n}d\vec{x}}
-  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} }
-\end{eqnarray}
-\begin{eqnarray}
-E^{\ast,(k+1)}_{ij}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}E^{n}d\vec{x}}
-  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } \label{CISL2}
-\end{eqnarray}
-\item[2. Pressure-Velocity]
-\begin{eqnarray}
-\frac{\rho^{n+1,(k+1)}_{i+1/2,j}(u_{i+1/2,j}^{n+1,(k+1)}-
-u_{i+1/2,j}^{\ast,(k+1)})}{\Delta t}=
--\frac{1}{M^{2}}\frac{p^{n+1,(k+1)}_{i+1,j}-p^{n+1,(k+1)}_{i,j}}{\Delta x}
-\label{pres_vel1}
-\end{eqnarray}
-\begin{eqnarray}
-\frac{\rho^{n+1,(k+1)}_{i,j+1/2}(v_{i,j+1/2}^{n+1,(k+1)}-
-v_{i,j+1/2}^{\ast,(k+1)})}{\Delta t}=
--\frac{1}{M^{2}}\frac{p^{n+1,(k+1)}_{i,j+1}-p^{n+1,(k+1)}_{i,j}}{\Delta y}
-\end{eqnarray}
-\begin{eqnarray}
-\frac{1}{\rho^{n+1,(k+1)}c^{2}(\rho^{n+1,(k+1)},e^{\ast,(k+1)})_{ij}}
-\frac{(p^{n+1,(k+1)}-
-p(\rho^{n+1,(k+1)},e^{\ast,(k+1)}))_{ij}
-}{\Delta t}=
- -\frac{u_{i+1/2,j}^{n+1,(k+1)}-u_{i-1/2,j}^{n+1,(k+1)}}
-       {\Delta x}-
-  \frac{v_{i,j+1/2}^{n+1,(k+1)}-v_{i,j-1/2}^{n+1,(k+1)}}
-       {\Delta y}
-\label{pres_vel2}
-\end{eqnarray}
-\item[3. Total Energy]
-\begin{eqnarray}
-\frac{\rho^{n+1,(k+1)}_{ij}(E^{n+1,(k+1)}-E^{\ast,(k+1)})_{ij}}{\Delta t}=
- -\frac{(up)_{i+1/2,j}^{n+1,(k+1)}-(up)_{i-1/2,j}^{n+1,(k+1)}}{\Delta x}-
-  \frac{(vp)_{i,j+1/2}^{n+1,(k+1)}-(vp)_{i,j-1/2}^{n+1,(k+1)}}{\Delta y}
-\label{total_energy}
-\end{eqnarray}
-\item End For $k=0,1$
-\end{description}
 
-For the cell integrated semi-Lagrangian step, (\ref{CISL1}) through
-(\ref{CISL2}), our numerical method represents state variables as 
-piecewise constant in the variables' respective control volumes.  See Figure
-\ref{controlvolumes}.  The piecewise constant representation guarantees
+\end{comment}
+
+\begin{algorithm}
+\caption{Asymptotically Preserving time discretization for gas dynamics\label{asym_preserve}}
+\begin{algorithmic}[1] % [1] enables line numbering
+\State $k \gets 0$
+\State $\vec{u}^{n+1,(k)} \gets \vec{u}^{n}$
+\While{$k \le 1$}
+ \State $\rho^{n+1,(k+1)}\gets \rho^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho\vec{u}^{n+1,(k)})dt$ 
+ \State $\rho^{n+1,(k+1)}\vec{u}^{\ast,(k+1)}\gets (\rho\vec{u})^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho\vec{u}\otimes\vec{u}^{n+1,(k)})dt$
+ \State $\rho^{n+1,(k+1)}E^{\ast,(k+1)}\gets (\rho E)^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho E \vec{u}^{n+1,(k)})dt$
+ \State $p^{\ast,(k+1)}\gets p(\rho^{n+1,(k+1)},e^{\ast,(k+1)})$
+ \State $c^{\ast,(k+1)}\gets c(\rho^{n+1,(k+1)},e^{\ast,(k+1)})$
+ \State $\vec{u}^{n+1,(k+1)} \gets \vec{u}^{\ast,(k+1)}-\Delta t\frac{\nabla p^{n+1,(k+1)}}{\rho^{n+1,(k+1)}}$ 
+ \State $p^{n+1,(k+1)}\gets p^{\ast,(k+1)}-\Delta t \rho^{n+1,(k+1)} (c^{\ast,(k+1)})^{2} \nabla\cdot\vec{u}^{n+1,(k+1)}$
+ \State $E^{n+1,(k+1)}\gets E^{\ast,(k+1)}=-\Delta t\nabla\cdot(\vec{u}p)^{n+1,(k+1)}$
+ \State $k \gets k+1$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+The advection commands in Algorithm\ref{asym_preserve} are discretized using the
+directionally split cell integrated semi-Lagrangian advection algorithm
+with piecewise constant reconstruction.  The relation between the
+variables' control volumes and the computational mesh are shown
+in Figure \ref{controlvolumes}.
+The piecewise constant representation guarantees
 that no new extrama are generated for $\vec{u}^{\ast}$ and $E^{\ast}$, the
 updated density $\rho^{n+1}$ is positive, and the discrete mass,
-momentum, and energy are conserved:
+momentum, and energy are conserved.
+\begin{comment}
 \begin{eqnarray}
 \sum_{i_{f}j_{f}} |\Omega_{i_{f}j_{f}}|
   (\rho^{n+1}_{i_{f}j_{f}}-\rho^{n}_{i_{f}j_{f}})=0.
@@ -418,29 +465,24 @@ energy exactly:
    \rho^{n+1}_{i_{f}j_{f}}E^{\ast}_{i_{f}j_{f}})=0.
 \end{eqnarray}
 
-In the zero Mach number limit, the flow is incompressible.  Our staggered
-grid discretization \cite{LECHENADEC2013185} of (\ref{pres_vel1}) through
-(\ref{pres_vel2}) therefore discretely 
-guarantees 
-\begin{eqnarray}
-\int_{\Omega} \frac{1}{2}\rho^{n+1}|\vec{u}^{n+1}|\le
-\int_{\Omega} \frac{1}{2}\rho^{n+1}|\vec{u}^{\ast}|
-\end{eqnarray}
-So, for the incompressible and inviscid case, 
-the staggered grid approach guarantees energy stability.
+\end{comment}
+
+For incompressible flows, it has already been shown that the
+staggered grid discretization \cite{LECHENADEC2013185} of steps
+9 and 10 in algorithm \ref{asym_preserve}
+results in a provably stable and convergent method.
 
 For the compressible case, if we consider a simplified problem,
-in which the discretization
-(\ref{pres_vel1}) through (\ref{pres_vel2}) is applied to the wave
-equation:
+in which the staggered grid 
+discretization of steps 9 and 10 in algorithm \ref{asym_preserve}
+is applied to the wave equation:
 \begin{eqnarray}
-\rho\vec{u}_{t}=-\nabla p
+\rho\vec{u}_{t}=-\nabla p  \hspace{20pt} \rho=\rho(\vec{x}) \mbox{  $\rho$ is positive}
 \end{eqnarray}
 \begin{eqnarray}
-\frac{1}{\rho c^{2}} p_{t}=-\nabla\cdot\vec{u}
+\frac{1}{\rho c^{2}} p_{t}=-\nabla\cdot\vec{u} \hspace{20pt} c=c(\vec{x}) \mbox{  $c$ is positive}
 \end{eqnarray}
-where $\rho(\vec{x})>0$ and $c(\vec{x})>0$ are prescribed, then the
-staggered grid approach guarantees unconditional stability for any
+then the staggered grid approach guarantees unconditional stability for any
 fixed 
 \begin{eqnarray}
 \frac{\Delta t}{\Delta x}
@@ -516,105 +558,40 @@ and the energy equation (\ref{energy_elastic}),
 \begin{eqnarray}
 k_{\mbox{Lax}}=\frac{\rho_{\mbox{max}}c_{v}\Delta x^{2}}{2\mbox{DIM}\Delta t}.
 \end{eqnarray}
-So, an outline of our temporal discretization of non-isothermal gas dynamics,
-for a single elastic material, is:
-\begin{description}
-\item For $k=0,1$
-\item[1. CISL (section \ref{CISL})]
-\begin{eqnarray}
-\rho^{n+1,(k+1)}_{i_{f},j_{f}}=\frac{\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x}}
-  {\int_{\Omega^{T}} 1 d\vec{x} } \label{CISL1elastic}
-\end{eqnarray}
-\begin{eqnarray}
-u^{\ast,(k+1)}_{i+1/2,j}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}u^{n}d\vec{x}}
-  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } \\
-v^{\ast,(k+1)}_{i,j+1/2}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}v^{n}d\vec{x}}
-  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} }
-\end{eqnarray}
-\begin{eqnarray}
-E^{\ast,(k+1)}_{ij}=\frac{\int_{\Omega^{D,(k)}} \rho^{n}E^{n}d\vec{x}}
-  {\int_{\Omega^{D,(k)}} \rho^{n} d\vec{x} } 
-\end{eqnarray}
-\begin{eqnarray}
-s^{\ast,(k+1)}_{i_{f},j_{f}}=
-  \frac{\int_{\Omega^{D,(k)}} \rho^{n}s d\vec{x}}
-  {\int_{\Omega^{T}} \rho^{n} d\vec{x} } \label{CISL2elastic}
-\end{eqnarray}
-\item[2. Jaumann Derivative (second half) (section \ref{jaumann}) ]
-\begin{eqnarray}
-s^{n+1,(k+1)}_{i_{f},j_{f}}=
-s^{\ast,(k+1)}_{i_{f},j_{f}}+
-\Delta t ( \Omega^{\ast,(k+1)}_{i_{f},j_{f}}
-           s^{\ast,(k+1)}_{i_{f},j_{f}}-
-           s^{\ast,(k+1)}_{i_{f},j_{f}}
-           \Omega^{\ast,(k+1)}_{i_{f},j_{f}}+
-           2G(
-           \bar{D}^{\ast,(k+1)}-
-           D^{p}^{\ast,(k+1)}))
-\end{eqnarray}
-\item[3. Viscosity and Thermal Diffusion (section \ref{diffusion})]
-\begin{eqnarray}
-\rho^{n+1,(k+1)}\frac{\vec{u}^{\ast\ast,(k+1)}-\vec{u}^{\ast,(k+1)}}{\Delta t}=
-\nabla\cdot (2(\mu+\mu_{\mbox{Lax}})D^{\ast\ast,(k+1)})
-\label{diffusion1}
-\end{eqnarray}
-\begin{eqnarray}
-\rho^{n+1,(k+1)}c_{v}
-\frac{T^{\ast\ast,(k+1)}-T^{\ast,(k+1)}}{\Delta t}=
-\nabla\cdot ((k+k_{\mbox{Lax}})\nabla T^{\ast\ast,(k+1)})
-\label{diffusion2}
-\end{eqnarray}
-\item[4. Elastic force (section \ref{elasticforce})]
-\begin{eqnarray}
-\rho^{n+1,(k+1)}\frac{\vec{u}^{\ast\ast\ast,(k+1)}-
-                      \vec{u}^{\ast\ast,(k+1)}}{\Delta t}=
-\nabla\cdot s^{\ast,(k+1)})
-\end{eqnarray}
-\item[5. Elastic heating (section \ref{elasticheating})]
-\begin{eqnarray}
-\rho^{n+1,(k+1)}c_{v}
-\frac{T^{\ast\ast\ast,(k+1)}-T^{\ast\ast,(k+1)}}{\Delta t}=
-\nabla\vec{u}^{\ast\ast\ast,(k+1)}:s^{\ast,(k+1)}
-\end{eqnarray}
-\item[6. Pressure-Velocity (section \ref{presvel})]
-\begin{eqnarray}
-\frac{\rho^{n+1,(k+1)}_{i+1/2,j}(u_{i+1/2,j}^{n+1,(k+1)}-
-u_{i+1/2,j}^{\ast\ast\ast,(k+1)})}{\Delta t}=
--\frac{1}{M^{2}}\frac{p^{n+1,(k+1)}_{i+1,j}-p^{n+1,(k+1)}_{i,j}}{\Delta x}
-\label{pres_vel1}
-\end{eqnarray}
-\begin{eqnarray}
-\frac{\rho^{n+1,(k+1)}_{i,j+1/2}(v_{i,j+1/2}^{n+1,(k+1)}-
-v_{i,j+1/2}^{\ast\ast\ast,(k+1)})}{\Delta t}=
--\frac{1}{M^{2}}\frac{p^{n+1,(k+1)}_{i,j+1}-p^{n+1,(k+1)}_{i,j}}{\Delta y}
-\end{eqnarray}
-\begin{eqnarray}
-\frac{1}{\rho^{n+1,(k+1)}c^{2}(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})_{ij}}
-\frac{(p^{n+1,(k+1)}-
-p(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)}))_{ij}
-}{\Delta t}=
- -\frac{u_{i+1/2,j}^{n+1,(k+1)}-u_{i-1/2,j}^{n+1,(k+1)}}
-       {\Delta x}-
-  \frac{v_{i,j+1/2}^{n+1,(k+1)}-v_{i,j-1/2}^{n+1,(k+1)}}
-       {\Delta y}
-\label{pres_vel2}
-\end{eqnarray}
-\item[7. Total Energy (section \ref{energy}) ]
-\begin{eqnarray}
-\frac{\rho^{n+1,(k+1)}_{ij}(E^{n+1,(k+1)}-
-  E^{\ast\ast\ast,(k+1)})_{ij}}{\Delta t}=
- -\frac{(up)_{i+1/2,j}^{n+1,(k+1)}-(up)_{i-1/2,j}^{n+1,(k+1)}}{\Delta x}-
-  \frac{(vp)_{i,j+1/2}^{n+1,(k+1)}-(vp)_{i,j-1/2}^{n+1,(k+1)}}{\Delta y}
-\label{total_energy}
-\end{eqnarray}
-\item End For $k=0,1$
-\end{description}
+So, an outline of our asymptotically preserving
+temporal discretization of non-isothermal gas dynamics,
+including Lax-Friedrichs smoothing, is given by Algorithm \ref{asym_preserve_elastic}.
+
+\begin{algorithm}
+\caption{Asymptotically Preserving time discretization for an elastic material\label{asym_preserve_elastic}}
+\begin{algorithmic}[1] % [1] enables line numbering
+\State $k \gets 0$
+\State $\vec{u}^{n+1,(k)} \gets \vec{u}^{n}$
+\While{$k \le 1$}
+ \State $\rho^{n+1,(k+1)}\gets \rho^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho\vec{u}^{n+1,(k)})dt$ 
+ \State $\rho^{n+1,(k+1)}\vec{u}^{\ast,(k+1)}\gets (\rho\vec{u})^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho\vec{u}\otimes\vec{u}^{n+1,(k)})dt$
+ \State $\rho^{n+1,(k+1)}E^{\ast,(k+1)}\gets (\rho E)^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho E \vec{u}^{n+1,(k)})dt$
+ \State $\rho^{n+1,(k+1)}s^{\ast,(k+1)}\gets (\rho s)^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho s \vec{u}^{n+1,(k)})dt$
+ \State $s^{n+1,(k+1)}\gets s^{\ast,(k+1)}+\Delta t(\Omega^{\ast,(k+1)}s^{\ast,(k+1)}-s^{\ast,(k+1)}\Omega^{\ast,(k+1)}+2G(\bar{D}^{\ast,(k+1)}-(D^{p})^{\ast,(k+1)}))$
+ \State $\vec{u}^{\ast\ast,(k+1)}\gets\vec{u}^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot (2(\mu+\mu_{\mbox{Lax}})D^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}}$
+ \State $T^{\ast\ast,(k+1)}\gets T^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot ((k+k_{\mbox{Lax}})\nabla T^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}c_{v}}$
+ \State $\vec{u}^{\ast\ast\ast,(k+1)}\gets\vec{u}^{\ast\ast,(k+1)}+\Delta t\frac{\nabla\cdot s^{\ast,(k+1)}}{\rho^{n+1,(k+1)}}$
+ \State $T^{\ast\ast\ast,(k+1)}\gets T^{\ast\ast,(k+1)}+\Delta t\frac{\nabla\vec{u}^{\ast\ast\ast,(k+1)}:s^{\ast,(k+1)}}{\rho^{n+1,(k+1)}c_{v}}$
+ \State $p^{\ast,(k+1)}\gets p(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})$
+ \State $c^{\ast,(k+1)}\gets c(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})$
+ \State $\vec{u}^{n+1,(k+1)} \gets \vec{u}^{\ast\ast\ast,(k+1)}-\Delta t\frac{\nabla p^{n+1,(k+1)}}{\rho^{n+1,(k+1)}}$ 
+ \State $p^{n+1,(k+1)}\gets p^{\ast,(k+1)}-\Delta t \rho^{n+1,(k+1)} (c^{\ast,(k+1)})^{2} \nabla\cdot\vec{u}^{n+1,(k+1)}$
+ \State $E^{n+1,(k+1)}\gets E^{\ast\ast\ast,(k+1)}=-\Delta t\nabla\cdot(\vec{u}p)^{n+1,(k+1)}$
+ \State $k \gets k+1$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
 
 Remarks:
 \begin{description}
 \item[1.] In \cite{Lax1954}, the artificial diffusion term(s) are discretized
   explicitly in time, but in our implementation, diffusion is discretized
-  in time semi-implicitly; see (\ref{diffusion1}) and (\ref{diffusion2}).
+  in time semi-implicitly; see steps 9 and 10 in Algorithm \ref{asym_preserve_elastic}.
 \item[2.] In \cite{Lax1954}, it is proved for general scalar hyperbolic
   problems that the Lax method converges if the CFL condition
   is met.  For systems of hyperbolic conservation laws, Lax 
@@ -641,114 +618,9 @@ Remarks:
   which the discrete solution is not unique.
 \end{description}
 
- 
-\begin{table}[htbp]
- 
-\centering
-\scalebox{0.7} {
+\section{Equations for Multiphase and Multimaterial flows interacting
+ with elastic materials.}
 
-\begin{tabular}[h]{|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|} \hline
- Author(s) & 
- incompressible fluids  &
- compressible fluids  &
- multiphase flow  &
- multimaterial flow  &
- shock waves &
- Coupling Method &
- Interface \newline
- Representation &
- Complex\newline topology \\
- \hline
-Wardlaw and \newline Luton~\cite{wardlaw2000fluid} & No & Yes & No & Yes &
-Yes & partitioned & ALE (fluid interfaces)\newline Lagrangian (structure) & Yes \\ \hline
-Tran and \newline Udaykumar~\cite{tran2004particle} & No & Yes & No & Yes &
-Yes & Explicit & Particle \newline Level Set & Yes \\ \hline
-Robinson-Mosher et al.~\cite{robinson2011symmetric} & Yes & No & No & No & No & 
-Monolithic & Connected Markers & No \\ \hline
-Gretarsson et al.~\cite{gretarsson2011numerically} & No & Yes & No & No & Yes & 
-Monolithic & one dimension & No \\ \hline
-Sugiyama et al.~\cite{sugiyama2011full} & Yes & No & No & No & No & 
-pressure\newline and\newline velocity & 
-Volume of \newline fluid & yes \\ \hline
-Banks et al.~\cite{banks2014analysis} & Yes & No & No & No & No & Partitioned & 
-  Body fitted & No  \\ \hline
-Patkar et al.~\cite{patkar2016towards} & No & Yes & No & No & Yes & 
-Monolithic & Connected Markers & No \\ \hline
-Banks et al.~\cite{banks2018stable} & Yes & No & No & No & No & Partitioned &
-  Body fitted & No \\ \hline
-Shin et al.~\cite{shin2020interaction} & Yes & No & Yes & Yes & No & pressure\newline and \newline velocity &
-  level\newline contour\newline reconstruction & Yes \\ \hline
-Mokbel et al.~\cite{MokbelMokbelLieseWeberAland2024} & Yes & No & No & Yes &
-No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
-Kloppe and \newline Aland~\cite{KLOPPE2024117090} & Yes & No & No & Yes &
-No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
-Gao et al.~\cite{GAO2024106124} & No & Yes & No & Yes &
-Yes & explicit\newline moving mesh\newline ALE & moving mesh \newline ALE & Yes \\ \hline
-Ferrari et al.~\cite{FERRARI2025113553} & No & Yes & Yes & Yes &
-Yes & explicit\newline non-partitioned & Diffuse \newline interface & Yes \\ \hline
-Wilfong et al.~\cite{WILFONG2026110055} & No & Yes & Yes & Yes &
-Yes & explicit\newline non-partitioned & Diffuse \newline interface & Yes \\ \hline
-Park and \newline Son~\cite{PARK2026132} & Yes & Yes & Yes & Yes &
-No & pressure\newline and\newline velocity & Coupled \newline level set \newline volume of fluid & Yes \\ \hline
-Present Article, \newline Estebe et al & Yes & Yes & Yes & Yes & Yes & 
- pressure\newline and\newline velocity & 
- Continuous\newline Moment of \newline Fluid & Yes \\ \hline
-\end{tabular}
-}
-\caption{Recent numerical methods with 
-  fluid interaction with deformable structures. 
-  Legend: ALE (Arbitrary Lagrangian Eulerian), ``pressure and velocity
-  coupling'' refers to the asymptotically preserving methods which 
-  reduce to the projection method in the zero Mach number
-  limit\cite{PARK2026132,sugiyama2011full,shin2020interaction}, 
-  ``Partitioned coupling'' refers to alternating solving the
-  fluid equations with elastic material boundary conditions and then solving 
-  the elastic material equations with fluid boundary conditions.
-  \label{tab:FSI} }
-\end{table}
-
-
-
-Table captions: 
-1. coupling: fully coupled, partitioned, non-partitioned and 
-explicit, pressure-velocity coupling
-
-
-maximum bulk modulus?
-multiphase flow interaction with elastic materials? 
-compressible vs incompressible vs both
-complex topology? interface representation (MOF, CMOF, front tracking,
-diffuse interface) ? Eulerian/Lagrangian
-fluids? Eulerian/Lagrangian Elastic materials?
-
-Our method: multiphase flow? yes, both compressible and incompressible
-(Asymptotically preserving by def. of Degond),
-complex topology? yes, interface representation CMOF-multimaterial,
-Eulerian block structured dynamic AMR for all materials (no partitioning).
-wetting dynamics?
-
-Strongly coupled Fictitious Domain-SPH for fluid-structure interactions: Application to beam elements
-multiphase flow? yes, incompressible, complex topology? fluids yes,
-elastics no (FEM), SPH for fluid interfaces, body fitted front tracking for
-elastic-fluid interface, Lagrangian both fluids and elastics.
-
-Tightly coupled => velocity and normal stress jump conditions are strictly enforced at the end of each time step.  (pros: more accurate cons: requires the 
-inversion of a nonlinear system of equations) The fluid and elastic materials
-are solved concurrently
-
-Weakly coupled => The fluid and elastic materials are solved consecutively
-as in contrast to  concurrently;
-Only one of the velocity or stress jump conditions are
-enforced at the end of each time step. (pros: very fast; cons:
-provably unconditionally unstable) 
-
-``Hybrid coupling'' => the fluid and elastic materials are solved concurrently
-during a predictor sweep; normal velocity jump condition is strictly enforced.
-normal stress condition is not strictly enforced.  During the corrector sweep,
-the normal velocity jump condition is preserved, and surface tension effects
-are included.
-
-\section{Mathematical Modeling}
 There are $M$ materials and each material $1\le m \le M$ occupies the region,
 \begin{eqnarray}
 	\Omega_{m}(t)=\left\{ (\vec{x},t) | \phi_{m}(\vec{x},t)\ge 0 \right\}
