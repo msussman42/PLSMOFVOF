@@ -216,7 +216,7 @@ in the following important ways:
   surfaces.
 \end{description}
 
-In Table \ref{tablecompare}, we compare and contrast our method with
+In Table \ref{tablecompare}, we compare and contrast our new method with
 the current state of the art.
 
 
@@ -659,6 +659,8 @@ Remarks:
  Representation &
  Complex\newline topology \\
  \hline
+Wardlaw and \newline Luton~\cite{wardlaw2000fluid} & No & Yes & No & Yes &
+Yes & partitioned & ALE (fluid interfaces)\newline Lagrangian (structure) & Yes \\ \hline
 Tran and \newline Udaykumar~\cite{tran2004particle} & No & Yes & No & Yes &
 Yes & Explicit & Particle \newline Level Set & Yes \\ \hline
 Robinson-Mosher et al.~\cite{robinson2011symmetric} & Yes & No & No & No & No & 
@@ -668,43 +670,43 @@ Monolithic & one dimension & No \\ \hline
 Sugiyama et al.~\cite{sugiyama2011full} & Yes & No & No & No & No & 
 pressure\newline and\newline velocity & 
 Volume of \newline fluid & yes \\ \hline
-
 Banks et al.~\cite{banks2014analysis} & Yes & No & No & No & No & Partitioned & 
   Body fitted & No  \\ \hline
 Patkar et al.~\cite{patkar2016towards} & No & Yes & No & No & Yes & 
 Monolithic & Connected Markers & No \\ \hline
 Banks et al.~\cite{banks2018stable} & Yes & No & No & No & No & Partitioned &
   Body fitted & No \\ \hline
-
 Shin et al.~\cite{shin2020interaction} & Yes & No & Yes & Yes & No & pressure\newline and \newline velocity &
   level\newline contour\newline reconstruction & Yes \\ \hline
-
 Mokbel et al.~\cite{MokbelMokbelLieseWeberAland2024} & Yes & No & No & Yes &
 No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
 Kloppe and \newline Aland~\cite{KLOPPE2024117090} & Yes & No & No & Yes &
 No & Monolithic & Hybrid Diffuse \newline and ALE & No \\ \hline
-
+Gao et al.~\cite{GAO2024106124} & No & Yes & No & Yes &
+Yes & explicit\newline moving mesh\newline ALE & moving mesh \newline ALE & Yes \\ \hline
+Ferrari et al.~\cite{FERRARI2025113553} & No & Yes & Yes & Yes &
+Yes & explicit\newline non-partitioned & Diffuse \newline interface & Yes \\ \hline
+Wilfong et al.~\cite{WILFONG2026110055} & No & Yes & Yes & Yes &
+Yes & explicit\newline non-partitioned & Diffuse \newline interface & Yes \\ \hline
 Park and \newline Son~\cite{PARK2026132} & Yes & Yes & Yes & Yes &
 No & pressure\newline and\newline velocity & Coupled \newline level set \newline volume of fluid & Yes \\ \hline
-
 Present Article, \newline Estebe et al & Yes & Yes & Yes & Yes & Yes & 
  pressure\newline and\newline velocity & 
  Continuous\newline Moment of \newline Fluid & Yes \\ \hline
 \end{tabular}
 }
 \caption{Recent numerical methods with 
-  fluid interaction with deformable structures. \label{tab:FSI} }
+  fluid interaction with deformable structures. 
+  Legend: ALE (Arbitrary Lagrangian Eulerian), ``pressure and velocity
+  coupling'' refers to the asymptotically preserving methods which 
+  reduce to the projection method in the zero Mach number
+  limit\cite{PARK2026132,sugiyama2011full,shin2020interaction}, 
+  ``Partitioned coupling'' refers to alternating solving the
+  fluid equations with elastic material boundary conditions and then solving 
+  the elastic material equations with fluid boundary conditions.
+  \label{tab:FSI} }
 \end{table}
 
-
-
-
-
-WILFONG2026110055 (diffuse interface model, not asymptotically preserving,
-                   explict non-partitioned)
-FERRARI2025113553 (diffuse interface model, not asymptotically preserving,
-                   explict non-partitioned)
-GAO2024106124  (not multiphase flow, ALE, explicit non-partitioned, explicit)
 
 
 Table captions: 
