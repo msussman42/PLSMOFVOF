@@ -591,7 +591,8 @@ Remarks:
 \begin{description}
 \item[1.] In \cite{Lax1954}, the artificial diffusion term(s) are discretized
   explicitly in time, but in our implementation, diffusion is discretized
-  in time semi-implicitly; see steps 9 and 10 in Algorithm \ref{asym_preserve_elastic}.
+  in time semi-implicitly; see steps 9 and 10 in 
+  Algorithm \ref{asym_preserve_elastic}.
 \item[2.] In \cite{Lax1954}, it is proved for general scalar hyperbolic
   problems that the Lax method converges if the CFL condition
   is met.  For systems of hyperbolic conservation laws, Lax 
@@ -609,9 +610,8 @@ Remarks:
   liquid materials would impose excessive damping.
 \item[4.] We are only aware of proofs for the Godunov method and
   fractional step Lax-Friedrichs method for isentropic gas
-  dynamics\cite{xiaxi1989convergence}.  Both these methods require
-  an exact Riemann solver and both methods' time step constraints depend
-  on the sound speed.
+  dynamics\cite{xiaxi1989convergence}.  Neither of these methods
+  are asymptotically preserving.
 \item[5.] Our numerical algorithm never requires the solution of 
   nonlinear algebraic equations, thereby avoiding robustness problems
   in which a discrete solution cannot be found or avoiding problems in
@@ -753,12 +753,21 @@ appears in (\ref{plastic_strain_rate}), the following ``radial
 return algorithm'' is implemented 
 (see \cite{tran2004particle} for the case when $n=1$ in (\ref{Johnson})
 or (\ref{zerilli})):
-\begin{description}
-\item[1.] $\dot{\epsilon}^{p}=0$, $k=0$
-\item[2.] $S_{e}=\sqrt{\frac{3}{2}}\sqrt{s:s}$
-\item[3.] $\sigma_{y}=\sigma_{y}(T,\epsilon^{p},\dot{\epsilon}^{p})$
-\item[4.]
-	if $S_{e}-\sigma_{y}\le 0$ then $\Lambda=0$ (i.e. $D^{p}:D^{p}=0$).
+
+%\If \ElseIf \Else \EndIf
+\begin{algorithm}
+\caption{Radial return algorithm for determining the
+plastic strain rate tensor $D^{p}$.\label{radial_return_algorithm}}
+
+\begin{algorithmic}[1] % [1] enables line numbering
+\State $k \gets 0$
+\State $\dot{\epsilon}^{p}\gets 0$
+\State $S_{e} \gets \sqrt{\frac{3}{2}}\sqrt{s:s}$
+\While{$k \le 1$}
+\State $\sigma_{y} \gets \sigma_{y}(T,\epsilon^{p},\dot{\epsilon}^{p})$
+\If $S_{e}\le\sigma_{y}$ 
+\State $\Lambda \gets 0$, $D^{p}\gets 0$
+\Else
 \item[5.]
 	if $S_{e}>\sigma_{y}$ then,
 \item[6.]
@@ -780,9 +789,11 @@ or (\ref{zerilli})):
 	 \begin{eqnarray}
 		 D^{p}=\Lambda N
 	 \end{eqnarray}
-\item[9.] $k=k+1$
-\item[10.] if $k=1$ then go back to step 3.
-\end{description}
+\EndIf
+\State $k \gets k+1$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
 
 The mathematical model at sharp interfaces is given as follows.  First,
 define a ``closest point'' function:
