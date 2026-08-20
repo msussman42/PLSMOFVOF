@@ -183,6 +183,12 @@
   on hamilton-jacobi formulations.
 \newblock {\em Journal of computational physics 79}, 1 (1988), 12--49.
 
+\bibitem{palmore2019volume}
+{\sc Palmore~Jr, J., and Desjardins, O.}
+\newblock A volume of fluid framework for interface-resolved simulations of
+  vaporizing liquid-gas flows.
+\newblock {\em Journal of Computational Physics 399\/} (2019), 108954.
+
 \bibitem{PARK2026132}
 {\sc Park, J., and Son, G.}
 \newblock A clsvof method for simulating bubble motion in ultrasonic fields
@@ -219,23 +225,29 @@
 \newblock {\em International Journal for Numerical Methods in Fluids 92}, 11
   (2020), 1478--1505.
 
+\bibitem{stewart2008improved}
+{\sc Stewart, P., Lay, N., Sussman, M., and Ohta, M.}
+\newblock An improved sharp interface method for viscoelastic and viscous
+  two-phase flows.
+\newblock {\em Journal of Scientific Computing 35}, 1 (2008), 43--61.
+
 \bibitem{sugiyama2011full}
 {\sc Sugiyama, K., Ii, S., Takeuchi, S., Takagi, S., and Matsumoto, Y.}
 \newblock A full eulerian finite difference approach for solving fluid
   structure coupling problems.
 \newblock {\em Journal of Computational Physics 230}, 3 (2011), 596--627.
 
-\bibitem{sussman1994level}
-{\sc Sussman, M., Smereka, P., and Osher, S.}
-\newblock A level set approach for computing solutions to incompressible
-  two-phase flow.
-\newblock {\em Journal of Computational physics 114}, 1 (1994), 146--159.
-
 \bibitem{tran2004particle}
 {\sc Tran, L., and Udaykumar, H.}
 \newblock A particle-level set-based sharp interface cartesian grid method for
   impact, penetration, and void collapse.
 \newblock {\em Journal of Computational Physics 193}, 2 (2004), 469--510.
+
+\bibitem{UDAYKUMAR2003136}
+{\sc Udaykumar, H., Tran, L., Belk, D., and Vanden, K.}
+\newblock An eulerian method for computation of multimaterial impact with eno
+  shock-capturing and sharp interfaces.
+\newblock {\em Journal of Computational Physics 186}, 1 (2003), 136--177.
 
 \bibitem{vahab2016adaptive}
 {\sc Vahab, M., Pei, C., Hussaini, M.~Y., Sussman, M., and Lian, Y.}
@@ -249,6 +261,12 @@
 \newblock Fluid-structure interaction of thin flexible bodies in multi-material
   multi-phase systems.
 \newblock {\em Journal of Computational Physics 429\/} (2021), 110008.
+
+\bibitem{villegas2016ghost}
+{\sc Villegas, L.~R., Alis, R., Lepilliez, M., and Tanguy, S.}
+\newblock A ghost fluid/level set method for boiling flows and liquid
+  evaporation: application to the leidenfrost effect.
+\newblock {\em Journal of Computational Physics 316\/} (2016), 789--813.
 
 \bibitem{wang2017multiphase}
 {\sc Wang, K.~G.}

@@ -1770,6 +1770,21 @@ keywords = {Coupled level-set and volume-of-fluid (CLSVOF), Ultrasound, Compress
   publisher={Elsevier}
 }
 
+@article{UDAYKUMAR2003136,
+title = {An Eulerian method for computation of multimaterial impact with ENO shock-capturing and sharp interfaces},
+journal = {Journal of Computational Physics},
+volume = {186},
+number = {1},
+pages = {136-177},
+year = {2003},
+issn = {0021-9991},
+doi = {https://doi.org/10.1016/S0021-9991(03)00027-5},
+url = {https://www.sciencedirect.com/science/article/pii/S0021999103000275},
+author = {H.S. Udaykumar and L. Tran and D.M. Belk and K.J. Vanden},
+keywords = {Moving boundaries, Impact, Multimaterial flows, High-strain rate},
+abstract = {A technique is presented for the numerical simulation of high-speed multimaterial impact. Of particular interest is the interaction of solid impactors with targets. The computations are performed on a fixed Cartesian mesh by casting the equations governing material deformation in Eulerian conservation law form. The advantage of the Eulerian setting is the disconnection of the mesh from the boundary deformation allowing for large distortions of the interfaces. Eigenvalue analysis reveals that the system of equations is hyperbolic for the range of materials and impact velocities of interest. High-order accurate ENO shock-capturing schemes are used along with interface tracking techniques to evolve sharp immersed boundaries. The numerical technique is designed to tackle the following physical phenomena encountered during impact: (1) high velocities of impact leading to large deformations of the impactor as well as targets; (2) nonlinear wave-propagation and the development of shocks in the materials; (3) modeling of the constitutive properties of materials under intense impact conditions and accurate numerical calculation of the elasto-plastic behavior described by the models; (4) phenomena at multiple interfaces (such as impactor–target, target–ambient and impactor–ambient), i.e. both free surface and surface–surface dynamics. Comparison with Lagrangian calculations is made for the elasto-plastic deformation of solid material. The accuracy of convex ENO scheme for shock capturing, with the Mie–Gruneisen equation of state for pressure, is closely examined. Good agreement of the present finite difference fixed grid results is obtained with exact solutions in 1D and benchmarked moving finite element solutions for axisymmetric Taylor impact.}
+}
+
 @article{sugiyama2011full,
   title={A full Eulerian finite difference approach for solving fluid structure coupling problems},
   author={Sugiyama, Kazuyasu and Ii, Satoshi and Takeuchi, Shintaro and Takagi, Shu and Matsumoto, Yoichiro},
@@ -2294,5 +2309,25 @@ url = {https://www.sciencedirect.com/science/article/pii/S0045782526005657},
 author = {Alina Chertock and Smadar Karni and Alexander Kurganov and Lorenzo Micalizzi},
 keywords = {Compressible Euler equations, Low Mach number, Asymptotic preserving (AP) schemes, Hyperbolic splitting, Semi-implicit methods, Deferred correction},
 abstract = {The paper focuses on the development of numerical methods for the compressible Euler equations. It is well-known that if the Mach number is small, the system becomes stiff and hence explicit schemes suffer from severe time-step restrictions, making them inefficient or even impractical. Our objective is to develop an asymptotic preserving (AP) scheme that remains uniformly accurate and stable across all Mach numbers. Instead of the conservative hyperbolic flux splitting approach, which is widely used to design AP schemes, we consider a primitive (nonconservative) formulation and introduce a nonconservative hyperbolic splitting. The resulting system is discretized using a semi-implicit approach: the stiff part is handled semi-implicitly using second-order central differences, while the nonstiff part is treated explicitly using a second-order path-conservative central-upwind discretization. A key feature of our method is that the pressure at each time level is computed by solving a well-posed Poisson-type elliptic equation, thereby enforcing the AP property. Simultaneously, we evolve the conservative form of the system using a semi-discrete central-upwind (CU) scheme. At the end of each stage of the time discretization, we perform a special post-processing that selects the appropriate numerical solution depending on the Mach number. This guarantees that in low-Mach-number regimes, the solution is obtained by the AP nonconservative scheme, while in higher-Mach-number regimes, a sharp and physically relevant solution is computed by the conservative CU scheme. Numerical experiments confirm that the proposed AP scheme achieves the expected second order of accuracy and that the time-step constraint is independent of the Mach number, making it a robust and efficient alternative to conventional explicit methods.}
+}
+
+@article{palmore2019volume,
+  title={A volume of fluid framework for interface-resolved simulations of vaporizing liquid-gas flows},
+  author={Palmore Jr, John and Desjardins, Olivier},
+  journal={Journal of Computational Physics},
+  volume={399},
+  pages={108954},
+  year={2019},
+  publisher={Elsevier}
+}
+
+@article{villegas2016ghost,
+  title={A ghost fluid/level set method for boiling flows and liquid evaporation: application to the Leidenfrost effect},
+  author={Villegas, Lucia Rueda and Alis, Romain and Lepilliez, Mathieu and Tanguy, S{\'e}bastien},
+  journal={Journal of Computational Physics},
+  volume={316},
+  pages={789--813},
+  year={2016},
+  publisher={Elsevier}
 }
 
