@@ -629,8 +629,9 @@ Remarks:
 \section{Equations for Multiphase and Multimaterial flows interacting
  with elastic materials.}
 
-We assume that we have $M$ materials total of which $M_{f}$ are fluid materials
-and $M_{e}$ are elastic materials.  Referring to Figure
+We assume that we have $M$ materials total consisting of $M_{e}$ elastic 
+materials and $M_{f}$ fluid materials.
+Referring to Figure
 \ref{materials}, the elastic materials occupy the regions in which
 the elastic level set function\cite{osher1988fronts}, 
 $\phi_{m_{e}}$, is positive:
@@ -824,7 +825,9 @@ plastic strain rate tensor $D^{p}$.\label{radial_return_algorithm}}
 
 At an interface separating two materials, $m_{source}$ and 
 $m_{dest}$, with possible phase 
-change\cite{palmore2019volume,villegas2016ghost}, the interface
+change\cite{palmore2019volume,villegas2016ghost,VAHAB2021,
+vahab2016adaptive,ye2024improved}, 
+the interface
 velocity is either:
 \begin{eqnarray}
 \vec{u}_{\Gamma}=\vec{u}_{m_{source}}+
@@ -887,7 +890,40 @@ The interface curvature is,
 \section{Discretization for multiphase flows interacting with elastic materials}
 
 In Algorithm \ref{asym_multiphase} we give the overall temporal discretization
-of our asymptotically preserving multiphase flow method.
+of our asymptotically preserving multiphase flow method.  The Algorithm
+\ref{asym_multiphase} is very similar to that described in
+\cite{jemison2014compressible} except for the following key differences:
+\par\noindent
+\begin{enumerate}
+\item The present algorithm is staggered.  Please refer to Figures
+ \ref{staggered}.  A staggered algorithm is better stability
+ properties than a collocated method\cite{LECHENADEC2013185,
+  sugiyama2011full,shin2020interaction,GUITTET2015215}.
+\item In order to accurately allow for droplets and/or bubbles to interact
+  with elastic materials, we have made the following improvements:
+  \begin{enumerate}
+%% figure should differentiate between elastic faces and fluid faces.
+  \item The elastic material volume of fluid equations and
+     level set equations are numerically solved using an
+     ``extended'' velocity field.  Please refer to Figure
+     \ref{extended_velocity}. Steps 4 and 5 in Algorithm
+     \ref{asym_multiphase} are replaced with the steps 
+     given in Algorithm \ref{elastic_advect}.
+  \item The non-advective part of the deviatoric stress tensor which is 
+    step 10 in Algorithm \ref{asym_multiphase} is modified to use an
+    ``extended'' velocity field and an ``extended'' 
+    deviatoric stress tensor.
+    Please refer to Figure \ref{extended2}. Step 10 in Algorithm
+     \ref{asym_multiphase} is replaced with the steps 
+     given in Algorithm \ref{elastic_part2}.
+  \item As recommended by \cite{shin2020interaction}, Steps 11 through 18
+    are modified in accordance to Algorithm \ref{fix_solid_2nd_sweep}.
+  \item We have developed a method that exactly preserves mass for 
+    
+  \end{enumerate}
+
+\end{enumerate}
+     
 
 \begin{algorithm}
 \caption{Asymptotically Preserving time discretization for 
@@ -897,15 +933,17 @@ of our asymptotically preserving multiphase flow method.
 \State $k \gets 0$
 \State $\vec{u}^{n+1,(k)} \gets \vec{u}^{n}$
 \While{$k \le 1$}
- \State $\rho^{n+1,(k+1)}\gets \rho^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho\vec{u}^{n+1,(k)})dt$ 
- \State $\rho^{n+1,(k+1)}\vec{u}^{\ast,(k+1)}\gets (\rho\vec{u})^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho\vec{u}\otimes\vec{u}^{n+1,(k)})dt$
- \State $\rho^{n+1,(k+1)}E^{\ast,(k+1)}\gets (\rho E)^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho E \vec{u}^{n+1,(k)})dt$
- \State $\rho^{n+1,(k+1)}s^{\ast,(k+1)}\gets (\rho s)^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot(\rho s \vec{u}^{n+1,(k)})dt$
- \State $s^{n+1,(k+1)}\gets s^{\ast,(k+1)}+\Delta t(\Omega^{\ast,(k+1)}s^{\ast,(k+1)}-s^{\ast,(k+1)}\Omega^{\ast,(k+1)}+2G(\bar{D}^{\ast,(k+1)}-(D^{p})^{\ast,(k+1)}))$
+ \State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla F_{m} dt \hspace{10pt} m\in[1,M]$ 
+ \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M]$ 
+ \State $(F\rho)^{n+1,(k+1)}_{m}\gets (F\rho)^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho)_{m}\vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$ 
+ \State $(F\rho\vec{u})_{m}^{\ast,(k+1)}\gets (F\rho\vec{u})^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho\vec{u})_{m}\otimes\vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$
+ \State $(F\rho E)_{m}^{\ast,(k+1)}\gets (F\rho E)^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho E)_{m} \vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$
+ \State $(F\rho s)^{\ast,(k+1)}_{m}\gets (F\rho s)_{m}^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho s)_{m} \vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M_{e}]$
+ \State $s_{m}^{n+1,(k+1)}\gets s_{m}^{\ast,(k+1)}+\Delta t(\Omega^{\ast,(k+1)}s_{m}^{\ast,(k+1)}-s_{m}^{\ast,(k+1)}\Omega^{\ast,(k+1)}+2G_{m}(\bar{D}^{\ast,(k+1)}-(D_{m}^{p})^{\ast,(k+1)})) \hspace{10pt} m\in[1,M_{e}]$
  \State $\vec{u}^{\ast\ast,(k+1)}\gets\vec{u}^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot (2(\mu+\mu_{\mbox{Lax}})D^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}}$
  \State $T^{\ast\ast,(k+1)}\gets T^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot ((k+k_{\mbox{Lax}})\nabla T^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}c_{v}}$
- \State $\vec{u}^{\ast\ast\ast,(k+1)}\gets\vec{u}^{\ast\ast,(k+1)}+\Delta t\frac{\nabla\cdot s^{\ast,(k+1)}}{\rho^{n+1,(k+1)}}$
- \State $T^{\ast\ast\ast,(k+1)}\gets T^{\ast\ast,(k+1)}+\Delta t\frac{\nabla\vec{u}^{\ast\ast\ast,(k+1)}:s^{\ast,(k+1)}}{\rho^{n+1,(k+1)}c_{v}}$
+ \State $\vec{u}^{\ast\ast\ast,(k+1)}\gets\vec{u}^{\ast\ast,(k+1)}+\Delta t\frac{\sum_{m=1}^{M_{e}}\nabla\cdot (H_{\alpha\Delta x}(\phi_{m}) s_{m}^{\ast,(k+1)})}{\rho^{n+1,(k+1)}}-\Delta t\frac{\sum_{\Gamma}\gamma_{\Gamma}\kappa_{\Gamma}\nabla H_{\Gamma}}{\rho^{n+1,(k+1)}}$
+ \State $T_{m}^{\ast\ast\ast,(k+1)}\gets T_{m}^{\ast\ast,(k+1)}+\Delta t\frac{\nabla\vec{u}^{\ast\ast\ast,(k+1)}:\tau_{m}}{\rho_{m}^{n+1,(k+1)}c_{v,m}} \hspace{10pt} m\in[1,M]$ 
  \State $p^{\ast,(k+1)}\gets p(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})$
  \State $c^{\ast,(k+1)}\gets c(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})$
  \State $\left( \begin{array}{c} \vec{u}^{n+1,(k+1)} \\ 
@@ -922,145 +960,21 @@ of our asymptotically preserving multiphase flow method.
 
 
 
-\section{Positioning of discrete variables on the computational grid}
+\begin{algorithm}
+\caption{The elastic material volume fraction equations and level set
+  equations are solved with an ``extended'' velocity field.
+  \label{elastic_advect}}
+\begin{algorithmic}[1] % [1] enables line numbering
+\State Extend $\vec{u}^{n+1,(k)}$ from elastic materials into fluid materials.
+\State $\vec{u}^{extend}\gets \mbox{Extend}(\vec{u}^{n+1,(k)})$
+\For{$m=1,\ldots,M_{e}$}
+ \State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla F_{m} dt$
+ \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M]$ 
+\EndFor
+\end{algorithmic}
+\end{algorithm}
 
-Note: for conservation form, velocity on face centroids, off-diagonal
-configuration tensor variables on edge centroids, the density is stored
-on a refined mesh.   
 
-Remarks:
-\begin{description}
-\item[1. ] The positioning of discrete variables in our earlier
-  work \cite{jemison2014compressible} were collocated instead of 
-  staggered thereby susceptible to ``checkerboard'' instability
-  \cite{GUITTET2015215,LECHENADEC2013185}.
-\item[2. ] In our earlier work \cite{jemison2014compressible},
-  density, temperature, volume fraction, and centroid
-  were discretized for each material, separately.   The velocity in this 
-  previous work was a single variable that represented the mass weighted
-  average of each materials' velocity.  In the present work, density,
-  volume fraction, and centroid are discretized for each material separately.
-  The velocity is still a mass weighted average of each materials' velocity.
-  The temperature is also a mass weighted average of each materials' 
-  temperature. The rationale for having the temperature as a mass
-  weighted average is that we observed temperature 
-  overheating or undercooling
-  in computational cells with ``small'' volume fraction.
-\end{description}
- 
-\section{temporal discretization}
-
-\begin{description}
-\item[0.] Initially the fluid (Newtonian and/or Non-Newtonian)
-  volume fractions tessellate the whole
-  computational domain and the elastic materials (in which we
-  distinguish from
-  Non-Newtonian fluids in which the characteristic wave speed
-  $\sqrt{\tilde{\eta}_{P}/\rho}$ (see (\ref{nonnewtonian})) or
-  $\sqrt{G/\rho}$ (see (\ref{plastic})) has the
-  same order of magnitude, or larger, as the sound speed of the material)
-  tessellate the 
-  ``elastic material domain.'' See figure \ref{tessellating}. For stability
-  purposes, the velocity is discretized at face centroids and
-  the configuration tensor off-diagonals are discretized at
-  edge centers\cite{sugiyama2011full,GUITTET2015215,LECHENADEC2013185} 
-  (see Figure \ref{vars_on_grid}). 
-\item[1.] for $k=0,1$
-\item[2.] cell integrated semi-Lagrangian advection using 
-  $\vec{u}^{(k)}$.  See section \ref{CISL}.
-\item[3.] extrapolate $\vec{u}^{(k)}$ from the elastic regions into the
-  fluid regions: $\vec{u}^{extrap}$
-\item[4.] advect the elastic material volume fractions and centroids using
-  $\vec{u}^{extrap}$.
-\item[5.] If phase change is modeled, see section \ref{phasechange}
-\item[6.] Jaumann derivative equation or upper convective derivative.
-  See section \ref{upper_convective_derivative}.
-%%the configuration tensor variables (off-diagonal) live at edge centers.
-\item[7.] for $r=0,1$
-\item[8.] Viscosity; elastic materials clamped if $r=1$.  See section
-  \ref{viscosity}.
-  \begin{eqnarray}
-  \frac{\vec{u}^{\ast,k,r}-\vec{u}^{CISL,k}}{\Delta t}=
-   F_{viscosity}(\vec{u}^{\ast,k,r})
-  \end{eqnarray}
-\item[9.] Thermal diffusion and species diffusion.  See section \ref{heat}.
-  \begin{eqnarray}
-  \frac{\vec{T}^{\ast,k,r}-\vec{T}^{CISL,k}}{\Delta t}=
-   F_{heat}(T^{\ast,k,r})
-  \end{eqnarray}
-\item[10.] Elastic forces ($r=0$); see section \ref{elastic}.
-  \begin{eqnarray}
-  \frac{\vec{u}^{\ast\ast,k}-\vec{u}^{\ast,k,r}}{\Delta t}=
-   F_{elastic}
-  \end{eqnarray}
-\item[11.] surface tension forces ($r=1$); see section \ref{surface_tension}.
-  \begin{eqnarray}
-  \frac{\vec{u}^{\ast\ast,k}-\vec{u}^{\ast,k,r}}{\Delta t}=
-   F_{elastic}
-  \end{eqnarray}
-\item[12.] Pressure gradient; elastic materials clamped if $r=1$.  See 
-  section \ref{pressure_gradient}:
-  \begin{eqnarray}
-  \vec{u}^{\ast\ast,k}=\vec{u}^{(k+1)}+\Delta t\frac{\nabla p^{(k+1)}}{\rho}
-  \end{eqnarray}
-  \begin{eqnarray}
-  \frac{p^{(k+1)}-p(\rho,e)}{\Delta t}=-\Delta t \rho c^{2}
-    \nabla\cdot\vec{u}^{(k+1)}
-  \end{eqnarray}
-\item[12.] end for $r=0,1$
-\item[13.] end for $k=0,1$
-\end{description}
-Remarks:
-\begin{itemize}
-\item steps 3 and 4 above are necessary to allow slip between fluid
- and elastic materials without unphysically modifying the elastic boundary.
- See sections \ref{drop_on_slope} and \ref{high_drag} which demonstrate the
- effectiveness of this algorithm.
-\item steps 3 and 4 can induce a violation of mass, momentum, and energy
-  conservation for the non-elastic materials 
-  at the elastic fluid boundaries, but we have found the
-  error to be minimal and converge to zero with grid refinement (see sections
-  \ref{drop_on_slope} and \ref{drop_impact_flexible_plate}).
-\item similar ideas, as steps 3 and 4, were implemented in 
-  \cite{sussman2007sharp}.
-\item the outer for loop, $k=0,1$, was implemented in 
- \cite{jemison2014compressible}.  THIS OUTER LOOP MIGHT BE OPTIONAL
- SINCE (A) VELOCITY ON MAC GRID AND (B) A SINGLE VARIABLE IS USED FOR
- ENERGY IN CONTRAST TO A SEPARATE ENERGY VARIABLE FOR EACH MATERIAL.
-\item the inner loop, $r=0,1$, was recommended in the article by
- \cite{shin2020interaction}.
-% one must distinguish between elastic materials and
-% non-newtonian fluids.
-\item The effect of surface tension forces on the motion of elastic
-  materials is not considered; so surface tension is not included when
-  $r=0$.
-\item The pressure and velocity is tightly coupled between all materials; 
-  regardless of elastic, fluid, or rigid.  See step 11 above in our
-  algorithm also see \cite{sugiyama2011full,shin2020interaction}.  
-  Thereby we our method
-  avoids the stability problems discussed in 
-  \cite{banks2018stable} and \cite{banks2014analysis}.
-%%V=U+grad phi
-%%U=V-grad phi
-%%div grad phi=div V
-%%phi=(div grad)^{-1} div V
-%%U=(I-(div grad)^{-1}div)V
-\item In contrast to \cite{jemison2014compressible}, which is a 
-  collocated method, our method is a 
-  staggered grid (conservative) method.
-  In a collocated method, for incompressible flow,  it is possible 
-  for the discretized projection step, even for constant density case, 
-  \begin{eqnarray}
-  U=(I-grad(div grad)^{-1}div)V 
-  \end{eqnarray}
-  to be non-unique\cite{GUITTET2015215,LECHENADEC2013185}.
-  Also in contrast to \cite{jemison2014compressible}, our method preserves
-  overall conservation (of non elastic fluids) of energy in contrast 
-  to preserving conservation of energy overall and for each individual
-  material.  This simplification was necessary in order to avoid 
-  temperature overheating at material boundaries with volume fractions
-  close to zero or one.
-\end{itemize}
 
 \section{phase change algorithm}
 

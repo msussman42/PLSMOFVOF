@@ -1,48 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: FSI.aux
 The style file: acm.bst
 Database file #1: cmof_paper.bib
 Warning--empty journal in scandurra2016numerical
-You've used 53 entries,
+You've used 52 entries,
             2253 wiz_defined-function locations,
-            867 strings with 15427 characters,
-and the built_in function-call counts, 19919 in all, are:
-= -- 1883
-> -- 1171
+            861 strings with 15320 characters,
+and the built_in function-call counts, 19626 in all, are:
+= -- 1852
+> -- 1164
 < -- 0
-+ -- 504
-- -- 426
-* -- 1841
-:= -- 3346
-add.period$ -- 158
-call.type$ -- 53
-change.case$ -- 371
++ -- 500
+- -- 424
+* -- 1816
+:= -- 3300
+add.period$ -- 155
+call.type$ -- 52
+change.case$ -- 367
 chr.to.int$ -- 0
-cite$ -- 54
-duplicate$ -- 491
-empty$ -- 1402
-format.name$ -- 426
-if$ -- 3943
+cite$ -- 53
+duplicate$ -- 482
+empty$ -- 1375
+format.name$ -- 424
+if$ -- 3883
 int.to.chr$ -- 0
-int.to.str$ -- 53
-missing$ -- 53
-newline$ -- 267
-num.names$ -- 106
-pop$ -- 275
+int.to.str$ -- 52
+missing$ -- 52
+newline$ -- 262
+num.names$ -- 104
+pop$ -- 273
 preamble$ -- 1
-purify$ -- 318
+purify$ -- 315
 quote$ -- 0
-skip$ -- 278
+skip$ -- 273
 stack$ -- 0
-substring$ -- 1407
-swap$ -- 113
+substring$ -- 1376
+swap$ -- 111
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 212
+type$ -- 208
 warning$ -- 1
-while$ -- 183
-width$ -- 55
-write$ -- 528
+while$ -- 179
+width$ -- 54
+write$ -- 518
 (There was 1 warning)
