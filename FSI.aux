@@ -1,5 +1,19 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{acm}
@@ -123,6 +137,8 @@
 \citation{sugiyama2011full}
 \citation{shin2020interaction}
 \citation{GUITTET2015215}
+\citation{jemison2014compressible}
+\citation{shin2020interaction}
 \citation{VAHAB2021}
 \citation{vahab2016adaptive}
 \citation{ye2024improved}
@@ -130,14 +146,11 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4}phase change algorithm}{12}{section.4}\protected@file@percent }
 \newlabel{asym_multiphase}{{4}{13}{Discretization for multiphase flows interacting with elastic materials}{algorithm.4}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Asymptotically Preserving time discretization for multiphase flows interacting with elastic materials}}{13}{algorithm.4}\protected@file@percent }
-\newlabel{elastic_advect}{{5}{13}{Discretization for multiphase flows interacting with elastic materials}{algorithm.5}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces The elastic material volume fraction equations and level set equations are solved with an ``extended'' velocity field. }}{13}{algorithm.5}\protected@file@percent }
-\bibdata{cmof_paper}
-\bibcite{almgren2006low}{1}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Applications}{14}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Algorithm}{14}{section.6}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The phase change algorithm: (1) the phase change speed, $\dot  {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot  {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the mass source, $\dot  {m}$, for the projection step. (3) the mass source, $\dot  {m}$ is distributed to the vapor side of the $\Gamma ^{n+1}$ interface. At the next time step, the interface is advected using $\vec  {u}^{source}$. For compressible flow, there is a problem if $\dot  {m}$ is not distributed deep enough into the vapor material. This is because the corrector advection of $\Gamma ^{n}$ will now have some redistributed $\dot  {m}$ terms on the liquid side of the $\Gamma _{n}$ interface (the blue region).  }}{15}{figure.1}\protected@file@percent }
 \newlabel{mdotproblem}{{1}{15}{The phase change algorithm: (1) the phase change speed, $\dot {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the mass source, $\dot {m}$, for the projection step. (3) the mass source, $\dot {m}$ is distributed to the vapor side of the $\Gamma ^{n+1}$ interface. At the next time step, the interface is advected using $\vec {u}^{source}$. For compressible flow, there is a problem if $\dot {m}$ is not distributed deep enough into the vapor material. This is because the corrector advection of $\Gamma ^{n}$ will now have some redistributed $\dot {m}$ terms on the liquid side of the $\Gamma _{n}$ interface (the blue region)}{figure.1}{}}
+\bibdata{cmof_paper}
+\bibcite{almgren2006low}{1}
 \bibcite{AN2016201}{2}
 \bibcite{banks2014analysis}{3}
 \bibcite{banks2018stable}{4}
@@ -146,6 +159,7 @@
 \bibcite{camacho1997adaptive}{7}
 \bibcite{chen2026numerical}{8}
 \bibcite{CHERTOCK2026119292}{9}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Algorithm}{16}{section.6}\protected@file@percent }
 \bibcite{choi2024novel}{10}
 \bibcite{cui2024oblique}{11}
 \bibcite{dressaire2015drop}{12}

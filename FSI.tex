@@ -214,9 +214,10 @@ in the following important ways:
   simulate both low and high speed fluid structure interaction problems.
   Our new method can simulate incompressible elastic materials or 
   compressible elastic materials with shock waves.
-\item[4.] We have developed an exactly mass and volume preserving algorithm for
-  simulating contact line dynamics of drops and bubbles along flexible 
-  surfaces.
+\item[4.] We have developed an exactly mass and volume preserving algorithm
+	so that mass and volume of fluid and elastic materials do not
+	change due to contact line dynamics (e.g. splashing or sliding), or 
+	flotsam removal.
 \end{description}
 
 In Table \ref{tablecompare}, we compare and contrast our new method with
@@ -900,7 +901,8 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
  properties than a collocated method\cite{LECHENADEC2013185,
   sugiyama2011full,shin2020interaction,GUITTET2015215}.
 \item In order to accurately allow for droplets and/or bubbles to interact
-  with elastic materials, we have made the following improvements:
+  with elastic materials, we have made the following modifications to
+  \cite{jemison2014compressible}:
   \begin{enumerate}
 %% figure should differentiate between elastic faces and fluid faces.
   \item The elastic material volume of fluid equations and
@@ -924,7 +926,11 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 
 \end{enumerate}
      
-
+%% k units W/(m K)
+%% L units J/kg
+%% W=J/s
+%% dot m=k grad T/L =(W/(m K)) (1/m)(K)kg/J=(1/m^2)(1/s)kg
+%% dot m/rho=m/s
 \begin{algorithm}
 \caption{Asymptotically Preserving time discretization for 
 	multiphase flows interacting with elastic 
@@ -939,9 +945,22 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
  \State $(F\rho\vec{u})_{m}^{\ast,(k+1)}\gets (F\rho\vec{u})^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho\vec{u})_{m}\otimes\vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$
  \State $(F\rho E)_{m}^{\ast,(k+1)}\gets (F\rho E)^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho E)_{m} \vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$
  \State $(F\rho s)^{\ast,(k+1)}_{m}\gets (F\rho s)_{m}^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho s)_{m} \vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M_{e}]$
- \State $s_{m}^{n+1,(k+1)}\gets s_{m}^{\ast,(k+1)}+\Delta t(\Omega^{\ast,(k+1)}s_{m}^{\ast,(k+1)}-s_{m}^{\ast,(k+1)}\Omega^{\ast,(k+1)}+2G_{m}(\bar{D}^{\ast,(k+1)}-(D_{m}^{p})^{\ast,(k+1)})) \hspace{10pt} m\in[1,M_{e}]$
- \State $\vec{u}^{\ast\ast,(k+1)}\gets\vec{u}^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot (2(\mu+\mu_{\mbox{Lax}})D^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}}$
+ \State $\vec{u}^{extend}\gets \mbox{Extend}(\vec{u}^{n+1,(k)})$ \Comment{from elastic region to fluid}
+ \State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla F_{m} dt \hspace{10pt} m\in[1,M_{e}]$
+ \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M_{e}]$ 
+ \State $\phi_{m}^{n+1,(k+1)}\gets\mbox{Extend}(\phi_{m}^{n+1,(k+1)})$ \Comment{from fluid region into elastic}
+ \State Reinitialize $\phi_{m}^{n+1,(k+1)}$ to be signed distance.
+ \State $\phi_{m_{source}}\gets\phi_{m_{source}}-\Delta t\frac{\dot{m}}{\rho}$
+ \State $\phi_{m_{dest}}\gets\phi_{m_{dest}}+\Delta t\frac{\dot{m}}{\rho}$
+ \For{$m=1,\ldots,M_{e}$}
+ \State $\vec{u}^{extend}\gets \mbox{Extend}(\vec{u}^{\ast,(k+1)})$ \Comment{from elastic region $m$ to outside}
+ \State $s^{extend}\gets \mbox{Extend}(s_{m}^{\ast,(k+1)})$ \Comment{from elastic region $m$ to outside}
+ \State $\Omega_{ij}\gets \frac{1}{2}(u^{extend}_{i,j}-u^{extend}_{j,i})$
+ \State $D_{ij}\gets \frac{1}{2}(u^{extend}_{i,j}+u^{extend}_{j,i})$
+ \State $s_{m}^{n+1,(k+1)}\gets s^{extend}+\Delta t(\Omega s^{extend}-s^{extend}\Omega+2G_{m}(\bar{D}-D^{p}))$
+ \EndFor
  \State $T^{\ast\ast,(k+1)}\gets T^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot ((k+k_{\mbox{Lax}})\nabla T^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}c_{v}}$
+ \State $\vec{u}^{\ast\ast,(k+1)}\gets\vec{u}^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot (2(\mu+\mu_{\mbox{Lax}})D^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}}$
  \State $\vec{u}^{\ast\ast\ast,(k+1)}\gets\vec{u}^{\ast\ast,(k+1)}+\Delta t\frac{\sum_{m=1}^{M_{e}}\nabla\cdot (H_{\alpha\Delta x}(\phi_{m}) s_{m}^{\ast,(k+1)})}{\rho^{n+1,(k+1)}}-\Delta t\frac{\sum_{\Gamma}\gamma_{\Gamma}\kappa_{\Gamma}\nabla H_{\Gamma}}{\rho^{n+1,(k+1)}}$
  \State $T_{m}^{\ast\ast\ast,(k+1)}\gets T_{m}^{\ast\ast,(k+1)}+\Delta t\frac{\nabla\vec{u}^{\ast\ast\ast,(k+1)}:\tau_{m}}{\rho_{m}^{n+1,(k+1)}c_{v,m}} \hspace{10pt} m\in[1,M]$ 
  \State $p^{\ast,(k+1)}\gets p(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})$
@@ -960,19 +979,6 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 
 
 
-\begin{algorithm}
-\caption{The elastic material volume fraction equations and level set
-  equations are solved with an ``extended'' velocity field.
-  \label{elastic_advect}}
-\begin{algorithmic}[1] % [1] enables line numbering
-\State Extend $\vec{u}^{n+1,(k)}$ from elastic materials into fluid materials.
-\State $\vec{u}^{extend}\gets \mbox{Extend}(\vec{u}^{n+1,(k)})$
-\For{$m=1,\ldots,M_{e}$}
- \State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla F_{m} dt$
- \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M]$ 
-\EndFor
-\end{algorithmic}
-\end{algorithm}
 
 
 
