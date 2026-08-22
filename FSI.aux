@@ -1,19 +1,5 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
-\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
-\global\let\oldcontentsline\contentsline
-\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
-\global\let\oldnewlabel\newlabel
-\gdef\newlabel#1#2{\newlabelxx{#1}#2}
-\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
-\AtEndDocument{\ifx\hyper@anchor\@undefined
-\let\contentsline\oldcontentsline
-\let\newlabel\oldnewlabel
-\fi}
-\fi}
-\global\let\hyper@last\relax 
-\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{acm}
@@ -139,68 +125,70 @@
 \citation{GUITTET2015215}
 \citation{jemison2014compressible}
 \citation{shin2020interaction}
+\citation{arienti2014embedded}
+\citation{arienti2014embedded}
 \citation{VAHAB2021}
 \citation{vahab2016adaptive}
 \citation{ye2024improved}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Discretization for multiphase flows interacting with elastic materials}{12}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}phase change algorithm}{12}{section.4}\protected@file@percent }
-\newlabel{asym_multiphase}{{4}{13}{Discretization for multiphase flows interacting with elastic materials}{algorithm.4}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Asymptotically Preserving time discretization for multiphase flows interacting with elastic materials}}{13}{algorithm.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Applications}{14}{section.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The phase change algorithm: (1) the phase change speed, $\dot  {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot  {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the mass source, $\dot  {m}$, for the projection step. (3) the mass source, $\dot  {m}$ is distributed to the vapor side of the $\Gamma ^{n+1}$ interface. At the next time step, the interface is advected using $\vec  {u}^{source}$. For compressible flow, there is a problem if $\dot  {m}$ is not distributed deep enough into the vapor material. This is because the corrector advection of $\Gamma ^{n}$ will now have some redistributed $\dot  {m}$ terms on the liquid side of the $\Gamma _{n}$ interface (the blue region).  }}{15}{figure.1}\protected@file@percent }
-\newlabel{mdotproblem}{{1}{15}{The phase change algorithm: (1) the phase change speed, $\dot {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the mass source, $\dot {m}$, for the projection step. (3) the mass source, $\dot {m}$ is distributed to the vapor side of the $\Gamma ^{n+1}$ interface. At the next time step, the interface is advected using $\vec {u}^{source}$. For compressible flow, there is a problem if $\dot {m}$ is not distributed deep enough into the vapor material. This is because the corrector advection of $\Gamma ^{n}$ will now have some redistributed $\dot {m}$ terms on the liquid side of the $\Gamma _{n}$ interface (the blue region)}{figure.1}{}}
 \bibdata{cmof_paper}
 \bibcite{almgren2006low}{1}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Discretization for multiphase flows interacting with elastic materials}{12}{section.3}\protected@file@percent }
+\newlabel{asym_multiphase}{{4}{13}{Discretization for multiphase flows interacting with elastic materials}{algorithm.4}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Multiphase flows interacting with elastic materials}}{13}{algorithm.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The phase change algorithm: (1) the phase change speed, $\dot  {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot  {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the overall mass correction, $M_{cor}$, due to expansion or compression, $M_{cor}=\DOTSB \sum@ \slimits@ (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho _{m_{s}}-\rho _{m_{d}})$. $M_{cor}$ becomes a source term for the projection step if the material is incompressible, or directly increments the density if the material is compressible. (3) $M_{cor}$ is distributed to the vapor (destination) side of the $\Gamma ^{n+1}$ interface if the interface speed is $\vec  {u}_{m_{s}}+\frac  {|\dot  {m}|}{\rho _{m_{s}}}\vec  {n}_{\Gamma }$ , and $M_{cor}$ is distributed to the liquid (source) side of the interface if the interface speed is $\vec  {u}_{m_{d}}+\frac  {|\dot  {m}|}{\rho _{m_{d}}}\vec  {n}_{\Gamma }$. Referring to the diagram, if distributing $M_{cor}$ to the vapor side, $M_{cor}$ must be all distributed beyond the blue region into the red region.  }}{14}{figure.1}\protected@file@percent }
+\newlabel{mdotproblem}{{1}{14}{The phase change algorithm: (1) the phase change speed, $\dot {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the overall mass correction, $M_{cor}$, due to expansion or compression, $M_{cor}=\sum (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho _{m_{s}}-\rho _{m_{d}})$. $M_{cor}$ becomes a source term for the projection step if the material is incompressible, or directly increments the density if the material is compressible. (3) $M_{cor}$ is distributed to the vapor (destination) side of the $\Gamma ^{n+1}$ interface if the interface speed is $\vec {u}_{m_{s}}+\frac {|\dot {m}|}{\rho _{m_{s}}}\vec {n}_{\Gamma }$ , and $M_{cor}$ is distributed to the liquid (source) side of the interface if the interface speed is $\vec {u}_{m_{d}}+\frac {|\dot {m}|}{\rho _{m_{d}}}\vec {n}_{\Gamma }$. Referring to the diagram, if distributing $M_{cor}$ to the vapor side, $M_{cor}$ must be all distributed beyond the blue region into the red region}{figure.1}{}}
 \bibcite{AN2016201}{2}
-\bibcite{banks2014analysis}{3}
-\bibcite{banks2018stable}{4}
-\bibcite{BIBAL2024112750}{5}
-\bibcite{boscarino2018all}{6}
-\bibcite{camacho1997adaptive}{7}
-\bibcite{chen2026numerical}{8}
-\bibcite{CHERTOCK2026119292}{9}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Algorithm}{16}{section.6}\protected@file@percent }
-\bibcite{choi2024novel}{10}
-\bibcite{cui2024oblique}{11}
-\bibcite{dressaire2015drop}{12}
-\bibcite{FERRARI2025113553}{13}
-\bibcite{GAO2024106124}{14}
-\bibcite{gao2025study}{15}
-\bibcite{gretarsson2011numerically}{16}
-\bibcite{GUITTET2015215}{17}
-\bibcite{he2024research}{18}
-\bibcite{jemison2013coupled}{19}
-\bibcite{jemison2014compressible}{20}
-\bibcite{jemison2015filament}{21}
-\bibcite{KLOPPE2024117090}{22}
-\bibcite{kwatra2009method}{23}
-\bibcite{Lax1954}{24}
-\bibcite{LECHENADEC2013185}{25}
-\bibcite{leger2023experimental}{26}
-\bibcite{maire2013nominally}{27}
-\bibcite{MENG2022114522}{28}
-\bibcite{MokbelMokbelLieseWeberAland2024}{29}
-\bibcite{osher1988fronts}{30}
-\bibcite{palmore2019volume}{31}
-\bibcite{PARK2026132}{32}
-\bibcite{patkar2016towards}{33}
-\bibcite{robinson2011symmetric}{34}
-\bibcite{sandusky1999dynamic}{35}
-\bibcite{scandurra2016numerical}{36}
-\bibcite{shin2020interaction}{37}
-\bibcite{stewart2008improved}{38}
-\bibcite{sugiyama2011full}{39}
-\bibcite{tran2004particle}{40}
-\bibcite{UDAYKUMAR2003136}{41}
-\bibcite{vahab2016adaptive}{42}
-\bibcite{VAHAB2021}{43}
-\bibcite{villegas2016ghost}{44}
-\bibcite{wang2017multiphase}{45}
-\bibcite{wardlaw2000fluid}{46}
-\bibcite{WILFONG2026110055}{47}
-\bibcite{xiaxi1989convergence}{48}
-\bibcite{xiong2026bubble}{49}
-\bibcite{xu2019experimental}{50}
-\bibcite{ye2024improved}{51}
-\bibcite{yin2022experimental}{52}
+\bibcite{arienti2014embedded}{3}
+\bibcite{banks2014analysis}{4}
+\bibcite{banks2018stable}{5}
+\bibcite{BIBAL2024112750}{6}
+\bibcite{boscarino2018all}{7}
+\newlabel{phasechange_alg}{{5}{15}{Discretization for multiphase flows interacting with elastic materials}{algorithm.5}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Phase change algorithm}}{15}{algorithm.5}\protected@file@percent }
+\bibcite{camacho1997adaptive}{8}
+\bibcite{chen2026numerical}{9}
+\bibcite{CHERTOCK2026119292}{10}
+\bibcite{choi2024novel}{11}
+\bibcite{cui2024oblique}{12}
+\bibcite{dressaire2015drop}{13}
+\bibcite{FERRARI2025113553}{14}
+\bibcite{GAO2024106124}{15}
+\bibcite{gao2025study}{16}
+\bibcite{gretarsson2011numerically}{17}
+\bibcite{GUITTET2015215}{18}
+\bibcite{he2024research}{19}
+\bibcite{jemison2013coupled}{20}
+\bibcite{jemison2014compressible}{21}
+\bibcite{jemison2015filament}{22}
+\bibcite{KLOPPE2024117090}{23}
+\bibcite{kwatra2009method}{24}
+\bibcite{Lax1954}{25}
+\bibcite{LECHENADEC2013185}{26}
+\bibcite{leger2023experimental}{27}
+\bibcite{maire2013nominally}{28}
+\bibcite{MENG2022114522}{29}
+\bibcite{MokbelMokbelLieseWeberAland2024}{30}
+\bibcite{osher1988fronts}{31}
+\bibcite{palmore2019volume}{32}
+\bibcite{PARK2026132}{33}
+\bibcite{patkar2016towards}{34}
+\bibcite{robinson2011symmetric}{35}
+\bibcite{sandusky1999dynamic}{36}
+\bibcite{scandurra2016numerical}{37}
+\bibcite{shin2020interaction}{38}
+\bibcite{stewart2008improved}{39}
+\bibcite{sugiyama2011full}{40}
+\bibcite{tran2004particle}{41}
+\bibcite{UDAYKUMAR2003136}{42}
+\bibcite{vahab2016adaptive}{43}
+\bibcite{VAHAB2021}{44}
+\bibcite{villegas2016ghost}{45}
+\bibcite{wang2017multiphase}{46}
+\bibcite{wardlaw2000fluid}{47}
+\bibcite{WILFONG2026110055}{48}
+\bibcite{xiaxi1989convergence}{49}
+\bibcite{xiong2026bubble}{50}
+\bibcite{xu2019experimental}{51}
+\bibcite{ye2024improved}{52}
+\bibcite{yin2022experimental}{53}
 \gdef \@abspage@last{20}

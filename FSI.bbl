@@ -11,6 +11,12 @@
   vapor–liquid–solid boiling flow.
 \newblock {\em Powder Technology 291\/} (2016), 201--213.
 
+\bibitem{arienti2014embedded}
+{\sc Arienti, M., and Sussman, M.}
+\newblock An embedded level set method for sharp-interface multiphase
+  simulations of diesel injectors.
+\newblock {\em International Journal of Multiphase Flow 59\/} (2014), 1--14.
+
 \bibitem{banks2014analysis}
 {\sc Banks, J.~W., Henshaw, W.~D., and Schwendeman, D.~W.}
 \newblock An analysis of a new stable partitioned algorithm for fsi problems.

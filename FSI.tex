@@ -897,7 +897,7 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 \par\noindent
 \begin{enumerate}
 \item The present algorithm is staggered.  Please refer to Figures
- \ref{staggered}.  A staggered algorithm is better stability
+ \ref{staggered}.  A staggered algorithm has better stability
  properties than a collocated method\cite{LECHENADEC2013185,
   sugiyama2011full,shin2020interaction,GUITTET2015215}.
 \item In order to accurately allow for droplets and/or bubbles to interact
@@ -905,35 +905,57 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
   \cite{jemison2014compressible}:
   \begin{enumerate}
 %% figure should differentiate between elastic faces and fluid faces.
-  \item The elastic material volume of fluid equations and
+  \item Steps 8 through 10 in Algorithm \ref{asym_multiphase}:
+     The elastic material volume of fluid equations and
      level set equations are numerically solved using an
      ``extended'' velocity field.  Please refer to Figure
-     \ref{extended_velocity}. Steps 4 and 5 in Algorithm
-     \ref{asym_multiphase} are replaced with the steps 
-     given in Algorithm \ref{elastic_advect}.
-  \item The non-advective part of the deviatoric stress tensor which is 
-    step 10 in Algorithm \ref{asym_multiphase} is modified to use an
-    ``extended'' velocity field and an ``extended'' 
-    deviatoric stress tensor.
-    Please refer to Figure \ref{extended2}. Step 10 in Algorithm
-     \ref{asym_multiphase} is replaced with the steps 
-     given in Algorithm \ref{elastic_part2}.
-  \item As recommended by \cite{shin2020interaction}, Steps 11 through 18
-    are modified in accordance to Algorithm \ref{fix_solid_2nd_sweep}.
-  \item We have developed a method that exactly preserves mass for 
-    
+     \ref{extended_velocity}. 
+  \item Because the elastic force (step 26, Algorithm \ref{asym_multiphase})
+    is applied with a smoothed Heaviside function, we must make
+    sure that the deviatoric stress tensor $s_{m_{e}}$ 
+    is well defined in a narrow band just outside of material 
+    $m_{e}$: $\phi_{m_{e}}>-\alpha\Delta x$.
+    This is achieved by steps 18 and 19 of Algorithm
+    \ref{asym_multiphase}.  In our numerical experiments, we always
+    have $\alpha=4$.
+  \item As recommended by \cite{shin2020interaction}, the viscous force
+    and pressure gradient force are first approximated without the
+    inclusion of surface tension; please see Steps 25 through 29
+    of Algorithm \ref{asym_multiphase}.
+    Then the viscous force and pressure gradient force are recomputed
+    in steps 31 through 33 in which the surface tension force is
+    included and the velocity in the elastic material regions is fixed
+    to the velocity after step 29.
+  \item the static or dynamic contact angle is enforced by way of 
+    extending the level set function and volume of fluid functions
+    from the fluid regions into the elastic regions; please see
+    step 11 of Algorithm \ref{asym_multiphase}.  The extension algorithm
+    is the same as that described in our earlier 
+    work\cite{arienti2014embedded} except that in the present article,
+    we are considering flexible substrates whereas in 
+    \cite{arienti2014embedded} the substrate only underwent rigid 
+    motion.  By construction, our present algorithm for contact line
+    dynamics on elastic materials recovers exactly the corresponding
+    contact line dynamics on substrates undergoing rigid motion in the
+    limit that the elastic materials' motion approaches rigid motion.
   \end{enumerate}
-
+\item The phase change 
+    algorithm\cite{VAHAB2021,vahab2016adaptive,ye2024improved}, 
+    given by steps 14 and 15 in 
+    Algorithm \ref{asym_multiphase}, is described in more detail 
+    in Algorithm \ref{phasechange_alg}.  
+    Please also see Figure \ref{mdotproblem}.
+\item We have developed a method that exactly preserves mass for 
+    
 \end{enumerate}
-     
+
 %% k units W/(m K)
 %% L units J/kg
 %% W=J/s
 %% dot m=k grad T/L =(W/(m K)) (1/m)(K)kg/J=(1/m^2)(1/s)kg
 %% dot m/rho=m/s
 \begin{algorithm}
-\caption{Asymptotically Preserving time discretization for 
-	multiphase flows interacting with elastic 
+\caption{Multiphase flows interacting with elastic 
 	materials\label{asym_multiphase}}
 \begin{algorithmic}[1] % [1] enables line numbering
 \State $k \gets 0$
@@ -941,17 +963,17 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 \While{$k \le 1$}
  \State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla F_{m} dt \hspace{10pt} m\in[1,M]$ 
  \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M]$ 
- \State $(F\rho)^{n+1,(k+1)}_{m}\gets (F\rho)^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho)_{m}\vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$ 
- \State $(F\rho\vec{u})_{m}^{\ast,(k+1)}\gets (F\rho\vec{u})^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho\vec{u})_{m}\otimes\vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$
- \State $(F\rho E)_{m}^{\ast,(k+1)}\gets (F\rho E)^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho E)_{m} \vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$
- \State $(F\rho s)^{\ast,(k+1)}_{m}\gets (F\rho s)_{m}^{n}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\rho s)_{m} \vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M_{e}]$
+ \State $\vec{U}\gets (\rho,\rho\vec{u},\rho E,\rho s)^{T}$
+ \State $(F\vec{U})^{\ast,(k+1)}_{m}\gets (F\vec{U})^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\vec{U})_{m}\otimes\vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$ 
  \State $\vec{u}^{extend}\gets \mbox{Extend}(\vec{u}^{n+1,(k)})$ \Comment{from elastic region to fluid}
  \State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla F_{m} dt \hspace{10pt} m\in[1,M_{e}]$
  \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M_{e}]$ 
  \State $\phi_{m}^{n+1,(k+1)}\gets\mbox{Extend}(\phi_{m}^{n+1,(k+1)})$ \Comment{from fluid region into elastic}
+ \State $F_{m}^{n+1,(k+1)}\gets\mbox{Remove Flotsam}(F_{m}^{n+1,(k+1)})$
  \State Reinitialize $\phi_{m}^{n+1,(k+1)}$ to be signed distance.
- \State $\phi_{m_{source}}\gets\phi_{m_{source}}-\Delta t\frac{\dot{m}}{\rho}$
- \State $\phi_{m_{dest}}\gets\phi_{m_{dest}}+\Delta t\frac{\dot{m}}{\rho}$
+ \State $\phi_{m_{source}}\gets\phi_{m_{source}}-\Delta t\frac{|\dot{m}|}{\rho}$
+ \State $\phi_{m_{dest}}\gets\phi_{m_{dest}}+\Delta t\frac{|\dot{m}|}{\rho}$
+ \State $\dot{m}_{correct}\gets\mbox{Mass Correction}(\mbox{Mass Current},\mbox{Mass Target})$
  \For{$m=1,\ldots,M_{e}$}
  \State $\vec{u}^{extend}\gets \mbox{Extend}(\vec{u}^{\ast,(k+1)})$ \Comment{from elastic region $m$ to outside}
  \State $s^{extend}\gets \mbox{Extend}(s_{m}^{\ast,(k+1)})$ \Comment{from elastic region $m$ to outside}
@@ -961,95 +983,57 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
  \EndFor
  \State $T^{\ast\ast,(k+1)}\gets T^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot ((k+k_{\mbox{Lax}})\nabla T^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}c_{v}}$
  \State $\vec{u}^{\ast\ast,(k+1)}\gets\vec{u}^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot (2(\mu+\mu_{\mbox{Lax}})D^{\ast\ast,(k+1)})}{\rho^{n+1,(k+1)}}$
- \State $\vec{u}^{\ast\ast\ast,(k+1)}\gets\vec{u}^{\ast\ast,(k+1)}+\Delta t\frac{\sum_{m=1}^{M_{e}}\nabla\cdot (H_{\alpha\Delta x}(\phi_{m}) s_{m}^{\ast,(k+1)})}{\rho^{n+1,(k+1)}}-\Delta t\frac{\sum_{\Gamma}\gamma_{\Gamma}\kappa_{\Gamma}\nabla H_{\Gamma}}{\rho^{n+1,(k+1)}}$
- \State $T_{m}^{\ast\ast\ast,(k+1)}\gets T_{m}^{\ast\ast,(k+1)}+\Delta t\frac{\nabla\vec{u}^{\ast\ast\ast,(k+1)}:\tau_{m}}{\rho_{m}^{n+1,(k+1)}c_{v,m}} \hspace{10pt} m\in[1,M]$ 
- \State $p^{\ast,(k+1)}\gets p(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})$
- \State $c^{\ast,(k+1)}\gets c(\rho^{n+1,(k+1)},e^{\ast\ast\ast,(k+1)})$
+ \State $\vec{u}^{\ast\ast,(k+1)}\gets\vec{u}^{\ast\ast,(k+1)}+\Delta t\frac{\sum_{m=1}^{M_{e}}\nabla\cdot (H_{\alpha\Delta x}(\phi_{m}) s_{m}^{\ast,(k+1)})}{\rho^{n+1,(k+1)}}$
+ \State $T_{m}^{\ast\ast,(k+1)}\gets T_{m}^{\ast\ast,(k+1)}+\Delta t\frac{\nabla\vec{u}^{\ast\ast,(k+1)}:\tau_{m}}{\rho_{m}^{n+1,(k+1)}c_{v,m}} \hspace{10pt} m\in[1,M]$ 
+ \State $\tilde{\rho}\gets \rho^{n+1,(k+1)} \hspace{15pt} \tilde{p}\gets p(\tilde{\rho},e^{\ast\ast,(k+1)})  \hspace{15pt} c^{2}\gets c^{2}(\tilde{\rho},e^{\ast\ast,(k+1)})$
  \State $\left( \begin{array}{c} \vec{u}^{n+1,(k+1)} \\ 
            p^{n+1,(k+1)} \end{array}\right)\gets
   \left( \begin{array}{c} 
-    \vec{u}^{\ast\ast\ast,(k+1)}-\Delta t\frac{\nabla p^{n+1,(k+1)}}{\rho^{n+1,(k+1)}} \\
-  p^{\ast,(k+1)}-\Delta t \rho^{n+1,(k+1)} (c^{\ast,(k+1)})^{2} \nabla\cdot\vec{u}^{n+1,(k+1)}\end{array}\right)$
-\State $E^{n+1,(k+1)}\gets E^{\ast\ast\ast,(k+1)}-
-	\Delta t\frac{\nabla\cdot(\vec{u}p)^{n+1,(k+1)}}{\rho^{n+1,(k+1)}}$
+    \vec{u}^{\ast\ast,(k+1)}-\Delta t\frac{\nabla p^{n+1,(k+1)}}{\tilde{\rho}} \\
+  \tilde{p}-\Delta t \tilde{\rho} c^{2} \nabla\cdot\vec{u}^{n+1,(k+1)}\end{array}\right)$
+\State $E^{n+1,(k+1)}\gets E^{\ast\ast,(k+1)}-
+	\Delta t\frac{\nabla\cdot(\vec{u}p)^{n+1,(k+1)}}{\tilde{\rho}}$
+ \State $\vec{u}^{\ast\ast,(k+1)}\gets\vec{u}^{\ast,(k+1)}+\Delta t \frac{\nabla\cdot (2(\mu+\mu_{\mbox{Lax}})D^{\ast\ast,(k+1)})}{\tilde{\rho}}$ \Comment{$\vec{u}_{m_{e}}$ clamped}
+ \State $\vec{u}^{\ast\ast,(k+1)}\gets\vec{u}^{\ast\ast,(k+1)}-\Delta t\frac{\sum_{\Gamma}\gamma_{\Gamma}\kappa_{\Gamma}\nabla H_{\Gamma}}{\tilde{\rho}}$
+ \State $\left( \begin{array}{c} \vec{u}^{n+1,(k+1)} \\ 
+           p^{n+1,(k+1)} \end{array}\right)\gets
+  \left( \begin{array}{c} 
+    \vec{u}^{\ast\ast,(k+1)}-\Delta t\frac{\nabla p^{n+1,(k+1)}}{\tilde{\rho}} \\
+  \tilde{p}-\Delta t \tilde{\rho} c^{2}\nabla\cdot\vec{u}^{n+1,(k+1)}\end{array}\right)$ \Comment{$\vec{u}_{m_{e}}$ clamped}
  \State $k \gets k+1$
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
 
-
-
-
-
-
-\section{phase change algorithm}
-
-See the following articles and below: \cite{VAHAB2021}, 
-\cite{vahab2016adaptive}, \cite{ye2024improved}.
-
-\begin{description}
-\item[1.] For each cell in a narrow band about the interface, use the
+\begin{algorithm}
+\caption{Phase change algorithm\label{phasechange_alg}}
+\begin{algorithmic}[1] % [1] enables line numbering
+\State For each cell in a narrow band about the interface, use the
   closest point map to find the corresponding closest point on the
   interface.  Approximate the phase change speed, $|\dot{m}|/\rho$ 
-  at the closest point.
-\item[2.] extend the phase change speed $|\dot{m}|/\rho$ 
+  at the closest point. (Figure \ref{mdotproblem})
+\State extend the phase change speed $|\dot{m}|/\rho$ 
   further into bulk regions.
-\item[3.] 
-  If distributing the mass source term due to expansion or compression,
-  $\dot{m}$, to the destination material side, then
-  the velocity on the interface corresponds to the source material velocity
-  and the overall interface velocity is:
-  \begin{eqnarray}
-  \vec{u}_{source}+\frac{|\dot{m}|}{\rho_{s}}\vec{n}_{s}
-  \end{eqnarray}
-  If distributing $\dot{m}$ to the source material side, then
-  the velocity on the interface corresponds to the destination 
-  material velocity
-  and the interface velocity is:
-  \begin{eqnarray}
-  \vec{u}_{dest}+\frac{|\dot{m}|}{\rho_{d}}\vec{n}_{s}
-  \end{eqnarray}
-\item[4.] Using step 3 as a guide, do unsplit CISL phase change advection.
-  If distributing $\dot{m}$ to the destination material side, the 
-  phase change contribution to the interface velocity is
-  \begin{eqnarray}
-  \frac{|\dot{m}|}{\rho_{s}}\vec{n}_{s}
-  \end{eqnarray}
-  
-\item[5.] The difference in volume fraction from step 4 gives the 
-   $\dot{m}^{conservative}$
-   expansion source term to be applied during the pressure update step.
-\item[6.] The 
-   $\dot{m}^{conservative}$ 
-   terms are distributed to one side of the interface.
-   If distributed to the destination material side, then distribute where
-   $F_{dest}>1/2$.  This guarantees, for linear interfaces,
-   that all faces with at least one 
-   adjoining source material majority cell will have 
-   the source material velocity
-   defined at that face.  Please refer to Figure \ref{mdotproblem}.
-\end{description}
-  
-For compressible flow, with a predictor and a corrector step, 
-there is a problem.
-For the evaporating droplet problem, the $\dot{m}$ terms are 
-distributed to the vapor (destination).
-Please refer to Figure \ref{mdotproblem}.  If the $\dot{m}$ terms
-are not distributed deep enough into the bulk of the destination material,
-then:
-\begin{description}
-\item[1.] During the predictor step, there is no problem because the advection
-velocity at time $t^{n}$ is used in order to advect the interface
-that is initially defined at $t=t^{n}$ ($\Gamma^{n}$).
-\item[2.] During the corrector step, there is a problem because the advection 
-velocity at time $t^{n+1}$ is used in order to advect the interface
-that is initially defined at $t=t^{n}$ ($\Gamma^{n}$).  The problem
-is that some of the
-$\dot{m}$ terms distributed to the vapor side of the $\Gamma^{n+1}$
-interface will be on the liquid side of the $t=t^{n}$ 
-($\Gamma^{n}$) interface.  See the blue region of Figure
-\ref{mdotproblem}.
-\end{description}
+\State Advect the volume fractions using unsplit CISL advection
+  with velocity $|\dot{m}|\vec{n}_{\Gamma}/\rho$.
+\State The overall mass correction in order to conserve mass due to
+  expansion or compression is:
+  $M_{cor}=\sum (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho_{m_{s}}-\rho_{m_{d}})$.
+\State If the interface velocity is in the form 
+  $\vec{u}_{I}=\vec{u}_{m_{d}}+\frac{|\dot{m}|}{\rho_{m_{d}}}\vec{n}_{\Gamma}$,
+  then distribute $M_{cor}$ at least two cells deep into 
+  the source material $m_{s}$.
+\State If the interface velocity is in the form 
+  $\vec{u}_{I}=\vec{u}_{m_{s}}+\frac{|\dot{m}|}{\rho_{m_{s}}}\vec{n}_{\Gamma}$,
+  then distribute $M_{cor}$ at least two cells deep into
+  the destination material $m_{d}$.
+\State If the material with the distributed mass, $M_{cor}$, is an
+  incompressible material, then $M_{cor}$ becomes a source term for the
+  velocity projection equation, otherwise, the density is incremented 
+  accordingly.
+\end{algorithmic}
+\end{algorithm}
+
 
 \begin{figure}
 \begin{tikzpicture}[x=2cm,y=2cm]
@@ -1086,42 +1070,28 @@ interface will be on the liquid side of the $t=t^{n}$
  }
 \end{tikzpicture}
 \caption{The phase change algorithm: (1) the phase change speed, 
-$\dot{m}/\rho$, is approximated at all narrow band cells by evaluating
-$\dot{m}/\rho$ at the corresponding closest point on the interface
+$|\dot{m}|/\rho$, is approximated at all narrow band cells by evaluating
+$|\dot{m}|/\rho$ at the corresponding closest point on the interface
 ($\Gamma^{n}$). (2) The change in volume fraction due to unsplit CISL
-advection determines the mass source, $\dot{m}$, for the projection
-step.  (3) the mass source, $\dot{m}$ is distributed to the vapor
-side of the $\Gamma^{n+1}$ interface.  At the next time step, the
-interface is advected using $\vec{u}^{source}$.  For compressible flow,
-there is a problem if $\dot{m}$ is not distributed deep enough into
-the vapor material.  This is because the corrector advection of 
-$\Gamma^{n}$ will now have some redistributed $\dot{m}$ terms on the
-liquid side of the $\Gamma_{n}$ interface (the blue region).
-   \label{mdotproblem} }
+advection determines the overall mass correction, $M_{cor}$, due to expansion
+or compression, 
+$M_{cor}=\sum (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho_{m_{s}}-\rho_{m_{d}})$.
+$M_{cor}$ becomes a source term 
+for the projection
+step if the material is incompressible, or directly increments 
+the density if the material is compressible.
+(3) $M_{cor}$
+is distributed to the vapor (destination)
+side of the $\Gamma^{n+1}$ interface if the interface speed is 
+$\vec{u}_{m_{s}}+\frac{|\dot{m}|}{\rho_{m_{s}}}\vec{n}_{\Gamma}$
+, and $M_{cor}$ is
+distributed to the liquid (source) side of the interface if the interface
+speed is
+$\vec{u}_{m_{d}}+\frac{|\dot{m}|}{\rho_{m_{d}}}\vec{n}_{\Gamma}$.
+Referring to the diagram, if distributing $M_{cor}$ to the
+vapor side, $M_{cor}$ must be all distributed beyond the blue region
+into the red region.  \label{mdotproblem} }
 \end{figure}
-
-\section{Applications}
-
-\begin{description}
-	\item[1.] Jet in cross flow problem (military jet engines, Pratt
-		and Whitney)
-	\item[2.] Diesel injectors
-	\item[3.] Rotating Detonation Engines (see latest article with Everett
-		Wenzel and Marco Arienti).
-\end{description}
-
-\section{Algorithm}
-
-\begin{description}
-	\item[1.] Cell integrated semi Lagrangian advection
-	\item[2.] Cell integrated semi Lagrangian advection due to phase 
-		change.  
-	\item[3.] Viscosity, Viscoelastic, and elastic forces.
-	\item[4.] Temperature Diffusion
-	\item[5.] Mass Fraction Diffusion
-	\item[6.] Pressure Gradient
-	\item[7.] Go back to step 1.
-\end{description}
 
 %%\biboptions{sort&compress}
 \bibliography{cmof_paper}
