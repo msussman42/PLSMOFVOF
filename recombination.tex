@@ -1,0 +1,52 @@
+\begin{tikzpicture}
+  \draw[magenta, semithick] (2,2.4) -- (2.75,3.26);
+  \draw[magenta, semithick] (2.75,3.34) -- (4,3.4);
+
+  \draw[solid, thick] (0,0) rectangle (6,6);
+  \draw[thick] (2,6) -- (2,0);
+  \draw[thick] (4,6) -- (4,0);
+  \draw[thick] (0,2) -- (6,2);
+  \draw[thick] (0,4) -- (6,4);
+
+  \draw[densely dashed, gray] (3,4) -- (3,2);
+  \draw[densely dashed, gray] (2,3) -- (4,3);
+
+  \draw[red, thick] (2,2) grid (4,4);
+
+  \draw[semithick, cyan, loosely dashed] (3,0) grid (5,2);
+
+  \draw[fill=cyan] (3.5,1.5) circle (0.04cm);
+  \draw[fill=cyan] (4.5,1.5) circle (0.04cm);
+  \draw[fill=cyan] (3.5,0.5) circle (0.04cm);
+  \draw[fill=cyan] (4.5,0.5) circle (0.04cm);
+
+  \draw[cyan, thick] (3.9,1.1) -- (4.1,0.9);
+  \draw[cyan, thick] (3.9,0.9) -- (4.1,1.1);
+
+  \draw[semithick, loosely dashed, magenta] (0,3) grid (2,5);
+
+  \draw[fill=magenta] (0.5,4.5) circle (0.04cm);
+  \draw[fill=magenta] (1.5,4.5) circle (0.04cm);
+  \draw[fill=magenta] (0.5,3.5) circle (0.04cm);
+  \draw[fill=magenta] (1.5,3.5) circle (0.04cm);
+
+  \draw[magenta, thick] (0.9,4.1) -- (1.1,3.9);
+  \draw[magenta, thick] (0.9,3.9) -- (1.1,4.1);
+
+  \draw[densely dotted, thick, green!85!black] (3,3) grid (5,5);
+
+  \draw[fill=green, ultra thin] (3.5,4.5) circle (0.03cm);
+  \draw[fill=green, ultra thin] (4.5,4.5) circle (0.03cm);
+  \draw[fill=green, ultra thin] (3.5,3.5) circle (0.03cm);
+  \draw[fill=green, ultra thin] (4.5,3.5) circle (0.03cm);
+
+  \draw[green, thick] (3.9,4.1) -- (4.1,3.9);
+  \draw[green, thick] (3.9,3.9) -- (4.1,4.1);
+
+
+
+  \node[draw=none, text=red, node font=\tiny] at (4.56,2.7) {Cell-Centered};
+  \node[draw=none, text=cyan!89!black, node font=\tiny, align=center] at (4.59,1.2) {Face-Centered\\(Horizontal)};
+  \node[draw=none, text=magenta!90!black, node font=\tiny, align=center] at (1.43,4.22) {Face-Centered\\(Vertical)};
+  \node[draw=none, text=green!75!black, node font=\tiny] at (4.71,4.17) {Node-Centered};
+\end{tikzpicture}

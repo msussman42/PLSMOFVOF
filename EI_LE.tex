@@ -1,0 +1,55 @@
+\begin{tikzpicture}
+  % Eulerian Implicit
+  \fill[solid, thick, cyan!24] (2,4) rectangle (3,5);
+
+  \draw[magenta, semithick] (1,4.1) -- (2,4.63);
+  \draw[magenta, semithick] (0.81,4) -- (1.01,4.1);
+  \draw[magenta, semithick] (0,3.84) -- (0.8,4);
+%slope=(5-4.73)/(.9)=0.3
+%intercept=(2,4.73)
+%f(4)=4.73+0.3*2=5.33
+%  \draw[magenta, semithick] (2,4.73) -- (2.9,5);
+%  \draw[magenta, semithick] (3,4.9) -- (3.22,5);
+%  \draw[magenta, semithick] (3.27,5) -- (4,5.5);
+  \draw[magenta, semithick] (2,4.73) -- (4.0,5.33);
+  \draw[magenta, semithick] (4,5.6) -- (4.5,6);
+
+  \draw[solid, thick] (0,0) rectangle (6,6);
+  \draw[thick] (2,6) -- (2,0);
+  \draw[thick] (4,6) -- (4,0);
+  \draw[thick] (0,2) -- (6,2);
+  \draw[thick] (0,4) -- (6,4);
+
+  \draw[densely dashed, gray] (1,6) -- (1,0);
+  \draw[densely dashed, gray] (3,6) -- (3,0);
+  \draw[densely dashed, gray] (5,6) -- (5,0);
+  \draw[densely dashed, gray] (0,1) -- (6,1);
+  \draw[densely dashed, gray] (0,3) -- (6,3);
+  \draw[densely dashed, gray] (0,5) -- (6,5);
+
+  \draw[solid, thick, cyan] (2,4) rectangle (3,5);
+  \draw[solid, thick, red] (1.3,4) rectangle (2.1,5);
+  \draw[arrows=|-Stealth] (3,4.5) -- (3.32,4.5);
+  \draw[arrows=|-Stealth] (2,4.5) -- (2.32,4.5);
+
+  \node[draw=none, shape=rectangle, minimum height=1pt, minimum width=1pt, node font=\scriptsize, text=red] at (1.5,3.84) {$\Omega_\textrm{Departure}$};
+  \node[draw=none, shape=rectangle, minimum height=1pt, minimum width=1pt, node font=\scriptsize, text=cyan!90!black] at (2.55,3.84) {$\Omega_\textrm{Target}$};
+
+
+  % Lagrangian Explicit
+  \fill[solid, thick, cyan!24] (2,1) rectangle (3,2);
+  \draw[solid, thick, cyan] (2,1) rectangle (3,2);
+
+  \draw[solid, thick, red] (1,1) rectangle (2,2);
+  \draw[solid, thick, blue!68] (2,1) rectangle (3,2);
+
+  \draw[red, semithick, densely dotted] (1.7,1) rectangle (2.8,2);
+  \draw[semithick, densely dotted, blue!68] (2.81,1) rectangle (3.91,2);
+
+  \draw[arrows=|-Stealth, red] (2,1.5) -- (2.32,1.5);
+  \draw[arrows=|-Stealth, red] (1,1.5) -- (1.32,1.5);
+
+
+  \node[draw=none, node font=\scriptsize] at (2.99,3.5) {Eulerian Implicit};
+  \node[draw=none, node font=\scriptsize] at (3.17,0.61) {Lagrangian Explicit};
+\end{tikzpicture}

@@ -223,6 +223,13 @@
 {\sc Scandurra, L.}
 \newblock Numerical methods for all mach number flows for gas dynamics.
 
+\bibitem{scardovelli2003interface}
+{\sc Scardovelli, R., and Zaleski, S.}
+\newblock Interface reconstruction with least-square fit and split
+  eulerian--lagrangian advection.
+\newblock {\em International Journal for Numerical Methods in Fluids 41}, 3
+  (2003), 251--274.
+
 \bibitem{shin2020interaction}
 {\sc Shin, S., Chergui, J., and Juric, D.}
 \newblock Interaction of a deformable solid with two-phase flows: An

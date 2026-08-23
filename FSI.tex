@@ -193,7 +193,12 @@ In the present work, we have improved upon
 in the following important ways:
 \begin{description}
 \item[1.] the present method is now a staggered grid
-  method instead of colocated.  See Figure \ref{staggered}.  The
+  method instead of colocated.  
+  See Figures 
+  \ref{EILE},
+  \ref{prolongation},
+  and \ref{recombination}.  
+  The
   following research for incompressible flows underscore the
   importance of a staggered grid\cite{LECHENADEC2013185,
   sugiyama2011full,shin2020interaction,GUITTET2015215} for
@@ -321,7 +326,7 @@ p=p(\rho,e) \hspace{20pt} c^{2}=p_{\rho}+\frac{p_{e}p}{\rho^{2}}
 Following the ``asymptotically preserving'' analysis in these articles,
 \cite{almgren2006low,boscarino2018all,scandurra2016numerical,
 CHERTOCK2026119292}, 
-it can be shown that the 
+it can be shown that our
 Directionally split Cell Integrated Semi-Lagrangian (CISL) algorithm 
 given by
 Algorithm \ref{asym_preserve}
@@ -431,9 +436,18 @@ conditions\cite{boscarino2018all,scandurra2016numerical}, then
 
 The advection commands in Algorithm\ref{asym_preserve} are discretized using the
 directionally split cell integrated semi-Lagrangian advection algorithm
-with piecewise constant reconstruction.  The relation between the
+with piecewise constant 
+reconstruction\cite{jemison2014compressible,scardovelli2003interface}
+(see Figures 
+  \ref{EILE},
+  \ref{prolongation},
+  and \ref{recombination}).
+The relation between the
 variables' control volumes and the computational mesh are shown
-in Figure \ref{controlvolumes}.
+in Figures 
+  \ref{EILE},
+  \ref{prolongation},
+  and \ref{recombination}).
 The piecewise constant representation guarantees
 that no new extrama are generated for $\vec{u}^{\ast}$ and $E^{\ast}$, the
 updated density $\rho^{n+1}$ is positive, and the discrete mass,
@@ -454,7 +468,6 @@ momentum, and energy are conserved.
    \rho^{n}_{i_{f}j_{f}}E^{n}_{i_{f}j_{f}})=0.
 \end{eqnarray}
 $|\Omega_{i_{f}j_{f}}|$ is the volume of the computational cell $(i_{f},j_{f})$ 
-(see Figure \ref{controlvolumes}).
 \par\noindent
 The pressure-velocity step ((\ref{pres_vel1} thru \ref{pres_vel2}), and
 the total energy step (\ref{total_energy}) also preserve momentum and
@@ -493,7 +506,8 @@ fixed
 \frac{\Delta t}{\Delta x}
 \end{eqnarray}
 
-\subsection{Lax diffusion for elastic materials }
+\subsection{Lax diffusion for Energy and Momentum equations in 
+elastic materials }
 
 In this section, we just focus on single material compressible 
 elastic fluid dynamics
@@ -537,7 +551,11 @@ $D^{p}$ is the plastic strain rate and is defined
 below (\ref{plastic_strain_rate}).
 \par\noindent
 The elastic tensor $s$ is discretized on a staggered grid as 
-illustrated in Figure \ref{staggered} and as recommended by
+illustrated in Figures 
+\ref{EILE},
+\ref{prolongation},
+and \ref{recombination},
+and as recommended by
 \cite{sugiyama2011full,shin2020interaction,PARK2026132}.
 \par\noindent
 We discretize the elastic term, 
@@ -897,7 +915,10 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 \par\noindent
 \begin{enumerate}
 \item The present algorithm is staggered.  Please refer to Figures
- \ref{staggered}.  A staggered algorithm has better stability
+  \ref{EILE},
+  \ref{prolongation},
+  and \ref{recombination}.  
+ A staggered algorithm has better stability
  properties than a collocated method\cite{LECHENADEC2013185,
   sugiyama2011full,shin2020interaction,GUITTET2015215}.
 \item In order to accurately allow for droplets and/or bubbles to interact
@@ -961,7 +982,7 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 \State $k \gets 0$
 \State $\vec{u}^{n+1,(k)} \gets \vec{u}^{n}$
 \While{$k \le 1$}
- \State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla F_{m} dt \hspace{10pt} m\in[1,M]$ 
+	\State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla F_{m} dt \hspace{10pt} m\in[1,M]$ 
  \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M]$ 
  \State $\vec{U}\gets (\rho,\rho\vec{u},\rho E,\rho s)^{T}$
  \State $(F\vec{U})^{\ast,(k+1)}_{m}\gets (F\vec{U})^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\vec{U})_{m}\otimes\vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$ 
@@ -1034,6 +1055,244 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 \end{algorithmic}
 \end{algorithm}
 
+\begin{figure}
+
+\begin{tikzpicture}
+  % Eulerian Implicit
+  \fill[solid, thick, cyan!24] (2,4) rectangle (3,5);
+
+  \draw[magenta, semithick] (1,4.1) -- (2,4.63);
+  \draw[magenta, semithick] (0.81,4) -- (1.01,4.1);
+  \draw[magenta, semithick] (0,3.84) -- (0.8,4);
+%slope=(5-4.73)/(.9)=0.3
+%intercept=(2,4.73)
+%f(4)=4.73+0.3*2=5.33
+%  \draw[magenta, semithick] (2,4.73) -- (2.9,5);
+%  \draw[magenta, semithick] (3,4.9) -- (3.22,5);
+%  \draw[magenta, semithick] (3.27,5) -- (4,5.5);
+  \draw[magenta, semithick] (2,4.73) -- (4.0,5.33);
+  \draw[magenta, semithick] (4,5.6) -- (4.5,6);
+
+  \draw[solid, thick] (0,0) rectangle (6,6);
+  \draw[thick] (2,6) -- (2,0);
+  \draw[thick] (4,6) -- (4,0);
+  \draw[thick] (0,2) -- (6,2);
+  \draw[thick] (0,4) -- (6,4);
+
+  \draw[densely dashed, gray] (1,6) -- (1,0);
+  \draw[densely dashed, gray] (3,6) -- (3,0);
+  \draw[densely dashed, gray] (5,6) -- (5,0);
+  \draw[densely dashed, gray] (0,1) -- (6,1);
+  \draw[densely dashed, gray] (0,3) -- (6,3);
+  \draw[densely dashed, gray] (0,5) -- (6,5);
+
+  \draw[solid, thick, cyan] (2,4) rectangle (3,5);
+  \draw[solid, thick, red] (1.3,4) rectangle (2.1,5);
+  \draw[arrows=|-Stealth] (3,4.5) -- (3.32,4.5);
+  \draw[arrows=|-Stealth] (2,4.5) -- (2.32,4.5);
+
+  \node[draw=none, shape=rectangle, minimum height=1pt, minimum width=1pt, node font=\scriptsize, text=red] at (1.5,3.84) {$\Omega_\textrm{Departure}$};
+  \node[draw=none, shape=rectangle, minimum height=1pt, minimum width=1pt, node font=\scriptsize, text=cyan!90!black] at (2.55,3.84) {$\Omega_\textrm{Target}$};
+
+
+  % Lagrangian Explicit
+  \fill[solid, thick, cyan!24] (2,1) rectangle (3,2);
+  \draw[solid, thick, cyan] (2,1) rectangle (3,2);
+
+  \draw[solid, thick, red] (1,1) rectangle (2,2);
+  \draw[solid, thick, blue!68] (2,1) rectangle (3,2);
+
+  \draw[red, semithick, densely dotted] (1.7,1) rectangle (2.8,2);
+  \draw[semithick, densely dotted, blue!68] (2.81,1) rectangle (3.91,2);
+
+  \draw[arrows=|-Stealth, red] (2,1.5) -- (2.32,1.5);
+  \draw[arrows=|-Stealth, red] (1,1.5) -- (1.32,1.5);
+
+
+  \node[draw=none, node font=\scriptsize] at (2.99,3.5) {Eulerian Implicit};
+  \node[draw=none, node font=\scriptsize] at (3.17,0.61) {Lagrangian Explicit};
+\end{tikzpicture}
+
+\caption{
+ Illustration of the Eulerian Implicit, Lagrangian Explicit
+ cell integrated semi-Lagrangian (CISL)
+ method\cite{jemison2014compressible,scardovelli2003interface}.
+ Rather than have separate traversals through the grid for the cell-centered,
+ face centered, and edge centered variables, we instead 
+ interpolate all variables to a refined grid, followed by one traversal
+ through the refined grid, and then conservatively average the
+ respective results back to their defined control volumes.
+ \label{EILE}}
+\end{figure}
+
+\begin{figure}
+
+\begin{tikzpicture}
+  
+  \draw[solid, thick] (0,0) rectangle (6,6);
+  \draw[thick] (2,6) -- (2,0);
+  \draw[thick] (4,6) -- (4,0);
+  \draw[thick] (0,2) -- (6,2);
+  \draw[thick] (0,4) -- (6,4);
+
+  \draw[densely dashed, gray] (1,6) -- (1,0);
+  \draw[densely dashed, gray] (3,6) -- (3,0);
+  \draw[densely dashed, gray] (5,6) -- (5,0);
+  \draw[densely dashed, gray] (0,1) -- (6,1);
+  \draw[densely dashed, gray] (0,3) -- (6,3);
+  \draw[densely dashed, gray] (0,5) -- (6,5);
+
+  
+  \fill[red, draw=black, semithick] (3,3) circle (0.08cm);
+  \node[draw=none, node font=\small, text=red] at (3.01,2.24) {$F_\textrm{m},\Phi_\textrm{m},E_\textrm{m}$};
+
+  \fill[cyan, draw=black, semithick] (4,3) circle (0.08cm);
+  \node[draw=none, node font=\large, fill=none, text=cyan!89!black] at (4.25,3) {$u$};
+
+  \fill[magenta, draw=black, semithick] (3,4) circle (0.08cm);
+  \node[draw=none, node font=\large, fill=none, text=magenta!90!black] at (3,4.25) {$v$};
+
+  
+  \draw[red, very thick] (2,2) rectangle (4,4);
+  \draw[cyan, densely dashed, very thick] (3,2) rectangle (5,4);
+  \draw[very thick, densely dashed, magenta] (2,3) rectangle (4,5);
+
+  \draw[green, semithick] (1,2) -- (1,0);
+  \draw[green, semithick] (0,1) -- (2,1);
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=green, ultra thick] at (0.5,1.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=green, ultra thick] at (1.5,1.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=green, ultra thick] at (0.5,0.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=green, ultra thick] at (1.5,0.5) {};
+  \node[draw=none, node font=\tiny, text=green!75!black] at (2.74,0.43) {$\rho_\textrm{m},S_\textrm{m}^{(xx)},S_\textrm{m}^{(yy)},S_\textrm{m}^{(xy)},(S_\textrm{m}^{(\theta\theta)})$};
+
+
+
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=red, ultra thick] at (2.5,3.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=red, ultra thick] (node2) at (3.5,3.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=red, ultra thick] (node3) at (2.5,2.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=red, ultra thick] at (3.5,2.5) {};
+
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=cyan, ultra thick] (node1) at (3.55,3.45) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=cyan, ultra thick] at (4.5,3.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=cyan, ultra thick] at (3.55,2.55) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=cyan, ultra thick] at (4.5,2.5) {};
+
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=magenta, ultra thick] at (2.5,4.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=magenta, ultra thick] at (3.5,4.5) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=magenta, ultra thick] at (2.45,3.55) {};
+  \node[draw, shape=rectangle, xscale=0.2, yscale=0.2, minimum height=1pt, minimum width=1pt, fill=magenta, ultra thick] at (3.45,3.55) {};
+
+  \draw[red, solid, arrows=-Stealth] (2.9,3.1) -- (2.6,3.4);
+  \draw[red, solid, arrows=-Stealth] (3.1,3.1) -- (3.4,3.4);
+  \draw[red, solid, arrows=-Stealth] (3.1,2.9) -- (3.4,2.6);
+  \draw[red, solid, arrows=-Stealth] (2.9,2.9) -- (2.6,2.6);
+
+  \draw[solid, arrows=-Stealth, cyan] (3.9,3.1) -- (3.6,3.4);
+  \draw[solid, arrows=-Stealth, cyan] (4.1,3.1) -- (4.4,3.4);
+  \draw[solid, arrows=-Stealth, cyan] (4.1,2.9) -- (4.4,2.6);
+  \draw[solid, arrows=-Stealth, cyan] (3.9,2.9) -- (3.6,2.6);
+
+  \draw[solid, arrows=-Stealth, magenta] (2.9,4.1) -- (2.6,4.4);
+  \draw[solid, arrows=-Stealth, magenta] (3.1,4.1) -- (3.4,4.4);
+  \draw[solid, arrows=-Stealth, magenta] (3.1,3.9) -- (3.4,3.6);
+  \draw[solid, arrows=-Stealth, magenta] (2.9,3.9) -- (2.6,3.6);
+
+\end{tikzpicture}
+\caption{
+	The material volume fractions, $F_{m}$, level set functions,
+	$\phi_{m}$, and total energy, $E_{m}$, are stored at cell
+	centers and then consistently interpolated to the refined grid
+	in preparation for Cell Integrated Semi-Lagrangian 
+	advection\cite{jemison2014compressible,scardovelli2003interface}.
+	The velocity $(u,v)$ is piecewise constant interpolated from the 
+	face centered (MAC grid) control volumes to the refined grid
+	cell centers.  The horizontal advective velocity, $u^{advect}$,
+	is linearly interpolated to the refined grid face centers in the
+	horizontal direction and is piecewise constant interpolated in the
+	vertical direction.  The vertical advective velocity, $v^{advect}$,
+	is linearly interpolated in the vertical direction and piecewise
+	constant interpolated in the horizontal direction.
+	The material density $\rho_{m}$ and deviatoric stress tensor
+	components, 
+	$s_{m}^{xx,xy,yy,\Theta\Theta}$ (RZ), 
+	are already
+	discretized on the refined grid.
+ \label{prolongation}}
+\end{figure}
+
+\begin{figure}
+
+\begin{tikzpicture}
+  \draw[magenta, semithick] (2,2.4) -- (2.75,3.26);
+  \draw[magenta, semithick] (2.75,3.34) -- (4,3.4);
+
+  \draw[solid, thick] (0,0) rectangle (6,6);
+  \draw[thick] (2,6) -- (2,0);
+  \draw[thick] (4,6) -- (4,0);
+  \draw[thick] (0,2) -- (6,2);
+  \draw[thick] (0,4) -- (6,4);
+
+  \draw[densely dashed, gray] (3,4) -- (3,2);
+  \draw[densely dashed, gray] (2,3) -- (4,3);
+
+  \draw[red, thick] (2,2) grid (4,4);
+
+  \draw[semithick, cyan, loosely dashed] (3,0) grid (5,2);
+
+  \draw[fill=cyan] (3.5,1.5) circle (0.04cm);
+  \draw[fill=cyan] (4.5,1.5) circle (0.04cm);
+  \draw[fill=cyan] (3.5,0.5) circle (0.04cm);
+  \draw[fill=cyan] (4.5,0.5) circle (0.04cm);
+
+  \draw[cyan, thick] (3.9,1.1) -- (4.1,0.9);
+  \draw[cyan, thick] (3.9,0.9) -- (4.1,1.1);
+
+  \draw[semithick, loosely dashed, magenta] (0,3) grid (2,5);
+
+  \draw[fill=magenta] (0.5,4.5) circle (0.04cm);
+  \draw[fill=magenta] (1.5,4.5) circle (0.04cm);
+  \draw[fill=magenta] (0.5,3.5) circle (0.04cm);
+  \draw[fill=magenta] (1.5,3.5) circle (0.04cm);
+
+  \draw[magenta, thick] (0.9,4.1) -- (1.1,3.9);
+  \draw[magenta, thick] (0.9,3.9) -- (1.1,4.1);
+
+  \draw[densely dotted, thick, green!85!black] (3,3) grid (5,5);
+
+  \draw[fill=green, ultra thin] (3.5,4.5) circle (0.03cm);
+  \draw[fill=green, ultra thin] (4.5,4.5) circle (0.03cm);
+  \draw[fill=green, ultra thin] (3.5,3.5) circle (0.03cm);
+  \draw[fill=green, ultra thin] (4.5,3.5) circle (0.03cm);
+
+  \draw[green, thick] (3.9,4.1) -- (4.1,3.9);
+  \draw[green, thick] (3.9,3.9) -- (4.1,4.1);
+
+
+
+  \node[draw=none, text=red, node font=\tiny] at (4.56,2.7) {Cell-Centered};
+  \node[draw=none, text=cyan!89!black, node font=\tiny, align=center] at (4.59,1.2) {Face-Centered\\(Horizontal)};
+  \node[draw=none, text=magenta!90!black, node font=\tiny, align=center] at (1.43,4.22) {Face-Centered\\(Vertical)};
+  \node[draw=none, text=green!75!black, node font=\tiny] at (4.71,4.17) {Node-Centered};
+\end{tikzpicture}
+
+\caption{
+	After Cell Integrated Semi-Lagrangian 
+	advection\cite{jemison2014compressible,scardovelli2003interface}
+	on the refined grid, the cell centered variables,
+	$F_{m}$, $\phi_{m}$, and $E_{m}$, and the face centered
+	variables, $(u,v)$, are conservatively ``recombined'' back to their
+	respective control voume locations.  The deviatoric stress tensor
+	components, 
+	$s_{m}^{xx,yy,\Theta\Theta}$ (RZ), 
+	are conservatively 
+	recombined to the cell centered control volumes, and then piecewise
+	constant prolongated back to the refined grid.  The off-diagonal
+	deviatoric stress tensor component, $s_{xy}$, is conservatively
+	recombined to the node control volume (RZ) (edge centers in 3D), and
+	then piecewise constant prolongated back to the refined grid.
+	The material density, $\rho_{m}$, do not need to be recombined.
+ \label{recombination}}
+\end{figure}
 
 \begin{figure}
 \begin{tikzpicture}[x=2cm,y=2cm]

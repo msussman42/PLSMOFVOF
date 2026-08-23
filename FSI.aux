@@ -1,5 +1,19 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{acm}
@@ -67,6 +81,8 @@
 \citation{boscarino2018all}
 \citation{scandurra2016numerical}
 \citation{CHERTOCK2026119292}
+\citation{jemison2014compressible}
+\citation{scardovelli2003interface}
 \citation{LECHENADEC2013185}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Motivation for enhancing our asymptotically preserving algorithm from collocated grid to staggered grid }{3}{subsection.1.1}\protected@file@percent }
 \newlabel{pde1}{{1}{3}{Motivation for enhancing our asymptotically preserving algorithm from collocated grid to staggered grid }{equation.1.1}{}}
@@ -78,18 +94,18 @@
 \citation{camacho1997adaptive}
 \newlabel{asym_preserve}{{1}{5}{Motivation for enhancing our asymptotically preserving algorithm from collocated grid to staggered grid }{algorithm.1}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Asymptotically Preserving time discretization for gas dynamics}}{5}{algorithm.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Lax diffusion for elastic materials }{5}{subsection.1.2}\protected@file@percent }
-\newlabel{pde1elastic}{{9}{5}{Lax diffusion for elastic materials }{equation.1.9}{}}
-\newlabel{elastic_mom}{{10}{5}{Lax diffusion for elastic materials }{equation.1.10}{}}
-\newlabel{energy_elastic}{{11}{5}{Lax diffusion for elastic materials }{equation.1.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Lax diffusion for Energy and Momentum equations in elastic materials }{5}{subsection.1.2}\protected@file@percent }
+\newlabel{pde1elastic}{{9}{5}{Lax diffusion for Energy and Momentum equations in elastic materials }{equation.1.9}{}}
+\newlabel{elastic_mom}{{10}{5}{Lax diffusion for Energy and Momentum equations in elastic materials }{equation.1.10}{}}
+\newlabel{energy_elastic}{{11}{5}{Lax diffusion for Energy and Momentum equations in elastic materials }{equation.1.11}{}}
 \citation{sugiyama2011full}
 \citation{shin2020interaction}
 \citation{PARK2026132}
 \citation{Lax1954}
 \citation{Lax1954}
 \citation{Lax1954}
-\newlabel{pde2elastic}{{16}{6}{Lax diffusion for elastic materials }{equation.1.16}{}}
-\newlabel{asym_preserve_elastic}{{2}{7}{Lax diffusion for elastic materials }{algorithm.2}{}}
+\newlabel{pde2elastic}{{16}{6}{Lax diffusion for Energy and Momentum equations in elastic materials }{equation.1.16}{}}
+\newlabel{asym_preserve_elastic}{{2}{7}{Lax diffusion for Energy and Momentum equations in elastic materials }{algorithm.2}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Asymptotically Preserving time discretization for an elastic material}}{7}{algorithm.2}\protected@file@percent }
 \citation{xiaxi1989convergence}
 \citation{osher1988fronts}
@@ -130,21 +146,39 @@
 \citation{VAHAB2021}
 \citation{vahab2016adaptive}
 \citation{ye2024improved}
+\citation{jemison2014compressible}
+\citation{scardovelli2003interface}
+\citation{jemison2014compressible}
+\citation{scardovelli2003interface}
+\citation{jemison2014compressible}
+\citation{scardovelli2003interface}
+\citation{jemison2014compressible}
+\citation{scardovelli2003interface}
+\citation{jemison2014compressible}
+\citation{scardovelli2003interface}
+\citation{jemison2014compressible}
+\citation{scardovelli2003interface}
 \bibdata{cmof_paper}
 \bibcite{almgren2006low}{1}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Discretization for multiphase flows interacting with elastic materials}{12}{section.3}\protected@file@percent }
 \newlabel{asym_multiphase}{{4}{13}{Discretization for multiphase flows interacting with elastic materials}{algorithm.4}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Multiphase flows interacting with elastic materials}}{13}{algorithm.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The phase change algorithm: (1) the phase change speed, $\dot  {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot  {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the overall mass correction, $M_{cor}$, due to expansion or compression, $M_{cor}=\DOTSB \sum@ \slimits@ (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho _{m_{s}}-\rho _{m_{d}})$. $M_{cor}$ becomes a source term for the projection step if the material is incompressible, or directly increments the density if the material is compressible. (3) $M_{cor}$ is distributed to the vapor (destination) side of the $\Gamma ^{n+1}$ interface if the interface speed is $\vec  {u}_{m_{s}}+\frac  {|\dot  {m}|}{\rho _{m_{s}}}\vec  {n}_{\Gamma }$ , and $M_{cor}$ is distributed to the liquid (source) side of the interface if the interface speed is $\vec  {u}_{m_{d}}+\frac  {|\dot  {m}|}{\rho _{m_{d}}}\vec  {n}_{\Gamma }$. Referring to the diagram, if distributing $M_{cor}$ to the vapor side, $M_{cor}$ must be all distributed beyond the blue region into the red region.  }}{14}{figure.1}\protected@file@percent }
-\newlabel{mdotproblem}{{1}{14}{The phase change algorithm: (1) the phase change speed, $\dot {m}/\rho $, is approximated at all narrow band cells by evaluating $\dot {m}/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the overall mass correction, $M_{cor}$, due to expansion or compression, $M_{cor}=\sum (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho _{m_{s}}-\rho _{m_{d}})$. $M_{cor}$ becomes a source term for the projection step if the material is incompressible, or directly increments the density if the material is compressible. (3) $M_{cor}$ is distributed to the vapor (destination) side of the $\Gamma ^{n+1}$ interface if the interface speed is $\vec {u}_{m_{s}}+\frac {|\dot {m}|}{\rho _{m_{s}}}\vec {n}_{\Gamma }$ , and $M_{cor}$ is distributed to the liquid (source) side of the interface if the interface speed is $\vec {u}_{m_{d}}+\frac {|\dot {m}|}{\rho _{m_{d}}}\vec {n}_{\Gamma }$. Referring to the diagram, if distributing $M_{cor}$ to the vapor side, $M_{cor}$ must be all distributed beyond the blue region into the red region}{figure.1}{}}
+\newlabel{phasechange_alg}{{5}{14}{Discretization for multiphase flows interacting with elastic materials}{algorithm.5}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Phase change algorithm}}{14}{algorithm.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  Illustration of the Eulerian Implicit, Lagrangian Explicit cell integrated semi-Lagrangian (CISL) method\cite  {jemison2014compressible,scardovelli2003interface}. Rather than have separate traversals through the grid for the cell-centered, face centered, and edge centered variables, we instead interpolate all variables to a refined grid, followed by one traversal through the refined grid, and then conservatively average the respective results back to their defined control volumes. }}{14}{figure.1}\protected@file@percent }
+\newlabel{EILE}{{1}{14}{Illustration of the Eulerian Implicit, Lagrangian Explicit cell integrated semi-Lagrangian (CISL) method\cite {jemison2014compressible,scardovelli2003interface}. Rather than have separate traversals through the grid for the cell-centered, face centered, and edge centered variables, we instead interpolate all variables to a refined grid, followed by one traversal through the refined grid, and then conservatively average the respective results back to their defined control volumes}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  The material volume fractions, $F_{m}$, level set functions, $\phi _{m}$, and total energy, $E_{m}$, are stored at cell centers and then consistently interpolated to the refined grid in preparation for Cell Integrated Semi-Lagrangian advection\cite  {jemison2014compressible,scardovelli2003interface}. The velocity $(u,v)$ is piecewise constant interpolated from the face centered (MAC grid) control volumes to the refined grid cell centers. The horizontal advective velocity, $u^{advect}$, is linearly interpolated to the refined grid face centers in the horizontal direction and is piecewise constant interpolated in the vertical direction. The vertical advective velocity, $v^{advect}$, is linearly interpolated in the vertical direction and piecewise constant interpolated in the horizontal direction. The material density $\rho _{m}$ and deviatoric stress tensor components, $s_{m}^{xx,xy,yy,\Theta \Theta }$ (RZ), are already discretized on the refined grid. }}{15}{figure.2}\protected@file@percent }
+\newlabel{prolongation}{{2}{15}{The material volume fractions, $F_{m}$, level set functions, $\phi _{m}$, and total energy, $E_{m}$, are stored at cell centers and then consistently interpolated to the refined grid in preparation for Cell Integrated Semi-Lagrangian advection\cite {jemison2014compressible,scardovelli2003interface}. The velocity $(u,v)$ is piecewise constant interpolated from the face centered (MAC grid) control volumes to the refined grid cell centers. The horizontal advective velocity, $u^{advect}$, is linearly interpolated to the refined grid face centers in the horizontal direction and is piecewise constant interpolated in the vertical direction. The vertical advective velocity, $v^{advect}$, is linearly interpolated in the vertical direction and piecewise constant interpolated in the horizontal direction. The material density $\rho _{m}$ and deviatoric stress tensor components, $s_{m}^{xx,xy,yy,\Theta \Theta }$ (RZ), are already discretized on the refined grid}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  After Cell Integrated Semi-Lagrangian advection\cite  {jemison2014compressible,scardovelli2003interface} on the refined grid, the cell centered variables, $F_{m}$, $\phi _{m}$, and $E_{m}$, and the face centered variables, $(u,v)$, are conservatively ``recombined'' back to their respective control voume locations. The deviatoric stress tensor components, $s_{m}^{xx,yy,\Theta \Theta }$ (RZ), are conservatively recombined to the cell centered control volumes, and then piecewise constant prolongated back to the refined grid. The off-diagonal deviatoric stress tensor component, $s_{xy}$, is conservatively recombined to the node control volume (RZ) (edge centers in 3D), and then piecewise constant prolongated back to the refined grid. The material density, $\rho _{m}$, do not need to be recombined. }}{16}{figure.3}\protected@file@percent }
+\newlabel{recombination}{{3}{16}{After Cell Integrated Semi-Lagrangian advection\cite {jemison2014compressible,scardovelli2003interface} on the refined grid, the cell centered variables, $F_{m}$, $\phi _{m}$, and $E_{m}$, and the face centered variables, $(u,v)$, are conservatively ``recombined'' back to their respective control voume locations. The deviatoric stress tensor components, $s_{m}^{xx,yy,\Theta \Theta }$ (RZ), are conservatively recombined to the cell centered control volumes, and then piecewise constant prolongated back to the refined grid. The off-diagonal deviatoric stress tensor component, $s_{xy}$, is conservatively recombined to the node control volume (RZ) (edge centers in 3D), and then piecewise constant prolongated back to the refined grid. The material density, $\rho _{m}$, do not need to be recombined}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The phase change algorithm: (1) the phase change speed, $|\dot  {m}|/\rho $, is approximated at all narrow band cells by evaluating $|\dot  {m}|/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the overall mass correction, $M_{cor}$, due to expansion or compression, $M_{cor}=\DOTSB \sum@ \slimits@ (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho _{m_{s}}-\rho _{m_{d}})$. $M_{cor}$ becomes a source term for the projection step if the material is incompressible, or directly increments the density if the material is compressible. (3) $M_{cor}$ is distributed to the vapor (destination) side of the $\Gamma ^{n+1}$ interface if the interface speed is $\vec  {u}_{m_{s}}+\frac  {|\dot  {m}|}{\rho _{m_{s}}}\vec  {n}_{\Gamma }$ , and $M_{cor}$ is distributed to the liquid (source) side of the interface if the interface speed is $\vec  {u}_{m_{d}}+\frac  {|\dot  {m}|}{\rho _{m_{d}}}\vec  {n}_{\Gamma }$. Referring to the diagram, if distributing $M_{cor}$ to the vapor side, $M_{cor}$ must be all distributed beyond the blue region into the red region.  }}{17}{figure.4}\protected@file@percent }
+\newlabel{mdotproblem}{{4}{17}{The phase change algorithm: (1) the phase change speed, $|\dot {m}|/\rho $, is approximated at all narrow band cells by evaluating $|\dot {m}|/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the overall mass correction, $M_{cor}$, due to expansion or compression, $M_{cor}=\sum (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho _{m_{s}}-\rho _{m_{d}})$. $M_{cor}$ becomes a source term for the projection step if the material is incompressible, or directly increments the density if the material is compressible. (3) $M_{cor}$ is distributed to the vapor (destination) side of the $\Gamma ^{n+1}$ interface if the interface speed is $\vec {u}_{m_{s}}+\frac {|\dot {m}|}{\rho _{m_{s}}}\vec {n}_{\Gamma }$ , and $M_{cor}$ is distributed to the liquid (source) side of the interface if the interface speed is $\vec {u}_{m_{d}}+\frac {|\dot {m}|}{\rho _{m_{d}}}\vec {n}_{\Gamma }$. Referring to the diagram, if distributing $M_{cor}$ to the vapor side, $M_{cor}$ must be all distributed beyond the blue region into the red region}{figure.4}{}}
 \bibcite{AN2016201}{2}
 \bibcite{arienti2014embedded}{3}
 \bibcite{banks2014analysis}{4}
 \bibcite{banks2018stable}{5}
 \bibcite{BIBAL2024112750}{6}
 \bibcite{boscarino2018all}{7}
-\newlabel{phasechange_alg}{{5}{15}{Discretization for multiphase flows interacting with elastic materials}{algorithm.5}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Phase change algorithm}}{15}{algorithm.5}\protected@file@percent }
 \bibcite{camacho1997adaptive}{8}
 \bibcite{chen2026numerical}{9}
 \bibcite{CHERTOCK2026119292}{10}
@@ -175,20 +209,21 @@
 \bibcite{robinson2011symmetric}{35}
 \bibcite{sandusky1999dynamic}{36}
 \bibcite{scandurra2016numerical}{37}
-\bibcite{shin2020interaction}{38}
-\bibcite{stewart2008improved}{39}
-\bibcite{sugiyama2011full}{40}
-\bibcite{tran2004particle}{41}
-\bibcite{UDAYKUMAR2003136}{42}
-\bibcite{vahab2016adaptive}{43}
-\bibcite{VAHAB2021}{44}
-\bibcite{villegas2016ghost}{45}
-\bibcite{wang2017multiphase}{46}
-\bibcite{wardlaw2000fluid}{47}
-\bibcite{WILFONG2026110055}{48}
-\bibcite{xiaxi1989convergence}{49}
-\bibcite{xiong2026bubble}{50}
-\bibcite{xu2019experimental}{51}
-\bibcite{ye2024improved}{52}
-\bibcite{yin2022experimental}{53}
-\gdef \@abspage@last{20}
+\bibcite{scardovelli2003interface}{38}
+\bibcite{shin2020interaction}{39}
+\bibcite{stewart2008improved}{40}
+\bibcite{sugiyama2011full}{41}
+\bibcite{tran2004particle}{42}
+\bibcite{UDAYKUMAR2003136}{43}
+\bibcite{vahab2016adaptive}{44}
+\bibcite{VAHAB2021}{45}
+\bibcite{villegas2016ghost}{46}
+\bibcite{wang2017multiphase}{47}
+\bibcite{wardlaw2000fluid}{48}
+\bibcite{WILFONG2026110055}{49}
+\bibcite{xiaxi1989convergence}{50}
+\bibcite{xiong2026bubble}{51}
+\bibcite{xu2019experimental}{52}
+\bibcite{ye2024improved}{53}
+\bibcite{yin2022experimental}{54}
+\gdef \@abspage@last{22}
