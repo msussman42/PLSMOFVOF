@@ -293,6 +293,12 @@
 \newblock Fluid-structure interaction mechanisms for close-in explosions.
 \newblock {\em Shock and Vibration 7}, 5 (2000), 265--275.
 
+\bibitem{weymouth2010conservative}
+{\sc Weymouth, G., and Yue, D. K.-P.}
+\newblock Conservative volume-of-fluid method for free-surface simulations on
+  cartesian-grids.
+\newblock {\em Journal of Computational Physics 229}, 8 (2010), 2853--2865.
+
 \bibitem{WILFONG2026110055}
 {\sc Wilfong, B., {Le Berre}, H.~A., Radhakrishnan, A., Gupta, A., Vickers,
   D.~J., Vaca-Revelo, D., Adam, D., Yu, H., Lee, H., Chreim, J.~R., {Carcana

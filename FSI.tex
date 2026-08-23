@@ -937,7 +937,8 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
     is well defined in a narrow band just outside of material 
     $m_{e}$: $\phi_{m_{e}}>-\alpha\Delta x$.
     This is achieved by steps 18 and 19 of Algorithm
-    \ref{asym_multiphase}.  In our numerical experiments, we always
+    \ref{asym_multiphase}.  Please see Figure \ref{extend_u_s}.
+    In our numerical experiments, we always
     have $\alpha=4$.
   \item As recommended by \cite{shin2020interaction}, the viscous force
     and pressure gradient force are first approximated without the
@@ -960,15 +961,74 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
     contact line dynamics on substrates undergoing rigid motion in the
     limit that the elastic materials' motion approaches rigid motion.
   \end{enumerate}
+\item We have developed an exactly mass and volume preserving algorithm
+  so that mass and volume of fluid and elastic materials do not
+  change due to contact line dynamics (e.g. splashing or sliding), or 
+  flotsam removal.  Please see Algorithm \ref{mass_correction} and
+  Figure \ref{mass_cor_fig}.
+\end{enumerate}
+
+Remarks:
+\begin{enumerate}
 \item The phase change 
     algorithm\cite{VAHAB2021,vahab2016adaptive,ye2024improved}, 
     given by steps 14 and 15 in 
     Algorithm \ref{asym_multiphase}, is described in more detail 
     in Algorithm \ref{phasechange_alg}.  
     Please also see Figure \ref{mdotproblem}.
-\item We have developed a method that exactly preserves mass for 
-    
+\item The multimaterial reinitialization algorithm, given by step 13 in
+  Algorithm \ref{asym_multiphase}, is described in detail in
+  \cite{ye2024improved}.
+\item The flotsam removal algorithm, given by step 12 in
+  Algorithm \ref{asym_multiphase}, is described in more detail in
+  Algorithm \ref{flotsam_alg}.
+\item The algorithm for deriving the face centered density, needed in steps
+  26, 29, and 33 of Algorithm \ref{asym_multiphase}, is described in more 
+  detail in Algorithm \ref{face_density_alg}.  Please also see Figure
+  \ref{MAC_density_fig}.
+  %%where \nabla H<>0,\rho_MAC>(1/2)\max(\rho_{1},\rho_{2})
 \end{enumerate}
+
+\subsection{Time step stability restrictions}
+
+The time step, $\Delta t$, must satisfy the following 
+conditions\cite{ye2024improved}.  
+\begin{description}
+\item[1. CFL condition] In order that characteristics do not 
+ collide, the following CFL condition holds:
+ \begin{eqnarray*}
+ \Delta t\le 
+  \frac{1}{2}\frac{\mbox{min}\Delta x}{\mbox{max}|\vec{u}|_{\infty}} 
+ \end{eqnarray*}
+\item[2. Phase change CFL condition]
+ \begin{eqnarray*}
+ \Delta t\le 
+  \frac{1}{2}\frac{\mbox{min}\Delta x}{\mbox{max}
+   |\vec{u}^{\mbox{phase change}}|_{\infty}} 
+ \end{eqnarray*}
+\item[3. Surface tension stability constraint] 
+ \begin{eqnarray*}
+ \Delta t\le\frac{1}{2}(\mbox{min} \Delta x^{3/2}) 
+   \sqrt{\frac{\rho_{\Gamma}}{2\pi\sigma_{\Gamma}}}
+ \end{eqnarray*}
+\item[4. Elastic material stability constraint]
+ \begin{eqnarray*}
+ U_{elastic}=\sqrt{\frac{8 s : s}{\rho G}}
+ \end{eqnarray*}
+ \begin{eqnarray*}
+ \Delta t\le 
+  \frac{1}{2}\frac{\mbox{min}\Delta x}{\mbox{max}|U_{elastic}|}
+ \end{eqnarray*}
+\end{description}
+We remark that, in contrast to \cite{ye2024improved}, we choose the
+EI-LE advection 
+algorithm\cite{jemison2014compressible,scardovelli2003interface} rather 
+than the Weymouth and Yue algorithm\cite{weymouth2010conservative},
+since the EI-LE has a less stringent time step constraint.  The
+drawback of using EI-LE is that it is not volume preserving in 3D; but this
+is inconsequential for the present paper since we have deloped
+an algorithm for exactly conserving the volume.  Please see
+Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
 
 %% k units W/(m K)
 %% L units J/kg
