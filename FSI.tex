@@ -812,7 +812,7 @@ Algorithm \ref{radial_return_algorithm}.  We refer the reader also to
 \cite{tran2004particle} for the case when $n=1$ in (\ref{Johnson})
 or (\ref{zerilli}).
 
-%\If \ElseIf \Else \EndIf
+%\If \ElsIf \Else \EndIf
 \begin{algorithm}
 \caption{Radial return algorithm for determining the
 plastic strain rate tensor $D^{p}$.\label{radial_return_algorithm}}
@@ -987,12 +987,17 @@ Remarks:
   detail in Algorithm \ref{face_density_alg}.  Please also see Figure
   \ref{MAC_density_fig}.
   %%where \nabla H<>0,\rho_MAC>(1/2)\max(\rho_{1},\rho_{2})
+\item The algorithm for deriving the face centered
+ surface tension force,
+ needed in step 32 of Algorithm \ref{asym_multiphase},
+ is described in more detail in our earlier 
+ work\cite{li2015multiphase}.
 \end{enumerate}
 
 \subsection{Time step stability restrictions}
 
 The time step, $\Delta t$, must satisfy the following 
-conditions\cite{ye2024improved}.  
+conditions\cite{ye2024improved,li2015multiphase}.  
 \begin{description}
 \item[1. CFL condition] In order that characteristics do not 
  collide, the following CFL condition holds:
@@ -1020,15 +1025,20 @@ conditions\cite{ye2024improved}.
   \frac{1}{2}\frac{\mbox{min}\Delta x}{\mbox{max}|U_{elastic}|}
  \end{eqnarray*}
 \end{description}
-We remark that, in contrast to \cite{ye2024improved}, we choose the
+Remark:
+\begin{description}
+\item[]
+In contrast to \cite{ye2024improved}, we choose the
 EI-LE advection 
 algorithm\cite{jemison2014compressible,scardovelli2003interface} rather 
 than the Weymouth and Yue algorithm\cite{weymouth2010conservative},
 since the EI-LE has a less stringent time step constraint.  The
-drawback of using EI-LE is that it is not volume preserving in 3D; but this
+drawback of using EI-LE is that it is not exactly
+volume preserving in 3D; but this
 is inconsequential for the present paper since we have deloped
 an algorithm for exactly conserving the volume.  Please see
 Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
+\end{description}
 
 %% k units W/(m K)
 %% L units J/kg
@@ -1112,6 +1122,63 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
   incompressible material, then $M_{cor}$ becomes a source term for the
   velocity projection equation, otherwise, the density is incremented 
   accordingly.
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Algorithm for determining the unique material number associated
+  with a given grid cell \label{im_primary}}
+\begin{algorithmic}[1] % [1] enables line numbering
+\Require Level set functions $\phi_{m}$ for $m=1,\ldots,M$.
+\Ensure $m_{primary}$
+\State $m_{e}\gets \mbox{max} \phi_{m} \hspace{15pt} m \mbox{ is elastic}$
+\If {$\phi_{m_{e}}\ge 0$}
+ \State $m_{primary}\gets m_{e}$
+\Else
+ \State $m_{\mbox{max}}\gets \mbox{max} \phi_{m} \hspace{15pt} m \mbox{ is not elastic}$
+ \State $m_{primary}\gets m_{\mbox{max}}$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Algorithm for determining $(\nabla H_{\Gamma})_{i+1/2,j}$ at cell face $(i+1/2,j)$ \label{HMAC} }
+\begin{algorithmic}[1] % [1] enables line numbering
+\Require Level set functions $(\phi_{m})_{i,j}$ for $m=1,\ldots,M$.
+\Require Level set functions $(\phi_{m})_{i+1,j}$ for $m=1,\ldots,M$.
+\Ensure $(\nabla H_{\Gamma})_{i+1/2,j}$
+\State $m_{L}$ obtained from $(\phi_{m})_{i,j}$ \Comment{Algorithm \ref{im_primary}}
+\State $m_{R}$ obtained from $(\phi_{m})_{i+1,j}$ \Comment{Algorithm \ref{im_primary}}
+\If {$m_{L}$ is an elastic material}
+\State $(\nabla H_{\Gamma})_{i+1/2,j}\gets 0$
+\ElsIf {$m_{R}$ is an elastic material}
+\State $(\nabla H_{\Gamma})_{i+1/2,j}\gets 0$
+\ElsIf {$m_{R}==m_{L}$}
+\State $(\nabla H_{\Gamma})_{i+1/2,j}\gets 0$
+\ElsIf {$m_{R}<m_{L}$}
+\State $(\nabla H_{\Gamma})_{i+1/2,j}\gets\frac{1}{\Delta x}$
+\Else
+\State $(\nabla H_{\Gamma})_{i+1/2,j}\gets -\frac{1}{\Delta x}$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Algorithm for determining the face centered density, $\rho_{i+1/2,j}$ at cell face $(i+1/2,j)$ \label{rhoMAC} }
+\begin{algorithmic}[1] % [1] enables line numbering
+\Require Level set functions $(\phi_{m})_{i,j}$ for $m=1,\ldots,M$.  \Comment{Figure \ref{MAC_density_fig}}
+\Require Level set functions $(\phi_{m})_{i+1,j}$ for $m=1,\ldots,M$.  \Comment{Figure \ref{MAC_density_fig}}
+\Require Tessellating interface reconstruction in cell $(i,j)$ \Comment{Figure \ref{MAC_density_fig}}
+\Require Tessellating interface reconstruction in cell $(i+1,j)$ \Comment{Figure \ref{MAC_density_fig}}
+\Require refined density $(\rho_{m})_{2i+1,2j}$,\ldots,$(\rho_{m})_{2i+2,2j+1}$ for $m=1,\ldots,M$ \Comment{Figure \ref{MAC_density_fig}}
+\Ensure $\rho_{i+1/2,j}$
+\State $\mbox{mass}_{i+1/2,j}^{L}\gets\sum_{m=1}^{M}\sum_{j_{f}=2j}^{2j+1} |\Omega_{ij}\cap\Omega_{i+1/2,j}\cap\Omega_{m,ij}|(\rho_{m})_{2i+1,j_{f}}$
+\State $\mbox{mass}_{i+1/2,j}^{R}\gets\sum_{m=1}^{M}\sum_{j_{f}=2j}^{2j+1} |\Omega_{i+1,j}\cap\Omega_{i+1/2,j}\cap\Omega_{m,i+1,j}|(\rho_{m})_{2i+2,j_{f}}$
+\State $\rho_{i+1/2,j}\gets(\mbox{mass}_{i+1/2,j}^{L}+\mbox{mass}_{i+1/2,j}^{R})/|\Omega_{i+1/2,j}|$
+\State Determine $(\nabla H_{m_{L},m_{R}})_{i+1/2,j}$, $m_{L}$, and $m_{R}$ from Algorithm \ref{HMAC}.
+\If{$\gamma_{m_{L},m_{R}}\nabla H_{m_{L},m_{R}}\ne 0$}
+ \State $\rho_{i+1/2,j}\gets\mbox{max}(\rho_{i+1/2,j},\rho_{m_{L}}/2,\rho_{m_{R}}/2)$
+\EndIf
 \end{algorithmic}
 \end{algorithm}
 

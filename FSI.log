@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.16)  23 AUG 2026 16:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.1)  25 AUG 2026 14:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -792,15 +792,193 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2]
+al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+LaTeX Warning: Citation `xiong2026bubble' on page 2 undefined on input line 162
+.
+
+
+LaTeX Warning: Citation `xu2019experimental' on page 2 undefined on input line 
+162.
+
+
+LaTeX Warning: Citation `wang2017multiphase' on page 2 undefined on input line 
+162.
+
+
+LaTeX Warning: Citation `MokbelMokbelLieseWeberAland2024' on page 2 undefined o
+n input line 164.
+
+
+LaTeX Warning: Citation `dressaire2015drop' on page 2 undefined on input line 1
+65.
+
+
+LaTeX Warning: Citation `leger2023experimental' on page 2 undefined on input li
+ne 168.
+
+
+LaTeX Warning: Citation `yin2022experimental' on page 2 undefined on input line
+ 168.
+
+
+LaTeX Warning: Citation `chen2026numerical' on page 2 undefined on input line 1
+68.
+
+
+LaTeX Warning: Citation `gao2025study' on page 2 undefined on input line 168.
+
+
+LaTeX Warning: Citation `he2024research' on page 2 undefined on input line 168.
+
+
+
+LaTeX Warning: Citation `wardlaw2000fluid' on page 2 undefined on input line 16
+8.
+
+
+LaTeX Warning: Citation `sandusky1999dynamic' on page 2 undefined on input line
+ 168.
+
+
+LaTeX Warning: Citation `MENG2022114522' on page 2 undefined on input line 169.
+
+
+
+LaTeX Warning: Citation `AN2016201' on page 2 undefined on input line 170.
+
+
+LaTeX Warning: Citation `choi2024novel' on page 2 undefined on input line 171.
+
+
+LaTeX Warning: Citation `cui2024oblique' on page 2 undefined on input line 173.
+
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 2 undefined on input 
+line 180.
+
+
+LaTeX Warning: Citation `kwatra2009method' on page 2 undefined on input line 18
+3.
+
+
+LaTeX Warning: Citation `BIBAL2024112750' on page 2 undefined on input line 183
+.
+
+
+LaTeX Warning: Citation `boscarino2018all' on page 2 undefined on input line 18
+3.
+
+
+LaTeX Warning: Citation `scandurra2016numerical' on page 2 undefined on input l
+ine 183.
+
+
+LaTeX Warning: Citation `jemison2013coupled' on page 2 undefined on input line 
+187.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 2 undefined on input 
+line 192.
+
+
+LaTeX Warning: Reference `EILE' on page 2 undefined on input line 198.
+
+
+LaTeX Warning: Reference `prolongation' on page 2 undefined on input line 199.
+
+
+LaTeX Warning: Reference `recombination' on page 2 undefined on input line 200.
+
+
+
+LaTeX Warning: Citation `LECHENADEC2013185' on page 2 undefined on input line 2
+04.
+
+
+LaTeX Warning: Citation `sugiyama2011full' on page 2 undefined on input line 20
+4.
+
+
+LaTeX Warning: Citation `shin2020interaction' on page 2 undefined on input line
+ 204.
+
+
+LaTeX Warning: Citation `GUITTET2015215' on page 2 undefined on input line 204.
+
+
+
+LaTeX Warning: Citation `PARK2026132' on page 2 undefined on input line 206.
+
+
+LaTeX Warning: Citation `ye2024improved' on page 2 undefined on input line 210.
+
+
+
+LaTeX Warning: Citation `jemison2015filament' on page 2 undefined on input line
+ 211.
+
+
+LaTeX Warning: Citation `ye2024improved' on page 2 undefined on input line 212.
+
+
+
+LaTeX Warning: Citation `sugiyama2011full' on page 2 undefined on input line 21
+8.
+
+
+LaTeX Warning: Citation `shin2020interaction' on page 2 undefined on input line
+ 218.
+
+
+LaTeX Warning: Citation `PARK2026132' on page 2 undefined on input line 218.
+
+[2]
 Overfull \hbox (8.5946pt too wide) in paragraph at lines 283--283
  []\OT1/cmr/m/n/10 Representation| 
  []
 
 
-Overfull \hbox (12.01135pt too wide) in paragraph at lines 283--283
+LaTeX Warning: Citation `wardlaw2000fluid' on page 3 undefined on input line 28
+3.
+
+
+LaTeX Warning: Citation `tran2004particle' on page 3 undefined on input line 28
+3.
+
+
+Overfull \hbox (7.44185pt too wide) in paragraph at lines 283--283
  []\OT1/cmr/m/n/10 Udaykumar [[]]| 
  []
+
+
+LaTeX Warning: Citation `robinson2011symmetric' on page 3 undefined on input li
+ne 283.
+
+
+LaTeX Warning: Citation `gretarsson2011numerically' on page 3 undefined on inpu
+t line 283.
+
+
+LaTeX Warning: Citation `sugiyama2011full' on page 3 undefined on input line 28
+3.
+
+
+LaTeX Warning: Citation `banks2014analysis' on page 3 undefined on input line 2
+83.
+
+
+LaTeX Warning: Citation `patkar2016towards' on page 3 undefined on input line 2
+83.
+
+
+LaTeX Warning: Citation `banks2018stable' on page 3 undefined on input line 283
+.
+
+
+LaTeX Warning: Citation `shin2020interaction' on page 3 undefined on input line
+ 283.
 
 
 Overfull \hbox (5.42795pt too wide) in paragraph at lines 283--283
@@ -808,9 +986,85 @@ Overfull \hbox (5.42795pt too wide) in paragraph at lines 283--283
  []
 
 
+LaTeX Warning: Citation `MokbelMokbelLieseWeberAland2024' on page 3 undefined o
+n input line 283.
+
+
+LaTeX Warning: Citation `KLOPPE2024117090' on page 3 undefined on input line 28
+3.
+
+
+LaTeX Warning: Citation `GAO2024106124' on page 3 undefined on input line 283.
+
+
+LaTeX Warning: Citation `FERRARI2025113553' on page 3 undefined on input line 2
+83.
+
+
+LaTeX Warning: Citation `WILFONG2026110055' on page 3 undefined on input line 2
+83.
+
+
+LaTeX Warning: Citation `PARK2026132' on page 3 undefined on input line 283.
+
+
 Overfull \hbox (96.56935pt too wide) in paragraph at lines 283--293
  [][] 
  []
+
+
+LaTeX Warning: Citation `PARK2026132' on page 3 undefined on input line 293.
+
+
+LaTeX Warning: Citation `sugiyama2011full' on page 3 undefined on input line 29
+3.
+
+
+LaTeX Warning: Citation `shin2020interaction' on page 3 undefined on input line
+ 293.
+
+
+LaTeX Warning: Citation `PARK2026132' on page 3 undefined on input line 293.
+
+
+LaTeX Warning: Citation `sugiyama2011full' on page 3 undefined on input line 29
+3.
+
+
+LaTeX Warning: Citation `shin2020interaction' on page 3 undefined on input line
+ 293.
+
+
+LaTeX Warning: Citation `almgren2006low' on page 3 undefined on input line 308.
+
+
+
+LaTeX Warning: Citation `boscarino2018all' on page 3 undefined on input line 30
+8.
+
+
+LaTeX Warning: Citation `scandurra2016numerical' on page 3 undefined on input l
+ine 308.
+
+
+LaTeX Warning: Citation `CHERTOCK2026119292' on page 3 undefined on input line 
+308.
+
+
+LaTeX Warning: Citation `almgren2006low' on page 3 undefined on input line 328.
+
+
+
+LaTeX Warning: Citation `boscarino2018all' on page 3 undefined on input line 32
+8.
+
+
+LaTeX Warning: Citation `scandurra2016numerical' on page 3 undefined on input l
+ine 328.
+
+
+LaTeX Warning: Citation `CHERTOCK2026119292' on page 3 undefined on input line 
+328.
 
 Excluding 'comment' comment.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
@@ -820,13 +1074,84 @@ Overfull \hbox (2.82607pt too wide) in paragraph at lines 425--430
 [] $[] \OMS/cmsy/m/n/10   []$ 
  []
 
-Excluding 'comment' comment. [3] [4
+
+LaTeX Warning: Citation `jemison2014compressible' on page 3 undefined on input 
+line 440.
+
+
+LaTeX Warning: Citation `scardovelli2003interface' on page 3 undefined on input
+ line 440.
+
+
+LaTeX Warning: Reference `EILE' on page 3 undefined on input line 442.
+
+
+LaTeX Warning: Reference `prolongation' on page 3 undefined on input line 443.
+
+
+LaTeX Warning: Reference `recombination' on page 3 undefined on input line 444.
+
+
+
+LaTeX Warning: Reference `EILE' on page 3 undefined on input line 448.
+
+
+LaTeX Warning: Reference `prolongation' on page 3 undefined on input line 449.
+
+
+LaTeX Warning: Reference `recombination' on page 3 undefined on input line 450.
+
+
+Excluding 'comment' comment.
+
+LaTeX Warning: Citation `LECHENADEC2013185' on page 3 undefined on input line 4
+89.
+
+[3] [4
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.502 \end{eqnarray}
-                    ] [5]
+                    ]
+
+LaTeX Warning: Citation `tran2004particle' on page 5 undefined on input line 51
+9.
+
+
+LaTeX Warning: Citation `maire2013nominally' on page 5 undefined on input line 
+519.
+
+
+LaTeX Warning: Citation `camacho1997adaptive' on page 5 undefined on input line
+ 519.
+
+[5]
+
+LaTeX Warning: Reference `EILE' on page 6 undefined on input line 555.
+
+
+LaTeX Warning: Reference `prolongation' on page 6 undefined on input line 556.
+
+
+LaTeX Warning: Reference `recombination' on page 6 undefined on input line 557.
+
+
+
+LaTeX Warning: Citation `sugiyama2011full' on page 6 undefined on input line 55
+9.
+
+
+LaTeX Warning: Citation `shin2020interaction' on page 6 undefined on input line
+ 559.
+
+
+LaTeX Warning: Citation `PARK2026132' on page 6 undefined on input line 559.
+
+
+LaTeX Warning: Citation `Lax1954' on page 6 undefined on input line 567.
+
+
 Underfull \hbox (badness 3503) in paragraph at lines 598--599
 [] $\OML/cmm/m/it/10 s[] \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 s[] \OT1/cmr/m/n/1
 0 + ^^A\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 (
@@ -841,28 +1166,170 @@ Overfull \hbox (2.82607pt too wide) in paragraph at lines 605--610
  []
 
 
+LaTeX Warning: Citation `Lax1954' on page 6 undefined on input line 619.
+
+
+LaTeX Warning: Citation `Lax1954' on page 6 undefined on input line 623.
+
+
 LaTeX Warning: Reference `CFLcondition' on page 6 undefined on input line 631.
 
 [6] [7]
 
+LaTeX Warning: Citation `xiaxi1989convergence' on page 8 undefined on input lin
+e 640.
+
+
 LaTeX Warning: Reference `materials' on page 8 undefined on input line 654.
+
+
+LaTeX Warning: Citation `osher1988fronts' on page 8 undefined on input line 655
+.
+
+
+LaTeX Warning: Citation `osher1988fronts' on page 8 undefined on input line 661
+.
 
 
 LaTeX Warning: Reference `materials' on page 8 undefined on input line 669.
 
-[8] Excluding 'comment' comment. [9] [10] Excluding 'comment' comment.
+
+LaTeX Warning: Citation `ye2024improved' on page 8 undefined on input line 670.
+
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 8 undefined on input 
+line 690.
+
+[8] Excluding 'comment' comment.
+
+LaTeX Warning: Citation `stewart2008improved' on page 9 undefined on input line
+ 730.
+
+
+LaTeX Warning: Citation `tran2004particle' on page 9 undefined on input line 74
+6.
+
+
+LaTeX Warning: Citation `UDAYKUMAR2003136' on page 9 undefined on input line 74
+6.
+
+
+LaTeX Warning: Citation `maire2013nominally' on page 9 undefined on input line 
+746.
+
+[9]
+
+LaTeX Warning: Citation `tran2004particle' on page 10 undefined on input line 8
+12.
+
+
+LaTeX Warning: Citation `palmore2019volume' on page 10 undefined on input line 
+848.
+
+
+LaTeX Warning: Citation `villegas2016ghost' on page 10 undefined on input line 
+848.
+
+
+LaTeX Warning: Citation `VAHAB2021' on page 10 undefined on input line 848.
+
+
+LaTeX Warning: Citation `vahab2016adaptive' on page 10 undefined on input line 
+848.
+
+
+LaTeX Warning: Citation `ye2024improved' on page 10 undefined on input line 848
+.
+
+[10] Excluding 'comment' comment.
 Overfull \hbox (0.82784pt too wide) in paragraph at lines 909--909
 |[]\OT1/cmr/bx/n/12 Discretization for mul-ti-phase flows in-ter-act-ing with e
 las-
  []
 
+
+LaTeX Warning: Reference `asym_multiphase' on page 11 undefined on input line 9
+11.
+
+
+LaTeX Warning: Reference `asym_multiphase' on page 11 undefined on input line 9
+13.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 11 undefined on input
+ line 914.
+
 [11]
+
+LaTeX Warning: Reference `EILE' on page 12 undefined on input line 918.
+
+
+LaTeX Warning: Reference `prolongation' on page 12 undefined on input line 919.
+
+
+
+LaTeX Warning: Reference `recombination' on page 12 undefined on input line 920
+.
+
+
+LaTeX Warning: Citation `LECHENADEC2013185' on page 12 undefined on input line 
+923.
+
+
+LaTeX Warning: Citation `sugiyama2011full' on page 12 undefined on input line 9
+23.
+
+
+LaTeX Warning: Citation `shin2020interaction' on page 12 undefined on input lin
+e 923.
+
+
+LaTeX Warning: Citation `GUITTET2015215' on page 12 undefined on input line 923
+.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 12 undefined on input
+ line 926.
+
+
+LaTeX Warning: Reference `asym_multiphase' on page 12 undefined on input line 9
+29.
+
 
 LaTeX Warning: Reference `extended_velocity' on page 12 undefined on input line
  933.
 
 
+LaTeX Warning: Reference `asym_multiphase' on page 12 undefined on input line 9
+34.
+
+
+LaTeX Warning: Reference `asym_multiphase' on page 12 undefined on input line 9
+40.
+
+
 LaTeX Warning: Reference `extend_u_s' on page 12 undefined on input line 940.
+
+
+LaTeX Warning: Citation `shin2020interaction' on page 12 undefined on input lin
+e 943.
+
+
+LaTeX Warning: Reference `asym_multiphase' on page 12 undefined on input line 9
+46.
+
+
+LaTeX Warning: Reference `asym_multiphase' on page 12 undefined on input line 9
+54.
+
+
+LaTeX Warning: Citation `arienti2014embedded' on page 12 undefined on input lin
+e 956.
+
+
+LaTeX Warning: Citation `arienti2014embedded' on page 12 undefined on input lin
+e 958.
 
 
 LaTeX Warning: Reference `mass_correction' on page 12 undefined on input line 9
@@ -872,9 +1339,47 @@ LaTeX Warning: Reference `mass_correction' on page 12 undefined on input line 9
 LaTeX Warning: Reference `mass_cor_fig' on page 12 undefined on input line 968.
 
 
+
+LaTeX Warning: Citation `VAHAB2021' on page 12 undefined on input line 974.
+
+
+LaTeX Warning: Citation `vahab2016adaptive' on page 12 undefined on input line 
+974.
+
+
+LaTeX Warning: Citation `ye2024improved' on page 12 undefined on input line 974
+.
+
+
+LaTeX Warning: Reference `asym_multiphase' on page 12 undefined on input line 9
+76.
+
+
+LaTeX Warning: Reference `phasechange_alg' on page 12 undefined on input line 9
+77.
+
+
+LaTeX Warning: Reference `mdotproblem' on page 12 undefined on input line 978.
+
+
+LaTeX Warning: Reference `asym_multiphase' on page 12 undefined on input line 9
+80.
+
+
+LaTeX Warning: Citation `ye2024improved' on page 12 undefined on input line 981
+.
+
 [12]
 
+LaTeX Warning: Reference `asym_multiphase' on page 13 undefined on input line 9
+83.
+
+
 LaTeX Warning: Reference `flotsam_alg' on page 13 undefined on input line 984.
+
+
+LaTeX Warning: Reference `asym_multiphase' on page 13 undefined on input line 9
+86.
 
 
 LaTeX Warning: Reference `face_density_alg' on page 13 undefined on input line 
@@ -885,15 +1390,128 @@ LaTeX Warning: Reference `MAC_density_fig' on page 13 undefined on input line 9
 88.
 
 
+LaTeX Warning: Reference `asym_multiphase' on page 13 undefined on input line 9
+92.
+
+
+LaTeX Warning: Citation `li2015multiphase' on page 13 undefined on input line 9
+94.
+
+
+LaTeX Warning: Citation `ye2024improved' on page 13 undefined on input line 100
+0.
+
+
+LaTeX Warning: Citation `li2015multiphase' on page 13 undefined on input line 1
+000.
+
+
+LaTeX Warning: Citation `ye2024improved' on page 13 undefined on input line 103
+1.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 13 undefined on input
+ line 1033.
+
+
+LaTeX Warning: Citation `scardovelli2003interface' on page 13 undefined on inpu
+t line 1033.
+
+
+LaTeX Warning: Citation `weymouth2010conservative' on page 13 undefined on inpu
+t line 1034.
+
+
 LaTeX Warning: Reference `mass_correction' on page 13 undefined on input line 1
-031.
+040.
 
 
-LaTeX Warning: Reference `mass_cor_fig' on page 13 undefined on input line 1031
+LaTeX Warning: Reference `mass_cor_fig' on page 13 undefined on input line 1040
 .
 
 
-LaTeX Warning: Float too large for page by 10.13222pt on input line 1087.
+LaTeX Warning: Float too large for page by 10.13222pt on input line 1097.
+
+
+LaTeX Warning: Reference `mdotproblem' on page 13 undefined on input line 1105.
+
+
+
+LaTeX Warning: Reference `im_primary' on page 13 undefined on input line 1150.
+
+
+LaTeX Warning: Reference `im_primary' on page 13 undefined on input line 1151.
+
+
+LaTeX Warning: Reference `MAC_density_fig' on page 13 undefined on input line 1
+169.
+
+
+LaTeX Warning: Reference `MAC_density_fig' on page 13 undefined on input line 1
+170.
+
+
+LaTeX Warning: Reference `MAC_density_fig' on page 13 undefined on input line 1
+171.
+
+
+LaTeX Warning: Reference `MAC_density_fig' on page 13 undefined on input line 1
+172.
+
+
+LaTeX Warning: Reference `MAC_density_fig' on page 13 undefined on input line 1
+173.
+
+
+LaTeX Warning: Reference `HMAC' on page 13 undefined on input line 1178.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 13 undefined on input
+ line 1252.
+
+
+LaTeX Warning: Citation `scardovelli2003interface' on page 13 undefined on inpu
+t line 1252.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 13 undefined on input
+ line 1252.
+
+
+LaTeX Warning: Citation `scardovelli2003interface' on page 13 undefined on inpu
+t line 1252.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 13 undefined on input
+ line 1347.
+
+
+LaTeX Warning: Citation `scardovelli2003interface' on page 13 undefined on inpu
+t line 1347.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 13 undefined on input
+ line 1347.
+
+
+LaTeX Warning: Citation `scardovelli2003interface' on page 13 undefined on inpu
+t line 1347.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 13 undefined on input
+ line 1421.
+
+
+LaTeX Warning: Citation `scardovelli2003interface' on page 13 undefined on inpu
+t line 1421.
+
+
+LaTeX Warning: Citation `jemison2014compressible' on page 13 undefined on input
+ line 1421.
+
+
+LaTeX Warning: Citation `scardovelli2003interface' on page 13 undefined on inpu
+t line 1421.
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -943,36 +1561,36 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-(./FSI.bbl [13] [14] [15
+(./FSI.bbl [13] [14] [15] [16] [17
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.7 
-    ] [16
+l.37 
+     ] [18
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.7 
-    ] [17
+l.37 
+     ] [19
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.7 
-    ] [18
+l.37 
+     ] [20
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.7 
-    ] [19] [20]
+l.37 
+     ] [21] [22]
 Underfull \hbox (badness 1789) in paragraph at lines 217--221
 []\OT1/cmr/m/sc/10 Sandusky, H., Cham-bers, P., Zer-illi, F., Fabini, L., and
  []
 
-[21] [22]) [23] (./FSI.aux)
+[23] [24]) [25] (./FSI.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -981,14 +1599,23 @@ L3 programming layer <2024-02-20>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `FSI.out' has not changed.
-(rerunfilecheck)             Checksum: 031A4A60E6DBFE2B09AF414888343283;2965.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `FSI.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `FSI.out':
+(rerunfilecheck)             Before: 312D319F796EAC1A4C153D1C8E25AE1E;2739
+(rerunfilecheck)             After:  031A4A60E6DBFE2B09AF414888343283;2965.
  ) 
 Here is how much of TeX's memory you used:
- 23274 strings out of 474116
- 431066 string characters out of 5743681
- 1987187 words of memory out of 5000000
- 45074 multiletter control sequences out of 15000+600000
+ 23285 strings out of 474116
+ 431176 string characters out of 5743683
+ 1995187 words of memory out of 5000000
+ 45079 multiletter control sequences out of 15000+600000
  569743 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,12n,107p,1293b,858s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1018,10 +1645,10 @@ t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-
 dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on FSI.pdf (23 pages, 396773 bytes).
+Output written on FSI.pdf (25 pages, 398944 bytes).
 PDF statistics:
- 605 PDF objects out of 1000 (max. 8388607)
- 513 compressed objects within 6 object streams
- 162 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 465 PDF objects out of 1000 (max. 8388607)
+ 382 compressed objects within 4 object streams
+ 168 named destinations out of 1000 (max. 500000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
