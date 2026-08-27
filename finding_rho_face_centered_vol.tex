@@ -1,0 +1,50 @@
+\begin{tikzpicture}
+    \fill[blue, fill opacity=0.15] (1.5,3) -- (1.97,3) -- (3.9,1.2) -- (1.5,0.65) -- cycle;
+    \fill[brown, fill opacity=0.3] (1.5,0.65) -- (4.5,1.35) -- (4.5,0) -- (1.5,0) -- cycle;
+    \fill[green, fill opacity=0.1] (1.97,3) -- (4.5,3) -- (4.5,1.35) -- (3.9,1.24) -- cycle;
+
+    \draw[solid, thick] (0,0) rectangle (6,3);
+    \draw[thick] (3,3) -- (3,0);
+
+    \draw[densely dashed, cyan, semithick] (1.5,3) -- (1.5,0);
+    \draw[densely dashed, cyan, semithick] (3,3) -- (3,0);
+    \draw[densely dashed, cyan, semithick] (4.5,3) -- (4.53,0);
+    \draw[densely dashed, cyan, semithick] (1.5,3) -- (4.5,3);
+    \draw[densely dashed, cyan] (1.5,1.5) -- (4.5,1.5);
+    \draw[densely dashed, cyan, semithick] (1.5,0) -- (4.5,0);
+
+    \draw[thick, blue] (-0.41,0.2) -- (6.41,1.8);
+    \draw[red, thick] (1.7,3.26) -- (3.9,1.2);
+    \draw[thick, densely dashed, orange] (3.9,1.2) -- (4.33,-0.34);
+
+    \node[draw=none, node font=\scriptsize, text=blue] at (0.5,2.71) {Liquid};
+    \node[draw=none, node font=\scriptsize, text=brown!51!black] (node4) at (5.5,1.24) {Elastic};
+    \node[draw=none, node font=\scriptsize, text=green!58!black] (node2) at (5.5,2.73) {Gas};
+    \node[draw=none, node font=\scriptsize, align=left] at (0.63,2.08) {$\phi_L>0$\\$\phi_G<0$\\$\phi_E<0$};
+    \node[draw=none, node font=\scriptsize, align=left] (node3) at (5.44,0.6) {$\phi_L<0$\\$\phi_G>0$\\$\phi_E>0$};
+    \node[draw=none, node font=\scriptsize, align=left] (node1) at (5.44,2.14) {$\phi_L<0$\\$\phi_G>0$\\$\phi_E<0$};
+    \node[draw=none, node font=\scriptsize, text=brown!51!black] (node4) at (0.5,-0.3) {Elastic};
+    \node[draw=none, node font=\scriptsize, align=left] at (0.5,-1.0) {$\phi_L>0$\\$\phi_G<0$\\$\phi_E>0$};
+ 
+  \node[draw=none, node font=\footnotesize] at (2.16,1.66) {$\Omega_1$};
+  \node[draw=none, node font=\footnotesize] at (3.6,0.2) {$\Omega_{1,Ghost}$};
+  \node[draw=none, node font=\footnotesize] at (4.5,1.0) {$\Omega_{2,Ghost}$};
+  \node[draw=none, node font=\footnotesize] at (3.84,2.24) {$\Omega_2$};
+  \node[draw=none, node font=\footnotesize] at (3.08,0.56) {$\Omega_3$};
+  \node[draw=none, node font=\footnotesize] at (3.0,-0.5) {$\Omega_{i+1/2,j}$};
+
+
+  \node[draw=none, node font=\scriptsize, text=cyan] at (2.32,3.23) {$\Omega_{2i+1,2j+1}$};
+  \node[draw=none, node font=\scriptsize, text=cyan] at (3.83,3.23) {$\Omega_{2i+2,2j+1}$};
+  \node[draw=none, node font=\scriptsize, text=cyan] at (2.21,-0.21) {$\Omega_{2i+1,2j}$};
+  \node[draw=none, node font=\scriptsize, text=cyan] at (3.84,-0.21) {$\Omega_{2i+2,2j}$};
+
+  \node[draw=none, node font=\scriptsize, text=black] at (1.31,-0.21) {$\Omega_{i,j}$};
+  \node[draw=none, node font=\scriptsize, text=black] at (4.79,-0.21) {$\Omega_{i+1,j}$};
+
+  \draw[->] (4.79,0.65) -- (4.33,0.68);
+  \draw[->] (4.79,2.12) -- (4.23,2);
+  \draw[->] (1.31,2) -- (1.82,2);
+  \draw[->] (node4.north) -- (1.82,0.44);
+\end{tikzpicture}
+

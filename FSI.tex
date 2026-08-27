@@ -1016,6 +1016,8 @@ conditions\cite{ye2024improved,li2015multiphase}.
  \Delta t\le\frac{1}{2}(\mbox{min} \Delta x^{3/2}) 
    \sqrt{\frac{\rho_{\Gamma}}{2\pi\sigma_{\Gamma}}}
  \end{eqnarray*}
+ $\rho_{\Gamma}$ is given by Algorithm \ref{rhoMAC} when 
+ $(\nabla H)_{\Gamma}\ne 0$.
 \item[4. Elastic material stability constraint]
  \begin{eqnarray*}
  U_{elastic}=\sqrt{\frac{8 s : s}{\rho G}}
@@ -1177,7 +1179,7 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
 \State $\rho_{i+1/2,j}\gets(\mbox{mass}_{i+1/2,j}^{L}+\mbox{mass}_{i+1/2,j}^{R})/|\Omega_{i+1/2,j}|$
 \State Determine $(\nabla H_{m_{L},m_{R}})_{i+1/2,j}$, $m_{L}$, and $m_{R}$ from Algorithm \ref{HMAC}.
 \If{$\gamma_{m_{L},m_{R}}\nabla H_{m_{L},m_{R}}\ne 0$}
- \State $\rho_{i+1/2,j}\gets\mbox{max}(\rho_{i+1/2,j},\rho_{m_{L}}/2,\rho_{m_{R}}/2)$
+ \State $\rho_{i+1/2,j}\gets\mbox{max}(\rho_{i+1/2,j},\theta\rho_{m_{L}},\theta\rho_{m_{R}})$
 \EndIf
 \end{algorithmic}
 \end{algorithm}
@@ -1477,6 +1479,73 @@ $\vec{u}_{m_{d}}+\frac{|\dot{m}|}{\rho_{m_{d}}}\vec{n}_{\Gamma}$.
 Referring to the diagram, if distributing $M_{cor}$ to the
 vapor side, $M_{cor}$ must be all distributed beyond the blue region
 into the red region.  \label{mdotproblem} }
+\end{figure}
+
+\begin{figure}
+\begin{tikzpicture}
+    \fill[blue, fill opacity=0.15] (1.5,3) -- (1.97,3) -- (3.9,1.2) -- (1.5,0.65) -- cycle;
+    \fill[brown, fill opacity=0.3] (1.5,0.65) -- (4.5,1.35) -- (4.5,0) -- (1.5,0) -- cycle;
+    \fill[green, fill opacity=0.1] (1.97,3) -- (4.5,3) -- (4.5,1.35) -- (3.9,1.24) -- cycle;
+
+    \draw[solid, thick] (0,0) rectangle (6,3);
+    \draw[thick] (3,3) -- (3,0);
+
+    \draw[densely dashed, cyan, semithick] (1.5,3) -- (1.5,0);
+    \draw[densely dashed, cyan, semithick] (3,3) -- (3,0);
+    \draw[densely dashed, cyan, semithick] (4.5,3) -- (4.53,0);
+    \draw[densely dashed, cyan, semithick] (1.5,3) -- (4.5,3);
+    \draw[densely dashed, cyan] (1.5,1.5) -- (4.5,1.5);
+    \draw[densely dashed, cyan, semithick] (1.5,0) -- (4.5,0);
+
+    \draw[thick, blue] (-0.41,0.2) -- (6.41,1.8);
+    \draw[red, thick] (1.7,3.26) -- (3.9,1.2);
+    \draw[thick, densely dashed, orange] (3.9,1.2) -- (4.33,-0.34);
+
+    \node[draw=none, node font=\scriptsize, text=blue] at (0.5,2.71) {Liquid};
+    \node[draw=none, node font=\scriptsize, text=brown!51!black] (node4) at (5.5,1.24) {Elastic};
+    \node[draw=none, node font=\scriptsize, text=green!58!black] (node2) at (5.5,2.73) {Gas};
+    \node[draw=none, node font=\scriptsize, align=left] at (0.63,2.08) {$\phi_L>0$\\$\phi_G<0$\\$\phi_E<0$};
+    \node[draw=none, node font=\scriptsize, align=left] (node3) at (5.44,0.6) {$\phi_L<0$\\$\phi_G>0$\\$\phi_E>0$};
+    \node[draw=none, node font=\scriptsize, align=left] (node1) at (5.44,2.14) {$\phi_L<0$\\$\phi_G>0$\\$\phi_E<0$};
+    \node[draw=none, node font=\scriptsize, text=brown!51!black] (node4) at (0.5,-0.3) {Elastic};
+    \node[draw=none, node font=\scriptsize, align=left] at (0.5,-1.0) {$\phi_L>0$\\$\phi_G<0$\\$\phi_E>0$};
+ 
+  \node[draw=none, node font=\footnotesize] at (2.16,1.66) {$\Omega_1$};
+  \node[draw=none, node font=\footnotesize] at (3.6,0.2) {$\Omega_{1,Ghost}$};
+  \node[draw=none, node font=\footnotesize] at (4.5,1.0) {$\Omega_{2,Ghost}$};
+  \node[draw=none, node font=\footnotesize] at (3.84,2.24) {$\Omega_2$};
+  \node[draw=none, node font=\footnotesize] at (3.08,0.56) {$\Omega_3$};
+  \node[draw=none, node font=\footnotesize] at (3.0,-0.5) {$\Omega_{i+1/2,j}$};
+
+
+  \node[draw=none, node font=\scriptsize, text=cyan] at (2.32,3.23) {$\Omega_{2i+1,2j+1}$};
+  \node[draw=none, node font=\scriptsize, text=cyan] at (3.83,3.23) {$\Omega_{2i+2,2j+1}$};
+  \node[draw=none, node font=\scriptsize, text=cyan] at (2.21,-0.21) {$\Omega_{2i+1,2j}$};
+  \node[draw=none, node font=\scriptsize, text=cyan] at (3.84,-0.21) {$\Omega_{2i+2,2j}$};
+
+  \node[draw=none, node font=\scriptsize, text=black] at (1.31,-0.21) {$\Omega_{i,j}$};
+  \node[draw=none, node font=\scriptsize, text=black] at (4.79,-0.21) {$\Omega_{i+1,j}$};
+
+  \draw[->] (4.79,0.65) -- (4.33,0.68);
+  \draw[->] (4.79,2.12) -- (4.23,2);
+  \draw[->] (1.31,2) -- (1.82,2);
+  \draw[->] (node4.north) -- (1.82,0.44);
+\end{tikzpicture}
+
+\caption{Example for determining the mixture density in face centered
+ control volumes.  In this case, the face is $(i+1/2,j)$.  Momentum
+ conservation is guaranteed since the density for each material is
+ discretized on the refined grid $(2i+1,2j)$, $(2i+1,2j+1)$,
+ $(2i+2,2j)$, and $(2i+2,2j+1)$.  The Fluid regions tessellate the
+ computational domain ($\Omega_{1}$, $\Omega_{1,Ghost}$, 
+ $\Omega_{2}$, $\Omega_{2,Ghost}$) and the elastic material regions
+ ($\Omega_{3}$) are 
+ embedded within the computational domain.  Prior to computing
+ mixture density, we use the nested dissection algorithm in order
+ to convert the material reconstruction so that Fluid and 
+ Elastic materials tessellate the computational domain
+ ($\Omega_{1}$, $\Omega_{2}$, $\Omega_{3}$).
+ \label{MAC_density_fig}}
 \end{figure}
 
 %%\biboptions{sort&compress}

@@ -164,6 +164,14 @@
   underwater explosions.
 \newblock {\em Experimental Mechanics 63}, 5 (2023), 925--937.
 
+\bibitem{li2015multiphase}
+{\sc Li, G., Lian, Y., Guo, Y., Jemison, M., Sussman, M., Helms, T., and
+  Arienti, M.}
+\newblock Incompressible multiphase flow and encapsulation simulations using
+  the moment-of-fluid method.
+\newblock {\em International Journal for Numerical Methods in Fluids 79}, 9
+  (2015), 456--490.
+
 \bibitem{maire2013nominally}
 {\sc Maire, P.-H., Abgrall, R., Breil, J., Loub{\`e}re, R., and Rebourcet, B.}
 \newblock A nominally second-order cell-centered lagrangian scheme for
