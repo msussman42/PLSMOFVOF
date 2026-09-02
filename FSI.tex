@@ -1189,15 +1189,28 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
   time $t=t^{n}$ to parcels at $t=t^{n+1}$.  \label{mass_correction} }
 \begin{algorithmic}[1] % [1] enables line numbering
 \State Determine the intersection mass between parcels $m_{i,j}^{n}$ and 
-	$m_{i,k}^{n+1}$.  Parcels in which only buffer regions intersect
-	are assigned $\epsilon$ mass weights.
-	\State Associate each ``orphan'' parcel, $m_{i,j_{o}}^{n}$, with 
-	 the corresponding parcel, $m_{i,k}^{n+1}$ with the closest centroid.
-	 The mass weight of association is $\epsilon$.  
-	\State Associate each ``orphan'' parcel, $m_{i,k_{o}}^{n+1}$, with 
-	 the corresponding parcel, $m_{i,j}^{n}$ with the closest centroid.
-	 The mass weight of association is $\epsilon$.  
-
+ $m_{i,k}^{n+1}$.  Parcels in which only buffer regions intersect
+ are assigned $\epsilon$ mass weights.
+\State Associate each ``orphan'' parcel, $m_{i,j_{o}}^{n}$, with 
+ the corresponding parcel, $m_{i,k}^{n+1}$ with the closest centroid.
+ The mass weight of association is $\epsilon$.  
+\State Associate each ``orphan'' parcel, $m_{i,k_{o}}^{n+1}$, with 
+ the corresponding parcel, $m_{i,j}^{n}$ with the closest centroid.
+ The mass weight of association is $\epsilon$.  
+\State $\mbox{mass}_{i,k}^{n+1}\gets 0$, 
+       $i=1,\ldots,n_{mat}$,
+       $k=1,\ldots,n_{i,parcel}^{n+1}$
+\For{$i=1,\ldots,n_{mat}$}
+\State $\mbox{weight}\gets 0$
+\For{$j=1,\dots,n_{i,parcel}^{n}$}
+\State $\mbox{weight}\gets \mbox{weight}+
+  \mbox{weight}_{i,j,k}$
+\EndFor
+\For{$j=1,\dots,n_{i,parcel}^{n}$}
+\State $\mbox{mass}_{i,k}^{n+1}\gets \mbox{mass}_{i,k}^{n+1}+
+  \mbox{weight}_{i,j,k}\mbox{mass}_{i,j}^{n+1}/\mbox{weight}$
+\EndFor
+\EndFor
 \end{algorithmic}
 \end{algorithm}
 
@@ -1565,6 +1578,94 @@ into the red region.  \label{mdotproblem} }
  ($\Omega_{1}$, $\Omega_{2}$, $\Omega_{3}$).
  \label{MAC_density_fig}}
 \end{figure}
+
+
+
+\begin{figure}
+
+%parcel intersect
+\begin{tikzpicture}
+  \draw[semithick] (1.4,1.95) ellipse [x radius=0.66cm, y radius=0.6cm];
+  \draw[semithick, red] (1.86,1.95) ellipse [x radius=0.66cm, y radius=0.6cm];
+
+\node at (2.3,0.7){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
+
+\node at (3.3,3.2){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+
+  \draw[->] (0.5,1) -- (0.85,1.35);
+  \draw[->] (3,2.84) -- (2.5,2.33);
+\end{tikzpicture}
+
+%%parcelbuffer
+\begin{tikzpicture}
+
+  \draw[semithick] (1,1.95) ellipse [x radius=0.75cm, y radius=0.6cm];
+  \draw[semithick, densely dashed] (1,1.95) ellipse [x radius=1.10cm, y radius=0.95cm];
+
+  \draw[semithick, red] (2.94,1.95) ellipse [x radius=0.73cm, y radius=0.62cm];
+  \draw[semithick, red, densely dashed] (2.94,1.95) ellipse [x radius=1.08cm, y radius=0.97cm];
+
+\node at (-0.3,0.4) {$\mbox{material}\text{ }m_1,\mbox{time}\text{ }t^{n},\mbox{parcel}\text{  }1$};
+
+ \node at (2.6,3.3) {$\textcolor{red}{\mbox{material}}\textcolor{red}{\text{ }}\textcolor{red}{m_1,\mbox{time}}\textcolor{red}{\text{ }}\textcolor{red}{t^{n+1},\mbox{parcel}}\textcolor{red}{\text{ }}\textcolor{red}{1}$};
+
+\node at (2.6,-0.3){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n} \mbox{ associated with parcel } 1 \mbox{ at } t^{n+1},\mbox{ weight is } \epsilon}$};
+
+\end{tikzpicture}
+
+%%mergesplit
+\begin{tikzpicture}
+
+ \draw[rounded corners=10.33pt, semithick] (0.8,3) -- (0.22,2.38) -- (0.22,1.58) -- (0.8,1) -- (1.6,1) -- (2,1.6) -- (2.4,1) -- (3.2,1) -- (3.8,1.6) -- (3.8,2.4) -- (3.2,3) -- (2.4,3) -- (2,2.4) -- (1.6,3) -- cycle;
+
+  \draw[red, semithick] (0.76,2) circle (1cm);
+  \draw[red, semithick] (3.24,2) circle (1cm);
+
+\node at (2.2,0.1){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
+
+\node at (-0.1,3.4){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+
+\node at (4.9,3.4){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 2 \mbox{ at } t^{n+1}}$};
+
+  \draw[->] (1.76,0.5) -- (2,1.31);
+  \draw[->] (-1.5,3) -- (-0.24,2.5);
+  \draw[->] (5.6,3) -- (4.28,2.58);
+\end{tikzpicture}
+
+%%orphanedparcel
+\begin{tikzpicture}
+  \draw[semithick] (0.47,1.46) ellipse [x radius=0.07cm, y radius=0.06cm];
+  \draw[semithick] (0.68,1.46) ellipse [x radius=0.08cm, y radius=0.06cm];
+  \draw[semithick] (0.3,1.46) circle (0.06cm);
+  \draw[semithick] (0.92,1.46) ellipse [x radius=0.1cm, y radius=0.06cm];
+  \draw[semithick] (2.19,1.52) ellipse [x radius=0.71cm, y radius=0.64cm];
+
+
+\node at (3.1,0.4){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
+
+\node at (2.5,2.8){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+
+\node (node1) at (-0.3,-0.3){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ flotsam (4 pieces)} \mbox{ at } t^{n}}$};
+
+\node at (-2.3,2.2){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ orphaned parcel } 2 \mbox{ at } t^{n+1}}$};
+
+  \draw[semithick, red] (2,1.52) ellipse [x radius=0.7cm, y radius=0.63cm];
+  \draw[red, semithick] (0.62,1.46) ellipse [x radius=0.44cm, y radius=0.09cm];
+  \draw[->] (3.5,0.56) -- (2.9,1);
+  \draw[->] (1.06,2.5) -- (1.48,2);
+  \draw[->] (node1.north) -- (0.4,1.37);
+  \draw[->] (-1.31,2) -- (0,1.55);
+\end{tikzpicture}
+
+
+\caption{
+ \label{mass_cor_fig}}
+\end{figure}
+
+
+
+
+
 
 %%\biboptions{sort&compress}
 \bibliography{cmof_paper}
