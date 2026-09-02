@@ -1037,7 +1037,7 @@ than the Weymouth and Yue algorithm\cite{weymouth2010conservative},
 since the EI-LE has a less stringent time step constraint.  The
 drawback of using EI-LE is that it is not exactly
 volume preserving in 3D; but this
-is inconsequential for the present paper since we have deloped
+is inconsequential for the present paper since we have developed
 an algorithm for exactly conserving the volume.  Please see
 Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
 \end{description}
@@ -1183,6 +1183,24 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
 \EndIf
 \end{algorithmic}
 \end{algorithm}
+
+\begin{algorithm}
+\caption{Algorithm for distributing mass from material parcels at 
+  time $t=t^{n}$ to parcels at $t=t^{n+1}$.  \label{mass_correction} }
+\begin{algorithmic}[1] % [1] enables line numbering
+\State Determine the intersection mass between parcels $m_{i,j}^{n}$ and 
+	$m_{i,k}^{n+1}$.  Parcels in which only buffer regions intersect
+	are assigned $\epsilon$ mass weights.
+	\State Associate each ``orphan'' parcel, $m_{i,j_{o}}^{n}$, with 
+	 the corresponding parcel, $m_{i,k}^{n+1}$ with the closest centroid.
+	 The mass weight of association is $\epsilon$.  
+	\State Associate each ``orphan'' parcel, $m_{i,k_{o}}^{n+1}$, with 
+	 the corresponding parcel, $m_{i,j}^{n}$ with the closest centroid.
+	 The mass weight of association is $\epsilon$.  
+
+\end{algorithmic}
+\end{algorithm}
+
 
 \begin{figure}
 
