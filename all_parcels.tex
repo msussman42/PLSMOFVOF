@@ -1,0 +1,117 @@
+\begin{tikzpicture}
+\begin{scope}[xshift=-27pt, yshift=140pt, xscale=1.01, yscale=1.15]
+
+\node at (6.7,3.0){$\textcolor{black}{\mbox{ (a) }}$};
+
+
+  \draw[semithick] (2.3,1.95) ellipse [x radius=0.66cm, y radius=0.6cm];
+  \draw[semithick, red] (2.66,1.95) ellipse [x radius=0.66cm, y radius=0.6cm];
+  \node (node2) at (3.3,0.7){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
+  \draw[->] (1.64,0.94) -- (1.95,1.35);
+  \node (node3) at (3.3,3.2){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+  \draw[->] (4.7,2.68) -- (3.43,2.25);
+  \node at (3.4,0.0){$\textcolor{black}{\mbox{ weight is the intersection mass}}$ }
+
+\end{scope}
+
+\begin{scope}[xshift=222pt, yshift=152pt, xscale=0.9, yscale=1.06]
+
+\node at (6.1,3.0){$\textcolor{black}{\mbox{ (b) }}$};
+
+
+
+\draw[->] (0.34,0.55) -- (0.85,1.35);
+\draw[->] (4.45,3.04) -- (3.67,2.55);
+
+  \draw[semithick] (1,1.95) ellipse [x radius=0.75cm, y radius=0.6cm];
+  \draw[semithick, densely dashed] (1,1.95) ellipse [x radius=1.10cm, y radius=0.95cm];
+
+  \draw[semithick, red] (2.94,1.95) ellipse [x radius=0.73cm, y radius=0.62cm];
+  \draw[semithick, red, densely dashed] (2.94,1.95) ellipse [x radius=1.08cm, y radius=0.97cm];
+
+\node at (2.4,0.4) {$\mbox{material}\text{ }m_1,\mbox{time}\text{ }t^{n},\mbox{parcel}\text{  }1$};
+
+ \node at (2.6,3.3) {$\textcolor{red}{\mbox{material}}\textcolor{red}{\text{ }}\textcolor{red}{m_1,\mbox{time}}\textcolor{red}{\text{ }}\textcolor{red}{t^{n+1},\mbox{parcel}}\textcolor{red}{\text{ }}\textcolor{red}{1}$};
+
+\node at (2.6,-0.3){$\textcolor{black}{\mbox{ weight is } \epsilon}$};
+
+\end{scope}
+
+
+\begin{scope}[xshift=10,yshift=-10]
+ \draw[rounded corners=10.33pt, semithick] (0.8,3) -- (0.22,2.38) -- (0.22,1.58) -- (0.8,1) -- (1.6,1) -- (2,1.6) -- (2.4,1) -- (3.2,1) -- (3.8,1.6) -- (3.8,2.4) -- (3.2,3) -- (2.4,3) -- (2,2.4) -- (1.6,3) -- cycle;
+
+  \draw[red, semithick] (0.76,2) circle (1cm);
+  \draw[red, semithick] (3.24,2) circle (1cm);
+
+\node at (2.2,0.1){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
+
+\node at (0.8,4.5){$\textcolor{red}{ \mbox{material } m_{1},}$};
+
+
+
+\node at (0.9,4.0){$\textcolor{red}{\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+
+
+\node at (3.7,4.4){$\textcolor{red}{ \mbox{material } m_{1},}$};
+
+\node at (5.4,4.3){$\textcolor{black}{\mbox{ (c) }}$};
+
+
+\node (node5) at (3.6,3.9){$\textcolor{red}{ \mbox{ parcel } 2 \mbox{ at } t^{n+1}}$};
+
+  \draw[->] (1.76,0.5) -- (2,1.31);
+  \draw[->] (0.36,3.58) --(0.36,3.15);
+  \draw[->] (3.5,3.5) -- (3.45,3.07);
+\end{scope}
+
+\begin{scope}[xshift=262pt, yshift=-10pt]
+  \draw[semithick] (0.47,1.46) ellipse [x radius=0.07cm, y radius=0.06cm];
+  \draw[semithick] (0.68,1.46) ellipse [x radius=0.08cm, y radius=0.06cm];
+  \draw[semithick] (0.3,1.46) circle (0.06cm);
+  \draw[semithick] (0.92,1.46) ellipse [x radius=0.1cm, y radius=0.06cm];
+  \draw[semithick] (2.19,1.52) ellipse [x radius=0.71cm, y radius=0.64cm];
+
+\node at (4.7,4.1){$\textcolor{black}{\mbox{ (d) }}$};
+
+
+
+
+\node at (3.1,0.4){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
+
+\node at (2.5,2.8){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+
+
+\node at (-1.5,1.7){$\textcolor{black}{ \mbox{material } m_{1},}$};
+
+
+
+\node (node1) at (-1.6,1.2){$\textcolor{black}{\mbox{ flotsam (4 pieces)}}$};
+
+
+\node (node1) at (-1.5,0.7){$\textcolor{black}{\mbox{ at } t^{n}}$};
+
+
+
+\node at (-1.2,4.0){$\textcolor{red}{ \mbox{material } m_{1}} $};
+
+\node at (-1.2,3.5){$\textcolor{red}{ \mbox{orphaned} } $};
+
+
+\node (node4) at (-1.3,3.0){$\textcolor{red}{ 
+\mbox{ parcel } 2 \mbox{ at } t^{n+1}}$};
+
+
+  \draw[semithick, red] (2,1.52) ellipse [x radius=0.7cm, y radius=0.63cm];
+  \draw[red, semithick] (0.62,1.46) ellipse [x radius=0.44cm, y radius=0.09cm];
+  \draw[->] (3.5,0.56) -- (2.9,1);
+  \draw[->] (1.16,2.5) -- (1.48,2);
+  \draw[->] (-0.19,1.03) -- (0.4,1.27);
+  \draw[->] (node4.south) -- (0,1.55);
+\end{scope}
+
+  \draw (-0.24,9) rectangle (6.36,4.62);
+  \draw (6.85,9.19) rectangle (13.69,4.63);
+  \draw (-0.07,-0.75) rectangle (6.07,4.4);
+  \draw (14.73,-0.76) rectangle (6.25,4.27);
+\end{tikzpicture}

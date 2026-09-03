@@ -964,12 +964,22 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 \item We have developed an exactly mass and volume preserving algorithm
   so that mass and volume of fluid and elastic materials do not
   change due to contact line dynamics (e.g. splashing or sliding), or 
-  flotsam removal.  Please see Algorithm \ref{mass_correction} and
+  flotsam removal.  Please see Algorithms \ref{mass_association} and
+  \ref{mass_correction}.  Also see
   Figure \ref{mass_cor_fig}.
 \end{enumerate}
 
 Remarks:
 \begin{enumerate}
+\item Step 33 of Algorithm \ref{asym_multiphase} corresponds to solving
+  the following, linear, pressure equation,
+  \begin{eqnarray}
+  -\frac{p-\tilde{p}}{\rho c^{2}\Delta t^{2}}+\nabla\cdot\frac{\nabla p}{\rho}=
+   \frac{\nabla\cdot\vec{u}^{\ast}}{\Delta t},
+   \label{pressure_equation}
+  \end{eqnarray}
+  where $p\equiv p^{n+1,(k+1)}$ and 
+  $\vec{u}^{\ast\ast,(k+1)}\equiv \vec{u}^{\ast}$.
 \item The phase change 
     algorithm\cite{VAHAB2021,vahab2016adaptive,ye2024improved}, 
     given by steps 14 and 15 in 
@@ -1185,34 +1195,57 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
 \end{algorithm}
 
 \begin{algorithm}
-\caption{Algorithm for distributing mass from material parcels at 
-  time $t=t^{n}$ to parcels at $t=t^{n+1}$.  \label{mass_correction} }
+\caption{Algorithm for distributing mass from material parcels, 
+  $\Omega^{n}_{m,i}$  at 
+  time $t=t^{n}$ to parcels at $t=t^{n+1}$,
+  $\Omega^{n+1}_{m,k}$.  $m$ is the material id, $i$ is the 
+  old parcel id, and $k$ is the new parcel id.  \label{mass_association} }
 \begin{algorithmic}[1] % [1] enables line numbering
-\State Determine the intersection mass between parcels $m_{i,j}^{n}$ and 
- $m_{i,k}^{n+1}$.  Parcels in which only buffer regions intersect
+\State Determine the intersection mass between parcels $\Omega_{m,i}^{n}$ and 
+ $\Omega_{m,k}^{n+1}$.  Parcels in which only buffer regions intersect
  are assigned $\epsilon$ mass weights.
-\State Associate each ``orphan'' parcel, $m_{i,j_{o}}^{n}$, with 
- the corresponding parcel, $m_{i,k}^{n+1}$ with the closest centroid.
+\State Associate each ``orphan'' parcel, $\Omega_{m,i}^{n,orphan}$, with 
+ the parcel, $\Omega_{m,k}^{n+1}$, that has the closest centroid.
  The mass weight of association is $\epsilon$.  
-\State Associate each ``orphan'' parcel, $m_{i,k_{o}}^{n+1}$, with 
- the corresponding parcel, $m_{i,j}^{n}$ with the closest centroid.
+\State Associate each ``orphan'' parcel, $\Omega_{m,k}^{n+1,orphan}$, with 
+ the parcel, $\Omega_{m,i}^{n}$, that has the closest centroid.
  The mass weight of association is $\epsilon$.  
-\State $\mbox{mass}_{i,k}^{n+1}\gets 0$, 
-       $i=1,\ldots,n_{mat}$,
-       $k=1,\ldots,n_{i,parcel}^{n+1}$
-\For{$i=1,\ldots,n_{mat}$}
+\State $\mbox{mass}_{m,k}^{n+1}\gets 0$, 
+       $m=1,\ldots,n_{mat}$,
+       $k=1,\ldots,n_{m,parcel}^{n+1}$
+\For{$m=1,\ldots,n_{mat}$}
+\For{$k=1,\ldots,n_{m,parcel}^{n+1}$}
 \State $\mbox{weight}\gets 0$
-\For{$j=1,\dots,n_{i,parcel}^{n}$}
+\For{$i=1,\dots,n_{m,parcel}^{n}$}
 \State $\mbox{weight}\gets \mbox{weight}+
-  \mbox{weight}_{i,j,k}$
+  \mbox{weight}_{m,i,k}$
 \EndFor
-\For{$j=1,\dots,n_{i,parcel}^{n}$}
-\State $\mbox{mass}_{i,k}^{n+1}\gets \mbox{mass}_{i,k}^{n+1}+
-  \mbox{weight}_{i,j,k}\mbox{mass}_{i,j}^{n+1}/\mbox{weight}$
+\For{$i=1,\dots,n_{m,parcel}^{n}$}
+\State $\mbox{mass}_{m,k}^{n+1}\gets \mbox{mass}_{m,k}^{n+1}+
+  \mbox{weight}_{m,i,k}\mbox{mass}_{m,i}^{n}/\mbox{weight}$
+\EndFor
 \EndFor
 \EndFor
 \end{algorithmic}
 \end{algorithm}
+
+
+\begin{algorithm}
+\caption{Algorithm for adjusting the actual mass, $m^{act}$, 
+  of material parcels, $\Omega_{m,k}^{n+1}$, with the
+  parcel's reference mass $m^{ref}$.
+  \label{mass_correction} }
+\begin{algorithmic}[1] % [1] enables line numbering
+\For{all grid cells $\Omega_{l}$ in parcel $\Omega_{m,k}^{n+1}$}
+\State $\delta m \gets \frac{1}{2}(m^{ref}-m^{act})\frac{|\Omega_{l}|}{|\Omega_{m,k}^{n+1}|}$
+\If{incompressible material}
+\State $\frac{\delta m}{\rho_{l}\Delta t^{2}|\Omega_{l}|}$ becomes a source
+  term for (\ref{pressure_equation}).
+\EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
 
 
 \begin{figure}
@@ -1583,21 +1616,29 @@ into the red region.  \label{mdotproblem} }
 
 \begin{figure}
 
-%parcel intersect
 \begin{tikzpicture}
-  \draw[semithick] (1.4,1.95) ellipse [x radius=0.66cm, y radius=0.6cm];
-  \draw[semithick, red] (1.86,1.95) ellipse [x radius=0.66cm, y radius=0.6cm];
+\begin{scope}[xshift=-27pt, yshift=140pt, xscale=1.01, yscale=1.15]
 
-\node at (2.3,0.7){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
+\node at (6.7,3.0){$\textcolor{black}{\mbox{ (a) }}$};
 
-\node at (3.3,3.2){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
 
-  \draw[->] (0.5,1) -- (0.85,1.35);
-  \draw[->] (3,2.84) -- (2.5,2.33);
-\end{tikzpicture}
+  \draw[semithick] (2.3,1.95) ellipse [x radius=0.66cm, y radius=0.6cm];
+  \draw[semithick, red] (2.66,1.95) ellipse [x radius=0.66cm, y radius=0.6cm];
+  \node (node2) at (3.3,0.7){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
+  \draw[->] (1.64,0.94) -- (1.95,1.35);
+  \node (node3) at (3.3,3.2){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+  \draw[->] (4.7,2.68) -- (3.43,2.25);
+  \node at (3.4,0.0){$\textcolor{black}{\mbox{ weight is the intersection mass}}$ };
+\end{scope}
 
-%%parcelbuffer
-\begin{tikzpicture}
+\begin{scope}[xshift=222pt, yshift=152pt, xscale=0.9, yscale=1.06]
+
+\node at (6.1,3.0){$\textcolor{black}{\mbox{ (b) }}$};
+
+
+
+\draw[->] (0.34,0.55) -- (0.85,1.35);
+\draw[->] (4.45,3.04) -- (3.67,2.55);
 
   \draw[semithick] (1,1.95) ellipse [x radius=0.75cm, y radius=0.6cm];
   \draw[semithick, densely dashed] (1,1.95) ellipse [x radius=1.10cm, y radius=0.95cm];
@@ -1605,17 +1646,16 @@ into the red region.  \label{mdotproblem} }
   \draw[semithick, red] (2.94,1.95) ellipse [x radius=0.73cm, y radius=0.62cm];
   \draw[semithick, red, densely dashed] (2.94,1.95) ellipse [x radius=1.08cm, y radius=0.97cm];
 
-\node at (-0.3,0.4) {$\mbox{material}\text{ }m_1,\mbox{time}\text{ }t^{n},\mbox{parcel}\text{  }1$};
+\node at (2.4,0.4) {$\mbox{material}\text{ }m_1,\mbox{time}\text{ }t^{n},\mbox{parcel}\text{  }1$};
 
  \node at (2.6,3.3) {$\textcolor{red}{\mbox{material}}\textcolor{red}{\text{ }}\textcolor{red}{m_1,\mbox{time}}\textcolor{red}{\text{ }}\textcolor{red}{t^{n+1},\mbox{parcel}}\textcolor{red}{\text{ }}\textcolor{red}{1}$};
 
-\node at (2.6,-0.3){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n} \mbox{ associated with parcel } 1 \mbox{ at } t^{n+1},\mbox{ weight is } \epsilon}$};
+\node at (2.6,-0.3){$\textcolor{black}{\mbox{ weight is } \epsilon}$};
 
-\end{tikzpicture}
+\end{scope}
 
-%%mergesplit
-\begin{tikzpicture}
 
+\begin{scope}[xshift=10,yshift=-10]
  \draw[rounded corners=10.33pt, semithick] (0.8,3) -- (0.22,2.38) -- (0.22,1.58) -- (0.8,1) -- (1.6,1) -- (2,1.6) -- (2.4,1) -- (3.2,1) -- (3.8,1.6) -- (3.8,2.4) -- (3.2,3) -- (2.4,3) -- (2,2.4) -- (1.6,3) -- cycle;
 
   \draw[red, semithick] (0.76,2) circle (1cm);
@@ -1623,42 +1663,86 @@ into the red region.  \label{mdotproblem} }
 
 \node at (2.2,0.1){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
 
-\node at (-0.1,3.4){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+\node at (0.8,4.5){$\textcolor{red}{ \mbox{material } m_{1},}$};
 
-\node at (4.9,3.4){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 2 \mbox{ at } t^{n+1}}$};
+
+
+\node at (0.9,4.0){$\textcolor{red}{\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
+
+
+\node at (3.7,4.4){$\textcolor{red}{ \mbox{material } m_{1},}$};
+
+\node at (5.4,4.3){$\textcolor{black}{\mbox{ (c) }}$};
+
+
+\node (node5) at (3.6,3.9){$\textcolor{red}{ \mbox{ parcel } 2 \mbox{ at } t^{n+1}}$};
 
   \draw[->] (1.76,0.5) -- (2,1.31);
-  \draw[->] (-1.5,3) -- (-0.24,2.5);
-  \draw[->] (5.6,3) -- (4.28,2.58);
-\end{tikzpicture}
+  \draw[->] (0.36,3.58) --(0.36,3.15);
+  \draw[->] (3.5,3.5) -- (3.45,3.07);
+\end{scope}
 
-%%orphanedparcel
-\begin{tikzpicture}
+\begin{scope}[xshift=262pt, yshift=-10pt]
   \draw[semithick] (0.47,1.46) ellipse [x radius=0.07cm, y radius=0.06cm];
   \draw[semithick] (0.68,1.46) ellipse [x radius=0.08cm, y radius=0.06cm];
   \draw[semithick] (0.3,1.46) circle (0.06cm);
   \draw[semithick] (0.92,1.46) ellipse [x radius=0.1cm, y radius=0.06cm];
   \draw[semithick] (2.19,1.52) ellipse [x radius=0.71cm, y radius=0.64cm];
 
+\node at (4.7,4.1){$\textcolor{black}{\mbox{ (d) }}$};
+
+
+
 
 \node at (3.1,0.4){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n}}$};
 
 \node at (2.5,2.8){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ parcel } 1 \mbox{ at } t^{n+1}}$};
 
-\node (node1) at (-0.3,-0.3){$\textcolor{black}{ \mbox{material } m_{1},\mbox{ flotsam (4 pieces)} \mbox{ at } t^{n}}$};
 
-\node at (-2.3,2.2){$\textcolor{red}{ \mbox{material } m_{1},\mbox{ orphaned parcel } 2 \mbox{ at } t^{n+1}}$};
+\node at (-1.5,1.7){$\textcolor{black}{ \mbox{material } m_{1},}$};
+
+
+
+\node (node1) at (-1.6,1.2){$\textcolor{black}{\mbox{ flotsam (4 pieces)}}$};
+
+
+\node (node1) at (-1.5,0.7){$\textcolor{black}{\mbox{ at } t^{n}}$};
+
+
+
+\node at (-1.2,4.0){$\textcolor{red}{ \mbox{material } m_{1}} $};
+
+\node at (-1.2,3.5){$\textcolor{red}{ \mbox{orphaned} } $};
+
+
+\node (node4) at (-1.3,3.0){$\textcolor{red}{ 
+\mbox{ parcel } 2 \mbox{ at } t^{n+1}}$};
+
 
   \draw[semithick, red] (2,1.52) ellipse [x radius=0.7cm, y radius=0.63cm];
   \draw[red, semithick] (0.62,1.46) ellipse [x radius=0.44cm, y radius=0.09cm];
   \draw[->] (3.5,0.56) -- (2.9,1);
-  \draw[->] (1.06,2.5) -- (1.48,2);
-  \draw[->] (node1.north) -- (0.4,1.37);
-  \draw[->] (-1.31,2) -- (0,1.55);
+  \draw[->] (1.16,2.5) -- (1.48,2);
+  \draw[->] (-0.19,1.03) -- (0.4,1.27);
+  \draw[->] (node4.south) -- (0,1.55);
+\end{scope}
+
+  \draw (-0.24,9) rectangle (6.36,4.62);
+  \draw (6.85,9.19) rectangle (13.69,4.63);
+  \draw (-0.07,-0.75) rectangle (6.07,4.4);
+  \draw (14.73,-0.76) rectangle (6.25,4.27);
 \end{tikzpicture}
 
-
-\caption{
+\caption{Illustration for associating material parcels at $t=t^{n}$ to
+  material parcels at the new time $t=t^{n+1}$.  In panels (a) and (c), the
+  material parcels intersect so that the ``weight of association'' is 
+  given by the intersected mass.  In panel (b), the parcel at $t^{n}$ does
+  not intersection the nearby parcel at $t^{n+1}$, but since they are within
+  two grid cells from one another, they have a weight $\epsilon$ which is 
+  considered to be arbitrarily close to zero.  In panel (d), parcel 2 at 
+  time $t^{n+1}$ came from the coagulation of flotsam at time $t^{n}$.  This
+  parcel is an ``orphan'' parcel and is associated with weight $\epsilon$
+  with the parcel with the nearest centroid.  
  \label{mass_cor_fig}}
 \end{figure}
 
