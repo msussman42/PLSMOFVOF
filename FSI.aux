@@ -33,6 +33,8 @@
 \citation{PARK2026132}
 \citation{ye2024improved}
 \citation{jemison2015filament}
+\citation{ahn2007multi}
+\citation{ahn2009adaptive}
 \citation{ye2024improved}
 \citation{sugiyama2011full}
 \citation{shin2020interaction}
@@ -90,10 +92,10 @@
 \citation{Lax1954}
 \citation{Lax1954}
 \citation{Lax1954}
+\citation{xiaxi1989convergence}
 \newlabel{pde2elastic}{{16}{6}{Lax diffusion for Energy and Momentum equations in elastic materials }{equation.1.16}{}}
 \newlabel{asym_preserve_elastic}{{2}{7}{Lax diffusion for Energy and Momentum equations in elastic materials }{algorithm.2}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Asymptotically Preserving time discretization for an elastic material}}{7}{algorithm.2}\protected@file@percent }
-\citation{xiaxi1989convergence}
 \citation{osher1988fronts}
 \citation{osher1988fronts}
 \citation{ye2024improved}
@@ -134,11 +136,13 @@
 \citation{vahab2016adaptive}
 \citation{ye2024improved}
 \citation{ye2024improved}
+\citation{kwatra2009method}
 \citation{li2015multiphase}
 \citation{ye2024improved}
 \citation{li2015multiphase}
 \newlabel{pressure_equation}{{55}{13}{Discretization for multiphase flows interacting with elastic materials}{equation.3.55}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Time step stability restrictions}{13}{subsection.3.1}\protected@file@percent }
+\newlabel{cflsection}{{3.1}{13}{Time step stability restrictions \label {cflsection} }{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Time step stability restrictions  }{13}{subsection.3.1}\protected@file@percent }
 \citation{ye2024improved}
 \citation{jemison2014compressible}
 \citation{scardovelli2003interface}
@@ -156,23 +160,23 @@
 \citation{jemison2014compressible}
 \citation{scardovelli2003interface}
 \bibdata{cmof_paper}
-\bibcite{almgren2006low}{1}
-\bibcite{AN2016201}{2}
+\bibcite{ahn2007multi}{1}
+\bibcite{ahn2009adaptive}{2}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  Illustration of the Eulerian Implicit, Lagrangian Explicit cell integrated semi-Lagrangian (CISL) method\cite  {jemison2014compressible,scardovelli2003interface}. Rather than have separate traversals through the grid for the cell-centered, face centered, and edge centered variables, we instead interpolate all variables to a refined grid, followed by one traversal through the refined grid, and then conservatively average the respective results back to their defined control volumes. }}{14}{figure.1}\protected@file@percent }
 \newlabel{EILE}{{1}{14}{Illustration of the Eulerian Implicit, Lagrangian Explicit cell integrated semi-Lagrangian (CISL) method\cite {jemison2014compressible,scardovelli2003interface}. Rather than have separate traversals through the grid for the cell-centered, face centered, and edge centered variables, we instead interpolate all variables to a refined grid, followed by one traversal through the refined grid, and then conservatively average the respective results back to their defined control volumes}{figure.1}{}}
-\newlabel{asym_multiphase}{{4}{15}{Time step stability restrictions}{algorithm.4}{}}
+\newlabel{asym_multiphase}{{4}{15}{Time step stability restrictions \label {cflsection} }{algorithm.4}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Multiphase flows interacting with elastic materials}}{15}{algorithm.4}\protected@file@percent }
-\newlabel{phasechange_alg}{{5}{16}{Time step stability restrictions}{algorithm.5}{}}
+\newlabel{phasechange_alg}{{5}{16}{Time step stability restrictions \label {cflsection} }{algorithm.5}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Phase change algorithm}}{16}{algorithm.5}\protected@file@percent }
-\newlabel{im_primary}{{6}{16}{Time step stability restrictions}{algorithm.6}{}}
+\newlabel{im_primary}{{6}{16}{Time step stability restrictions \label {cflsection} }{algorithm.6}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Algorithm for determining the unique material number associated with a given grid cell }}{16}{algorithm.6}\protected@file@percent }
-\newlabel{HMAC}{{7}{17}{Time step stability restrictions}{algorithm.7}{}}
+\newlabel{HMAC}{{7}{17}{Time step stability restrictions \label {cflsection} }{algorithm.7}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {7}{\ignorespaces Algorithm for determining $(\nabla H_{\Gamma })_{i+1/2,j}$ at cell face $(i+1/2,j)$  }}{17}{algorithm.7}\protected@file@percent }
-\newlabel{rhoMAC}{{8}{17}{Time step stability restrictions}{algorithm.8}{}}
+\newlabel{rhoMAC}{{8}{17}{Time step stability restrictions \label {cflsection} }{algorithm.8}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {8}{\ignorespaces Algorithm for determining the face centered density, $\rho _{i+1/2,j}$ at cell face $(i+1/2,j)$  }}{17}{algorithm.8}\protected@file@percent }
-\newlabel{mass_association}{{9}{18}{Time step stability restrictions}{algorithm.9}{}}
+\newlabel{mass_association}{{9}{18}{Time step stability restrictions \label {cflsection} }{algorithm.9}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {9}{\ignorespaces Algorithm for distributing mass from material parcels, $\Omega ^{n}_{m,i}$ at time $t=t^{n}$ to parcels at $t=t^{n+1}$, $\Omega ^{n+1}_{m,k}$. $m$ is the material id, $i$ is the old parcel id, and $k$ is the new parcel id.  }}{18}{algorithm.9}\protected@file@percent }
-\newlabel{mass_correction}{{10}{18}{Time step stability restrictions}{algorithm.10}{}}
+\newlabel{mass_correction}{{10}{18}{Time step stability restrictions \label {cflsection} }{algorithm.10}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {10}{\ignorespaces Algorithm for adjusting the actual mass, $m^{act}$, of material parcels, $\Omega _{m,k}^{n+1}$, with the parcel's reference mass $m^{ref}$.  }}{18}{algorithm.10}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  The material volume fractions, $F_{m}$, level set functions, $\phi _{m}$, and total energy, $E_{m}$, are stored at cell centers and then consistently interpolated to the refined grid in preparation for Cell Integrated Semi-Lagrangian advection\cite  {jemison2014compressible,scardovelli2003interface}. The velocity $(u,v)$ is piecewise constant interpolated from the face centered (MAC grid) control volumes to the refined grid cell centers. The horizontal advective velocity, $u^{advect}$, is linearly interpolated to the refined grid face centers in the horizontal direction and is piecewise constant interpolated in the vertical direction. The vertical advective velocity, $v^{advect}$, is linearly interpolated in the vertical direction and piecewise constant interpolated in the horizontal direction. The material density $\rho _{m}$ and deviatoric stress tensor components, $s_{m}^{xx,xy,yy,\Theta \Theta }$ (RZ), are already discretized on the refined grid. }}{19}{figure.2}\protected@file@percent }
 \newlabel{prolongation}{{2}{19}{The material volume fractions, $F_{m}$, level set functions, $\phi _{m}$, and total energy, $E_{m}$, are stored at cell centers and then consistently interpolated to the refined grid in preparation for Cell Integrated Semi-Lagrangian advection\cite {jemison2014compressible,scardovelli2003interface}. The velocity $(u,v)$ is piecewise constant interpolated from the face centered (MAC grid) control volumes to the refined grid cell centers. The horizontal advective velocity, $u^{advect}$, is linearly interpolated to the refined grid face centers in the horizontal direction and is piecewise constant interpolated in the vertical direction. The vertical advective velocity, $v^{advect}$, is linearly interpolated in the vertical direction and piecewise constant interpolated in the horizontal direction. The material density $\rho _{m}$ and deviatoric stress tensor components, $s_{m}^{xx,xy,yy,\Theta \Theta }$ (RZ), are already discretized on the refined grid}{figure.2}{}}
@@ -180,62 +184,64 @@
 \newlabel{recombination}{{3}{20}{After Cell Integrated Semi-Lagrangian advection\cite {jemison2014compressible,scardovelli2003interface} on the refined grid, the cell centered variables, $F_{m}$, $\phi _{m}$, and $E_{m}$, and the face centered variables, $(u,v)$, are conservatively ``recombined'' back to their respective control voume locations. The deviatoric stress tensor components, $s_{m}^{xx,yy,\Theta \Theta }$ (RZ), are conservatively recombined to the cell centered control volumes, and then piecewise constant prolongated back to the refined grid. The off-diagonal deviatoric stress tensor component, $s_{xy}$, is conservatively recombined to the node control volume (RZ) (edge centers in 3D), and then piecewise constant prolongated back to the refined grid. The material density, $\rho _{m}$, do not need to be recombined}{figure.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The phase change algorithm: (1) the phase change speed, $|\dot  {m}|/\rho $, is approximated at all narrow band cells by evaluating $|\dot  {m}|/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the overall mass correction, $M_{cor}$, due to expansion or compression, $M_{cor}=\DOTSB \sum@ \slimits@ (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho _{m_{s}}-\rho _{m_{d}})$. $M_{cor}$ becomes a source term for the projection step if the material is incompressible, or directly increments the density if the material is compressible. (3) $M_{cor}$ is distributed to the vapor (destination) side of the $\Gamma ^{n+1}$ interface if the interface speed is $\vec  {u}_{m_{s}}+\frac  {|\dot  {m}|}{\rho _{m_{s}}}\vec  {n}_{\Gamma }$ , and $M_{cor}$ is distributed to the liquid (source) side of the interface if the interface speed is $\vec  {u}_{m_{d}}+\frac  {|\dot  {m}|}{\rho _{m_{d}}}\vec  {n}_{\Gamma }$. Referring to the diagram, if distributing $M_{cor}$ to the vapor side, $M_{cor}$ must be all distributed beyond the blue region into the red region.  }}{21}{figure.4}\protected@file@percent }
 \newlabel{mdotproblem}{{4}{21}{The phase change algorithm: (1) the phase change speed, $|\dot {m}|/\rho $, is approximated at all narrow band cells by evaluating $|\dot {m}|/\rho $ at the corresponding closest point on the interface ($\Gamma ^{n}$). (2) The change in volume fraction due to unsplit CISL advection determines the overall mass correction, $M_{cor}$, due to expansion or compression, $M_{cor}=\sum (F_{dest}^{new}-F_{dest}^{old})V_{grid}(\rho _{m_{s}}-\rho _{m_{d}})$. $M_{cor}$ becomes a source term for the projection step if the material is incompressible, or directly increments the density if the material is compressible. (3) $M_{cor}$ is distributed to the vapor (destination) side of the $\Gamma ^{n+1}$ interface if the interface speed is $\vec {u}_{m_{s}}+\frac {|\dot {m}|}{\rho _{m_{s}}}\vec {n}_{\Gamma }$ , and $M_{cor}$ is distributed to the liquid (source) side of the interface if the interface speed is $\vec {u}_{m_{d}}+\frac {|\dot {m}|}{\rho _{m_{d}}}\vec {n}_{\Gamma }$. Referring to the diagram, if distributing $M_{cor}$ to the vapor side, $M_{cor}$ must be all distributed beyond the blue region into the red region}{figure.4}{}}
-\bibcite{arienti2014embedded}{3}
-\bibcite{banks2014analysis}{4}
-\bibcite{banks2018stable}{5}
-\bibcite{BIBAL2024112750}{6}
-\bibcite{boscarino2018all}{7}
-\bibcite{camacho1997adaptive}{8}
+\bibcite{almgren2006low}{3}
+\bibcite{AN2016201}{4}
+\bibcite{arienti2014embedded}{5}
+\bibcite{banks2014analysis}{6}
+\bibcite{banks2018stable}{7}
+\bibcite{BIBAL2024112750}{8}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Example for determining the mixture density in face centered control volumes. In this case, the face is $(i+1/2,j)$. Momentum conservation is guaranteed since the density for each material is discretized on the refined grid $(2i+1,2j)$, $(2i+1,2j+1)$, $(2i+2,2j)$, and $(2i+2,2j+1)$. The Fluid regions tessellate the computational domain ($\Omega _{1}$, $\Omega _{1,Ghost}$, $\Omega _{2}$, $\Omega _{2,Ghost}$) and the elastic material regions ($\Omega _{3}$) are embedded within the computational domain. Prior to computing mixture density, we use the nested dissection algorithm in order to convert the material reconstruction so that Fluid and Elastic materials tessellate the computational domain ($\Omega _{1}$, $\Omega _{2}$, $\Omega _{3}$). }}{22}{figure.5}\protected@file@percent }
 \newlabel{MAC_density_fig}{{5}{22}{Example for determining the mixture density in face centered control volumes. In this case, the face is $(i+1/2,j)$. Momentum conservation is guaranteed since the density for each material is discretized on the refined grid $(2i+1,2j)$, $(2i+1,2j+1)$, $(2i+2,2j)$, and $(2i+2,2j+1)$. The Fluid regions tessellate the computational domain ($\Omega _{1}$, $\Omega _{1,Ghost}$, $\Omega _{2}$, $\Omega _{2,Ghost}$) and the elastic material regions ($\Omega _{3}$) are embedded within the computational domain. Prior to computing mixture density, we use the nested dissection algorithm in order to convert the material reconstruction so that Fluid and Elastic materials tessellate the computational domain ($\Omega _{1}$, $\Omega _{2}$, $\Omega _{3}$)}{figure.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Illustration for associating material parcels at $t=t^{n}$ to material parcels at the new time $t=t^{n+1}$. In panels (a) and (c), the material parcels intersect so that the ``weight of association'' is given by the intersected mass. In panel (b), the parcel at $t^{n}$ does not intersection the nearby parcel at $t^{n+1}$, but since they are within two grid cells from one another, they have a weight $\epsilon $ which is considered to be arbitrarily close to zero. In panel (d), parcel 2 at time $t^{n+1}$ came from the coagulation of flotsam at time $t^{n}$. This parcel is an ``orphan'' parcel and is associated with weight $\epsilon $ with the parcel with the nearest centroid. }}{23}{figure.6}\protected@file@percent }
 \newlabel{mass_cor_fig}{{6}{23}{Illustration for associating material parcels at $t=t^{n}$ to material parcels at the new time $t=t^{n+1}$. In panels (a) and (c), the material parcels intersect so that the ``weight of association'' is given by the intersected mass. In panel (b), the parcel at $t^{n}$ does not intersection the nearby parcel at $t^{n+1}$, but since they are within two grid cells from one another, they have a weight $\epsilon $ which is considered to be arbitrarily close to zero. In panel (d), parcel 2 at time $t^{n+1}$ came from the coagulation of flotsam at time $t^{n}$. This parcel is an ``orphan'' parcel and is associated with weight $\epsilon $ with the parcel with the nearest centroid}{figure.6}{}}
-\bibcite{chen2026numerical}{9}
-\bibcite{CHERTOCK2026119292}{10}
-\bibcite{choi2024novel}{11}
-\bibcite{cui2024oblique}{12}
-\bibcite{dressaire2015drop}{13}
-\bibcite{FERRARI2025113553}{14}
-\bibcite{GAO2024106124}{15}
-\bibcite{gao2025study}{16}
-\bibcite{gretarsson2011numerically}{17}
-\bibcite{GUITTET2015215}{18}
-\bibcite{he2024research}{19}
-\bibcite{jemison2013coupled}{20}
-\bibcite{jemison2014compressible}{21}
-\bibcite{jemison2015filament}{22}
-\bibcite{KLOPPE2024117090}{23}
-\bibcite{kwatra2009method}{24}
-\bibcite{Lax1954}{25}
-\bibcite{LECHENADEC2013185}{26}
-\bibcite{leger2023experimental}{27}
-\bibcite{li2015multiphase}{28}
-\bibcite{maire2013nominally}{29}
-\bibcite{MENG2022114522}{30}
-\bibcite{MokbelMokbelLieseWeberAland2024}{31}
-\bibcite{osher1988fronts}{32}
-\bibcite{palmore2019volume}{33}
-\bibcite{PARK2026132}{34}
-\bibcite{patkar2016towards}{35}
-\bibcite{robinson2011symmetric}{36}
-\bibcite{sandusky1999dynamic}{37}
-\bibcite{scandurra2016numerical}{38}
-\bibcite{scardovelli2003interface}{39}
-\bibcite{shin2020interaction}{40}
-\bibcite{stewart2008improved}{41}
-\bibcite{sugiyama2011full}{42}
-\bibcite{tran2004particle}{43}
-\bibcite{UDAYKUMAR2003136}{44}
-\bibcite{vahab2016adaptive}{45}
-\bibcite{VAHAB2021}{46}
-\bibcite{villegas2016ghost}{47}
-\bibcite{wang2017multiphase}{48}
-\bibcite{wardlaw2000fluid}{49}
-\bibcite{weymouth2010conservative}{50}
-\bibcite{WILFONG2026110055}{51}
-\bibcite{xiaxi1989convergence}{52}
-\bibcite{xiong2026bubble}{53}
-\bibcite{xu2019experimental}{54}
-\bibcite{ye2024improved}{55}
-\bibcite{yin2022experimental}{56}
+\bibcite{boscarino2018all}{9}
+\bibcite{camacho1997adaptive}{10}
+\bibcite{chen2026numerical}{11}
+\bibcite{CHERTOCK2026119292}{12}
+\bibcite{choi2024novel}{13}
+\bibcite{cui2024oblique}{14}
+\bibcite{dressaire2015drop}{15}
+\bibcite{FERRARI2025113553}{16}
+\bibcite{GAO2024106124}{17}
+\bibcite{gao2025study}{18}
+\bibcite{gretarsson2011numerically}{19}
+\bibcite{GUITTET2015215}{20}
+\bibcite{he2024research}{21}
+\bibcite{jemison2013coupled}{22}
+\bibcite{jemison2014compressible}{23}
+\bibcite{jemison2015filament}{24}
+\bibcite{KLOPPE2024117090}{25}
+\bibcite{kwatra2009method}{26}
+\bibcite{Lax1954}{27}
+\bibcite{LECHENADEC2013185}{28}
+\bibcite{leger2023experimental}{29}
+\bibcite{li2015multiphase}{30}
+\bibcite{maire2013nominally}{31}
+\bibcite{MENG2022114522}{32}
+\bibcite{MokbelMokbelLieseWeberAland2024}{33}
+\bibcite{osher1988fronts}{34}
+\bibcite{palmore2019volume}{35}
+\bibcite{PARK2026132}{36}
+\bibcite{patkar2016towards}{37}
+\bibcite{robinson2011symmetric}{38}
+\bibcite{sandusky1999dynamic}{39}
+\bibcite{scandurra2016numerical}{40}
+\bibcite{scardovelli2003interface}{41}
+\bibcite{shin2020interaction}{42}
+\bibcite{stewart2008improved}{43}
+\bibcite{sugiyama2011full}{44}
+\bibcite{tran2004particle}{45}
+\bibcite{UDAYKUMAR2003136}{46}
+\bibcite{vahab2016adaptive}{47}
+\bibcite{VAHAB2021}{48}
+\bibcite{villegas2016ghost}{49}
+\bibcite{wang2017multiphase}{50}
+\bibcite{wardlaw2000fluid}{51}
+\bibcite{weymouth2010conservative}{52}
+\bibcite{WILFONG2026110055}{53}
+\bibcite{xiaxi1989convergence}{54}
+\bibcite{xiong2026bubble}{55}
+\bibcite{xu2019experimental}{56}
+\bibcite{ye2024improved}{57}
+\bibcite{yin2022experimental}{58}
 \gdef \@abspage@last{28}

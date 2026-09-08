@@ -1,5 +1,16 @@
 \begin{thebibliography}{10}
 
+\bibitem{ahn2007multi}
+{\sc Ahn, H.~T., and Shashkov, M.}
+\newblock Multi-material interface reconstruction on generalized polyhedral
+  meshes.
+\newblock {\em Journal of Computational Physics 226}, 2 (2007), 2096--2132.
+
+\bibitem{ahn2009adaptive}
+{\sc Ahn, H.~T., and Shashkov, M.}
+\newblock Adaptive moment-of-fluid method.
+\newblock {\em Journal of Computational Physics 228}, 8 (2009), 2792--2821.
+
 \bibitem{almgren2006low}
 {\sc Almgren, A.~S., Bell, J.~B., Rendleman, C.~A., and Zingale, M.}
 \newblock Low mach number modeling of type ia supernovae. i. hydrodynamics.

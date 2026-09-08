@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.16)  3 SEP 2026 18:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.16)  8 SEP 2026 17:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -793,30 +793,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2]
-Overfull \hbox (8.5946pt too wide) in paragraph at lines 283--283
+Overfull \hbox (8.5946pt too wide) in paragraph at lines 279--279
  []\OT1/cmr/m/n/10 Representation| 
  []
 
 
-Overfull \hbox (12.01135pt too wide) in paragraph at lines 283--283
+Overfull \hbox (12.01135pt too wide) in paragraph at lines 279--279
  []\OT1/cmr/m/n/10 Udaykumar [[]]| 
  []
 
 
-Overfull \hbox (5.42795pt too wide) in paragraph at lines 283--283
+Overfull \hbox (5.42795pt too wide) in paragraph at lines 279--279
  []\OT1/cmr/m/n/10 reconstruction| 
  []
 
 
-Overfull \hbox (96.56935pt too wide) in paragraph at lines 283--293
+Overfull \hbox (96.56935pt too wide) in paragraph at lines 279--289
  [][] 
  []
 
 Excluding 'comment' comment.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 415.
+put line 411.
 
-Overfull \hbox (2.82607pt too wide) in paragraph at lines 425--430
+Overfull \hbox (2.82607pt too wide) in paragraph at lines 421--426
 [] $[] \OMS/cmsy/m/n/10   []$ 
  []
 
@@ -825,9 +825,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.502 \end{eqnarray}
+l.503 \end{eqnarray}
                     ] [5]
-Underfull \hbox (badness 3503) in paragraph at lines 598--599
+Underfull \hbox (badness 3503) in paragraph at lines 594--595
 [] $\OML/cmm/m/it/10 s[] \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 s[] \OT1/cmr/m/n/1
 0 + ^^A\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 (
 []\OML/cmm/m/it/10 s[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 s[]\OT1/cmr/m/n/10
@@ -836,22 +836,19 @@ Underfull \hbox (badness 3503) in paragraph at lines 598--599
  []
 
 
-Overfull \hbox (2.82607pt too wide) in paragraph at lines 605--610
+Overfull \hbox (2.82607pt too wide) in paragraph at lines 601--606
 [] $[] \OMS/cmsy/m/n/10   []$ 
  []
 
-
-LaTeX Warning: Reference `CFLcondition' on page 6 undefined on input line 631.
-
 [6] [7]
 
-LaTeX Warning: Reference `materials' on page 8 undefined on input line 654.
+LaTeX Warning: Reference `materials' on page 8 undefined on input line 651.
 
 
-LaTeX Warning: Reference `materials' on page 8 undefined on input line 669.
+LaTeX Warning: Reference `materials' on page 8 undefined on input line 666.
 
 [8] Excluding 'comment' comment. [9] [10] Excluding 'comment' comment.
-Overfull \hbox (0.82784pt too wide) in paragraph at lines 909--909
+Overfull \hbox (0.82784pt too wide) in paragraph at lines 906--906
 |[]\OT1/cmr/bx/n/12 Discretization for mul-ti-phase flows in-ter-act-ing with e
 las-
  []
@@ -859,23 +856,20 @@ las-
 [11]
 
 LaTeX Warning: Reference `extended_velocity' on page 12 undefined on input line
- 933.
+ 930.
 
 
-LaTeX Warning: Reference `extend_u_s' on page 12 undefined on input line 940.
+LaTeX Warning: Reference `extend_u_s' on page 12 undefined on input line 937.
 
 [12]
 
-LaTeX Warning: Reference `flotsam_alg' on page 13 undefined on input line 994.
+LaTeX Warning: Reference `flotsam_alg' on page 13 undefined on input line 991.
 
 
 LaTeX Warning: Reference `face_density_alg' on page 13 undefined on input line 
 997.
 
 [13]
-
-LaTeX Warning: Float too large for page by 10.13222pt on input line 1109.
-
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -925,7 +919,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (81.33759pt too wide) in paragraph at lines 1734--1735
+Overfull \hbox (81.33759pt too wide) in paragraph at lines 1731--1732
 [][] 
  []
 
@@ -958,15 +952,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.50 
+l.48 
      ] [23
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.50 
+l.48 
      ] [24] [25]
-Underfull \hbox (badness 1789) in paragraph at lines 225--229
+Underfull \hbox (badness 1789) in paragraph at lines 236--240
 []\OT1/cmr/m/sc/10 Sandusky, H., Cham-bers, P., Zer-illi, F., Fabini, L., and
  []
 
@@ -980,13 +974,13 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `FSI.out' has not changed.
-(rerunfilecheck)             Checksum: 031A4A60E6DBFE2B09AF414888343283;2965.
+(rerunfilecheck)             Checksum: D9FB2530F2EDD8E062F14A77A904A58F;2981.
  ) 
 Here is how much of TeX's memory you used:
- 23369 strings out of 474116
- 432661 string characters out of 5743681
- 2014187 words of memory out of 5000000
- 45153 multiletter control sequences out of 15000+600000
+ 23373 strings out of 474116
+ 432727 string characters out of 5743681
+ 2013187 words of memory out of 5000000
+ 45155 multiletter control sequences out of 15000+600000
  569743 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,12n,107p,1293b,858s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1017,10 +1011,10 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dist
 /fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on FSI.pdf (28 pages, 430228 bytes).
+Output written on FSI.pdf (28 pages, 430821 bytes).
 PDF statistics:
- 665 PDF objects out of 1000 (max. 8388607)
- 566 compressed objects within 6 object streams
- 178 named destinations out of 1000 (max. 500000)
+ 671 PDF objects out of 1000 (max. 8388607)
+ 572 compressed objects within 6 object streams
+ 180 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

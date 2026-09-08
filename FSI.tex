@@ -89,8 +89,8 @@
 \bibliographystyle{acm}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-\title{A Robust 
-  Numerical Algorithm for simulating the interaction of
+\title{A Continuous Moment of Fluid 
+  Algorithm for simulating the interaction of
   multiphase and multimaterial fluid(s) with flexible solid(s)
   \thanks{this material is based upon work supported by National
    Aeronautics and Space Administration under grant number
@@ -142,12 +142,7 @@ and three dimensional axisymmetric flows
 consisting of any number of materials, to include compressible
 fluids, incompressible fluids, ice, melt, vapor, and 
 solids undergoing plastic deformation.  The interfaces between materials
-are modeled and discretized as sharp.  The new method is robust with respect 
-to a wide range of material properties, and large interface deformation.  
-The new method is scalable on MIMD (Multi Instruction Distributed memory using
-MPI) and MISD (Multi Instructuion Shared memory using OpenMP) computer systems.
-The new method is also scalable with respect to 
-dynamic adaptive mesh refinement.
+are discretized using the continuous moment of fluid method.
 %%Asymptotically preserving according to Degond? 
  
 \linenumbers
@@ -208,7 +203,8 @@ in the following important ways:
   acoustic time step constraint was avoided.
 \item[2.] the present method represents complex deforming interfaces
   using the Continuous Moment-of-Fluid method\cite{ye2024improved} (CMOF),
-  instead of the Moment-of-Fluid (MOF) method\cite{jemison2015filament}.
+  instead of the Moment-of-Fluid (MOF) 
+  method\cite{jemison2015filament,ahn2007multi,ahn2009adaptive}.
   The CMOF method\cite{ye2024improved} removes a ``checkerboard instability''
   that appears for surface tension driven flows.
 \item[3.] We have developed a conservative, staggered grid, algorithm for
@@ -628,13 +624,14 @@ Remarks:
   convergence; our conjecture is stronger.  We conjecture
   that adding Lax artificial diffusion to our method guarantees
   convergence so long as the ``velocity'' CFL condition and 
-  ``shear modulus'' CFL conditions are met (\ref{CFLcondition}), 
+  ``shear modulus'' CFL conditions are 
+  met (see section \ref{cflsection}), 
   but sound speed restrictions
   on the time step are unnecessary.
 \item[3.] We have done extensive testing of our numerical method and have
   found that Lax artificial diffusion to be necessary only for stiff
   elastic materials.  We have found that adding Lax diffusion to 
-  liquid materials would impose excessive damping.
+  liquid or gas materials would impose excessive damping.
 \item[4.] We are only aware of proofs for the Godunov method and
   fractional step Lax-Friedrichs method for isentropic gas
   dynamics\cite{xiaxi1989convergence}.  Neither of these methods
@@ -926,32 +923,30 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
   \cite{jemison2014compressible}:
   \begin{enumerate}
 %% figure should differentiate between elastic faces and fluid faces.
-  \item Steps 8 through 10 in Algorithm \ref{asym_multiphase}:
-     The elastic material volume of fluid equations and
-     level set equations are numerically solved using an
-     ``extended'' velocity field.  Please refer to Figure
-     \ref{extended_velocity}. 
-  \item Because the elastic force (step 26, Algorithm \ref{asym_multiphase})
+  \item In steps 5,6 and 7, the elastic state variables are advected using 
+    an ``extended'' velocity field.  Please refer to Figure
+    \ref{extended_velocity}. 
+  \item Because the elastic force (step 23, Algorithm \ref{asym_multiphase})
     is applied with a smoothed Heaviside function, we must make
     sure that the deviatoric stress tensor $s_{m_{e}}$ 
     is well defined in a narrow band just outside of material 
     $m_{e}$: $\phi_{m_{e}}>-\alpha\Delta x$.
-    This is achieved by steps 18 and 19 of Algorithm
+    This is achieved by steps 15 and 16 of Algorithm
     \ref{asym_multiphase}.  Please see Figure \ref{extend_u_s}.
     In our numerical experiments, we always
     have $\alpha=4$.
   \item As recommended by \cite{shin2020interaction}, the viscous force
     and pressure gradient force are first approximated without the
-    inclusion of surface tension; please see Steps 25 through 29
+    inclusion of surface tension; please see Steps 22 through 26
     of Algorithm \ref{asym_multiphase}.
     Then the viscous force and pressure gradient force are recomputed
-    in steps 31 through 33 in which the surface tension force is
+    in steps 28 through 30 in which the surface tension force is
     included and the velocity in the elastic material regions is fixed
-    to the velocity after step 29.
+    to the velocity after step 26.
   \item the static or dynamic contact angle is enforced by way of 
     extending the level set function and volume of fluid functions
     from the fluid regions into the elastic regions; please see
-    step 11 of Algorithm \ref{asym_multiphase}.  The extension algorithm
+    step 8 of Algorithm \ref{asym_multiphase}.  The extension algorithm
     is the same as that described in our earlier 
     work\cite{arienti2014embedded} except that in the present article,
     we are considering flexible substrates whereas in 
@@ -971,7 +966,7 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
 
 Remarks:
 \begin{enumerate}
-\item Step 33 of Algorithm \ref{asym_multiphase} corresponds to solving
+\item Steps 26 and 30 of Algorithm \ref{asym_multiphase} corresponds to solving
   the following, linear, pressure equation,
   \begin{eqnarray}
   -\frac{p-\tilde{p}}{\rho c^{2}\Delta t^{2}}+\nabla\cdot\frac{\nabla p}{\rho}=
@@ -982,29 +977,32 @@ Remarks:
   $\vec{u}^{\ast\ast,(k+1)}\equiv \vec{u}^{\ast}$.
 \item The phase change 
     algorithm\cite{VAHAB2021,vahab2016adaptive,ye2024improved}, 
-    given by steps 14 and 15 in 
+    given by steps 11 and 12 in 
     Algorithm \ref{asym_multiphase}, is described in more detail 
     in Algorithm \ref{phasechange_alg}.  
     Please also see Figure \ref{mdotproblem}.
-\item The multimaterial reinitialization algorithm, given by step 13 in
+\item The multimaterial reinitialization algorithm, given by step 10 in
   Algorithm \ref{asym_multiphase}, is described in detail in
   \cite{ye2024improved}.
-\item The flotsam removal algorithm, given by step 12 in
+\item The flotsam removal algorithm, given by step 9 in
   Algorithm \ref{asym_multiphase}, is described in more detail in
   Algorithm \ref{flotsam_alg}.
-\item The algorithm for deriving the face centered density, needed in steps
-  26, 29, and 33 of Algorithm \ref{asym_multiphase}, is described in more 
+\item The algorithm for deriving the face centered density and face
+  centered pressure (satisfying 
+  constant contact condition\cite{kwatra2009method})
+  needed in steps
+  23, 26, 27, and 30, of Algorithm \ref{asym_multiphase}, is described in more 
   detail in Algorithm \ref{face_density_alg}.  Please also see Figure
-  \ref{MAC_density_fig}.
+  \ref{MAC_density_fig}.  
   %%where \nabla H<>0,\rho_MAC>(1/2)\max(\rho_{1},\rho_{2})
 \item The algorithm for deriving the face centered
  surface tension force,
- needed in step 32 of Algorithm \ref{asym_multiphase},
+ needed in step 29 of Algorithm \ref{asym_multiphase},
  is described in more detail in our earlier 
  work\cite{li2015multiphase}.
 \end{enumerate}
 
-\subsection{Time step stability restrictions}
+\subsection{Time step stability restrictions \label{cflsection} }
 
 The time step, $\Delta t$, must satisfy the following 
 conditions\cite{ye2024improved,li2015multiphase}.  
@@ -1064,13 +1062,10 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
 \State $k \gets 0$
 \State $\vec{u}^{n+1,(k)} \gets \vec{u}^{n}$
 \While{$k \le 1$}
-	\State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla F_{m} dt \hspace{10pt} m\in[1,M]$ 
- \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{n+1,(k)}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M]$ 
- \State $\vec{U}\gets (\rho,\rho\vec{u},\rho E,\rho s)^{T}$
- \State $(F\vec{U})^{\ast,(k+1)}_{m}\gets (F\vec{U})^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\vec{U})_{m}\otimes\vec{u}^{n+1,(k)})dt \hspace{10pt} m\in[1,M]$ 
- \State $\vec{u}^{extend}\gets \mbox{Extend}(\vec{u}^{n+1,(k)})$ \Comment{from elastic region to fluid}
- \State $F^{n+1,(k+1)}_{m}\gets F^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla F_{m} dt \hspace{10pt} m\in[1,M_{e}]$
- \State $\phi^{n+1,(k+1)}_{m}\gets \phi^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\vec{u}^{extend}\cdot\nabla \phi_{m} dt \hspace{10pt} m\in[1,M_{e}]$ 
+\State $\vec{U}\gets (\rho,\rho\vec{u},\rho E,\rho s)^{T} \hspace{10pt} \vec{\cal F}\gets (F,\phi)$
+\State $\vec{V}_{m}\gets\left\{ \begin{array}{cc} \vec{u}^{n+1,(k)} & \mbox{if $m$ is fluid material} \\ \mbox{Extend}(\vec{u}^{n+1,(k)}) & \mbox{if $m$ is elastic material} \end{array} \right.$
+\State $\vec{\cal F}^{n+1,(k+1)}_{m}\gets \vec{\cal F}^{n}_{m}+\int_{t^{n}}^{t^{n+1}} \nabla\cdot(\vec{\cal F}_{m}\otimes\vec{V}_{m})-(\nabla\cdot\vec{V}_{m})\vec{\cal F}_{m} dt \hspace{10pt} m\in[1,M]$
+\State $(F\vec{U})^{\ast,(k+1)}_{m}\gets (F\vec{U})^{n}_{m}+\int_{t^{n}}^{t^{n+1}}\nabla\cdot((F\vec{U})_{m}\otimes\vec{V}_{m})dt \hspace{10pt} m\in[1,M]$ 
  \State $\phi_{m}^{n+1,(k+1)}\gets\mbox{Extend}(\phi_{m}^{n+1,(k+1)})$ \Comment{from fluid region into elastic}
  \State $F_{m}^{n+1,(k+1)}\gets\mbox{Remove Flotsam}(F_{m}^{n+1,(k+1)})$
  \State Reinitialize $\phi_{m}^{n+1,(k+1)}$ to be signed distance.
