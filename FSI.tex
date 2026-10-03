@@ -141,7 +141,8 @@ A new Eulerian method is presented for simulating complex three dimensional
 and three dimensional axisymmetric flows
 consisting of any number of materials, to include compressible
 fluids, incompressible fluids, ice, melt, vapor, and 
-solids undergoing plastic deformation.  The interfaces between materials
+solids undergoing elastic/plastic deformation.  
+The interfaces between materials
 are discretized using the continuous moment of fluid method.
 %%Asymptotically preserving according to Degond? 
  
@@ -156,7 +157,8 @@ has a number of applications:
 bubble growth and collapse interacting with flexible
 surfaces\cite{xiong2026bubble,xu2019experimental,wang2017multiphase},
 wetting dynamics of liquid droplets on deformable 
-membranes\cite{MokbelMokbelLieseWeberAland2024},
+membranes\cite{MokbelMokbelLieseWeberAland2024,
+kim2018dynamics,gao2026experimental,jin2025instantaneous},
 design of breathable masks\cite{dressaire2015drop}, 
 underwater explosions near 
 structures\cite{leger2023experimental,yin2022experimental,chen2026numerical,
@@ -215,10 +217,6 @@ in the following important ways:
   simulate both low and high speed fluid structure interaction problems.
   Our new method can simulate incompressible elastic materials or 
   compressible elastic materials with shock waves.
-\item[4.] We have developed an exactly mass and volume preserving algorithm
-	so that mass and volume of fluid and elastic materials do not
-	change due to contact line dynamics (e.g. splashing or sliding), or 
-	flotsam removal.
 \end{description}
 
 In Table \ref{tablecompare}, we compare and contrast our new method with
@@ -926,23 +924,23 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
   \item In steps 5,6 and 7, the elastic state variables are advected using 
     an ``extended'' velocity field.  Please refer to Figure
     \ref{extended_velocity}. 
-  \item Because the elastic force (step 23, Algorithm \ref{asym_multiphase})
+  \item Because the elastic force (step 22, Algorithm \ref{asym_multiphase})
     is applied with a smoothed Heaviside function, we must make
     sure that the deviatoric stress tensor $s_{m_{e}}$ 
     is well defined in a narrow band just outside of material 
     $m_{e}$: $\phi_{m_{e}}>-\alpha\Delta x$.
-    This is achieved by steps 15 and 16 of Algorithm
+    This is achieved by steps 14 and 15 of Algorithm
     \ref{asym_multiphase}.  Please see Figure \ref{extend_u_s}.
     In our numerical experiments, we always
     have $\alpha=4$.
   \item As recommended by \cite{shin2020interaction}, the viscous force
     and pressure gradient force are first approximated without the
-    inclusion of surface tension; please see Steps 22 through 26
+    inclusion of surface tension; please see Steps 21 through 25
     of Algorithm \ref{asym_multiphase}.
     Then the viscous force and pressure gradient force are recomputed
-    in steps 28 through 30 in which the surface tension force is
+    in steps 27 through 29 in which the surface tension force is
     included and the velocity in the elastic material regions is fixed
-    to the velocity after step 26.
+    to the velocity after step 25.
   \item the static or dynamic contact angle is enforced by way of 
     extending the level set function and volume of fluid functions
     from the fluid regions into the elastic regions; please see
@@ -951,22 +949,13 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
     work\cite{arienti2014embedded} except that in the present article,
     we are considering flexible substrates whereas in 
     \cite{arienti2014embedded} the substrate only underwent rigid 
-    motion.  By construction, our present algorithm for contact line
-    dynamics on elastic materials recovers exactly the corresponding
-    contact line dynamics on substrates undergoing rigid motion in the
-    limit that the elastic materials' motion approaches rigid motion.
+    motion.  
   \end{enumerate}
-\item We have developed an exactly mass and volume preserving algorithm
-  so that mass and volume of fluid and elastic materials do not
-  change due to contact line dynamics (e.g. splashing or sliding), or 
-  flotsam removal.  Please see Algorithms \ref{mass_association} and
-  \ref{mass_correction}.  Also see
-  Figure \ref{mass_cor_fig}.
 \end{enumerate}
 
 Remarks:
 \begin{enumerate}
-\item Steps 26 and 30 of Algorithm \ref{asym_multiphase} corresponds to solving
+\item Steps 25 and 29 of Algorithm \ref{asym_multiphase} corresponds to solving
   the following, linear, pressure equation,
   \begin{eqnarray}
   -\frac{p-\tilde{p}}{\rho c^{2}\Delta t^{2}}+\nabla\cdot\frac{\nabla p}{\rho}=
@@ -991,7 +980,7 @@ Remarks:
   centered pressure (satisfying 
   constant contact condition\cite{kwatra2009method})
   needed in steps
-  23, 26, 27, and 30, of Algorithm \ref{asym_multiphase}, is described in more 
+  22, 25, 26, and 29, of Algorithm \ref{asym_multiphase}, is described in more 
   detail in Algorithm \ref{face_density_alg}.  Please also see Figure
   \ref{MAC_density_fig}.  
   %%where \nabla H<>0,\rho_MAC>(1/2)\max(\rho_{1},\rho_{2})
@@ -1000,6 +989,16 @@ Remarks:
  needed in step 29 of Algorithm \ref{asym_multiphase},
  is described in more detail in our earlier 
  work\cite{li2015multiphase}.
+\item A property of our numerical method is that there is no longer a 
+  ``contact line singularity''\cite{ZENG2025114259,afkhami2009mesh} 
+  at triple junctions of gas, liquid, and
+  elastic materials.  Since the elastic material is 
+  deformable 
+  (very slightly if the physical properties warrant!) 
+  at
+  triple junctions, the mathematical model, and numerical
+  algorithm allows for both the no-slip condition and 
+  contact line dynamics to exist simultaneously.
 \end{enumerate}
 
 \subsection{Time step stability restrictions \label{cflsection} }
@@ -1044,10 +1043,8 @@ algorithm\cite{jemison2014compressible,scardovelli2003interface} rather
 than the Weymouth and Yue algorithm\cite{weymouth2010conservative},
 since the EI-LE has a less stringent time step constraint.  The
 drawback of using EI-LE is that it is not exactly
-volume preserving in 3D; but this
-is inconsequential for the present paper since we have developed
-an algorithm for exactly conserving the volume.  Please see
-Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
+volume preserving in 3D; but we have found the errors to be a
+fraction of a percent (see section \ref{ }).
 \end{description}
 
 %% k units W/(m K)
@@ -1071,7 +1068,7 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
  \State Reinitialize $\phi_{m}^{n+1,(k+1)}$ to be signed distance.
  \State $\phi_{m_{source}}\gets\phi_{m_{source}}-\Delta t\frac{|\dot{m}|}{\rho}$
  \State $\phi_{m_{dest}}\gets\phi_{m_{dest}}+\Delta t\frac{|\dot{m}|}{\rho}$
- \State $\dot{m}_{correct}\gets\mbox{Mass Correction}(\mbox{Mass Current},\mbox{Mass Target})$
+% \State $\dot{m}_{correct}\gets\mbox{Mass Correction}(\mbox{Mass Current},\mbox{Mass Target})$
  \For{$m=1,\ldots,M_{e}$}
  \State $\vec{u}^{extend}\gets \mbox{Extend}(\vec{u}^{\ast,(k+1)})$ \Comment{from elastic region $m$ to outside}
  \State $s^{extend}\gets \mbox{Extend}(s_{m}^{\ast,(k+1)})$ \Comment{from elastic region $m$ to outside}
@@ -1189,6 +1186,10 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
 \end{algorithmic}
 \end{algorithm}
 
+
+\begin{comment}
+
+
 \begin{algorithm}
 \caption{Algorithm for distributing mass from material parcels, 
   $\Omega^{n}_{m,i}$  at 
@@ -1241,6 +1242,7 @@ Algorithm \ref{mass_correction} and Figure \ref{mass_cor_fig}.
 \end{algorithmic}
 \end{algorithm}
 
+\end{comment}
 
 
 \begin{figure}
@@ -1607,6 +1609,7 @@ into the red region.  \label{mdotproblem} }
  \label{MAC_density_fig}}
 \end{figure}
 
+\begin{comment}
 
 
 \begin{figure}
@@ -1741,6 +1744,8 @@ into the red region.  \label{mdotproblem} }
  \label{mass_cor_fig}}
 \end{figure}
 
+\end{comment}
+
 \section{Results}
 
 \subsection{Drop impact on flexible substrate, sensitivity to contact
@@ -1755,7 +1760,7 @@ Weber number equals twenty
 \mbox{We}==\frac{\rho U_{0}^{2}D_{o}}{\gamma}
 \end{eqnarray}
 
-Superhydrophobic advancing contact angle is $\theta_{A}\gt 150^{0}$.
+Superhydrophobic advancing contact angle is $\theta_{A}> 150^{0}$.
 
 PDMS flexible plate material.  Density of flexible plate is 
 $1.0\frac{\mbox{g}}{\mbox{cm}^{3}}$.

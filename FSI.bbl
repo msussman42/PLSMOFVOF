@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{afkhami2009mesh}
+A mesh-dependent model for applying dynamic contact angles to vof simulations.
+\newblock {\em Journal of computational physics 228}, 15 (2009), 5370--5389.
+
 \bibitem{ahn2007multi}
 {\sc Ahn, H.~T., and Shashkov, M.}
 \newblock Multi-material interface reconstruction on generalized polyhedral
@@ -86,6 +90,13 @@
 \newblock {\em International Journal of Impact Engineering 192\/} (2024),
   105030.
 
+\bibitem{dehaoui2015viscosity}
+{\sc Dehaoui, A., Issenmann, B., and Caupin, F.}
+\newblock Viscosity of deeply supercooled water and its coupling to molecular
+  diffusion.
+\newblock {\em Proceedings of the National Academy of Sciences 112}, 39 (2015),
+  12020--12025.
+
 \bibitem{dressaire2015drop}
 {\sc Dressaire, E., Sauret, A., Boulogne, F., and Stone, H.~A.}
 \newblock Drop impact on a flexible fiber.
@@ -101,6 +112,13 @@
 \newblock Shock capturing for a high-order ale discontinuous galerkin method
   with applications to fluid flows in time-dependent domains.
 \newblock {\em Computers \& Fluids 269\/} (2024), 106124.
+
+\bibitem{gao2026experimental}
+{\sc Gao, S.-R., Wang, Y.-X., Shi, L.-K., Zheng, S.-F., Yang, Y.-R., and Wang,
+  X.-D.}
+\newblock Experimental study on coupled dynamics of a droplet impacting
+  flexible substrates.
+\newblock {\em Physics of Fluids 38}, 1 (2026).
 
 \bibitem{gao2025study}
 {\sc Gao, Y.-Q., Zhong, Q., Liu, Y.-L., Li, S., Zhang, J.-F., and Zhang, A.}
@@ -143,6 +161,17 @@
 {\sc Jemison, M., Sussman, M., and Shashkov, M.}
 \newblock Filament capturing with the multimaterial moment-of-fluid method.
 \newblock {\em Journal of Computational Physics 285\/} (2015), 149--172.
+
+\bibitem{jin2025instantaneous}
+{\sc Jin, P., Chen, Y., Sun, J., Tan, Z., Zhao, W., and Xie, G.}
+\newblock Instantaneous interface freezing induced abnormal icing dynamics
+  during droplet impact icing.
+\newblock {\em Applied Thermal Engineering\/} (2025), 129066.
+
+\bibitem{kim2018dynamics}
+{\sc Kim, J.-H., Rothstein, J.~P., and Shang, J.~K.}
+\newblock Dynamics of a flexible superhydrophobic surface during a drop impact.
+\newblock {\em Physics of Fluids 30}, 7 (2018).
 
 \bibitem{KLOPPE2024117090}
 {\sc Kloppe, M., and Aland, S.}
@@ -358,5 +387,11 @@
 \newblock Experimental and numerical study of the near-field underwater
   explosion of a circular plate coated by rigid polyurethane foam.
 \newblock {\em Ocean Engineering 252\/} (2022), 111248.
+
+\bibitem{ZENG2025114259}
+{\sc Zeng, L., Rouhanitazangi, H., Chen, X., Lu, J., and Tryggvason, G.}
+\newblock Simulating moving contact lines in three-phase suspensions using a
+  front tracking method.
+\newblock {\em Journal of Computational Physics 539\/} (2025), 114259.
 
 \end{thebibliography}
