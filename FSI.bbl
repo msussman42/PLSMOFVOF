@@ -212,6 +212,12 @@ A mesh-dependent model for applying dynamic contact angles to vof simulations.
 \newblock {\em International Journal for Numerical Methods in Fluids 79}, 9
   (2015), 456--490.
 
+\bibitem{liu2018experimental}
+{\sc Liu, Y., Ma, L., Wang, W., Kota, A.~K., and Hu, H.}
+\newblock An experimental study on soft pdms materials for aircraft icing
+  mitigation.
+\newblock {\em Applied Surface Science 447\/} (2018), 599--609.
+
 \bibitem{maire2013nominally}
 {\sc Maire, P.-H., Abgrall, R., Breil, J., Loub{\`e}re, R., and Rebourcet, B.}
 \newblock A nominally second-order cell-centered lagrangian scheme for

@@ -159,6 +159,7 @@ surfaces\cite{xiong2026bubble,xu2019experimental,wang2017multiphase},
 wetting dynamics of liquid droplets on deformable 
 membranes\cite{MokbelMokbelLieseWeberAland2024,
 kim2018dynamics,gao2026experimental,jin2025instantaneous},
+passive aircraft anti-icing\cite{liu2018experimental},
 design of breathable masks\cite{dressaire2015drop}, 
 underwater explosions near 
 structures\cite{leger2023experimental,yin2022experimental,chen2026numerical,
@@ -495,10 +496,7 @@ is applied to the wave equation:
 \frac{1}{\rho c^{2}} p_{t}=-\nabla\cdot\vec{u} \hspace{20pt} c=c(\vec{x}) \mbox{  $c$ is positive}
 \end{eqnarray}
 then the staggered grid approach guarantees unconditional stability for any
-fixed 
-\begin{eqnarray}
-\frac{\Delta t}{\Delta x}
-\end{eqnarray}
+fixed $\frac{\Delta t}{\Delta x}$.
 
 \subsection{Lax diffusion for Energy and Momentum equations in 
 elastic materials }
@@ -575,9 +573,11 @@ and the energy equation (\ref{energy_elastic}),
 \begin{eqnarray}
 k_{\mbox{Lax}}=\frac{\rho_{\mbox{max}}c_{v}\Delta x^{2}}{2\mbox{DIM}\Delta t}.
 \end{eqnarray}
-So, an outline of our asymptotically preserving
-temporal discretization of non-isothermal gas dynamics,
-including Lax-Friedrichs smoothing, is given by Algorithm \ref{asym_preserve_elastic}.
+An outline of our asymptotically preserving
+temporal discretization of non-isothermal fluid dynamics for an 
+elastic material,
+including Lax-Friedrichs smoothing, is given by 
+Algorithm \ref{asym_preserve_elastic}.
 
 \begin{algorithm}
 \caption{Asymptotically Preserving time discretization for an elastic material\label{asym_preserve_elastic}}
@@ -1748,8 +1748,9 @@ into the red region.  \label{mdotproblem} }
 
 \section{Results}
 
+%future: flexible substrate with rivulets.
 \subsection{Drop impact on flexible substrate, sensitivity to contact
-  angle condition}
+  angle condition and substrate shear modulus}
 
 Kim et al\cite{kim2018dynamics}
 
