@@ -191,7 +191,7 @@ In the present work, we have improved upon
 in the following important ways:
 \begin{description}
 \item[1.] the present method is now a staggered grid
-  method instead of colocated.  
+  (and conservative) method instead of colocated.  
   See Figures 
   \ref{EILE},
   \ref{prolongation},
@@ -202,7 +202,8 @@ in the following important ways:
   sugiyama2011full,shin2020interaction,GUITTET2015215} for
   projection methods.  We also report recent work by
   Park and Son\cite{PARK2026132} in which they developed
-  a staggered grid method for compressible flows in which the
+  a (non-conservative) 
+  staggered grid method for compressible flows in which the
   acoustic time step constraint was avoided.
 \item[2.] the present method represents complex deforming interfaces
   using the Continuous Moment-of-Fluid method\cite{ye2024improved} (CMOF),
@@ -322,7 +323,7 @@ Following the ``asymptotically preserving'' analysis in these articles,
 \cite{almgren2006low,boscarino2018all,scandurra2016numerical,
 CHERTOCK2026119292}, 
 it can be shown that our
-Directionally split Cell Integrated Semi-Lagrangian (CISL) algorithm 
+directionally split Cell Integrated Semi-Lagrangian (CISL) algorithm 
 given by
 Algorithm \ref{asym_preserve}
 approaches a discretization consistent with the incompressible flow
@@ -444,7 +445,7 @@ in Figures
   \ref{prolongation},
   and \ref{recombination}).
 The piecewise constant representation guarantees
-that no new extrama are generated for $\vec{u}^{\ast}$ and $E^{\ast}$, the
+that no new extrema are generated for $\vec{u}^{\ast}$ and $E^{\ast}$, the
 updated density $\rho^{n+1}$ is positive, and the discrete mass,
 momentum, and energy are conserved.
 \begin{comment}
@@ -630,7 +631,8 @@ Remarks:
   found that Lax artificial diffusion to be necessary only for stiff
   elastic materials.  We have found that adding Lax diffusion to 
   liquid or gas materials would impose excessive damping.
-\item[4.] We are only aware of proofs for the Godunov method and
+\item[4.] We are only aware of proofs of convergence
+  for the Godunov method and
   fractional step Lax-Friedrichs method for isentropic gas
   dynamics\cite{xiaxi1989convergence}.  Neither of these methods
   are asymptotically preserving.
@@ -646,7 +648,7 @@ Remarks:
 We assume that we have $M$ materials total consisting of $M_{e}$ elastic 
 materials and $M_{f}$ fluid materials.
 Referring to Figure
-\ref{materials}, the elastic materials occupy the regions in which
+\ref{MAC_density_fig}, the elastic materials occupy the regions in which
 the elastic level set function\cite{osher1988fronts}, 
 $\phi_{m_{e}}$, is positive:
 \begin{eqnarray}
@@ -661,7 +663,7 @@ function is positive:
   \phi_{m_{f}}(\vec{x},t)> 0 \right\}
 \end{eqnarray}
 
-Also, referring to Figure \ref{materials}, we discretize the interface(s)
+Referring to Figure \ref{cmof_recon}, we discretize the interface(s)
 using the ``continuous moment of fluid method''\cite{ye2024improved}.
 The volume fraction and centroid in a given computational cell, $\Omega$,
 are defined as:
@@ -930,7 +932,7 @@ of our asymptotically preserving multiphase flow method.  The Algorithm
     is well defined in a narrow band just outside of material 
     $m_{e}$: $\phi_{m_{e}}>-\alpha\Delta x$.
     This is achieved by steps 14 and 15 of Algorithm
-    \ref{asym_multiphase}.  Please see Figure \ref{extend_u_s}.
+    \ref{asym_multiphase}.  Please see Figure \ref{extended_velocity}.
     In our numerical experiments, we always
     have $\alpha=4$.
   \item As recommended by \cite{shin2020interaction}, the viscous force
@@ -1608,6 +1610,164 @@ into the red region.  \label{mdotproblem} }
  ($\Omega_{1}$, $\Omega_{2}$, $\Omega_{3}$).
  \label{MAC_density_fig}}
 \end{figure}
+
+
+\begin{figure}
+\begin{tikzpicture}[x=25pt,y=25pt]
+  \draw[solid] (0,0) rectangle (6,8);
+  \draw (2,8) -- (2,0);
+  \draw (4,8) -- (4,0);
+  \draw (0,2) -- (6,2);
+  \draw (0,4) -- (6,4);
+  \draw (0,6) -- (6,6);
+  \draw[very thick] (-0.33,5.84) .. controls (2.18,4.5) and (2.58,2.54) .. (3.5,-0.37);
+  \draw[cyan, ultra thick] (1.85,5) -- (2.15,5);
+  \draw[cyan, ultra thick] (3.85,5) -- (4.15,5);
+  \draw[cyan, ultra thick] (5.85,5) -- (6.15,5);
+  \draw[cyan, ultra thick] (3.85,3) -- (4.15,3);
+  \draw[cyan, ultra thick] (5.85,3) -- (6.15,3);
+  \draw[red, ultra thick] (3.85,1) -- (4.15,1);
+  \draw[cyan, ultra thick] (5.85,1) -- (6.15,1);
+  \draw[cyan, ultra thick] (-0.15,6.99) -- (0.15,6.99);
+  \draw[cyan, ultra thick] (1.85,7) -- (2.15,7);
+  \draw[cyan, ultra thick] (3.85,7) -- (4.15,7);
+  \draw[cyan, ultra thick] (5.85,7) -- (6.15,7);
+  \draw[ultra thick, magenta] (1,6.15) -- (1,5.85);
+  \draw[ultra thick, magenta] (3,6.15) -- (3,5.85);
+  \draw[ultra thick, magenta] (5,6.15) -- (5,5.85);
+  \draw[ultra thick, magenta] (3,4.15) -- (3,3.85);
+  \draw[ultra thick, magenta] (5,4.15) -- (5,3.85);
+  \draw[ultra thick, red] (3,2.15) -- (3,1.85);
+  \draw[ultra thick, magenta] (5,2.15) -- (5,1.85);
+  \draw[ultra thick, magenta] (5,0.15) -- (5,-0.15);
+  \draw[ultra thick, magenta] (1,8.15) -- (1,7.85);
+  \draw[ultra thick, magenta] (3,8.15) -- (3,7.85);
+  \draw[ultra thick, magenta] (5,8.15) -- (5,7.85);
+  \draw[dashed, magenta, semithick] (1,6) -- (1,4);
+  \draw[dashed, magenta, semithick] (1,8) -- (1,4);
+  \draw[dashed, magenta, semithick] (3,8) -- (1,4);
+  \draw[dashed, magenta, semithick] (5,8) -- (1,4);
+  \draw[dashed, magenta, semithick] (3,6) -- (1,4);
+  \draw[dashed, magenta, semithick] (3,6) -- (1,4);
+  \draw[dashed, magenta] (5,6) -- (1,4);
+  \draw[dashed, magenta] (3,4) -- (1,4);
+  \draw[dashed, magenta] (5,4) -- (1,4);
+  \draw[dashed, magenta,ultra thick] (3,2) -- (5,2);
+  \draw[dashed, magenta] (3,0) -- (5,0);
+  \draw[dashed, cyan, semithick] (4,5) -- (2,3);
+  \draw[dashed, cyan, semithick] (4,7) -- (2,3);
+  \draw[dashed, cyan, semithick] (2,7) -- (0,5);
+  \draw[dashed, cyan, semithick] (2,5) -- (2,3);
+  \draw[dashed, cyan, semithick] (4,3) -- (2,3);
+  \draw[dashed, cyan, semithick] (6,1) -- (4,1);
+  \draw[dashed, cyan, semithick] (6,3) -- (2,3);
+  \draw[dashed, cyan, semithick] (6,5) -- (2,3);
+  \draw[dashed, cyan, semithick] (6,7) -- (2,3);
+  \draw[dashed, cyan, semithick] (0,7) -- (0,5);
+  \draw[ultra thick, red] (-0.15,5) -- (0.15,5);
+  \draw[ultra thick, red] (-0.15,1) -- (0.15,1);
+  \draw[ultra thick, red] (-0.15,3) -- (0.15,3);
+  \draw[ultra thick, red] (1,4.15) -- (1,3.85);
+  \draw[ultra thick, red] (1,2.15) -- (1,1.85);
+  \draw[ultra thick, red] (1,0.15) -- (1,-0.15);
+  \draw[ultra thick, red] (3,0.15) -- (3,-0.15);
+  \draw[ultra thick, red] (1.85,3) -- (2.15,3);
+  \draw[ultra thick, red] (1.85,1) -- (2.15,1);
+\end{tikzpicture}
+\begin{tikzpicture}[x=25pt,y=25pt]
+  \draw[solid] (0,0) rectangle (6,8);
+  \draw (2,8) -- (2,0);
+  \draw (4,8) -- (4,0);
+  \draw (0,2) -- (6,2);
+  \draw (0,4) -- (6,4);
+  \draw (0,6) -- (6,6);
+  \draw[very thick] (-0.33,5.84) .. controls (2.18,4.5) and (2.58,2.54) .. (3.5,-0.37);
+  \draw[dashed, cyan, semithick] (0.5,4.5) -- (0.5,5.5);
+  \draw[dashed, cyan, semithick] (1.5,3.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (1.5,2.5) -- (0.5,5.5);
+  \draw[dashed, cyan, semithick] (0.5,3.5) -- (0.5,5.5);
+  \draw[dashed, cyan, semithick] (0.5,5.5) -- (1.5,3.5);
+  \draw[dashed, cyan, semithick] (1.5,2.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (2.5,2.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (1.5,1.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (0.5,2.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (0.5,3.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (2.5,1.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (2.5,0.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (1.5,0.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (0.5,1.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (0.5,0.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (0.5,4.5) -- (2.5,3.5);
+  \draw[dashed, cyan, semithick] (0.5,2.5) -- (0.5,5.5);
+  \fill[red] (0.5,0.5) circle (0.04cm);
+  \fill[red] (1.5,0.5) circle (0.04cm);
+  \fill[red] (1.5,1.5) circle (0.04cm);
+  \fill[red] (0.5,1.5) circle (0.04cm);
+  \fill[red] (0.5,2.5) circle (0.04cm);
+  \fill[red] (1.5,2.5) circle (0.04cm);
+  \fill[red] (1.5,3.5) circle (0.04cm);
+  \fill[red] (0.5,3.5) circle (0.04cm);
+  \fill[red] (0.5,4.5) circle (0.04cm);
+  \fill[black] (1.5,4.5) circle (0.04cm);
+  \fill[black] (1.5,5.5) circle (0.04cm);
+  \fill[black] (0.5,5.5) circle (0.04cm);
+  \fill[black] (0.5,6.5) circle (0.04cm);
+  \fill[black] (1.5,6.5) circle (0.04cm);
+  \fill[black] (1.5,7.5) circle (0.04cm);
+  \fill[black] (0.5,7.5) circle (0.04cm);
+  \fill[red] (2.5,0.5) circle (0.04cm);
+  \fill[black] (3.5,0.5) circle (0.04cm);
+  \fill[black] (3.5,1.5) circle (0.04cm);
+  \fill[red] (2.5,1.5) circle (0.04cm);
+  \fill[red] (2.5,2.5) circle (0.04cm);
+  \fill[black] (3.5,2.5) circle (0.04cm);
+  \fill[black] (3.5,3.5) circle (0.04cm);
+  \fill[black] (2.5,3.5) circle (0.04cm);
+  \fill[black] (2.5,4.5) circle (0.04cm);
+  \fill[black] (3.5,4.5) circle (0.04cm);
+  \fill[black] (3.5,5.5) circle (0.04cm);
+  \fill[black] (2.5,5.5) circle (0.04cm);
+  \fill[black] (2.5,6.5) circle (0.04cm);
+  \fill[black] (3.5,6.5) circle (0.04cm);
+  \fill[black] (3.5,7.5) circle (0.04cm);
+  \fill[black] (2.5,7.5) circle (0.04cm);
+  \fill[black] (4.5,0.5) circle (0.04cm);
+  \fill[black] (5.5,0.5) circle (0.04cm);
+  \fill[black] (5.5,1.5) circle (0.04cm);
+  \fill[black] (4.5,1.5) circle (0.04cm);
+  \fill[black] (4.5,2.5) circle (0.04cm);
+  \fill[black] (5.5,2.5) circle (0.04cm);
+  \fill[black] (5.5,3.5) circle (0.04cm);
+  \fill[black] (4.5,3.5) circle (0.04cm);
+  \fill[black] (4.5,4.5) circle (0.04cm);
+  \fill[black] (5.5,4.5) circle (0.04cm);
+  \fill[black] (5.5,5.5) circle (0.04cm);
+  \fill[black] (4.5,5.5) circle (0.04cm);
+  \fill[black] (4.5,6.5) circle (0.04cm);
+  \fill[black] (5.5,6.5) circle (0.04cm);
+  \fill[black] (5.5,7.5) circle (0.04cm);
+  \fill[black] (4.5,7.5) circle (0.04cm);
+\end{tikzpicture}
+\caption{Left: The elastic velocity field is derived from the 
+ overall ``fluid'' velocity field by extrapolating the 
+ fluid velocity from within elastic 
+ materials (at least one adjoining cell to a face element has a positive
+ elastic level set value) to the outside of elastic materials.
+ The closest elastic material velocity is determined from
+ $9^{3}$ stencils about ``non-elastic'' velocities.  In this
+ illustration, magenta corresponds to vertical fluid velocities,
+ cyan corresponds to horizontal fluid velocities, and red
+ is the elastic material velocity. 
+ Right: The inverse distance squared weighted elastic material 
+ configuration tensor value is determined from $9^{3}$ stencils about
+ the surrounding ``non-elastic'' sub-cells.  In this illustration,
+ red points correspond to the elastic material.
+ \label{extended_velocity}}
+\end{figure}
+
+
+
+
 
 \begin{comment}
 

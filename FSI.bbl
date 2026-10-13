@@ -1,7 +1,9 @@
 \begin{thebibliography}{10}
 
 \bibitem{afkhami2009mesh}
-A mesh-dependent model for applying dynamic contact angles to vof simulations.
+{\sc Afkhami, S., Zaleski, S., and Bussmann, M.}
+\newblock A mesh-dependent model for applying dynamic contact angles to vof
+  simulations.
 \newblock {\em Journal of computational physics 228}, 15 (2009), 5370--5389.
 
 \bibitem{ahn2007multi}
